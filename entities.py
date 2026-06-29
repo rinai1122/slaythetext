@@ -71,13 +71,12 @@ def check_if_character_dead():
 def check_if_enemy_dead():
     global list_of_enemies
     try:
-        i = 0
-        for enemy in list_of_enemies:
+        for enemy in list(list_of_enemies):
             if enemy.alive == False:
                 if enemy.stolenGold > 0:
                     ansiprint(active_character[0].displayName,"killed an enemy that had stolen Gold.")
                     active_character[0].set_gold(enemy.stolenGold)
-                
+
                 if len(enemy.stolenCard) > 0:
                     for card in enemy.stolenCard:
                         active_character[0].add_CardToHand(card)
@@ -89,34 +88,24 @@ def check_if_enemy_dead():
                         ansiprint("You drew 1 card and received <yellow>1 Energy</yellow> because of <light-red>Gremlin Horn</light-red>!")
                     elif relic.get("Name") == "The Specimen":
                         if enemy.poison > 0:
-                            if len(list_of_enemies) > 1:
+                            others = [e for e in list_of_enemies if e is not enemy]
+                            if len(others) >= 1:
                                 print("<light-red>The Specimen</light-red> did that.")
-                                snap = rd.randint(0,len(list_of_enemies)-1)
-                                while snap == i:
-                                    snap = rd.randint(0,len(list_of_enemies)-1)
+                                rd.choice(others).set_poison(enemy.poison)
 
-                                list_of_enemies[snap].set_poison(enemy.poison)
+                ansiprint("The",enemy.name,"has been defeated.")
+                list_of_enemies.remove(enemy)
 
-                ansiprint("The",list_of_enemies[i].name,"has been defeated.")
-                list_of_enemies.pop(i)
-                
                 if enemy.leader == True and len(list_of_enemies) >= 1:
                     list_of_enemies = []
                     ansiprint("All other Minions are fleeing!")
-
-            else:
-                i += 1
     except Exception as e:
         print(e,"Issue in check_if_enemy_dead entities.")
 
 def enemy_runs_away():
-    i = 0
-    for enemy in list_of_enemies:
+    for enemy in list(list_of_enemies):
         if enemy.runaway == True:
-            list_of_enemies.pop(i)
-            i += 1
-        else:
-            i += 1
+            list_of_enemies.remove(enemy)
 
 def spawn_enemies(theEnemies:list):
 

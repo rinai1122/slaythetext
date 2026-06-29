@@ -14,11 +14,11 @@ import copy
 class Char():
     def __init__(self, name: str, max_health: int, energy: int = 0, energy_gain: int = 3,
         
-        deck: list = None, hand: list = [], discard_pile: list = [], exhaust_pile: list = [], 
+        deck: list = None, hand: list = None, discard_pile: list = None, exhaust_pile: list = None,
 
         draw_strength: int = 5, block: int = 0, gold: int = 0,
 
-        relics: list = [],
+        relics: list = None,
 
         alive: bool = True
 
@@ -42,14 +42,14 @@ class Char():
             self.deck = deck
         self.draw_pile = []
         self.draw_strength = draw_strength
-        self.hand = hand
-        self.discard_pile = discard_pile
-        self.exhaust_pile = exhaust_pile
+        self.hand = hand if hand is not None else []
+        self.discard_pile = discard_pile if discard_pile is not None else []
+        self.exhaust_pile = exhaust_pile if exhaust_pile is not None else []
         self.power_pile = []
-        
+
         self.block = block
-                
-        self.relics = relics
+
+        self.relics = relics if relics is not None else []
         self.gold = gold
         
         self.potionBag = []
