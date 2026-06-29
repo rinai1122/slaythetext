@@ -33,7 +33,7 @@ class Char():
             self.displayName = "<blue>" + self.name + "</blue>"
         
         self.max_health = max_health
-        self.health = self.max_health - math.ceil(self.max_health / 10)
+        self.health = self.max_health
         self.energy = energy
         self.energy_gain = energy_gain
         if deck == None:

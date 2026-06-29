@@ -34,7 +34,7 @@ def choose_character():
             charchoice = input("Pick the Character you want to play.\n")
             
             if charchoice == "1":
-                active_character.append(Char("Silent",66,deck = [],gold = 99,relics=[{"Name":"Ring of the Snake","Rarity":"Starter","Owner":"Silent","Type":"Relic","Info":"At the start of each combat, draw 2 additional cards."}]))
+                active_character.append(Char("Silent",70,deck = [],gold = 99,relics=[{"Name":"Ring of the Snake","Rarity":"Starter","Owner":"Silent","Type":"Relic","Info":"At the start of each combat, draw 2 additional cards."}]))
                 ansiprint("You chose the <green>Silent</green>.")
                 break
             elif charchoice == "2":
