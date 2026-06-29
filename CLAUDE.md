@@ -27,6 +27,15 @@ line may have to be re-typed.** Optimize edits for that.
   potions `p(...)`), NOT raw dict literals. "Name" is auto-filled from the key;
   keys with spaces go in `**{"Key": val}`. The built dict is what consumers see,
   so this is purely a shorter way to type the same data.
+- **Enemy encounters use `spawn(key)`** in entities.py — `miniList.append(
+  spawn("Cultist"))` instead of the long `Enemy(name=enemies[..].get("Name"),
+  max_health=rd.randint(...), ...)` literal. Pass `spawn(key, " 1")` for a name
+  suffix. Lines needing block/strength/leader/hardcoded intentions stay as full
+  `Enemy(...)` literals (spawn covers only the standard case).
+- **Repeated menu prompts are constants** `_P1`/`_P2` (entities.py) — use
+  `input(_P2)`, not the literal prompt string.
+- **enemies dict** also drops the redundant `"Name"` when it equals the key
+  (re-injected by `_setnames`); keep `"Name"` explicit when it differs.
 - **No new dependencies** (stdlib + colorama + ansimarkup only) and **avoid new
   files** — both mean more setup/typing on the closed box. Extend the existing 8
   source files unless a new file is clearly justified.

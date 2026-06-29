@@ -135,46 +135,46 @@ def fill_enemy_list():
             miniList = []
             if snap == 1:
                 enemy = "Cultist"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
 
             elif snap == 2:                                             
                 enemy = "Jaw Worm"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
 
             elif snap == 3:
                 lousecheck = rd.randint(0,2)
                 if lousecheck == 0:
                     
                     enemy = "Green Louse"
-                    miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-                    miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                    miniList.append(spawn(enemy, " 1"))
+                    miniList.append(spawn(enemy, " 2"))
                     
                 elif lousecheck == 1:
                     
                     enemy = "Red Louse"
-                    miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-                    miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                    miniList.append(spawn(enemy, " 1"))
+                    miniList.append(spawn(enemy, " 2"))
 
                 elif lousecheck == 2:
                     enemy = "Red Louse"
-                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                    miniList.append(spawn(enemy))
                     enemy = "Green Louse"
-                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                    miniList.append(spawn(enemy))
 
             elif snap == 4:
                 
                 if rd.randint(0,1) == 0:
                     
                     enemy = "Medium Acid Slime"
-                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                    miniList.append(spawn(enemy))
                     enemy = "Small Spike Slime"
-                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                    miniList.append(spawn(enemy))
 
                 else:
                     enemy = "Small Acid Slime"
-                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                    miniList.append(spawn(enemy))
                     enemy = "Medium Spike Slime"
-                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                    miniList.append(spawn(enemy))
 
             encounterList.append(miniList)
             i += 1
@@ -190,36 +190,36 @@ def fill_enemy_list():
                 gremls = 0
                 while gremls < 4:
                     enemy = gremlins.pop(rd.randint(0,len(gremlins) - 1))
-                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                    miniList.append(spawn(enemy))
                     gremls += 1
             
             elif setup == 1:
                 if rd.randint(0,1) == 0:
                     enemy = "Large Acid Slime"
-                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                    miniList.append(spawn(enemy))
                 else:
                     enemy = "Large Spike Slime"
-                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                    miniList.append(spawn(enemy))
 
             elif setup == 2:
                 enemy = "Small Acid Slime"
                 
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy, " 1"))
+                miniList.append(spawn(enemy, " 2"))
 
                 enemy = "Small Spike Slime"
 
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 3",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy, " 1"))
+                miniList.append(spawn(enemy, " 2"))
+                miniList.append(spawn(enemy, " 3"))
            
             elif setup == 3:
                 enemy = "Red Slaver"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
 
             elif setup == 4:
                 enemy = "Blue Slaver"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
             
             elif setup == 5:
                 i = 0
@@ -229,15 +229,15 @@ def fill_enemy_list():
                     else:
                         enemy = "Green Louse"
                 
-                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                    miniList.append(spawn(enemy))
                     i += 1
 
             elif setup == 6:
                 
                 enemy = "Fungi Beast"
                 
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy, " 1"))
+                miniList.append(spawn(enemy, " 2"))
 
             elif setup == 7:
             
@@ -249,7 +249,7 @@ def fill_enemy_list():
                     enemy = rd.choices(["Medium Acid Slime","Medium Spike Slime"])[0]
         
 
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
 
                 kindOfThug = rd.randint(0,2)
 
@@ -262,13 +262,13 @@ def fill_enemy_list():
                 elif kindOfThug == 2:
                     enemy = rd.choices(["Blue Slaver","Red Slaver"])[0]
                 
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
                
             elif setup == 8:
             
                 enemy = rd.choices(["Fungi Beast","Jaw Worm"])[0]
                     
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
 
                 kindOfBeast = rd.randint(0,2)
 
@@ -280,12 +280,12 @@ def fill_enemy_list():
                     enemy = rd.choices(["Medium Acid Slime","Medium Spike Slime"])[0]
                     
                 
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
                
             elif setup == 9:
             
                 enemy = "Looter"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
 
             encounterList.append(miniList)
 
@@ -304,24 +304,24 @@ def fill_enemy_list():
 
             elif snap == 2:
                 enemy = "Chosen"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
 
             elif snap == 3:
                 enemy = "Shelled Parasite"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
 
             elif snap == 4:
                 enemy = "Byrd"
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 3",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy, " 1"))
+                miniList.append(spawn(enemy, " 2"))
+                miniList.append(spawn(enemy, " 3"))
                 
 
             elif snap == 5:
                 enemy = "Looter"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
                 enemy = "Mugger"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
                 
             
             encounterList.append(miniList)
@@ -333,14 +333,14 @@ def fill_enemy_list():
             miniList = []
             if setup == 1:
                 enemy = "Byrd"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
                 enemy = "Chosen"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
             elif setup == 2:
                 enemy = "Cultist"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
                 enemy = "Chosen"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
             elif setup == 3:
                 enemy = "Bolt Sentry"
                 miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death"), artifact = enemies[enemy].get("Artifact")))
@@ -348,25 +348,25 @@ def fill_enemy_list():
                 miniList.append(Enemy(name = enemies[enemy].get("Name"),block = enemies[enemy].get("Block"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death"),artifact = enemies[enemy].get("Artifact")))
             elif setup == 4:
                 enemy = "Snake Plant"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
             elif setup == 5:
                 enemy = "Snecko"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
             elif setup == 6:
                 enemy = "Centurion"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
                 enemy = "Mystic"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
             elif setup == 7:
                 enemy = "Cultist"
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 3",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy, " 1"))
+                miniList.append(spawn(enemy, " 2"))
+                miniList.append(spawn(enemy, " 3"))
             elif setup == 8:
                 enemy = "Shelled Parasite"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
                 enemy = "Fungi Beast"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
             encounterList.append(miniList)
         return encounterList
             
@@ -379,9 +379,9 @@ def fill_enemy_list():
             miniList = []
             if snap == 1:
                 enemy = "Darkling"
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 3",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy, " 1"))
+                miniList.append(spawn(enemy, " 2"))
+                miniList.append(spawn(enemy, " 3"))
 
             elif snap == 2:
                 enemy = "Orb Walker"
@@ -395,7 +395,7 @@ def fill_enemy_list():
                     former = subchecklist.pop(rd.randint(0,len(subchecklist)-1)) 
                     if former == 0:
                         enemy = "Spiker"
-                        miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                        miniList.append(spawn(enemy))
                     
                     elif former == 1:
                         enemy = "Exploder"
@@ -420,7 +420,7 @@ def fill_enemy_list():
                     former = subchecklist.pop(rd.randint(0,len(subchecklist)-1)) 
                     if former == 0:
                         enemy = "Spiker"
-                        miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                        miniList.append(spawn(enemy))
                     
                     elif former == 1:
                         enemy = "Exploder"
@@ -442,7 +442,7 @@ def fill_enemy_list():
                     
                     if former == 0:
                         enemy = "Spiker"
-                        miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                        miniList.append(spawn(enemy))
                     
                     elif former == 1:
                         enemy = "Exploder"
@@ -459,13 +459,13 @@ def fill_enemy_list():
 
             elif setup == 3:
                 enemy = "Darkling"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
+                miniList.append(spawn(enemy))
+                miniList.append(spawn(enemy))
 
             elif setup == 4:
                 enemy = "Writhing Mass"                
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
 
             elif setup == 5:
                 enemy = "Jaw Worm Hard"
@@ -509,7 +509,7 @@ def fill_elite_list():
             
             elif setup == 2:
                 enemy = "Gremlin Nob"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
 
 
             encounterList.append(miniList)
@@ -588,11 +588,11 @@ def fill_boss_list(act):
             miniList = []
             if setup == 0:
                 enemy = "Slime Boss"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
 
             elif setup == 1:
                 enemy = "Hexaghost"
-                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(spawn(enemy))
             
             elif setup == 2:
                 enemy = "Guardian"
@@ -683,6 +683,8 @@ def create_superElite(superElite):
 #   c(Type, Rarity, Owner, Info, **stats)   -- cards
 #   r(Rarity, Owner, Info, **stats)         -- relics (Type defaults to "Relic")
 #   p(Rarity, Owner, Info, **stats)         -- potions (Type defaults to "Potion")
+_P1 = "What do you want to do?\n"
+_P2 = "What do you want to do? Pick the corresponding number.\n"
 _M = object()
 def c(Type, Rarity, Owner, Info=_M, **stats):
     d = {"Type": Type, "Rarity": Rarity, "Owner": Owner}
@@ -1795,104 +1797,110 @@ _setnames(relics)
 #ACT 1 Encounter
 
 enemies = {"Gremlin": {"Name":"Fat Gremlin","Health":(14,18),"Intentions":["Smash 5/1"],"Intentions_Logic":[["Random"],[0]*100]},
-            "Cultist": {"Name":"Cultist", "Health": (50,56),"Intentions":[1],"Intentions_Logic":[["First Move Set"],["Ritual 5"]]},
-            "Jaw Worm": {"Name": "Jaw Worm","Health": (42,46),"Intentions":[12, "Thrash 7/5", "Bellow 5|9"],"Intentions_Logic":[["Jaw Worm"]]},
+            "Cultist": {"Health": (50,56),"Intentions":[1],"Intentions_Logic":[["First Move Set"],["Ritual 5"]]},
+            "Jaw Worm": {"Health": (42,46),"Intentions":[12, "Thrash 7/5", "Bellow 5|9"],"Intentions_Logic":[["Jaw Worm"]]},
             "Jaw Worm Hard": {"Name": "Jaw Worm","Health": (42,46),"Block":9,"Strength":5,"Intentions":[12, "Thrash 7/5", "Bellow 5|9"],"Intentions_Logic":[["Jaw Worm"]]},
 
-            "Red Louse": {"Name":"Red Louse","Health":(11,17),"Intentions": [(6,8),"Grow 2"], "Intentions_Logic":[["Red Louse"]],"On_hit_or_death":[["Curl","Hit"]]},
-            "Green Louse": {"Name":"Green Louse","Health":(12,18),"Intentions": [(6,8),"Weak 2"], "Intentions_Logic":[["Green Louse"]],"On_hit_or_death":[["Curl","Hit"]]},
+            "Red Louse": {"Health":(11,17),"Intentions": [(6,8),"Grow 2"], "Intentions_Logic":[["Red Louse"]],"On_hit_or_death":[["Curl","Hit"]]},
+            "Green Louse": {"Health":(12,18),"Intentions": [(6,8),"Weak 2"], "Intentions_Logic":[["Green Louse"]],"On_hit_or_death":[["Curl","Hit"]]},
             
-            "Looter": {"Name": "Looter","Health":(46,50),"Intentions":["Steal 11/20", "Lunge 14/20", "SmokeBomb 6"],"Intentions_Logic":[["Looter"]]},
+            "Looter": {"Health":(46,50),"Intentions":["Steal 11/20", "Lunge 14/20", "SmokeBomb 6"],"Intentions_Logic":[["Looter"]]},
             
-            "Red Slaver": {"Name": "Red Slaver","Health":(48,52),"Intentions":[14,"Scape 9/2","Entangle"],"Intentions_Logic":[["Red Slaver"]]},
-            "Blue Slaver": {"Name": "Blue Slaver","Health":(48,52),"Intentions":[13,"Rake 8/2"],"Intentions_Logic":[["Blue Slaver"]]},
+            "Red Slaver": {"Health":(48,52),"Intentions":[14,"Scape 9/2","Entangle"],"Intentions_Logic":[["Red Slaver"]]},
+            "Blue Slaver": {"Health":(48,52),"Intentions":[13,"Rake 8/2"],"Intentions_Logic":[["Blue Slaver"]]},
 
-            "Fungi Beast": {"Name": "Fungi Beast","Health":(24,28),"Intentions":[6,"Grow 5"],"Intentions_Logic": [["Fungi Beast"]],"On_hit_or_death":[["Vulnerable 3","Death"]]},
+            "Fungi Beast": {"Health":(24,28),"Intentions":[6,"Grow 5"],"Intentions_Logic": [["Fungi Beast"]],"On_hit_or_death":[["Vulnerable 3","Death"]]},
 
-            "Small Acid Slime": {"Name": "Small Acid Slime","Health":(9,13),"Intentions":[4,"Weak 1"], "Intentions_Logic":[["Small Acid Slime"]]},
-            "Medium Acid Slime": {"Name": "Medium Acid Slime","Health":(29,34),"Intentions":[12,"CorrosiveSpit 8/1","Weak 1"],"Intentions_Logic":[["Medium Acid Slime"]]},
-            "Large Acid Slime": {"Name": "Large Acid Slime","Health":(68,72),"Intentions":[18,"CorrosiveSpit 12/2","Weak 2"],"Intentions_Logic": [["Large Acid Slime"]],"On_hit_or_death":[["Split","Hit"]]},
+            "Small Acid Slime": {"Health":(9,13),"Intentions":[4,"Weak 1"], "Intentions_Logic":[["Small Acid Slime"]]},
+            "Medium Acid Slime": {"Health":(29,34),"Intentions":[12,"CorrosiveSpit 8/1","Weak 1"],"Intentions_Logic":[["Medium Acid Slime"]]},
+            "Large Acid Slime": {"Health":(68,72),"Intentions":[18,"CorrosiveSpit 12/2","Weak 2"],"Intentions_Logic": [["Large Acid Slime"]],"On_hit_or_death":[["Split","Hit"]]},
 
-            "Small Spike Slime": {"Name": "Small Spike Slime","Health":(11,15),"Intentions":[6],"Intentions_Logic":[["Random"],[0]*100]},
-            "Medium Spike Slime": {"Name": "Medium Spike Slime","Health":(29,34),"Intentions": ["CorrosiveSpit 10/1","Frail 1"],"Intentions_Logic":[["Medium Spike Slime"]]},
-            "Large Spike Slime": {"Name": "Large Spike Slime", "Health":(67,73),"Intentions":["CorrosiveSpit 18/2","Frail 3"],"Intentions_Logic":[["Large Spike Slime"]],"On_hit_or_death":[["Split","Hit"]]},
+            "Small Spike Slime": {"Health":(11,15),"Intentions":[6],"Intentions_Logic":[["Random"],[0]*100]},
+            "Medium Spike Slime": {"Health":(29,34),"Intentions": ["CorrosiveSpit 10/1","Frail 1"],"Intentions_Logic":[["Medium Spike Slime"]]},
+            "Large Spike Slime": {"Health":(67,73),"Intentions":["CorrosiveSpit 18/2","Frail 3"],"Intentions_Logic":[["Large Spike Slime"]],"On_hit_or_death":[["Split","Hit"]]},
             
-            "Fat Gremlin": {"Name": "Fat Gremlin","Health":(14,18),"Intentions":["Smash 5/1"],"Intentions_Logic":[["Random"],[0]*100]},
-            "Mad Gremlin": {"Name": "Mad Gremlin","Health":(21,25),"Intentions":[5],"Intentions_Logic":[["Random"],[0]*100],"On_hit_or_death": [["Anger 2","Hit"]]},
-            "Shield Gremlin":{"Name": "Shield Gremlin","Health": (13,17),"Intentions":["Protect 11"],"Intentions_Logic":[["Random"],[0]*100]},
-            "Sneaky Gremlin": {"Name": "Sneaky Gremlin","Health":(11,15),"Intentions":[10],"Intentions_Logic":[["Random"],[0]*100]},
-            "Gremlin Wizard": {"Name": "Gremlin Wizard","Health":(22,26),"Intentions":["Charging",30],"Intentions_Logic":[["Random"],[0,0]+[1]*98]},
+            "Fat Gremlin": {"Health":(14,18),"Intentions":["Smash 5/1"],"Intentions_Logic":[["Random"],[0]*100]},
+            "Mad Gremlin": {"Health":(21,25),"Intentions":[5],"Intentions_Logic":[["Random"],[0]*100],"On_hit_or_death": [["Anger 2","Hit"]]},
+            "Shield Gremlin": {"Health": (13,17),"Intentions":["Protect 11"],"Intentions_Logic":[["Random"],[0]*100]},
+            "Sneaky Gremlin": {"Health":(11,15),"Intentions":[10],"Intentions_Logic":[["Random"],[0]*100]},
+            "Gremlin Wizard": {"Health":(22,26),"Intentions":["Charging",30],"Intentions_Logic":[["Random"],[0,0]+[1]*98]},
             
             "Gremlin Nob": {"Name":"Gemlin Nob", "Health": (85,90),"Intentions":[16,"SkullBash 8/2","Enrage 3"],"Intentions_Logic":[["Random"],[2]+[1,0,0]*33]},
             
-            "Beam Sentry": {"Name":"Beam Sentry", "Health": (39,45),"Intentions":[10,"Bolt 3"],"Intentions_Logic":[["Random"],[0,1]*50],"Artifact":1}, 
-            "Bolt Sentry": {"Name":"Bolt Sentry", "Health": (39,45),"Intentions":[10,"Bolt 3"],"Intentions_Logic":[["Random"],[1,0]*50],"Artifact":1},
+            "Beam Sentry": {"Health": (39,45),"Intentions":[10,"Bolt 3"],"Intentions_Logic":[["Random"],[0,1]*50],"Artifact":1},
+            "Bolt Sentry": {"Health": (39,45),"Intentions":[10,"Bolt 3"],"Intentions_Logic":[["Random"],[1,0]*50],"Artifact":1},
 
-            "Lagavulin": {"Name":"Lagavulin", "Health": (112,115),"Intentions":["Asleep 3"],"Intentions_Logic":[["Random"],[0]*100],"On_hit_or_death": [["Asleep","Hit"]], "Metallicize": 8},
+            "Lagavulin": {"Health": (112,115),"Intentions":["Asleep 3"],"Intentions_Logic":[["Random"],[0]*100],"On_hit_or_death": [["Asleep","Hit"]], "Metallicize": 8},
 
-            "Slime Boss": {"Name": "Slime Boss", "Health":(150,150),"Intentions":["GoopSpray 5","Preparing",38],"Intentions_Logic":[["Random"],[0,1,2]*33],"On_hit_or_death":[["Split","Hit"]]},
-            "Guardian": {"Name": "Guardian", "Health":(250,250),"Intentions":["Block 9",36,"VentSteam 2","Multiattack 5*4"],"Intentions_Logic":[["Random"],[0,1,2,3]*25],"On_hit_or_death":[["Modeshift","Hit"]]},
-            "Hexaghost":{"Name": "Hexaghost", "Health":(264,264),"Intentions":["Activate","Divider","Sear 6/2","Multiattack 6*2", "Bellow 3|12","Inferno 3*6"],"Intentions_Logic":[["Random"],[0,1] + [2,3,2,4,3,2,5]*30]},
+            "Slime Boss": {"Health":(150,150),"Intentions":["GoopSpray 5","Preparing",38],"Intentions_Logic":[["Random"],[0,1,2]*33],"On_hit_or_death":[["Split","Hit"]]},
+            "Guardian": {"Health":(250,250),"Intentions":["Block 9",36,"VentSteam 2","Multiattack 5*4"],"Intentions_Logic":[["Random"],[0,1,2,3]*25],"On_hit_or_death":[["Modeshift","Hit"]]},
+            "Hexaghost": {"Health":(264,264),"Intentions":["Activate","Divider","Sear 6/2","Multiattack 6*2", "Bellow 3|12","Inferno 3*6"],"Intentions_Logic":[["Random"],[0,1] + [2,3,2,4,3,2,5]*30]},
             
-            "Byrd": {"Name":"Byrd","Health":(26,33),"Intentions":["Multiattack 1*6","Grow 1",14],"Intentions_Logic":[["Byrd"]],"On_hit_or_death":[["Fly 4","Hit"]]},
+            "Byrd": {"Health":(26,33),"Intentions":["Multiattack 1*6","Grow 1",14],"Intentions_Logic":[["Byrd"]],"On_hit_or_death":[["Fly 4","Hit"]]},
 
-            "Chosen": {"Name":"Chosen","Health":(98,103),"Intentions":["Multiattack 6*2",21,"Scrape 12/2","Drain 3/3","Hex"],"Intentions_Logic":[["Chosen"]]},
-            "Mugger": {"Name": "Mugger","Health":(50,54),"Intentions":["Steal 11/20", "Lunge 18/20", "SmokeBomb 17"],"Intentions_Logic":[["Mugger"]]},
+            "Chosen": {"Health":(98,103),"Intentions":["Multiattack 6*2",21,"Scrape 12/2","Drain 3/3","Hex"],"Intentions_Logic":[["Chosen"]]},
+            "Mugger": {"Health":(50,54),"Intentions":["Steal 11/20", "Lunge 18/20", "SmokeBomb 17"],"Intentions_Logic":[["Mugger"]]},
 
-            "Shelled Parasite": {"Name": "Shelled Parasite","Health":(70,75),"Intentions":["Multiattack 7*2", "Suck 12", "Fell 21/2"],"Intentions_Logic":[["Shelled Parasite"]],"Plated Armor":14},
+            "Shelled Parasite": {"Health":(70,75),"Intentions":["Multiattack 7*2", "Suck 12", "Fell 21/2"],"Intentions_Logic":[["Shelled Parasite"]],"Plated Armor":14},
             #continue here
-            "Spheric Guardian": {"Name": "Spheric Guardian","Health":(20,20),"Block":40,"Intentions":["Harden 11/15","Multiattack 11*2", "Block 35", "Fell 11/5"],"Intentions_Logic":[["Spheric Guardian"]],"Artifact":3,"Barricade":True},
-            "Centurion": {"Name": "Centurion","Health":(78,83),"Intentions":[14,"CenturionDefendAlly"],"Intentions_Logic":[["Centurion"]]},
-            "Mystic": {"Name": "Mystic","Health":(78,83),"Intentions":["Fell 9/2","MysticBuff","MysticHeal 20"],"Intentions_Logic":[["Mystic"]]},
-            "Snecko": {"Name": "Snecko","Health":(120,125),"Intentions":["Smash 10/2",18,"Perplexing Glare"],"Intentions_Logic":[["Snecko"]]},
+            "Spheric Guardian": {"Health":(20,20),"Block":40,"Intentions":["Harden 11/15","Multiattack 11*2", "Block 35", "Fell 11/5"],"Intentions_Logic":[["Spheric Guardian"]],"Artifact":3,"Barricade":True},
+            "Centurion": {"Health":(78,83),"Intentions":[14,"CenturionDefendAlly"],"Intentions_Logic":[["Centurion"]]},
+            "Mystic": {"Health":(78,83),"Intentions":["Fell 9/2","MysticBuff","MysticHeal 20"],"Intentions_Logic":[["Mystic"]]},
+            "Snecko": {"Health":(120,125),"Intentions":["Smash 10/2",18,"Perplexing Glare"],"Intentions_Logic":[["Snecko"]]},
 
-            "Snake Plant": {"Name": "Snake Plant","Health":(78,82),"Intentions":["Multiattack 8*3","Roar 2"],"Intentions_Logic":[["Snake Plant"]],"On_hit_or_death":[["Malleable 3","Hit"]]},
+            "Snake Plant": {"Health":(78,82),"Intentions":["Multiattack 8*3","Roar 2"],"Intentions_Logic":[["Snake Plant"]],"On_hit_or_death":[["Malleable 3","Hit"]]},
 
-            "Book of Stabbing": {"Name": "Book of Stabbing","Health":(168,172),"Intentions":["Multiattack 7*3",24],"Intentions_Logic":[["Book of Stabbing"]],"Painfull Stabs":True},
-            "Gremlin Leader": {"Name": "Gremlin Leader","Health":(145,155),"Intentions":["Encourage 3/6","Rally","Multiattack 6*3"],"Intentions_Logic":[["Gremlin Leader"]],"Leader":True},
-            "Taskmaster": {"Name": "Taskmaster","Health":(57,64),"Intentions":["ScouringWhip 7/3"],"Intentions_Logic":[["Random"],[0]*100]},
+            "Book of Stabbing": {"Health":(168,172),"Intentions":["Multiattack 7*3",24],"Intentions_Logic":[["Book of Stabbing"]],"Painfull Stabs":True},
+            "Gremlin Leader": {"Health":(145,155),"Intentions":["Encourage 3/6","Rally","Multiattack 6*3"],"Intentions_Logic":[["Gremlin Leader"]],"Leader":True},
+            "Taskmaster": {"Health":(57,64),"Intentions":["ScouringWhip 7/3"],"Intentions_Logic":[["Random"],[0]*100]},
         
-            "Pointy": {"Name": "Pointy","Health":(34,34),"Intentions":["Multiattack 6*2"],"Intentions_Logic":[["Random"],[0]*100]},
-            "Romeo": {"Name": "Romeo","Health":(37,41),"Intentions":["RomeoTaunt","Rake 12/3", 17],"Intentions_Logic":[["Random"],[0]+[1,2,2]*33]},
-            "Bear": {"Name": "Bear","Health":(40,44),"Intentions":["BearHug 4","Thrash 10/9", 20],"Intentions_Logic":[["Random"],[0]+[1,2]*50]},
+            "Pointy": {"Health":(34,34),"Intentions":["Multiattack 6*2"],"Intentions_Logic":[["Random"],[0]*100]},
+            "Romeo": {"Health":(37,41),"Intentions":["RomeoTaunt","Rake 12/3", 17],"Intentions_Logic":[["Random"],[0]+[1,2,2]*33]},
+            "Bear": {"Health":(40,44),"Intentions":["BearHug 4","Thrash 10/9", 20],"Intentions_Logic":[["Random"],[0]+[1,2]*50]},
 
 
-            "Bronze Automaton": {"Name": "Bronze Automaton","Health":(320,320),"Intentions":["Multiattack 8*2","Bellow 4|12",50,"Spawn Orbs"],"Intentions_Logic":[["Random"],[3]+[0,1,0,1,2]*30],"Artifact":3},
-            "Bronze Orb": {"Name": "Bronze Orb","Health":(54,60),"Intentions":[8,"Support Automaton","Stasis"],"Intentions_Logic":[["Bronze Orb"]]},
+            "Bronze Automaton": {"Health":(320,320),"Intentions":["Multiattack 8*2","Bellow 4|12",50,"Spawn Orbs"],"Intentions_Logic":[["Random"],[3]+[0,1,0,1,2]*30],"Artifact":3},
+            "Bronze Orb": {"Health":(54,60),"Intentions":[8,"Support Automaton","Stasis"],"Intentions_Logic":[["Bronze Orb"]]},
 
-            "The Champ" : {"Name":"The Champ","Health":(440,440),"Intentions_Logic":[["The Champ Phase 1"]]},
+            "The Champ": {"Health":(440,440),"Intentions_Logic":[["The Champ Phase 1"]]},
 
-            "The Collector": {"Name":"The Collector","Health":(300,300),"Intentions_Logic":[["The Collector"]],"Leader": True},
+            "The Collector": {"Health":(300,300),"Intentions_Logic":[["The Collector"]],"Leader": True},
 
-            "Darkling": {"Name": "Darkling","Health":(50,59),"Intentions":[(9,13),"Bellow 2|12","Multiattack 9*2"],"Intentions_Logic":[["Darkling"]],"On_hit_or_death":[["Lifelink","Death"]]},
-            "Orb Walker": {"Name": "Orb Walker", "Health":(92,102),"Intentions":[16,"Laser 11/1"],"Intentions_Logic":[["Orb Walker"]],"Ritual":5},
-            "Spiker": {"Name": "Spiker", "Health":(44,60),"Intentions":[9,"SpikeUp 2"],"Intentions_Logic":[["Spiker"]],"On_hit_or_death":[[7,"Hit"]]},
-            "Exploder": {"Name": "Exploder", "Health":(30,35),"Intentions":[11,"Explode 30"],"Intentions_Logic":[["Random"],[0,0,1]]},
-            "Repulsor": {"Name": "Repulsor", "Health":(31,38),"Intentions":[13,"Repulse 2"],"Intentions_Logic":[["Repulsor"]]},
+            "Darkling": {"Health":(50,59),"Intentions":[(9,13),"Bellow 2|12","Multiattack 9*2"],"Intentions_Logic":[["Darkling"]],"On_hit_or_death":[["Lifelink","Death"]]},
+            "Orb Walker": {"Health":(92,102),"Intentions":[16,"Laser 11/1"],"Intentions_Logic":[["Orb Walker"]],"Ritual":5},
+            "Spiker": {"Health":(44,60),"Intentions":[9,"SpikeUp 2"],"Intentions_Logic":[["Spiker"]],"On_hit_or_death":[[7,"Hit"]]},
+            "Exploder": {"Health":(30,35),"Intentions":[11,"Explode 30"],"Intentions_Logic":[["Random"],[0,0,1]]},
+            "Repulsor": {"Health":(31,38),"Intentions":[13,"Repulse 2"],"Intentions_Logic":[["Repulsor"]]},
         
-            "The Maw": {"Name": "The Maw", "Health":(300,300),"Intentions_Logic":[["The Maw"]]},
-            "Spire Growth": {"Name": "Spire Growth", "Health":(190,190),"Intentions":[18,25,"Constrict 12"],"Intentions_Logic":[["Spire Growth"]]},
-            "Transient": {"Name": "Transient","Health":(999,999),"Intentions":["Transientattack 40"],"Intentions_Logic":[["Random"],[0]*20],"On_hit_or_death": [["Shifting","Hit"]],"Fading":True},
-            "Writhing Mass": {"Name": "Writhing Mass","Health":(175,175),"Intentions":["Thrash 15/16","Wither 10/2","Multiattack 9*3",38,"Implant"],"Intentions_Logic":[["Writhing Mass"]],"On_hit_or_death": [["Malleable 3","Hit"],["Reactive","Hit"]]},
+            "The Maw": {"Health":(300,300),"Intentions_Logic":[["The Maw"]]},
+            "Spire Growth": {"Health":(190,190),"Intentions":[18,25,"Constrict 12"],"Intentions_Logic":[["Spire Growth"]]},
+            "Transient": {"Health":(999,999),"Intentions":["Transientattack 40"],"Intentions_Logic":[["Random"],[0]*20],"On_hit_or_death": [["Shifting","Hit"]],"Fading":True},
+            "Writhing Mass": {"Health":(175,175),"Intentions":["Thrash 15/16","Wither 10/2","Multiattack 9*3",38,"Implant"],"Intentions_Logic":[["Writhing Mass"]],"On_hit_or_death": [["Malleable 3","Hit"],["Reactive","Hit"]]},
                     
-            "Nemesis": {"Name": "Nemesis","Health":(200,200),"Intentions":[45,"Multiattack 7*3","BurningDebuff 5"],"Intentions_Logic":[["Nemesis"]],"Intangible Power":True},
-            "Giant Head": {"Name":"Giant Head","Health":(520,520),"Intentions":[13,"Weak 1","GiantHead 40"],"Intentions_Logic":[["Giant Head"]],"Slow":True},
+            "Nemesis": {"Health":(200,200),"Intentions":[45,"Multiattack 7*3","BurningDebuff 5"],"Intentions_Logic":[["Nemesis"]],"Intangible Power":True},
+            "Giant Head": {"Health":(520,520),"Intentions":[13,"Weak 1","GiantHead 40"],"Intentions_Logic":[["Giant Head"]],"Slow":True},
 
-            "Raptomancer": {"Name": "Raptomancer","Health":(190,200),"Intentions_Logic":[["Raptomancer"]],"Leader":True},
-            "Dagger": {"Name": "Dagger","Health":(20,25),"Intentions":["ScouringWhip 9/1","Explode 25"],"Intentions_Logic":[["Random"],[0,1,1,1]]},
+            "Raptomancer": {"Health":(190,200),"Intentions_Logic":[["Raptomancer"]],"Leader":True},
+            "Dagger": {"Health":(20,25),"Intentions":["ScouringWhip 9/1","Explode 25"],"Intentions_Logic":[["Random"],[0,1,1,1]]},
 
-            "Donu":{"Name":"Donu","Health":(265,265),"Intentions":["MysticBuff 3","Multiattack 12*2"],"Intentions_Logic":[["Random"],[0,1]*50],"Artifact":3},
-            "Deca":{"Name":"Deca","Health":(265,265),"Intentions":["SquareOfDeca 16|3","DazeBeam 12*2"],"Intentions_Logic":[["Random"],[1,0]*50],"Artifact":3},
+            "Donu": {"Health":(265,265),"Intentions":["MysticBuff 3","Multiattack 12*2"],"Intentions_Logic":[["Random"],[0,1]*50],"Artifact":3},
+            "Deca": {"Health":(265,265),"Intentions":["SquareOfDeca 16|3","DazeBeam 12*2"],"Intentions_Logic":[["Random"],[1,0]*50],"Artifact":3},
 
-            "Awakened One": {"Name":"Awakened One","Health":(320,320),"Intentions":[20,"Multiattack 6*4"],"Intentions_Logic":[["Awakened One"]], "CardTypeToLookOutFor":"Power Strength 2","Regen":15,"On_hit_or_death":[["Rebirth","Death"]]},
+            "Awakened One": {"Health":(320,320),"Intentions":[20,"Multiattack 6*4"],"Intentions_Logic":[["Awakened One"]], "CardTypeToLookOutFor":"Power Strength 2","Regen":15,"On_hit_or_death":[["Rebirth","Death"]]},
             
-            "Time Eater": {"Name":"Time Eater","Health":(480,480),"Intentions":["TimeSlam 32/2","Ripple 20|1","Multiattack 8*3"],"Intentions_Logic":[["Time Eater"]], "CardTypeToLookOutFor":"Everything Counter Opposites 1"},
+            "Time Eater": {"Health":(480,480),"Intentions":["TimeSlam 32/2","Ripple 20|1","Multiattack 8*3"],"Intentions_Logic":[["Time Eater"]], "CardTypeToLookOutFor":"Everything Counter Opposites 1"},
 
-            "Spire Shield": {"Name":"Spire Shield","Health":(125,125),"Intentions":["Bash 12/1","Fortify 30","Thrash 38/99"],"Intentions_Logic":[["Spire Shield"]],"Artifact":2,"On_hit_or_death":[["SpireBros","Hit"]]},
-            "Spire Spear": {"Name":"Spire Spear","Health":(180,180),"Intentions":["Multiattack 10*4","BurnStrike 6*2","CircleOfPower 2",],"Intentions_Logic":[["Spire Spear"]], "Artifact":2,"On_hit_or_death":[["SpireBros","Hit"]]},
+            "Spire Shield": {"Health":(125,125),"Intentions":["Bash 12/1","Fortify 30","Thrash 38/99"],"Intentions_Logic":[["Spire Shield"]],"Artifact":2,"On_hit_or_death":[["SpireBros","Hit"]]},
+            "Spire Spear": {"Health":(180,180),"Intentions":["Multiattack 10*4","BurnStrike 6*2","CircleOfPower 2",],"Intentions_Logic":[["Spire Spear"]], "Artifact":2,"On_hit_or_death":[["SpireBros","Hit"]]},
                                                                 
-            "Corrupt Heart":{"Name":"Corrupt Heart","Health":(800,800),"Intentions":["Debilitate 2","Multiattack 2*15",45,"HeartBuff"],"Intentions_Logic":[["Corrupt Heart"]],"On_hit_or_death":[["Invincible 200","Hit"]],"CardTypeToLookOutFor":"Everything BeatOfDeath Opposites 2"}
+            "Corrupt Heart": {"Health":(800,800),"Intentions":["Debilitate 2","Multiattack 2*15",45,"HeartBuff"],"Intentions_Logic":[["Corrupt Heart"]],"On_hit_or_death":[["Invincible 200","Hit"]],"CardTypeToLookOutFor":"Everything BeatOfDeath Opposites 2"}
             }    
+_setnames(enemies)
+
+def spawn(key, suffix=""):
+    e = enemies[key]
+    return Enemy(name=e.get("Name")+suffix, max_health=rd.randint(e.get("Health")[0], e.get("Health")[1]), intentions=e.get("Intentions"), intention_logic=e.get("Intentions_Logic"), on_hit_or_death=e.get("On_hit_or_death"))
+
 
 enemyEncounters = fill_enemy_list()
 eliteEncounters = fill_elite_list()
@@ -1998,7 +2006,7 @@ def visit_campfire():
                 i+=1
                 ansiprint(str(i)+".",sleepspot)
 
-            choice = input("What do you want to do?\n")
+            choice = input(_P1)
             choice = int(choice)-1
             if choice in range(len(sleepOrUpgrade)):
                 pass
@@ -2117,7 +2125,7 @@ def visit_treasureChest():
             ansiprint(str(i+1)+".",option)
             i+=1
         
-        choice = input("What do you want to do?\n")
+        choice = input(_P1)
         choice = int(choice)-1
         try:
             if choice in range(len(option)):
@@ -2466,10 +2474,10 @@ def event_theDivineFountain():
     for option in divineFountainOptions:
         ansiprint (option)
     
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
         
 
     if snap == "1":
@@ -2495,10 +2503,10 @@ def event_TheDuplicator():
     for option in duplicatorOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
 
     if snap == "1":
@@ -2517,10 +2525,10 @@ def event_ThePurifier():
     for option in purifierOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("As you kneel in reverence, you feel a weight lifted off your shoulders.")
@@ -2539,10 +2547,10 @@ def event_TheTransmogrifier():
     for option in transmorphOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("As the power of the shrine flows through you, your mind feels altered.")
@@ -2560,10 +2568,10 @@ def event_upgradeShrine():
     for option in upgradeOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("The shrine's energy flows into you, making you stronger.")
@@ -2582,10 +2590,10 @@ def event_GoldenShrine():
     for option in shrineOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("As your hand touches the shrine, <yellow>gold</yellow> rains from the ceiling showering you in riches.")
@@ -2749,11 +2757,11 @@ def event_OminousForge():
     for option in forgeOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("You decide to put the forge to use and...")
@@ -2809,7 +2817,7 @@ def event_weMeetAgain():
 
     while True:
         try:
-            snap = input("What do you want to do?\n")
+            snap = input(_P1)
             snap = int(snap)-1
             if snap not in range (len(donationOptions)):
                 
@@ -2894,10 +2902,10 @@ def event_theWomanInBlue():
     snap = None
     while True:
         
-        snap = input("What do you want to do?\n")
+        snap = input(_P1)
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input("What do you want to do? Pick the corresponding number.\n")
+            snap = input(_P2)
 
         if snap == "1":
             if active_character[0].gold >= 10:
@@ -2947,11 +2955,11 @@ def event_faceTrade():
     for option in maskOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("Eerie Man: \"Compensation. Compensation.\"\nMechanically, he cranes out a neat stack of gold and places it into your pouch.\nEerie Man: \"What a nice face. Nice face.\" While he touches your face, you begin to feel your life drain out of it!\nDuring this, his mask falls off and shatters. Screaming, he quickly covers his face with all six arms dropping even more masks! Amidst all the screaming and shattering, you escape.\nHis face was completely blank.)")
@@ -2991,11 +2999,11 @@ def event_bigFish():
     for option in fishOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("You eat the <yellow>banana</yellow>. It is <red>nutritious</red> and slightly <blue>magical</blue>, <red>healing</red> you.")
@@ -3037,7 +3045,7 @@ def event_DeadAdventurer():
     elif bossRandom == 3:
         ansiprint("...it looks as though he's been gouged and trampled by a horned beast.")
         enemy = "Gremlin Nob"
-        eliteAdversary.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+        eliteAdversary.append(spawn(enemy))
 
 
     time.sleep(0.3)
@@ -3056,10 +3064,10 @@ def event_DeadAdventurer():
             ansiprint("Looks like you searched all his belongings without a hitch!")
             break
         else:
-            snap = input("What do you want to do?\n")
+            snap = input(_P1)
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input("What do you want to do? Pick the corresponding number.\n")
+            snap = input(_P2)
 
         if snap == "1":
             if rd.randint(1,100) > eliteChance:
@@ -3114,11 +3122,11 @@ def event_GoldenIdol():
     for option in idolOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("As you grab the Idol and stow it away, a giant boulder smashes through the ceiling into the ground next to you. You realize that the floor is slanted downwards as the boulder starts to roll towards you.")
@@ -3127,11 +3135,11 @@ def event_GoldenIdol():
         for option in boulderOptions:
             ansiprint (option)
 
-        snapTwo = input("What do you want to do?\n")
+        snapTwo = input(_P1)
 
         while snapTwo not in checkNumbers2:
             active_character[0].explainer_function(snapTwo,answer=False)
-            input("What do you want to do? Pick the corresponding number.\n")
+            input(_P2)
 
         if snapTwo == "1":
             ansiprint("RUUUUUUUUUUN! You barely leap into a side passageway as the boulder rushes by. Unfortunately it feels like you <m>sprained</m> something!")
@@ -3165,18 +3173,18 @@ def event_HypnotizingColoredMushrooms():
     for option in shroomOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("<red>Ambushed!! Rodents infested by the mushrooms appear out of nowhere!</red>")
         enemy = "Fungi Beast"
-        fungiList.append(Enemy(name = enemies[enemy].get("Name")+" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-        fungiList.append(Enemy(name = enemies[enemy].get("Name")+" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
-        fungiList.append(Enemy(name = enemies[enemy].get("Name")+" 3",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+        fungiList.append(spawn(enemy, " 1"))
+        fungiList.append(spawn(enemy, " 2"))
+        fungiList.append(spawn(enemy, " 3"))
         eventFight(fungiList)
         goldReward = helping_functions.generateGoldReward("Creep")
         cardReward = helping_functions.generateCardRewards()
@@ -3202,11 +3210,11 @@ def event_LivingWall():
     for option in wallOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         active_character[0].removeCardsFromDeck(1,removeType="Remove")
@@ -3235,11 +3243,11 @@ def event_ScrapOoze():
         for option in oozeOptions:
             ansiprint (option)
 
-        snap = input("What do you want to do?\n")
+        snap = input(_P1)
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input("What do you want to do? Pick the corresponding number.\n")
+            snap = input(_P2)
 
         if snap == "1":
             if rd.randint(1,100) > relicSuccessChance:
@@ -3275,11 +3283,11 @@ def event_shiningLight():
     for option in lightOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("<yellow>As you walk through the light, you notice that the light is absorbed into you</yellow>.\n<red>It's scorching hot!</red> However, the pain quickly recedes.\n<blue>You feel invigorated</blue>, as though you received a well deserved slap.\n")
@@ -3309,11 +3317,11 @@ def event_theSerpent():
     for option in serpentOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
 
@@ -3341,11 +3349,11 @@ def event_poolOfGoop():
     for option in poolOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         active_character[0].set_gold(75)
@@ -3375,11 +3383,11 @@ def event_wingStatue():
         for option in wingOptions:
             ansiprint (option)
 
-        snap = input("What do you want to do?\n")
+        snap = input(_P1)
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input("What do you want to do? Pick the corresponding number.\n")
+            snap = input(_P2)
 
         if snap == "1":
             ansiprint("Someone once told you of a cult that worshipped a giant bird. As you kneel in prayer, you begin to feel ... lightheaded.\nYou wake up some time later, feeling strangely <red>fleet of foot</red>.")
@@ -3404,11 +3412,11 @@ def event_wingStatue():
         for option in wingOptions:
             ansiprint (option)
 
-        snap = input("What do you want to do?\n")
+        snap = input(_P1)
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input("What do you want to do? Pick the corresponding number.\n")
+            snap = input(_P2)
 
         if snap == "1":
             ansiprint("Someone once told you of a cult that worshipped a giant bird. As you kneel in prayer, you begin to feel ... lightheaded.\nYou wake up some time later, feeling strangely <red>fleet of foot</red>.")
@@ -3437,11 +3445,11 @@ def event_ancientWriting():
     for option in ancientOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         active_character[0].removeCardsFromDeck(1,"Remove")
@@ -3469,11 +3477,11 @@ def event_Augmenter():
     for option in augmenterOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("Shady Man: \"Excellent.\"The man hands over a dangerous looking syringe filled with a <green>glowing liquid</green> before skulking off into a shadowy alleyway.")
@@ -3495,9 +3503,9 @@ def event_theColosseum():
 
     slavers = []
     enemy = "Red Slaver"
-    slavers.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+    slavers.append(spawn(enemy))
     enemy = "Blue Slaver"
-    slavers.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+    slavers.append(spawn(enemy))
 
     ansiprint("<red>[Fight]</red> Begins a battle with <red>Blue Slaver</red> and <red>Red Slaver</red>.")
     input("Type anything to start the fight.\n")
@@ -3516,7 +3524,7 @@ def event_theColosseum():
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("While the crowd is loosing itself in pandemoniums, you escape through the small opening in the wall. Probably smart.")
@@ -3526,9 +3534,9 @@ def event_theColosseum():
 
         slavers = []
         enemy = "Gremlin Nob"
-        slavers.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+        slavers.append(spawn(enemy))
         enemy = "Taskmaster"
-        slavers.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+        slavers.append(spawn(enemy))
 
         eventFight(slavers)
         
@@ -3548,11 +3556,11 @@ def event_CouncilOfGhosts():
     for option in ghostlyOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("Shape #3: \"Excellent!\"\nAs the ghostly shape speaks, you notice its large mouth opening wider and wider. Thick <black>black smoke</black> spews forth and envelops the room. You cannot see or breathe...\nJust before you lose consciousness, the sensation stops.\nWhatever those things were, they are gone now. You continue on, feeling rather hollow.\n")
@@ -3576,11 +3584,11 @@ def event_cursedBook():
     for option in bookOptions:
         ansiprint(option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("Odd. The book seems to be about an Ancient named <light-blue>Neow</light-blue>.\nThis piques your interest, but you have a general feeling of <m>malaise</m>.")
@@ -3599,11 +3607,11 @@ def event_cursedBook():
         for option in moreBookOptions:
             ansiprint(option)
 
-        snap = input("What do you want to do?\n")
+        snap = input(_P1)
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input("What do you want to do? Pick the corresponding number.\n")
+            snap = input(_P2)
 
         if snap == "1":
             ansiprint("Upon finishing the tome, you decide to take it with you. With proof in hand, will you retain your memories?")
@@ -3644,11 +3652,11 @@ def event_theForgottenAltar():
     for option in altarOptions:
         ansiprint(option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("You stand on the altar and <red>cut your wrists</red>.\nAs the <red>blood spills</red> out in sacrifice, the arms of the statue reach out and close around your eyes.\nEverything goes <black>dark</black>.\nYou wake up a short time later feeling a new potential surging through you.\n")
@@ -3676,11 +3684,11 @@ def event_theJoust():
     if rd.randint(1,10) <= 3:
         knight = True
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("Knight: \"I can't believe you're betting against Noodles!\"\nFurious, he clamps down his helmet and rushes towards his nemesis.")
@@ -3726,11 +3734,11 @@ def event_knowingSkull():
         for option in skullOptions:
             ansiprint(option)
 
-        snap = input("What do you want to do?\n")
+        snap = input(_P1)
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input("What do you want to do? Pick the corresponding number.\n")
+            snap = input(_P2)
 
         if snap == "1":
             ansiprint("\"YOU MORTALS NEVER CHANGE. IT IS DONE.\"\n<yellow>Gold</yellow> rains down on you.")
@@ -3769,11 +3777,11 @@ def event_theLibrary():
     for option in libraryOptions:
         ansiprint(option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         i = 0
@@ -3826,11 +3834,11 @@ def event_maskedBandits():
     for option in banditOptions:
         ansiprint(option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         active_character[0].set_gold(-active_character[0].gold)
@@ -3840,11 +3848,11 @@ def event_maskedBandits():
 
         bandits = []
         enemy = "Pointy"
-        bandits.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+        bandits.append(spawn(enemy))
         enemy = "Romeo"
-        bandits.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+        bandits.append(spawn(enemy))
         enemy = "Bear"
-        bandits.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+        bandits.append(spawn(enemy))
 
         eventFight(bandits)
     
@@ -3864,11 +3872,11 @@ def event_theMausoleum():
     for option in mausoOptions:
         ansiprint(option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("You push open the coffin. As you do, <m>black fog</m> spews forth and covers the entire room! Inside, you find no body, only a <light-red>Relic</light-red>. You take it and move onwards, <m>coughing violently</m>.")
@@ -3889,11 +3897,11 @@ def event_theNest():
     for option in nestOptions:
         ansiprint(option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("You decide to stay in line <m>(out of fear)</m> to see what will happen.\nEventually, you are face-to-face with the leader.\nA well-dressed <red>Cultist</red> hands you an <yellow>Ornate Dagger</yellow>. Like the others before you, you slash your forearm and let the <red>blood drip into a misshapen bowl</red>.\nThe cultists chant and holler for you!\nCultists: \"<light-blue>CAAW CAW CAAAAAAWW</light-blue>!!\"You chant, too. Why not?")
@@ -3921,11 +3929,11 @@ def event_nLoth():
         for option in nlothOptions:
             ansiprint(option)
 
-        snap = input("What do you want to do?\n")
+        snap = input(_P1)
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input("What do you want to do? Pick the corresponding number.\n")
+            snap = input(_P2)
 
         if snap == "1":
             ansiprint("Holding the <light-red>"+ active_character[0].relics[firstRelic].get("Name")+"</light-red> out towards him, N’loth snatches it out of your hand with his tentacles, dislocates his jaw, and slurps down your offer in one quick gulp.\nHe gives you a large, toothy grin as more tentacles appear from behind his cloak, these ones brandishing an <light-red>impossibly neat looking box</light-red>. He pushes it towards you until you take it.")
@@ -3949,11 +3957,11 @@ def event_nLoth():
         for option in nlothOptions:
             ansiprint(option)
 
-        snap = input("What do you want to do?\n")
+        snap = input(_P1)
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input("What do you want to do? Pick the corresponding number.\n")
+            snap = input(_P2)
 
         if snap == "1":
             ansiprint("Holding the <light-red>"+ active_character[0].relics[0].get("Name")+"</light-red> out towards him, N’loth snatches it out of your hand with his tentacles, dislocates his jaw, and slurps down your offer in one quick gulp.\nHe gives you a large, toothy grin as more tentacles appear from behind his cloak, these ones brandishing an <light-red>impossibly neat looking box</light-red>. He pushes it towards you until you take it.")
@@ -3978,11 +3986,11 @@ def event_oldBeggar():
         for option in oldOptions:
             ansiprint(option)
 
-        snap = input("What do you want to do?\n")
+        snap = input(_P1)
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input("What do you want to do? Pick the corresponding number.\n")
+            snap = input(_P2)
 
         if snap == "1":
             if active_character[0].gold < 75:
@@ -4009,11 +4017,11 @@ def event_pleadingVagrant():
         for option in vagrantOptions:
             ansiprint(option)
 
-        snap = input("What do you want to do?\n")
+        snap = input(_P1)
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input("What do you want to do? Pick the corresponding number.\n")
+            snap = input(_P2)
 
         if snap == "1":
             if active_character[0].gold < 85:
@@ -4055,11 +4063,11 @@ def event_Vampires():
     for option in vampireOptions:
         ansiprint (option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("The tall figure grabs your arm, pulls you forward, and sinks his fangs into your neck.\nYou feel a <black>dark force</black> pour into your neck and course through your body.\n...\nYou wake up some time later, alone. An intense hunger passes through your belly. <red>You must feed</red>.\n")
@@ -4139,11 +4147,11 @@ def event_Falling():
         for option in fallingOptions:
             ansiprint(option)
 
-        snap = input("What do you want to do?\n")
+        snap = input(_P1)
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input("What do you want to do? Pick the corresponding number.\n")
+            snap = input(_P2)
 
         
         if "[Strike]" in fallingOptions[int(snap)-1]:
@@ -4178,11 +4186,11 @@ def event_MindBloom():
     for option in bloomOptions:
         ansiprint(option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         act1Boss = fill_boss_list(1)[0]
@@ -4223,11 +4231,11 @@ def event_secretPortal():
     for option in portalOptions:
         ansiprint(option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         helping_functions.game_map[13][0] = "Portal"
@@ -4248,11 +4256,11 @@ def event_sensoryStone():
     for option in sensoryOptions:
         ansiprint(option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         
@@ -4296,11 +4304,11 @@ def event_mysteriousSphere():
     for option in sphereOptions:
         ansiprint(option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("As soon as you strike the sphere, the sentries spring to life around you!")
@@ -4337,11 +4345,11 @@ def event_theMoaiHead():
     for option in moaiOptions:
         ansiprint(option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("At first when you step up into the mouth of the statue, nothing happens.\nAs you start to feel more than a little foolish, the huge molars slam down from above, crushing you whole.\n<black>Darkness</black>.\nSometime later from within the dark, you see a sliver of light, and hear what you now realize is the sound of stony teeth slowly rising upwards.\nYou leave confused.")
@@ -4375,11 +4383,11 @@ def event_tombOfLordRedMask():
     for option in lordOptions:
         ansiprint(option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1" and redMask == True:
         ansiprint("You don the <light-red>Red Mask</light-red> and the tomb starts to flake away... a secret passage!\nThe passage is lined with countless stolen goods and mounds of <yellow>Gold</yellow>!")
@@ -4405,11 +4413,11 @@ def event_windingHalls():
     for option in windingOptions:
         ansiprint(option)
 
-    snap = input("What do you want to do?\n")
+    snap = input(_P1)
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input("What do you want to do? Pick the corresponding number.\n")
+        snap = input(_P2)
 
     if snap == "1":
         ansiprint("Something in you cracks.\nOnly the truly mad can understand a place like this, so you give into the chattering voices and continue on with a <m>\"new\"</m> perspective.\nThings do seem to make so much more sense now.")
