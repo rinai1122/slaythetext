@@ -5516,8 +5516,8 @@ class Char():
                         evolveCount += self.evolve
                 elif self.hand[-(i+1)].get("Name") == "Endless Agony":
                     agonyCount += 1
-                    
-                elif self.hand[-(i+1)].get("Name") == "Endless Agony":
+
+                elif self.hand[-(i+1)].get("Name") == "Endless Agony +":
                     agonyPlusCount += 1
                 
                 elif self.hand[-(i+1)].get("Type") == "Status":
@@ -5531,6 +5531,7 @@ class Char():
 
         while agonyPlusCount > 0:
             self.add_CardToHand({"Name": "Endless Agony +","Damage":6,"Exhaust":True,"Energy": 0, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent"})
+            agonyPlusCount -= 1
 
         if evolveCount > 0:
             self.draw(evolveCount)
