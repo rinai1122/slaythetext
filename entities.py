@@ -671,7 +671,7 @@ def create_superElite(superElite):
         
         elif buff == 3:
             regen = helping_functions.gameAct * 2 + 1
-            elite.set_metallicice(regen)
+            elite.set_regen(regen)
     ansiprint("This happened because you are fighting a <m>Super Elite</m>")
 
     return superElite
@@ -682,14 +682,14 @@ cards = {
     "Strike": {"Name": "Strike", "Damage":6, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Silent","Info":"Deal <red>6 damage</red>."},
     "Strike +": {"Name": "Strike +","Upgraded": True, "Damage":9, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Silent","Info":"Deal <red>9 damage</red>."},
 
-    "Defend": {"Name": "Defend", "Block":5, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Silent","Info":"Gain <green>6 Block</green>."},
+    "Defend": {"Name": "Defend", "Block":5, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Silent","Info":"Gain <green>5 Block</green>."},
     "Defend +": {"Name": "Defend +","Upgraded": True, "Block":8, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Silent","Info":"Gain <green>8 Block</green>."},
 
     "Shiv": {"Name": "Shiv","Energy": 0,"Damage":4,"Exhaust":True,"Type": "Attack","Rarity": "Special","Owner":"Silent","Info":"Deal <red>4 damage</red>. <BLUE>Exhaust</BLUE>."},
     "Shiv +": {"Name": "Shiv +","Energy": 0,"Damage":6,"Exhaust":True,"Upgraded": True,"Type": "Attack","Rarity": "Special","Owner":"Silent","Info":"Deal <red>4 damage</red>. <BLUE>Exhaust</BLUE>."},
 
     "Neutralize": {"Name": "Neutralize", "Damage":3,"Weakness": 1,"Type":"Attack", "Energy": 0, "Rarity": "Basic","Owner":"Silent","Info":"Deal <red>3 damage</red>. Apply <light-cyan>1 Weak</light-cyan>."},
-    "Neutralize +": {"Name": "Neutralize +","Upgraded": True, "Damage":4,"Weakness": 2,"Type":"Attack", "Energy": 0, "Rarity": "Basic","Owner":"Silent","Info":"Deal <red>3 damage</red>. Apply <light-cyan>1 Weak</light-cyan>."},
+    "Neutralize +": {"Name": "Neutralize +","Upgraded": True, "Damage":4,"Weakness": 2,"Type":"Attack", "Energy": 0, "Rarity": "Basic","Owner":"Silent","Info":"Deal <red>3 damage</red>. Apply <light-cyan>2 Weak</light-cyan>."},
 
     "Survivor": {"Name": "Survivor", "Block":8, "Energy": 1, "Type":"Skill" ,"Discard": 1, "Rarity": "Basic","Owner":"Silent","Info":"Gain <green>8 Block</green>. Discard 1 Card."},
     "Survivor +": {"Name": "Survivor +", "Block":11, "Upgraded": True, "Energy": 1, "Type":"Skill" ,"Discard": 1, "Rarity": "Basic","Owner":"Silent","Info":"Gain <green>11 Block</green>. Discard 1 Card."},   
@@ -746,13 +746,13 @@ cards = {
     "Flechettes +": {"Name": "Flechettes +", "Damage":6,"Energy": 1, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>6 damage</red> for each <green>Skill</green> in your hand."},
 
     "Heel Hook": {"Name": "Heel Hook", "Damage":5,"Energy": 1,"Energy Gain":1,"Draw":1, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info": "Deal <red>5 damage</red>. If the enemy has <light-cyan>Weak</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 Card."},
-    "Heel Hook +": {"Name": "Heel Hook +", "Damage":8,"Energy": 1,"Energy Gain":1,"Draw":1, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info": "Deal <red>5 damage</red>. If the enemy has <light-cyan>Weak</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 Card."},
+    "Heel Hook +": {"Name": "Heel Hook +", "Damage":8,"Energy": 1,"Energy Gain":1,"Draw":1, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info": "Deal <red>8 damage</red>. If the enemy has <light-cyan>Weak</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 Card."},
 
     "Masterful Stab": {"Name": "Masterful Stab", "Damage":12,"Energy": 0, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Cost <yellow>1 Energy</yellow> extra for each time you <red>lose HP</red> this combat. Deal <red>12 damage</red>."},
     "Masterful Stab +": {"Name": "Masterful Stab +", "Damage":16,"Energy": 0, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Cost <yellow>1 Energy</yellow> extra for each time you <red>lose HP</red> this combat. Deal <red>16 damage</red>."},
 
-    "Predator": {"Name": "Predator", "Damage":15,"Energy": 2,"Drawboost":2, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info": "Deal <red>15 damage</red>. Draw 2 additonal Cards next turn."},
-    "Predator +": {"Name": "Predator +", "Damage":20,"Energy": 2,"Drawboost":2, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info": "Deal <red>20 damage</red>. Draw 2 additonal Cards next turn."},
+    "Predator": {"Name": "Predator", "Damage":15,"Energy": 2,"Drawboost":2, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info": "Deal <red>15 damage</red>. Draw 2 additional Cards next turn."},
+    "Predator +": {"Name": "Predator +", "Damage":20,"Energy": 2,"Drawboost":2, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info": "Deal <red>20 damage</red>. Draw 2 additional Cards next turn."},
 
     "Riddle with Holes": {"Name": "Riddle with Holes","Damage":3,"Energy": 2, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>3 damage</red> 5 times."},
     "Riddle with Holes +": {"Name": "Riddle with Holes +","Damage":4,"Energy": 2, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>4 damage</red> 5 times."},
@@ -764,7 +764,7 @@ cards = {
     "Die Die Die +": {"Name": "Die Die Die +","Damage":17,"Energy": 1,"Exhaust":True, "Type": "Attack" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Deal <red>17 damage</red> to ALL enemies. <BLUE>Exhaust</BLUE>"},
     
     "Glass Knife": {"Name": "Glass Knife","Damage":8,"Energy": 1, "Type": "Attack" ,"Rarity": "Rare","Owner":"Silent","Info":"Deal <red>8 damage</red> twice. Decrease the damage of this card by 2 for this combat."},
-    "Glass Knife +": {"Name": "Glass Knife +","Damage":12,"Energy": 1, "Type": "Attack" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Deal <red>8 damage</red> twice. Decrease the damage of this card by 2 for this combat."},
+    "Glass Knife +": {"Name": "Glass Knife +","Damage":12,"Energy": 1, "Type": "Attack" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Deal <red>12 damage</red> twice. Decrease the damage of this card by 2 for this combat."},
 
     "Grand Finale": {"Name": "Grand Finale","Damage":50,"Energy": 1, "Type": "Attack" ,"Rarity": "Rare","Owner":"Silent","Info":"Can only be played if there are no cards in your Drawpile. Deal <red>50 damage</red> to ALL enemies."},
     "Grand Finale +": {"Name": "Grand Finale +","Damage":60,"Energy": 1, "Type": "Attack" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Can only be played if there are no cards in your Drawpile. Deal <red>60 damage</red> to ALL enemies."},
@@ -787,8 +787,8 @@ cards = {
     "Deadly Poison": {"Name": "Deadly Poison","Poison":5,"Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Silent","Info":"Apply <green>5 Poison</green>."},
     "Deadly Poison +": {"Name": "Deadly Poison +","Poison":7,"Energy": 1,"Type": "Skill" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Apply <green>7 Poison</green>."},
     
-    "Deflect": {"Name": "Deflect","Block":5,"Energy": 0,"Type": "Skill" ,"Rarity": "Common","Owner":"Silent","Info":"Gain <green>5 Block</green>"},
-    "Deflect +": {"Name": "Deflect +","Block":8,"Energy": 0,"Type": "Skill" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Gain <green>8 Block</green>"},
+    "Deflect": {"Name": "Deflect","Block":4,"Energy": 0,"Type": "Skill" ,"Rarity": "Common","Owner":"Silent","Info":"Gain <green>4 Block</green>"},
+    "Deflect +": {"Name": "Deflect +","Block":7,"Energy": 0,"Type": "Skill" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Gain <green>7 Block</green>"},
     
     "Dodge and Roll": {"Name": "Dodge and Roll","Block":4,"Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Silent","Info":"Gain <green>4 Block</green>. Next turn, gain <green>4 Block</green>."},
     "Dodge and Roll +": {"Name": "Dodge and Roll +","Block":6,"Energy": 1,"Type": "Skill" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Gain <green>6 Block</green>. Next turn, gain <green>6 Block</green>."},
@@ -818,7 +818,7 @@ cards = {
     "Concentrate +" :{"Name": "Concentrate +","Energy Gain":2,"Discard": 2,"Energy": 0,"Upgraded": True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Discard 2 Cards. Gain <yellow>2 Energy</yellow>."},
     
     "Crippling Cloud" :{"Name": "Crippling Cloud","Poison":4,"Weakness": 2,"Energy": 2,"Exhaust":True ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Apply <green>4 Poison</green> and <light-cyan>2 Weak</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>."},
-    "Crippling Cloud +" :{"Name": "Crippling Cloud +","Poison":7,"Weakness": 2,"Energy": 2,"Exhaust":True ,"Upgraded": True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Apply <green>6 Poison</green> and <light-cyan>2 Weak</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>."},
+    "Crippling Cloud +" :{"Name": "Crippling Cloud +","Poison":7,"Weakness": 2,"Energy": 2,"Exhaust":True ,"Upgraded": True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Apply <green>7 Poison</green> and <light-cyan>2 Weak</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>."},
     
     "Distraction" :{"Name": "Distraction","Energy": 1,"Exhaust":True ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Add a random <green>Skill</green> into your hand. It costs <yellow>0 Energy</yellow> this turn."},
     "Distraction +" :{"Name": "Distraction +","Energy": 0,"Exhaust":True ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Add a random <green>Skill</green> into your hand. It costs <yellow>0 Energy</yellow> this turn."},
@@ -832,11 +832,11 @@ cards = {
     "Leg Sweep" :{"Name": "Leg Sweep","Block":11,"Weakness":2,"Energy": 2 ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Apply <light-cyan>2 Weak</light-cyan>. Gain <green>11 Block</green>."},
     "Leg Sweep +" :{"Name": "Leg Sweep +","Block":14,"Weakness":3,"Energy": 2 ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Apply <light-cyan>3 Weak</light-cyan>. Gain <green>14 Block</green>."},
     
-    "Reflex" :{"Name": "Reflex","Draw":2 ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"<RED>Unplayable</RED>. If this Card is discared, draw 2 Cards."},
-    "Reflex +" :{"Name": "Reflex +","Draw":3 ,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Silent","Info":"<RED>Unplayable</RED>. If this Card is discared, draw 3 Cards."},
+    "Reflex" :{"Name": "Reflex","Draw":2 ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"<RED>Unplayable</RED>. If this Card is discarded, draw 2 Cards."},
+    "Reflex +" :{"Name": "Reflex +","Draw":3 ,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Silent","Info":"<RED>Unplayable</RED>. If this Card is discarded, draw 3 Cards."},
     
-    "Tactician" :{"Name": "Tactician","Energy Gain":1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"<RED>Unplayable</RED>. If this Card is discared, gain <yellow>1 Energy</yellow>."},
-    "Tactician +" :{"Name": "Tactician","Energy Gain":2 ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"<RED>Unplayable</RED>. If this Card is discared, gain <yellow>2 Energy</yellow>."},
+    "Tactician" :{"Name": "Tactician","Energy Gain":1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"<RED>Unplayable</RED>. If this Card is discarded, gain <yellow>1 Energy</yellow>."},
+    "Tactician +" :{"Name": "Tactician +","Energy Gain":2 ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"<RED>Unplayable</RED>. If this Card is discarded, gain <yellow>2 Energy</yellow>."},
     
     "Setup" :{"Name": "Setup","Back Putter":1,"Energy Change Type":"Until Played","Energy Change":0,"Energy": 1 ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Put a Card from your hand on top of your Drawpile. It costs <yellow>0 Energy</yellow> until played"},
     "Setup +" :{"Name": "Setup +","Back Putter":1,"Energy Change Type":"Until Played","Energy Change":0,"Energy": 0,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Put a Card from your hand on top of your Drawpile. It costs <yellow>0 Energy</yellow> until played"},
@@ -856,14 +856,14 @@ cards = {
     "Doppelganger" :{"Name": "Doppelganger","Energy": "X","Exhaust":True ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Next turn, draw X Cards and gain <yellow>X Energy</yellow>."},
     "Doppelganger +" :{"Name": "Doppelganger +","Energy": "X","Exhaust":True ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Next turn, draw X+1 Cards and gain <yellow>X+1 Energy</yellow>."},
     
-    "Malaise" :{"Name": "Malaise","Energy": "X","Exhaust":True ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Enemy loses <red>X Stength</red>. Apply <light-cyan>X Weak</light-cyan>. <BLUE>Exhaust</BLUE>."},
-    "Malaise +" :{"Name": "Malaise +","Energy": "X","Exhaust":True ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Enemy loses <red>X+1 Stength</red>. Apply <light-cyan>X+1 Weak</light-cyan>. <BLUE>Exhaust</BLUE>."},
+    "Malaise" :{"Name": "Malaise","Energy": "X","Exhaust":True ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Enemy loses <red>X Strength</red>. Apply <light-cyan>X Weak</light-cyan>. <BLUE>Exhaust</BLUE>."},
+    "Malaise +" :{"Name": "Malaise +","Energy": "X","Exhaust":True ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Enemy loses <red>X+1 Strength</red>. Apply <light-cyan>X+1 Weak</light-cyan>. <BLUE>Exhaust</BLUE>."},
     
     "Phantasmal Killer" :{"Name": "Phantasmal Killer","Energy": 1,"DoubleDamage":1 ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Next turn your <red>Attacks</red> deal double damage."},
     "Phantasmal Killer +" :{"Name": "Phantasmal Killer +","Energy": 0,"DoubleDamage":1 ,"Upgraded": True,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Next turn your <red>Attacks</red> deal double damage."},
     
-    "Bullet Time" :{"Name": "Bullet Time","Energy": 3,"Bullet Time":1 ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"You cannot draw additonal Cards this turn. Reduce the cost of all Cards in your hand to <yellow>0 Energy</yellow> this turn."},
-    "Bullet Time +" :{"Name": "Bullet Time +","Energy": 2,"Bullet Time":1 ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"You cannot draw additonal Cards this turn. Reduce the cost of all Cards in your hand to <yellow>0 Energy</yellow> this turn."},
+    "Bullet Time" :{"Name": "Bullet Time","Energy": 3,"Bullet Time":1 ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"You cannot draw additional Cards this turn. Reduce the cost of all Cards in your hand to <yellow>0 Energy</yellow> this turn."},
+    "Bullet Time +" :{"Name": "Bullet Time +","Energy": 2,"Bullet Time":1 ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"You cannot draw additional Cards this turn. Reduce the cost of all Cards in your hand to <yellow>0 Energy</yellow> this turn."},
 
     "Storm of Steel" :{"Name": "Storm of Steel","Energy": 1 ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Discard your hand. Add <red>1 Shiv</red> for each card you discarded this way."},
     "Storm of Steel +" :{"Name": "Storm of Steel +","Energy": 1 ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Discard your hand. Add <red>1 Shiv +</red> for each card you discarded this way."},
@@ -886,8 +886,8 @@ cards = {
     "Infinite Blades" :{"Name": "Infinite Blades", "Infinite Blades":1, "Energy": 1,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Silent","Info":"At the start of your turn, add <red>1 Shiv</red> to your hand."},
     "Infinite Blades +" :{"Name": "Infinite Blades +", "Infinite Blades":1,"Innate": True, "Energy": 1,"Type": "Power" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"At the start of your turn, add <red>1 Shiv</red> to your hand. <BLUE>Innate</BLUE>."},
 
-    "NoxiousFumes" :{"Name": "Noxious Fumes", "Noxiousness":2, "Energy": 1,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Silent","Info":"At the start of your turn, apply <green>2 Poison</green> to ALL enemies."},
-    "NoxiousFumes +" :{"Name": "Noxious Fumes +", "Noxiousness":3, "Energy": 1,"Type": "Power" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"At the start of your turn, apply <green>3 Poison</green> to ALL enemies."},
+    "Noxious Fumes" :{"Name": "Noxious Fumes", "Noxiousness":2, "Energy": 1,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Silent","Info":"At the start of your turn, apply <green>2 Poison</green> to ALL enemies."},
+    "Noxious Fumes +" :{"Name": "Noxious Fumes +", "Noxiousness":3, "Energy": 1,"Type": "Power" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"At the start of your turn, apply <green>3 Poison</green> to ALL enemies."},
 
     "Well-Laid Plans" :{"Name": "Well-Laid Plans", "Well Planed":1, "Energy": 1,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Silent","Info":"At the end of your turn, Retain up to 1 Card."},
     "Well-Laid Plans +" :{"Name": "Well-Laid Plans +", "Well Planed":2, "Energy": 1,"Upgraded": True,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Silent","Info":"At the end of your turn, Retain up to 2 Card."},
@@ -895,8 +895,8 @@ cards = {
     "A Thousand Cuts" :{"Name": "A Thousand Cuts", "Thousand Cuts":1, "Energy": 2,"Type": "Power" ,"Rarity": "Rare","Owner":"Silent","Info":"Whenever you play a Card, deal <red>1 damage</red> to ALL enemies."},
     "A Thousand Cuts +" :{"Name": "A Thousand Cuts +", "Thousand Cuts":2, "Energy": 2,"Upgraded": True,"Type": "Power" ,"Rarity": "Rare","Owner":"Silent","Info":"Whenever you play a Card, deal <red>2 damage</red> to ALL enemies."},
 
-    "Envenom" :{"Name": "Envenom", "Envenom":1, "Energy": 2,"Type": "Power" ,"Rarity": "Rare","Owner":"Silent","Info":"Whenever an <red>Attack</red> deals unblocked <red>damaged</red>,apply <green>1 Poison</green>."},
-    "Envenom +" :{"Name": "Envenom +", "Envenom":1, "Energy": 1,"Type": "Power" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Whenever an <red>Attack</red> deals unblocked <red>damaged</red>,apply <green>1 Poison</green>."},
+    "Envenom" :{"Name": "Envenom", "Envenom":1, "Energy": 2,"Type": "Power" ,"Rarity": "Rare","Owner":"Silent","Info":"Whenever an <red>Attack</red> deals unblocked <red>damage</red>, apply <green>1 Poison</green>."},
+    "Envenom +" :{"Name": "Envenom +", "Envenom":1, "Energy": 1,"Type": "Power" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Whenever an <red>Attack</red> deals unblocked <red>damage</red>, apply <green>1 Poison</green>."},
 
     "Tools of the Trade" :{"Name": "Tools of the Trade", "Tools":1, "Energy": 1,"Type": "Power" ,"Rarity": "Rare","Owner":"Silent","Info":"At the start of your turn: Draw 1 Card. Discard 1 Card."},
     "Tools of the Trade +" :{"Name": "Tools of the Trade +", "Tools":1, "Energy": 0,"Type": "Power" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"At the start of your turn: Draw 1 Card. Discard 1 Card."},
@@ -909,14 +909,14 @@ cards = {
     "Strike": {"Name": "Strike", "Damage":6, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Ironclad","Info":"Deal <red>6 damage</red>."},
     "Strike +": {"Name": "Strike +","Upgraded": True, "Damage":9, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Ironclad","Info":"Deal <red>9 damage</red>."},
 
-    "Defend": {"Name": "Defend", "Block":5, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Ironclad","Info":"Gain <green>6 Block</green>."},
+    "Defend": {"Name": "Defend", "Block":5, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Ironclad","Info":"Gain <green>5 Block</green>."},
     "Defend +": {"Name": "Defend +","Upgraded": True, "Block":8, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Ironclad","Info":"Gain <green>8 Block</green>."},
 
     "Bash" :{"Name":"Bash","Damage":8, "Vulnerable":2,"Energy":2,"Type":"Attack","Rarity":"Basic","Owner":"Ironclad","Info":"Deal <red>8 damage</red>. Apply <light-blue>2 Vulnerable</light-blue>"},
     "Bash +" :{"Name":"Bash +","Damage":10, "Vulnerable":3,"Energy":2,"Type":"Attack", "Upgraded":True,"Rarity":"Basic","Owner":"Ironclad","Info":"Deal <red>10 damage</red>. Apply <light-blue>3 Vulnerable</light-blue>"},
     
     "Anger" :{"Name":"Anger","Damage":6, "Energy":0,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>6 damage</red>. Add a copy of this card to your Discardpile."},
-    "Anger +" :{"Name":"Anger","Damage":8, "Energy":0,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>8 damage</red>. Add a copy of this card to your Discardpile."},
+    "Anger +" :{"Name":"Anger +","Damage":8, "Energy":0,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>8 damage</red>. Add a copy of this card to your Discardpile."},
 
     "Body Slam" :{"Name":"Body Slam","Energy":1,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>Damage</red> equal to your <green>Block</green>"},
     "Body Slam +" :{"Name":"Body Slam +","Energy":0,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>Damage</red> equal to your <green>Block</green>"},
@@ -963,17 +963,17 @@ cards = {
     "Carnage" :{"Name":"Carnage","Damage": 20,"Energy":2,"Ethereal":True,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>20 damage</red>. <BLUE>Ethereal</BLUE>"},
     "Carnage +" :{"Name":"Carnage +","Damage": 28,"Energy":2,"Ethereal":True,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>28 damage</red>. <BLUE>Ethereal</BLUE>"},
 
-    "Dropkick" :{"Name":"Dropkick","Damage": 5,"Draw":1,"Energy Gain":1,"Energy":1,"Ethereal":True,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>5 damage</red>. If the enemy has <light-cyan>Vulnerable</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 Card."},
-    "Dropkick +" :{"Name":"Dropkick +","Damage": 8,"Energy":1,"Energy Gain":1,"Ethereal":True,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>8 damage</red>. If the enemy has <light-cyan>Vulnerable</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 card."},
+    "Dropkick" :{"Name":"Dropkick","Damage": 5,"Draw":1,"Energy Gain":1,"Energy":1,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>5 damage</red>. If the enemy has <light-cyan>Vulnerable</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 Card."},
+    "Dropkick +" :{"Name":"Dropkick +","Damage": 8,"Draw":1,"Energy":1,"Energy Gain":1,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>8 damage</red>. If the enemy has <light-cyan>Vulnerable</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 card."},
 
-    "Hemokinesis" :{"Name":"Hemokinesis","Damage": 15,"Selfhurt":2,"Energy":1,"Ethereal":True,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Lose <red>2 HP</red>. Deal <red>15 damage</red>."},
-    "Hemokinesis +" :{"Name":"Hemokinesis +","Damage": 20,"Selfhurt":2,"Energy":1,"Energy Gain":1,"Ethereal":True,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Lose <red>2 HP</red>. Deal <red>20 damage</red>."},
+    "Hemokinesis" :{"Name":"Hemokinesis","Damage": 15,"Selfhurt":2,"Energy":1,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Lose <red>2 HP</red>. Deal <red>15 damage</red>."},
+    "Hemokinesis +" :{"Name":"Hemokinesis +","Damage": 20,"Selfhurt":2,"Energy":1,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Lose <red>2 HP</red>. Deal <red>20 damage</red>."},
     
     "Pummel" :{"Name":"Pummel","Damage": 2,"Energy":1,"Attacks":4,"Exhaust":True,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>2 damage</red> 4 times. <BLUE>Exhaust</BLUE>."},
     "Pummel +" :{"Name":"Pummel +","Damage": 2,"Energy":1,"Attacks":5,"Exhaust":True,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>2 damage</red> 5 times. <BLUE>Exhaust</BLUE>."},
     
     "Rampage" :{"Name":"Rampage","Damage": 8,"Energy":1,"Damage Gain":5,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>8 damage</red>. Increase this card's <red>damage</red> by <red>5</red> this combat"},
-    "Rampage +" :{"Name":"Rampage +","Damage": 8,"Energy":1,"Damage Gain":8,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>8 damage</red>. Increase this card's <red>damage</red> by <red>5</red> this combat"},
+    "Rampage +" :{"Name":"Rampage +","Damage": 8,"Energy":1,"Damage Gain":8,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>8 damage</red>. Increase this card's <red>damage</red> by <red>8</red> this combat"},
     
     "Reckless Charge" :{"Name":"Reckless Charge","Damage": 7,"Energy":0,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>7 damage</red>. Shuffle a <light-cyan>Dazed</light-cyan> into your Drawpile."},
     "Reckless Charge +" :{"Name":"Reckless Charge +","Damage": 10,"Energy":0,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>10 damage</red>. Shuffle a <light-cyan>Dazed</light-cyan> into your Drawpile."},
@@ -983,8 +983,8 @@ cards = {
     "Sever Soul" :{"Name":"Sever Soul","Damage": 16,"Energy":2,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> all non-Attack cards in your hand. <red>Deal 16 damage</red>."},
     "Sever Soul +" :{"Name":"Sever Soul +","Damage": 20,"Energy":2,"Upgraded":True,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> all non-Attack cards in your hand. <red>Deal 20 damage</red>."},   
 
-    "Uppercut" :{"Name":"Uppercut","Damage": 13,"Vulnerable":1,"Weakness":1,"Energy":2,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>7 damage</red>. Shuffle a <light-cyan>Dazed</light-cyan> into your Drawpile."},
-    "Uppercut +" :{"Name":"Uppercut +","Damage": 13,"Vulnerable":2,"Weakness":2,"Energy":2,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>10 damage</red>. Shuffle a <light-cyan>Dazed</light-cyan> into your Drawpile."},
+    "Uppercut" :{"Name":"Uppercut","Damage": 13,"Vulnerable":1,"Weakness":1,"Energy":2,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>13 damage</red>. Apply <light-cyan>1 Weak</light-cyan>. Apply <light-blue>1 Vulnerable</light-blue>."},
+    "Uppercut +" :{"Name":"Uppercut +","Damage": 13,"Vulnerable":2,"Weakness":2,"Energy":2,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>13 damage</red>. Apply <light-cyan>2 Weak</light-cyan>. Apply <light-blue>2 Vulnerable</light-blue>."},
 
     "Whirlwind" :{"Name":"Whirlwind","Damage": 5,"Energy":"X","Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>5 damage</red> to ALL enemies X times."},
     "Whirlwind +" :{"Name":"Whirlwind +","Damage": 8,"Energy":"X","Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>8 damage</red> to ALL enemies X times."},
@@ -993,7 +993,7 @@ cards = {
     "Bludgeon +" :{"Name":"Bludgeon +","Damage": 42,"Energy":3,"Type":"Attack","Rarity":"Rare","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>42 damage</red>."},
 
     "Feed" :{"Name":"Feed","Damage": 10,"Energy":1,"MaxHealth Gain":3,"Exhaust":True,"Type":"Attack","Rarity":"Rare","Owner":"Ironclad","Info":"Deal <red>10 damage</red>. If Fatal, raise your <red>Max HP</red> by <red>3</red>. <BLUE>Exhaust</BLUE>."},
-    "Feed +" :{"Name":"Feed +","Damage": 12,"Energy":1,"MaxHealth Gain":4,"Exhaust":True,"Type":"Attack","Rarity":"Rare","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>14 damage</red>. If Fatal, raise your <red>Max HP</red> by <red>4</red>. <BLUE>Exhaust</BLUE>."},
+    "Feed +" :{"Name":"Feed +","Damage": 12,"Energy":1,"MaxHealth Gain":4,"Exhaust":True,"Type":"Attack","Rarity":"Rare","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>12 damage</red>. If Fatal, raise your <red>Max HP</red> by <red>4</red>. <BLUE>Exhaust</BLUE>."},
 
     "Fiend Fire" :{"Name":"Fiend Fire","Damage": 7,"Energy":2,"Exhaust":True,"Type":"Attack","Rarity":"Rare","Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> all Cards in your hand. Deal <red>7 damage</red> for each Exhausted card. <BLUE>Exhaust</BLUE>."},
     "Fiend Fire +" :{"Name":"Fiend Fire +","Damage": 10,"Energy":2,"Exhaust":True,"Type":"Attack","Rarity":"Rare","Upgraded":True,"Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> all Cards in your hand. Deal <red>10 damage</red> for each Exhausted card. <BLUE>Exhaust</BLUE>."},
@@ -1005,7 +1005,7 @@ cards = {
     "Reaper +" :{"Name":"Reaper +","Damage": 5,"Energy":2,"Exhaust":True,"Type":"Attack","Rarity":"Rare","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>5 damage</red> to ALL enemies. Heal <red>HP</red> equal to unblocked <red>damage</red>. <BLUE>Exhaust</BLUE>."},
 
     "Armaments" :{"Name":"Armaments","Block":5, "Energy":1,"Type":"Skill","Rarity":"Common","Owner":"Ironclad","Info":"Gain <green>5 Block</green>. Upgrade a Card in your hand for the rest of combat."},
-    "Armaments +" :{"Name":"Armaments +","Attack":5, "Energy":1,"Type":"Skill","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Gain <green>5 Block</green>. Upgrade ALL Cards in your hand for the rest of combat."},
+    "Armaments +" :{"Name":"Armaments +","Block":5, "Energy":1,"Type":"Skill","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Gain <green>5 Block</green>. Upgrade ALL Cards in your hand for the rest of combat."},
 
     "Flex" :{"Name":"Flex","Strength":2, "Energy":0,"Type":"Skill","Rarity":"Common","Owner":"Ironclad","Info":"Gain <red>2 Strength</red>. At the end of this turn, lose <red>2 Strength</red>."},
     "Flex +" :{"Name":"Flex +","Strength":4, "Energy":0,"Type":"Skill","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Gain <red>4 Strength</red>. At the end of this turn, lose <red>4 Strength</red>."},
@@ -1031,8 +1031,8 @@ cards = {
     "Burning Pact" :{"Name":"Burning Pact","Draw":2,"Exhaustion Amount":1,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> 1 card. Draw 2 cards."},
     "Burning Pact +" :{"Name":"Burning Pact +","Draw":3,"Exhaustion Amount":1,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> 1 card. Draw 3 cards."},
 
-    "Disarm" :{"Name":"Disarm","Strength":-2,"Exhaust":True,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> 1 card. Draw 2 cards."},
-    "Disarm +" :{"Name":"Disarm +","Strength":-3,"Exhaust":True,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> 1 card. Draw 3 cards."},
+    "Disarm" :{"Name":"Disarm","Strength":-2,"Exhaust":True,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Enemy loses <red>2 Strength</red>. <BLUE>Exhaust</BLUE>."},
+    "Disarm +" :{"Name":"Disarm +","Strength":-3,"Exhaust":True,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Enemy loses <red>3 Strength</red>. <BLUE>Exhaust</BLUE>."},
 
     "Dual Wield" :{"Name":"Dual Wield","Copy Amount":1,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Choose an <red>Attack</red> or <blue>Power</blue> card. Add a copy of that Card into your hand."},
     "Dual Wield +" :{"Name":"Dual Wield +","Copy Amount":2,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Choose an <red>Attack</red> or <blue>Power</blue> card. Add 2 copies of that Card into your hand."},
@@ -1067,7 +1067,7 @@ cards = {
     "Sentinel" :{"Name":"Sentinel","Block":5,"Energy Gain":2,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Gain <green>5 Block</green>. If this card is <BLUE>Exhausted</BLUE>, gain <yellow>2 Energy</yellow>."},
     "Sentinel +" :{"Name":"Sentinel +","Block":8,"Energy Gain":3,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner": "Ironclad","Info":"Gain <green>8 Block</green>. If this card is <BLUE>Exhausted</BLUE>, gain <yellow>3 Energy</yellow>."},    
 
-    "Shockwave" :{"Name":"Shockwave","Weakness":3,"Vulnerable":3,"Exhaust":True,"Energy":2,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Apply <light-cyan>3 Weak</light-cyan> and <light-cyan>5 Vulnerable</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>."},
+    "Shockwave" :{"Name":"Shockwave","Weakness":3,"Vulnerable":3,"Exhaust":True,"Energy":2,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Apply <light-cyan>3 Weak</light-cyan> and <light-cyan>3 Vulnerable</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>."},
     "Shockwave +" :{"Name":"Shockwave +","Weakness":5,"Vulnerable":5,"Exhaust":True,"Energy":2,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner": "Ironclad","Info":"Apply <light-cyan>5 Weak</light-cyan> and <light-cyan>5 Vulnerable</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>."},
 
     "Spot Weakness" :{"Name":"Spot Weakness","Strength":3,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"If the enemy intends to attack, gain <red>3 Strength</red>."},
@@ -1118,7 +1118,7 @@ cards = {
     "Berserk" :{"Name":"Berserk","Vulnerable":2,"Energy":0,"Type":"Power","Rarity":"Rare","Owner":"Ironclad","Info":"Gain <light-cyan>2 Vulnerable</light-cyan>. At the start of your turn, gain <yellow>1 Energy</yellow>."},
     "Berserk +" :{"Name":"Berserk +","Vulnerable":1,"Energy":0,"Type":"Power","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"Gain <light-cyan>1 Vulnerable</light-cyan>. At the start of your turn, gain <yellow>1 Energy</yellow>."},
 
-    "Brutality" :{"Name":"Brutality","Draw":1,"Selfhurt":1,"Vulnerable":2,"Energy":0,"Type":"Power","Rarity":"Rare","Owner":"Ironclad","Info":"At the start of your turn, lose <red>1 HP</red> and draw 1 Card."},
+    "Brutality" :{"Name":"Brutality","Draw":1,"Selfhurt":1,"Energy":0,"Type":"Power","Rarity":"Rare","Owner":"Ironclad","Info":"At the start of your turn, lose <red>1 HP</red> and draw 1 Card."},
     "Brutality +" :{"Name":"Brutality +","Draw":1,"Selfhurt":1,"Innate":True,"Energy":0,"Type":"Power","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"At the start of your turn, lose <red>1 HP</red> and draw 1 Card. <BLUE>Innate</BLUE>"},
 
     "Corruption" :{"Name":"Corruption","Energy":3,"Type":"Power","Rarity":"Rare","Owner":"Ironclad","Info":"<green>Skills</green> cost <yellow>0 Energy</yellow>. Whenever you play a <green>Skill</green>, <BLUE>Exhaust</BLUE> it."},
@@ -1128,7 +1128,7 @@ cards = {
     "Demon Form +" :{"Name":"Demon Form +","Energy":3,"Strength":3,"Type":"Power","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"At the start of your turn, gain <red>3 Strength</red>."},
 
     "Juggernaut" :{"Name":"Juggernaut","Damage":5,"Energy":2,"Type":"Power","Rarity":"Rare","Owner":"Ironclad","Info":"Whenever you gain <green>Block</green>, deal <red>5 damage</red> to a random enemy."},
-    "Juggernaut +" :{"Name":"Juggernaut +","Damage":7,"Energy":2,"Type":"Power","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"Whenever you gain <green>Block</green>, deal <red>5 damage</red> to a random enemy."},
+    "Juggernaut +" :{"Name":"Juggernaut +","Damage":7,"Energy":2,"Type":"Power","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"Whenever you gain <green>Block</green>, deal <red>7 damage</red> to a random enemy."},
 
     #Defect Cards
 
@@ -1145,7 +1145,7 @@ cards = {
     "Dualcast +": {"Name": "Dualcast +", "Upgraded": True, "Energy": 0,"Type": "Skill" ,"Rarity": "Basic","Owner":"Defect","Info":"Evoke your next Orb twice."},
     
     "Ball Lightning": {"Name": "Ball Lightning","Orb":"Lightning","Damage":7, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 7 damage. Channel 1 Lightning"},
-    "Ball Lightning +": {"Name": "Ball Lightning +","Orb":"Lightning","Damage":10,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 7 damage. Channel 1 Lightning"},
+    "Ball Lightning +": {"Name": "Ball Lightning +","Orb":"Lightning","Damage":10,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 10 damage. Channel 1 Lightning"},
     
     "Barrage": {"Name": "Barrage","Damage":4, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 4 damage for each channeled Orb."},
     "Barrage +": {"Name": "Barrage +","Damage":6,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 6 damage for each channeled Orb."},
@@ -1162,8 +1162,8 @@ cards = {
     "Compile Driver": {"Name": "Compile Driver","Damage":7, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 7 damage. Draw 1 Card for each unique Orb you have."},
     "Compile Driver +": {"Name": "Compile Driver +","Damage":10,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 10 damage. Draw 1 Card for each unique Orb you have."},
     
-    "Go for the Eyes": {"Name": "Go for the Eyes","Damage":3, "Weakness":1,"Energy": 0,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 3 damage. If the enemy inteds to attack, apply 1 Weak."},
-    "Go for the Eyes +": {"Name": "Go for the Eyes +","Damage":4,"Weakness":2,"Upgraded":True, "Energy": 0,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 4 damage. If the enemy inteds to attack, apply 2 Weak."},
+    "Go for the Eyes": {"Name": "Go for the Eyes","Damage":3, "Weakness":1,"Energy": 0,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 3 damage. If the enemy intends to attack, apply 1 Weak."},
+    "Go for the Eyes +": {"Name": "Go for the Eyes +","Damage":4,"Weakness":2,"Upgraded":True, "Energy": 0,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 4 damage. If the enemy intends to attack, apply 2 Weak."},
 
     "Rebound": {"Name": "Rebound","Damage":9, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 9 damage. Put the next card you play this turn on top of your draw pile."},
     "Rebound +": {"Name": "Rebound +","Damage":12,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 12 damage. Put the next card you play this turn on top of your draw pile."},
@@ -1199,7 +1199,7 @@ cards = {
     "Sunder +": {"Name": "Sunder +","Damage":32,"Energy Gain":3,"Upgraded":True, "Energy": 3,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal 32 damage. If this kills an enemy, gain 3 Energy."},
     
     "All for One": {"Name": "All for One","Damage":10,"Energy": 2,"Type": "Attack" ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 10 damage. Put all cost 0 cards from your discard pile into your hand."},
-    "All for One +": {"Name": "All for One +","Damage":14,"Upgraded":True, "Energy": 2,"Type": "Attack" ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 32 damage. If this kills an enemy, 3 Energy."},
+    "All for One +": {"Name": "All for One +","Damage":14,"Upgraded":True, "Energy": 2,"Type": "Attack" ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 14 damage. Put all cost 0 cards from your discard pile into your hand."},
     
     "Core Surge": {"Name": "Core Surge","Damage":11,"Energy": 1,"Exhaust":True,"Type": "Attack","Artifact":1 ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 11 damage. Gain 1 Artifact. Exhaust."},
     "Core Surge +": {"Name": "Core Surge +","Damage":15,"Upgraded":True, "Energy": 1,"Exhaust":True,"Artifact":1,"Type": "Attack" ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 15 damage. Gain 1 Artifact. Exhaust."},
@@ -1214,7 +1214,7 @@ cards = {
     "Thunder Strike +": {"Name": "Thunder Strike +","Damage":9,"Upgraded":True, "Energy": 3,"Type": "Attack" ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 9 damage to a random enemy for each Lightning channeled this combat."},
     
     "Charge Battery": {"Name": "Charge Battery","Block":7, "Energy": 1,"Energy Gain":1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 7 Block. Next turn, gain 1 Energy."},
-    "Charge Battery +": {"Name": "Charge Battery +","Block":10,"Upgraded":True, "Energy": 1,"Energy Gain":1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 7 Block. Next turn, gain 1 Energy."},
+    "Charge Battery +": {"Name": "Charge Battery +","Block":10,"Upgraded":True, "Energy": 1,"Energy Gain":1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 10 Block. Next turn, gain 1 Energy."},
 
     "Coolheaded": {"Name": "Coolheaded","Orb":"Frost","Draw":1,"Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Channel 1 Frost. Draw 1 card."},
     "Coolheaded +": {"Name": "Coolheaded +","Orb":"Frost","Draw":2,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Channel 1 Frost. Draw 2 card."},
@@ -1232,13 +1232,13 @@ cards = {
     "Stack +": {"Name": "Stack +","Block":3,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain Block equal to the number of cards in your discard pile."},
 
     "Steam Barrier": {"Name": "Steam Barrier","Block":6, "Energy": 0,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 6 Block. Decrease this card\'s Block by 1 this combat."},
-    "Steam Barrier +": {"Name": "Steam Barrier +","Block":8,"Upgraded":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 6 Block. Decrease this card\'s Block by 1 this combat."},
+    "Steam Barrier +": {"Name": "Steam Barrier +","Block":8,"Upgraded":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 8 Block. Decrease this card\'s Block by 1 this combat."},
 
     "TURBO": {"Name": "TURBO","Energy Gain":2, "Energy": 0,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 2 Energy. Add a Void into your discard pile."},
     "TURBO +": {"Name": "TURBO +","Energy Gain":3,"Upgraded":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 3 Energy. Add a Void into your discard pile."},
 
     "Aggregate": {"Name": "Aggregate","Energy Divider":4, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain Energy for every 4 cards in your draw pile."},
-    "Aggregate +": {"Name": "Aggregate +","Energy Divider":3,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain Energy for every 4 cards in your draw pile."},
+    "Aggregate +": {"Name": "Aggregate +","Energy Divider":3,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain Energy for every 3 cards in your draw pile."},
 
     "Auto-Shields": {"Name": "Auto-Shields","Block":11, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"If you have no Block, gain 11 Block."},
     "Auto-Shields +": {"Name": "Auto-Shields +","Block":15,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"If you have no Block, gain 15 Block."},
@@ -1348,8 +1348,8 @@ cards = {
     "Creative AI": {"Name": "Creative AI","Energy": 3,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"At the start of your turn, add a random Power card into your hand."},
     "Creative AI +": {"Name": "Creative AI +","Upgraded":True,"Energy":2,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"At the start of your turn, add a random Power card into your hand."},
 
-    "Echo Form": {"Name": "Echo Form","Energy": 3,"Ethereal":True,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"Ethereal. The first card you play each turn is played twice."},
-    "Echo Form +": {"Name": "Echo Form +","Upgraded":True,"Energy":3,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"The first card you play each turn is played twice."},
+    "Echo Form": {"Name": "Echo Form","Energy": 3,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"The first card you play each turn is played twice."},
+    "Echo Form +": {"Name": "Echo Form +","Upgraded":True,"Innate":True,"Energy":3,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"<BLUE>Innate</BLUE>. The first card you play each turn is played twice."},
 
     "Electrodynamics": {"Name": "Electrodynamics","Energy": 2,"Orbs":2,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"Lightning now hits ALL enemies. Channel 2 Lightning."},
     "Electrodynamics +": {"Name": "Electrodynamics +","Upgraded":True,"Orbs":3,"Energy":2,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"Lightning now hits ALL enemies. Channel 3 Lightning."},
@@ -1366,7 +1366,7 @@ cards = {
     "Blind": {"Name": "Blind","Weakness": 2, "Energy": 0, "Type": "Skill", "Rarity": "Uncommon", "Owner":"Colorless","Info":"Apply <light-cyan>2 Weak</light-cyan>."},
     "Blind +": {"Name": "Blind +","Weakness": 2, "Energy": 0, "Type": "Skill", "Rarity": "Uncommon","Upgraded": True, "Owner":"Colorless","Info":"Apply <light-cyan>2 Weak</light-cyan> to ALL enemies."},
     
-    "Trip": {"Name": "Trip","Vulnerable": 2, "Energy": 0, "Type": "Skill", "Rarity": "Uncommon", "Owner":"Colorless","Info":"Apply <light-cyan>2 Weak</light-cyan>."},
+    "Trip": {"Name": "Trip","Vulnerable": 2, "Energy": 0, "Type": "Skill", "Rarity": "Uncommon", "Owner":"Colorless","Info":"Apply <light-cyan>2 Vulnerable</light-cyan>."},
     "Trip +": {"Name": "Trip +","Vulnerable": 2, "Energy": 0, "Type": "Skill", "Rarity": "Uncommon","Upgraded": True, "Owner":"Colorless","Info":"Apply <light-cyan>2 Vulnerable</light-cyan> to ALL enemies."},
 
     "Dark Shackles": {"Name": "Dark Shackles","Strength Modifier":9,"Energy": 0,"Exhaust": True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Enemy loses <red>9 Strength</red> this turn. <BLUE>Exhaust</BLUE>."},
@@ -1379,16 +1379,16 @@ cards = {
     "Discovery +" :{"Name": "Discovery +","Energy": 0,"Exhaust":True ,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Choose 1 of 3 random cards to add into your hand. It costs 0 this turn. <BLUE>Exhaust</BLUE>."},
 
     "Dramatic Entrance": {"Name": "Dramatic Entrance","Damage":8,"Energy": 0,"Innate":True,"Exhaust":True,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Deal <red>8 damage</red> to ALL enemies. <BLUE>Innate</BLUE>. <BLUE>Exhaust</BLUE>."},
-    "Dramatic Entrance +": {"Name": "Dramatic Entrance","Damage":12,"Energy": 0,"Innate":True,"Exhaust":True,"Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Colorless","Info":"Deal <red>12 damage</red> to ALL enemies. <BLUE>Innate</BLUE>. <BLUE>Exhaust</BLUE>."},
+    "Dramatic Entrance +": {"Name": "Dramatic Entrance +","Damage":12,"Energy": 0,"Innate":True,"Exhaust":True,"Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Colorless","Info":"Deal <red>12 damage</red> to ALL enemies. <BLUE>Innate</BLUE>. <BLUE>Exhaust</BLUE>."},
     
     "Enlightenment": {"Name": "Enlightenment","Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Reduce the cost of all cards in your hand to <yellow>1 Energy</yellow> this turn."},
-    "Enlightenment +": {"Name": "Enlightenment","Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Reduce the cost of all cards in your hand to <yellow>1 Energy</yellow> for the rest of the battle."},
+    "Enlightenment +": {"Name": "Enlightenment +","Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Reduce the cost of all cards in your hand to <yellow>1 Energy</yellow> for the rest of the battle."},
 
     "Finesse": {"Name": "Finesse","Energy": 0,"Block":2,"Draw":1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Gain <green>2 Block</green>. Draw 1 card."},
     "Finesse +": {"Name": "Finesse +","Energy": 0,"Block":4,"Draw":1,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Gain <green>4 Block</green>. Draw 1 card."},
     
-    "Flash of Steel": {"Name": "Flash of Steel","Energy": 0,"Damage":3,"Draw":1,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Colorless"},
-    "Flash of Steel +": {"Name": "Flash of Steel +","Energy": 0,"Damage":5,"Draw":1,"Type": "Attack","Upgraded": True,"Rarity": "Uncommon","Owner":"Colorless"},
+    "Flash of Steel": {"Name": "Flash of Steel","Energy": 0,"Damage":3,"Draw":1,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Deal <red>3 damage</red>. Draw 1 card."},
+    "Flash of Steel +": {"Name": "Flash of Steel +","Energy": 0,"Damage":5,"Draw":1,"Type": "Attack","Upgraded": True,"Rarity": "Uncommon","Owner":"Colorless","Info":"Deal <red>5 damage</red>. Draw 1 card."},
 
     "Forethought": {"Name": "Forethought","Back Putter":1,"Energy Change Type":"Energy changed until played","Energy Change":0,"Energy": 0 ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Put a Card from your hand to the bottom of your draw pile. It costs 0 until played."},
     "Forethought +": {"Name": "Forethought +","Energy Change Type":"Energy changed until played","Energy Change":0,"Energy": 0 ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Colorless","Info":"Put any number of Cards from your hand to the bottom of your draw pile. It costs 0 until played."},
@@ -1403,7 +1403,7 @@ cards = {
     "Jack of All Trades +": {"Name": "Jack of All Trades +","Energy": 0,"Draw":2,"Exhaust":True,"Upgraded": True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Add 2 random Colorless card into your hand. <BLUE>Exhaust</BLUE>."},
 
     "Madness": {"Name": "Madness","Energy": 1,"Exhaust":True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Reduce the cost of a random card in your hand to <yellow>0 Energy</yellow> this combat. <BLUE>Exhaust</BLUE>."},
-    "Madness +": {"Name": "Madness","Energy": 0,"Exhaust":True,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Reduce the cost of a random card in your hand to <yellow>0 Energy</yellow> this combat. <BLUE>Exhaust</BLUE>."},
+    "Madness +": {"Name": "Madness +","Energy": 0,"Exhaust":True,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Reduce the cost of a random card in your hand to <yellow>0 Energy</yellow> this combat. <BLUE>Exhaust</BLUE>."},
 
     "Mind Blast": {"Name": "Mind Blast","Energy": 2,"Innate":True,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"<BLUE>Innate</BLUE>. Deal <red>damage</red> equal to the number of cards in your draw pile."},
     "Mind Blast +": {"Name": "Mind Blast +","Energy": 1,"Innate":True,"Type": "Attack" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"<BLUE>Innate</BLUE>. Deal <red>damage</red> equal to the number of cards in your draw pile."},
@@ -1457,7 +1457,7 @@ cards = {
     "The Bomb +": {"Name": "The Bomb +","Energy": 2,"Damage":50,"Type": "Skill","Rarity": "Rare","Upgraded": True,"Owner":"Colorless","Info":"At the end of 3 turns, deal <red>50 damage</red> to ALL enemies."},
     
     "Thinking Ahead": {"Name": "Thinking Ahead","Energy": 0,"Draw":2,"Back Putter": 1,"Exhaust":True,"Type": "Skill","Rarity": "Rare","Owner":"Colorless","Info":"Draw 2 Cards. Put a Card from your hand on top of your Drawpile. <BLUE>Exhaust</BLUE>."},
-    "Thinking Ahead +": {"Name": "Thinking Ahead +","Energy": 0,"Draw":2,"Back Putter": 1,"Type": "Skill","Upgraded": True,"Rarity": "Rare","Owner":"Colorless","Info":"Draw 3 Cards. Put a Card from your hand on top of your Drawpile. <BLUE>Exhaust</BLUE>."},
+    "Thinking Ahead +": {"Name": "Thinking Ahead +","Energy": 0,"Draw":2,"Back Putter": 1,"Type": "Skill","Upgraded": True,"Rarity": "Rare","Owner":"Colorless","Info":"Draw 2 Cards. Put a Card from your hand on top of your Drawpile."},
 
     "Transmutation": {"Name": "Transmutation","Energy": "X","Exhaust":True,"Type": "Skill","Rarity": "Rare","Owner":"Colorless","Info":"Add X random Colorless Cards into your hand. They cost <yellow>0 Energy</yellow> this turn. <BLUE>Exhaust</BLUE>."},
     "Transmutation +": {"Name": "Transmutation +","Energy": "X","Exhaust":True,"Type": "Skill","Rarity": "Rare","Upgraded": True,"Owner":"Colorless","Info":"Add X random <blue>upgraded</blue> Colorless Cards into your hand. They cost <yellow>0 Energy</yellow> this turn. <BLUE>Exhaust</BLUE>."},
@@ -1471,8 +1471,8 @@ cards = {
     "Ritual Dagger": {"Name": "Ritual Dagger","Energy": 1,"Damage":15,"FatalBonus":3,"Exhaust":True,"Type": "Attack","Rarity": "Special","Owner":"Colorless","Info":"Deal <red>15 damage</red>. If this kills the enemy, permanently increase this Card's <red>damage</red> by 3. <BLUE>Exhaust</BLUE>. UPGRADING THIS CARD IS CURRENLY ILL-ADVISED AS IT'S BUGGED!"},
     "Ritual Dagger +": {"Name": "Ritual Dagger +","Energy": 1,"Damage":15,"FatalBonus":5,"Exhaust":True,"Upgraded": True,"Type": "Attack","Rarity": "Special","Owner":"Colorless","Info":"Deal <red>15 damage</red>. If this kills the enemy, permanently increase this Card\'s <red>damage</red> by 5. <BLUE>Exhaust</BLUE>."},
 
-    "Bite": {"Name": "Bite", "Damage":7,"Heal":2, "Energy": 1,"Type": "Attack" ,"Rarity": "Special","Owner":"Colorless","Info":"Deal <red>6 damage</red>."},
-    "Bite +": {"Name": "Bite +","Upgraded": True, "Damage":8,"Heal":3, "Energy": 1,"Type": "Attack" ,"Rarity": "Special","Owner":"Colorless","Info":"Deal <red>9 damage</red>."},
+    "Bite": {"Name": "Bite", "Damage":7,"Heal":2, "Energy": 1,"Type": "Attack" ,"Rarity": "Special","Owner":"Colorless","Info":"Deal <red>7 damage</red>. <red>Heal 2 HP</red>."},
+    "Bite +": {"Name": "Bite +","Upgraded": True, "Damage":8,"Heal":3, "Energy": 1,"Type": "Attack" ,"Rarity": "Special","Owner":"Colorless","Info":"Deal <red>8 damage</red>. <red>Heal 3 HP</red>."},
 
     "JAX": {"Name": "JAX","Energy": 0,"Strength":2,"Harm":3,"Type": "Skill","Rarity": "Special","Owner":"Colorless","Info":"Lose <red>3 HP</red>. Gain <red>2 Strength</red>."},
     "JAX +": {"Name": "JAX +","Energy": 0,"Strength":3,"Harm":3,"Upgraded": True,"Type": "Skill","Rarity": "Special","Owner":"Colorless","Info":"Lose <red>3 HP</red>. Gain <red>3 Strength</red>."},
@@ -1540,7 +1540,7 @@ potions = {
 
     "Poison Potion": {"Name": "Poison Potion","Potion Yield":6,"Rarity": "Common","Owner":"Silent","Type": "Potion","Info":"Apply <green>6 Poison</green> to target enemy."},
     "Power Potion": {"Name": "Power Potion","Potion Yield":1,"Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Add 1 of 3 random <blue>Power Cards</blue> to your hand, it costs <yellow> 0 Energy</yellow> this turn."},
-    "Regen Potion": {"Name": "Regen Potion","Potion Yield":5,"Rarity": "Uncommon","Owner":"The Spire","Type": "Potion","Info":"Gain <green>6 Regeneration</green>."},
+    "Regen Potion": {"Name": "Regen Potion","Potion Yield":5,"Rarity": "Uncommon","Owner":"The Spire","Type": "Potion","Info":"Gain <green>5 Regeneration</green>."},
     "Skill Potion": {"Name": "Skill Potion","Potion Yield":1,"Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Choose 1 of 3 <green>random Skill</green> Cards to add into your hand. It costs <yellow>0 Energy</yellow> this turn."},
     "Smoke Bomb": {"Name": "Smoke Bomb","Rarity": "Rare","Owner":"The Spire","Type": "Potion","Info":"Escape from a non-boss combat. Receive no rewards."},
     "Snecko Oil": {"Name": "Snecko Oil","Potion Yield":5,"Rarity": "Rare","Owner":"The Spire","Type": "Potion","Info":"Draw 5 Cards. Randomize the costs of all Cards in your hand for the rest of the combat."},
@@ -1606,7 +1606,7 @@ relics = {
     "Regal Pillow":{"Name":"Regal Pillow","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"<red>Heal an additional 15</red> HP when you <blue>rest</blue>."},
     "Smiling Mask":{"Name":"Smiling Mask","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"The <yellow>Merchant's</yellow> Card removal service now always costs <yellow>50 Gold</yellow>."},
     "Snecko Skull":{"Name":"Snecko Skull","Rarity":"Common","Owner":"Silent","Type":"Relic","Info":"Whenever you apply <green>Poison</green>, apply an additional <green>1 Poison</green>."},
-    "Strawberry":{"Name":"Strawberry","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"If you end your turn without <green>Block</green>, gain <green>6 Block</green>."},
+    "Strawberry":{"Name":"Strawberry","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Raise your <red>Max HP by 7</red>."},
     "The Boot":{"Name":"The Boot","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Whenever you would deal <red>4 or less unblocked Attack damage</red>, increase it to <red>5</red>."},    
     "Tiny Chest":{"Name":"Tiny Chest","Rarity":"Common","Counter":0,"Owner":"The Spire","Type":"Relic","Info":"Every 4th <blue>Event</blue> room is a <yellow>Treasure</yellow> room."},
     "Toy Ornithopter":{"Name":"Toy Ornithopter","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Whenever you drink a <c>Potion</c>, <red>heal 5 HP</red>."},
@@ -1627,7 +1627,7 @@ relics = {
     "Kunai":{"Name":"Kunai","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Every time you play <red>3 Attacks</red> in a single turn, gain <green>1 Dexterity</green>."},
     "Letter Opener":{"Name":"Letter Opener","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Every time you play <green>3 Skills</green> in a single turn, deal <red>5 damage</red> to ALL enemies."},
     "Matryoshka":{"Name":"Matryoshka","Counter":2,"Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"The next <yellow>2 Chests</yellow> you open contain <light-red>2 Relics</light-red>."},
-    "Meat on the Bone":{"Name":"Meat on the Bone","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"If your <red>HP</HP> is at or below 50% at the end of combat, <red>heal 12 HP</red>."},
+    "Meat on the Bone":{"Name":"Meat on the Bone","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"If your <red>HP</red> is at or below 50% at the end of combat, <red>heal 12 HP</red>."},
     "Mercury Hourglass":{"Name":"Mercury Hourglass","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"At the start of your turn, deal <red>3 damage</red> to ALL enemies."},
     "Molten Egg":{"Name":"Molten Egg","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Whenever you add an <red>Attack</red> to your deck, it is Upgraded."},
     "Mummified Hand":{"Name":"Mummified Hand","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Whenever you play a <blue>Power</blue>, a random card in your hand costs <yellow>0 Energy</yellow> for the turn."},
@@ -1660,7 +1660,7 @@ relics = {
     
     "Girya":{"Name":"Girya","Counter":3,"Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"You can now gain <red>Strength</red> at <blue>Rest Sites</blue>. (3 times max)"},
     "Ice Cream":{"Name":"Ice Cream","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"<yellow>Energy</yellow> is now conserved between turns."},
-    "Lizard Tail":{"Name":"Lizard Tail","Counter":1,"Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"When you would <black>die</black>, <red>heal to 50%</red> of your </red>Max HP</red> instead (works once)."},
+    "Lizard Tail":{"Name":"Lizard Tail","Counter":1,"Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"When you would <black>die</black>, <red>heal to 50%</red> of your <red>Max HP</red> instead (works once)."},
     "Magic Flower":{"Name":"Magic Flower","Rarity":"Rare","Owner":"Ironclad","Type":"Relic","Info":"<red>Healing</red> is 50% more effective during combat."},
     "Mango":{"Name":"Mango","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Upon pickup, raise your <red>Max HP by 14</red>."},
     "Old Coin":{"Name":"Old Coin","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>300 Gold</yellow>."},
@@ -1676,12 +1676,12 @@ relics = {
     "Torii":{"Name":"Torii","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Whenever you would receive <red>5 or less unblocked Attack damage</red>, reduce it to <red>1</red>."},
     "Tough Bandages":{"Name":"Tough Bandages","Rarity":"Rare","Owner":"Silent","Type":"Relic","Info":"Whenever you discard a Card during your turn, gain <green>3 Block</green>."},
     "Tungsten Rod":{"Name":"Tungsten Rod","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Whenever you would lose <red>HP</red>, lose <red>1</red> less.."},
-    "Turnip":{"Name":"Turnip","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>300 Gold</yellow>."},
+    "Turnip":{"Name":"Turnip","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"You can no longer become <light-cyan>Frail</light-cyan>."},
     "Unceasing Top":{"Name":"Unceasing Top","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Whenever you have no Cards in hand during your turn, draw a Card."},
     
     "Astrolabe":{"Name":"Astrolabe","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Upon pickup, choose and Transform 3 Cards, then Upgrade them."}, 
     "Black Star":{"Name":"Black Star","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Elites drop an additional <light-red>Relic</light-red> when defeated."},
-    "Black Blood":{"Name":"Black Blood","Rarity":"Boss","Owner":"Ironclad","Type":"Relic","Info":"Replaces <light-red>Burning Blood<light-red>. At the end of combat, <red>heal 12 HP</red>."},
+    "Black Blood":{"Name":"Black Blood","Rarity":"Boss","Owner":"Ironclad","Type":"Relic","Info":"Replaces <light-red>Burning Blood</light-red>. At the end of combat, <red>heal 12 HP</red>."},
     "Busted Crown":{"Name":"Busted Crown","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>1 Energy</yellow> at the start of each turn. On Card Reward screens, you have 2 fewer Cards to choose from."},
     "Calling Bell":{"Name":"Calling Bell","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Upon pickup, obtain a unique <m>Curse</m> and <light-red>3 Relics</light-red>."},
     "Coffee Dripper":{"Name":"Coffee Dripper","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>1 Energy</yellow> at the start of each turn. You can no longer <blue>Rest at Rest Sites</blue>."},
@@ -1724,7 +1724,7 @@ relics = {
     "Odd Mushroom":{"Name":"Odd Mushroom","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"When <light-cyan>Vulnerable</light-cyan>, take 25% more <red>damage</red> rather than 50%."},
     "Ssserpent Head":{"Name":"Ssserpent Head","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"Whenever you enter an <blue>Event</blue> room, gain <yellow>50 Gold</yellow>."},
     "Warped Tongs":{"Name":"Warped Tongs","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"At the start of your turn, Upgrade a random Card in your hand for the rest of combat."},
-    "Red Mask":{"Name":"Red Mask","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, apply <light-cyan>1 Weakness</light-cyan> to ALL enemies."},
+    "Red Mask":{"Name":"Red Mask","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, apply <light-cyan>1 Weak</light-cyan> to ALL enemies."},
     "N'loth's Gift": {"Name":"N'loth's Gift","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"Triples the chance of receiving rare Cards as monster rewards."},
 
     "Cauldron":{"Name":"Cauldron","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"Upon pickup, brews 5 random <c>Potions</c>."},
@@ -1779,7 +1779,7 @@ enemies = {"Gremlin": {"Name":"Fat Gremlin","Health":(14,18),"Intentions":["Smas
             
             "Looter": {"Name": "Looter","Health":(46,50),"Intentions":["Steal 11/20", "Lunge 14/20", "SmokeBomb 6"],"Intentions_Logic":[["Looter"]]},
             
-            "Red Slaver": {"Name": "Red Slaver","Health":(48,52),"Intentions":[14,"Scape 9/2","Entangle"],"Intentions_Logic":[["Red Slaver"]]},
+            "Red Slaver": {"Name": "Red Slaver","Health":(48,52),"Intentions":[14,"Scrape 9/2","Entangle"],"Intentions_Logic":[["Red Slaver"]]},
             "Blue Slaver": {"Name": "Blue Slaver","Health":(48,52),"Intentions":[13,"Rake 8/2"],"Intentions_Logic":[["Blue Slaver"]]},
 
             "Fungi Beast": {"Name": "Fungi Beast","Health":(24,28),"Intentions":[6,"Grow 5"],"Intentions_Logic": [["Fungi Beast"]],"On_hit_or_death":[["Vulnerable 3","Death"]]},
@@ -1798,7 +1798,7 @@ enemies = {"Gremlin": {"Name":"Fat Gremlin","Health":(14,18),"Intentions":["Smas
             "Sneaky Gremlin": {"Name": "Sneaky Gremlin","Health":(11,15),"Intentions":[10],"Intentions_Logic":[["Random"],[0]*100]},
             "Gremlin Wizard": {"Name": "Gremlin Wizard","Health":(22,26),"Intentions":["Charging",30],"Intentions_Logic":[["Random"],[0,0]+[1]*98]},
             
-            "Gremlin Nob": {"Name":"Gemlin Nob", "Health": (85,90),"Intentions":[16,"SkullBash 8/2","Enrage 3"],"Intentions_Logic":[["Random"],[2]+[1,0,0]*33]},
+            "Gremlin Nob": {"Name":"Gremlin Nob", "Health": (85,90),"Intentions":[16,"SkullBash 8/2","Enrage 3"],"Intentions_Logic":[["Random"],[2]+[1,0,0]*33]},
             
             "Beam Sentry": {"Name":"Beam Sentry", "Health": (39,45),"Intentions":[10,"Bolt 3"],"Intentions_Logic":[["Random"],[0,1]*50],"Artifact":1}, 
             "Bolt Sentry": {"Name":"Bolt Sentry", "Health": (39,45),"Intentions":[10,"Bolt 3"],"Intentions_Logic":[["Random"],[1,0]*50],"Artifact":1},

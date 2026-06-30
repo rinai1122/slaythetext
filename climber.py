@@ -2518,7 +2518,8 @@ class Char():
                 self.blocking(self.card_in_play["Block"])
                 self.removeCardsFromHand(amount = 1 , removeType = "Upgrade")
                 
-            elif self.card_in_play.get("Name") == "Armaments +":                                
+            elif self.card_in_play.get("Name") == "Armaments +":
+                self.blocking(self.card_in_play["Block"])
                 i = 0
                 while i < len(self.hand):
                     if self.hand[i].get("Type") != "Status" and self.hand[i].get("Type") != "Curse" and self.hand[i].get("Upgraded") != True:
