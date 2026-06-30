@@ -327,6 +327,10 @@ class Char():
                 self.emotionChipTriggered = False
             
             self.passiveOrbsTurnStart()
+            # Loop power: trigger the passive of the rightmost Orb an extra time each turn.
+            if self.loop > 0 and len(self.orbs) > 0:
+                for _ in range(self.loop):
+                    self.triggerOrbPassive(self.orbs[-1])
             self.negativeEffectsAtTheStartOfTheTurn()
             self.powersAtTheStartOfTheTurn()
             
@@ -485,8 +489,6 @@ class Char():
         self.exhaust_ethereals()
         self.relicsAtTheEndOfTurn()
         self.passiveOrbsTurnEnd()
-        if self.goldPlatedCables == True:
-            self.passiveOrbsTurnEnd(loopTrigger=True)
         self.discard_hand()
         self.changeEnergyCostAfterTurn()
         self.effect_counter_down()
@@ -5851,7 +5853,7 @@ class Char():
                 enemyIndex = 0
                 smallestHPIndex = 0
                 smallestHPValue = entities.list_of_enemies[0].health
-                while enemyIndex < len(entities.list_of_enemies) -1:
+                while enemyIndex < len(entities.list_of_enemies):
                     if entities.list_of_enemies[enemyIndex].health < smallestHPValue:
                         smallestHPValue = entities.list_of_enemies[enemyIndex].health
                         smallestHPIndex = enemyIndex
@@ -5875,61 +5877,59 @@ class Char():
         self.orbs.pop(0)
         
     def passiveOrbsTurnStart(self):
-        i = 0
+        # Plasma is the only orb whose passive fires at the start of the turn.
         for orb in self.orbs:
             if orb.get("Name") == "Plasma":
-                self.gainEnergy(orb.get("Value"))
-                if self.goldPlatedCables == True and i == 0:
-                    self.gainEnergy(orb.get("Value"))
-            i+= 1
+                self.triggerOrbPassive(orb)
+        # Gold-Plated Cables: the rightmost Orb triggers its passive an extra time.
+        if self.goldPlatedCables and len(self.orbs) > 0 and self.orbs[-1].get("Name") == "Plasma":
+            self.triggerOrbPassive(self.orbs[-1])
 
-    def passiveOrbsTurnEnd(self,loopTrigger = False):
+    def passiveOrbsTurnEnd(self):
         if len(entities.list_of_enemies) == 0:
             return
-        i = 0
         for orb in self.orbs:
             if len(entities.list_of_enemies) == 0:
                 break
+            if orb.get("Name") != "Plasma":
+                self.triggerOrbPassive(orb)
+        # Gold-Plated Cables: the rightmost Orb triggers its passive an extra time.
+        if (self.goldPlatedCables and len(self.orbs) > 0
+                and self.orbs[-1].get("Name") != "Plasma" and len(entities.list_of_enemies) > 0):
+            self.triggerOrbPassive(self.orbs[-1])
 
-            if orb.get("Name") == "Lightning":
-                if self.electrodynamics == False:
-                    randomEnemy = rd.randint(0,len(entities.list_of_enemies)-1)
-                    damage = orb.get("Value") + self.focus
-                    if damage < 0:
-                        damage = 0
-                    entities.list_of_enemies[randomEnemy].receive_recoil_damage(damage,orbDamage=True)
-                else:
-                    i = 0
-                    while i < len(entities.list_of_enemies):
-                        enemy_check =len(entities.list_of_enemies)
-                        damage = self.orbs[i].get("Value") + self.focus
-                        if damage < 0:
-                            damage = 0
-                        entities.list_of_enemies[i].receive_recoil_damage(damage,orbDamage = True)
-                        if enemy_check == len(entities.list_of_enemies):
-                            i+=1
-
-
-            elif orb.get("Name") == "Frost":
-                block = orb.get("Value") + self.focus
-                if block < 0:
-                    block = 0
-                self.blocking(block,unaffectedBlock=True)
-
-            elif orb.get("Name") == "Dark":
-                darkchange = orb.get("Value") + self.focus
-                if darkchange < 0:
-                    darkchange = 0
-                orb["Evokation"] += darkchange
-
-            elif orb.get("Name") == "Plasma":
-                pass
-
+    def triggerOrbPassive(self, orb):
+        name = orb.get("Name")
+        if name == "Plasma":
+            self.gainEnergy(orb.get("Value"))
+        elif name == "Lightning":
+            if len(entities.list_of_enemies) == 0:
+                return
+            damage = orb.get("Value") + self.focus
+            if damage < 0:
+                damage = 0
+            if self.electrodynamics == False:
+                randomEnemy = rd.randint(0, len(entities.list_of_enemies) - 1)
+                entities.list_of_enemies[randomEnemy].receive_recoil_damage(damage, orbDamage=True)
             else:
-                print("Non existent Orb ->",orb)
-
-            if loopTrigger == True:
-                break
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check = len(entities.list_of_enemies)
+                    entities.list_of_enemies[i].receive_recoil_damage(damage, orbDamage=True)
+                    if enemy_check == len(entities.list_of_enemies):
+                        i += 1
+        elif name == "Frost":
+            block = orb.get("Value") + self.focus
+            if block < 0:
+                block = 0
+            self.blocking(block, unaffectedBlock=True)
+        elif name == "Dark":
+            darkchange = orb.get("Value") + self.focus
+            if darkchange < 0:
+                darkchange = 0
+            orb["Evokation"] += darkchange
+        else:
+            print("Non existent Orb ->", orb)
 
     def getOrbPassive(self,orb):
         
@@ -7718,9 +7718,9 @@ class Char():
     
         self.loop += value
         if self.loop == 1:
-            ansiprint(f"At the start of your turn, the passive ability of your first Orb will trigger {self.loop} more time.")
+            ansiprint(f"At the start of your turn, the passive ability of your rightmost Orb will trigger {self.loop} more time.")
         else:
-            ansiprint(f"At the start of your turn, the passive ability of your first Orb will trigger {self.loop} more times.")
+            ansiprint(f"At the start of your turn, the passive ability of your rightmost Orb will trigger {self.loop} more times.")
 
     def set_selfRepair(self,value):
     
