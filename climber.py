@@ -295,7 +295,11 @@ class Char():
         
         if self.turnMoment == 0:
             self.enemyMoves()
-            self.effect_counter_down()
+            # NOTE: debuff durations (Weak/Vulnerable/Frail) and per-turn flags
+            # (entangled, rage, ...) tick down once per turn, at the END of the
+            # player's turn (endPlayerTurnEffects -> effect_counter_down). They are
+            # intentionally NOT ticked here at the start, or they would expire in
+            # half the turns and entangled would clear before affecting the player.
             if self.barricade == True:
                 pass
             
