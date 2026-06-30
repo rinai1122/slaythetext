@@ -77,6 +77,68 @@ def set_ascension():
             break
         ansiprint("Type a whole number between 0 and 20.")
 
+def tutorial():
+    # Optional, sectioned walkthrough offered at the start of a run. Each section
+    # waits for Enter so it stays readable in a terminal.
+    answers = ["1", "2"]
+    while True:
+        snap = input("Would you like to read the tutorial?\n1. Yes\n2. No\n")
+        if snap in answers:
+            break
+        print("Type either 1 or 2.")
+    if snap == "2":
+        return
+
+    sections = [
+        ("The Goal",
+         "You are climbing <m>The Spire</m>. Each <blue>Act</blue> is a branching map of rooms "
+         "ending in a <black>Boss</black>. Survive all the way to the top. Your <red>HP</red> "
+         "carries between fights and does NOT refill automatically, so every point matters."),
+        ("Moving Around",
+         "Almost everything is done by typing the <yellow>number</yellow> next to an option and "
+         "pressing Enter. On the map you choose which connected room to enter next:\n"
+         "  <red>Creep</red> = combat   <m>Elite</m> = harder combat (drops a <light-red>Relic</light-red>)\n"
+         "  <blue>Event</blue> = ?-room   <yellow>Shop$</yellow> = buy things   <green>Fires</green> = Rest Site\n"
+         "  <light-red>Chest</light-red> = free Relic   <black>Boss</black> = Act boss"),
+        ("Combat: Energy & Cards",
+         "Each turn you gain <yellow>Energy</yellow> (3 by default) and draw 5 <blue>Cards</blue>. "
+         "Cards cost Energy to play. <red>Attacks</red> deal damage, <green>Skills</green> do "
+         "utility/defence, <blue>Powers</blue> are permanent buffs for the fight. Unused cards are "
+         "discarded at end of turn (unless they <c>Retain</c>)."),
+        ("Combat: Block & Intents",
+         "<green>Block</green> absorbs incoming damage and is lost at the start of your next turn. "
+         "Each enemy shows its <red>Intent</red> -- what it will do next turn -- so you can decide "
+         "whether to attack or defend. Type an enemy's number to inspect it."),
+        ("Status Effects",
+         "<light-cyan>Vulnerable</light-cyan>: takes 50% more attack damage.\n"
+         "<light-cyan>Weak</light-cyan>: deals 25% less attack damage.\n"
+         "<light-cyan>Frail</light-cyan>: gains 25% less Block.\n"
+         "<green>Poison</green>: loses that much HP each turn, then drops by 1.\n"
+         "<red>Strength</red>: +damage per hit.  <green>Dexterity</green>: +Block per card."),
+        ("Keywords",
+         "<BLUE>Exhaust</BLUE>: removed from the deck for the rest of combat.\n"
+         "<BLUE>Ethereal</BLUE>: Exhausts if still in hand at end of turn.\n"
+         "<BLUE>Innate</BLUE>: always in your opening hand.\n"
+         "<c>Retain</c>: not discarded at end of turn."),
+        ("Defect Orbs",
+         "The <blue>Defect</blue> Channels <c>Orbs</c> into limited slots. Each turn they trigger a "
+         "passive; <c>Evoke</c> spends an Orb for a bigger effect. Lightning hits enemies, Frost "
+         "gives Block, Dark builds then bursts, Plasma gives Energy. <green>Focus</green> boosts "
+         "Orb output."),
+        ("Relics & Potions",
+         "<light-red>Relics</light-red> are permanent passive bonuses. <c>Potions</c> are one-use "
+         "and can be drunk any time in combat. You don't need to memorise them: type the exact "
+         "<blue>name</blue> of any Card, Relic or Potion at most prompts for a short explanation."),
+        ("Saving",
+         "You can <yellow>Save</yellow> only during a battle: type \"Save\" and press Enter. "
+         "Good luck, and may your draws be ever in your favour!"),
+    ]
+    for title, body in sections:
+        ansiprint(f"\n<bold>=== {title} ===</bold>")
+        ansiprint(body)
+        input("\n(press Enter to continue)\n")
+    ansiprint("<green>Tutorial complete!</green>\n")
+
 def typeWriter(words):
     print(words)
     # for char in words:

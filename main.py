@@ -34,7 +34,9 @@ def main():
         ansiprint("If you don't know what a <blue>Card</blue>, <light-red>Relic</light-red> or <c>Potion</c> does just type out its name wherever you are and you should get a short explanation of it.")
         ansiprint("In 99 out of 100 cases you can navigate the game by typing in the corresponding numbers of the options presented to you.")
         ansiprint("You can Save only during battles by typing \"Save\" and hitting \"Enter\" afterwards.\n\n")
-        
+
+        helping_functions.tutorial()
+
         save_handlery.the_question_of_safety()
         rd.seed(helping_functions.seed)
         
