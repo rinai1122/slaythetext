@@ -5638,9 +5638,12 @@ class Char():
                 relic["Counter"] += 1
                 if relic.get("Counter") % 10 == 0:
                     self.gainEnergy(1)
-            elif relic.get("Name") == "Pen Nip":
+            elif relic.get("Name") == "Pen Nib":
                 relic["Counter"] += 1
-                if relic.get("Counter") % 10 == 0:
+                # The attack counter is incremented AFTER the card's damage is
+                # dealt, so arm the double-damage flag once 9 attacks have been
+                # played -- that makes the *10th* attack itself deal double.
+                if relic.get("Counter") % 10 == 9:
                     self.penNip = 1
                 else:
                     self.penNip = 0
