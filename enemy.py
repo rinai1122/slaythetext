@@ -1212,6 +1212,8 @@ class Enemy():
                 if preview == False:
                     ansiprint("<light-blue>Intangible</light-blue> reduces the <red>damage</red> to <red>1</red>.")
 
+            attack_damage = math.floor(attack_damage)
+
             if preview == True:
                 return attack_damage
 

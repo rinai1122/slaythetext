@@ -6029,7 +6029,7 @@ class Char():
                     attack *= self.energy
 
             if self.akabeko > 0 and self.attack_counter == 0:
-                attack *= 2
+                attack += 8
 
             if len(self.doubleDamage) > 0:
                 if self.doubleDamage[0] == helping_functions.turn_counter:
@@ -6039,7 +6039,7 @@ class Char():
                 attack*=2
 
             if self.weak > 0:
-                attack = attack - math.floor(attack * 0.25)
+                attack = attack - (attack * 0.25)
 
             if self.stance == "Wrath":
                 attack *= 2
@@ -6050,7 +6050,7 @@ class Char():
                 attack = 0
 
             if preview:
-                return attack
+                return math.floor(attack)
             else:
                 entities.list_of_enemies[self.target].receive_damage(attack)
             
@@ -6069,8 +6069,8 @@ class Char():
             else:
 
                 if self.frail > 0:
-                    block_value = (block_value + self.dexterity) - int((block_value + self.dexterity) * 0.25)
-                    
+                    block_value = math.floor((block_value + self.dexterity) * 0.75)
+
                 else:
                     block_value = block_value + self.dexterity
                     
