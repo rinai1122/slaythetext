@@ -1867,11 +1867,13 @@ relics = {
     "Sundial":{"Name":"Sundial","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Every 3 times you shuffle your Drawpile, gain <yellow>2 Energy</yellow>."},
     "The Courier":{"Name":"The Courier","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"The <yellow>merchant</yellow> no longer runs out of Cards, <light-red>Relics</light-red>, or <c>Potions</c> and his prices are reduced by 20%."},
     "Toxic Egg":{"Name":"Toxic Egg","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Whenever you add a <green>Skill</green> to your deck, it is Upgraded."},
+    "Incense Burner":{"Name":"Incense Burner","Counter":0,"Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Every 6 turns, gain <light-blue>1 Intangible</light-blue>."},
 
     "White Beast Statue":{"Name":"White Beast Statue","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"<c>Potions</c> always drop after combat."},
     
     "Bird-Faced Urn":{"Name":"Bird-Faced Urn","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Whenever you play a <blue>Power</blue>, <red>heal 2 HP</red>."},
     "Calipers":{"Name":"Calipers","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"At the start of your turn, lose <green>15 Block</green> rather than all of your <green>Block</green>."},
+    "Gambling Chip":{"Name":"Gambling Chip","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, discard any number of cards, then draw that many."},
     "Captain's Wheel":{"Name":"Captain's Wheel","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"At the start of your 3rd turn, gain <green>18 Block</green>."},
     "Dead Branch":{"Name":"Dead Branch","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Whenever you Exhaust a Card, add a random Card to your hand."},
     "Du-Vu Doll":{"Name":"Du-Vu Doll","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"For each <m>Curse</m> in your deck, start each combat with <red>1 additional Strength</red>."},

@@ -1069,7 +1069,7 @@ class Char():
 
                 self.warpedTongs = 1
 
-            elif relic.get("Name") == "Cultis Headpeace":
+            elif relic.get("Name") == "Cultist Headpiece":
                 ansiprint(self.displayName+": <blue>CAW! CAAAW!</blue>")
 
             elif relic.get("Name") == "Hand Drill":
@@ -1304,7 +1304,7 @@ class Char():
             elif relic.get("Name") == "Incense Burner":
                 self.incenseBurner = 1
 
-            elif relic.get("Name") == "Stone Calender":
+            elif relic.get("Name") == "Stone Calendar":
                 self.stoneCalender = 1
 
             elif relic.get("Name") == "Pocketwatch":
@@ -1511,7 +1511,7 @@ class Char():
                     
 
         for relic in self.relics:
-            if relic.get("Name") == "Oricalcum":
+            if relic.get("Name") == "Orichalcum":
                 if self.block == 0:
                     self.blocking(6,unaffectedBlock = True)
 
