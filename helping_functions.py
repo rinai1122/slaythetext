@@ -958,7 +958,7 @@ def upgradeCard(card,place,index=None):
     else:
         upgradePool = {k:v for k,v in entities.cards.items() if v.get("Upgraded") == True and v.get("Name").startswith(card["Name"]) == True}
 
-        card_add = rd.choices(list(upgradePool.items()))[0][1]
+        card_add = rd.choices(list(upgradePool.items()))[0][1].copy()
         card_add["Unique ID"] = card.get("Unique ID")
     
         if card.get("Name") == "Ritual Dagger":

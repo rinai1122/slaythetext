@@ -905,12 +905,8 @@ cards = {
     "Wraith Form +" :{"Name": "Wraith Form +", "Wraithness":1,"Intangible":3, "Energy": 3,"Upgraded": True,"Type": "Power" ,"Rarity": "Rare","Owner":"Silent","Info":"Gain <blue>3 Intangible</blue>. At the end of your turn, lose <green>1 Dexterity</green>."},
 
     #Ironclad Cards
-
-    "Strike": {"Name": "Strike", "Damage":6, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Ironclad","Info":"Deal <red>6 damage</red>."},
-    "Strike +": {"Name": "Strike +","Upgraded": True, "Damage":9, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Ironclad","Info":"Deal <red>9 damage</red>."},
-
-    "Defend": {"Name": "Defend", "Block":5, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Ironclad","Info":"Gain <green>5 Block</green>."},
-    "Defend +": {"Name": "Defend +","Upgraded": True, "Block":8, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Ironclad","Info":"Gain <green>8 Block</green>."},
+    # Strike/Defend are defined once (canonical) in the Silent section above;
+    # per-character starting copies are built in Char.set_deck with the right Owner.
 
     "Bash" :{"Name":"Bash","Damage":8, "Vulnerable":2,"Energy":2,"Type":"Attack","Rarity":"Basic","Owner":"Ironclad","Info":"Deal <red>8 damage</red>. Apply <light-blue>2 Vulnerable</light-blue>"},
     "Bash +" :{"Name":"Bash +","Damage":10, "Vulnerable":3,"Energy":2,"Type":"Attack", "Upgraded":True,"Rarity":"Basic","Owner":"Ironclad","Info":"Deal <red>10 damage</red>. Apply <light-blue>3 Vulnerable</light-blue>"},
@@ -1131,12 +1127,7 @@ cards = {
     "Juggernaut +" :{"Name":"Juggernaut +","Damage":7,"Energy":2,"Type":"Power","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"Whenever you gain <green>Block</green>, deal <red>7 damage</red> to a random enemy."},
 
     #Defect Cards
-
-    "Strike": {"Name": "Strike", "Damage":6, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Defect","Info":"Deal 6 damage."},
-    "Strike +": {"Name": "Strike +","Upgraded": True, "Damage":9, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Defect","Info":"Deal 9 damage."},
-
-    "Defend": {"Name": "Defend", "Block":5, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Defect","Info":"Gain 5 Block."},
-    "Defend +": {"Name": "Defend +","Upgraded": True, "Block":8, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Defect","Info":"Gain 8 Block."},
+    # Strike/Defend are defined once (canonical) in the Silent section above.
 
     "Zap": {"Name": "Zap", "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Defect","Info":"Channel 1 Lightning."},
     "Zap +": {"Name": "Zap +", "Upgraded": True, "Energy": 0,"Type": "Skill" ,"Rarity": "Basic","Owner":"Defect","Info":"Channel 1 Lightning."},
@@ -1468,7 +1459,7 @@ cards = {
     "Apparition": {"Name": "Apparition","Energy": 1,"Intangible":1,"Exhaust":True,"Ethereal":True,"Type": "Skill","Rarity": "Special","Owner":"Colorless","Info":"<BLUE>Ethereal</BLUE>. Gain <blue>1 Intangible</blue>. <BLUE>Exhaust</BLUE>."},
     "Apparition +": {"Name": "Apparition +","Energy": 1,"Intangible":1,"Exhaust":True,"Type": "Skill","Upgraded": True,"Rarity": "Special","Owner":"Colorless","Info":"Gain <blue>1 Intangible</blue>. <BLUE>Exhaust</BLUE>."},
 
-    "Ritual Dagger": {"Name": "Ritual Dagger","Energy": 1,"Damage":15,"FatalBonus":3,"Exhaust":True,"Type": "Attack","Rarity": "Special","Owner":"Colorless","Info":"Deal <red>15 damage</red>. If this kills the enemy, permanently increase this Card's <red>damage</red> by 3. <BLUE>Exhaust</BLUE>. UPGRADING THIS CARD IS CURRENLY ILL-ADVISED AS IT'S BUGGED!"},
+    "Ritual Dagger": {"Name": "Ritual Dagger","Energy": 1,"Damage":15,"FatalBonus":3,"Exhaust":True,"Type": "Attack","Rarity": "Special","Owner":"Colorless","Info":"Deal <red>15 damage</red>. If this kills the enemy, permanently increase this Card's <red>damage</red> by 3. <BLUE>Exhaust</BLUE>."},
     "Ritual Dagger +": {"Name": "Ritual Dagger +","Energy": 1,"Damage":15,"FatalBonus":5,"Exhaust":True,"Upgraded": True,"Type": "Attack","Rarity": "Special","Owner":"Colorless","Info":"Deal <red>15 damage</red>. If this kills the enemy, permanently increase this Card\'s <red>damage</red> by 5. <BLUE>Exhaust</BLUE>."},
 
     "Bite": {"Name": "Bite", "Damage":7,"Heal":2, "Energy": 1,"Type": "Attack" ,"Rarity": "Special","Owner":"Colorless","Info":"Deal <red>7 damage</red>. <red>Heal 2 HP</red>."},
