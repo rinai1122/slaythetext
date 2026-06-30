@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slay the Text — How to Play (New Players)</title>
+<style>
+  :root { color-scheme: dark; }
+  body { font-family: system-ui, "Segoe UI", Roboto, sans-serif; line-height: 1.6;
+         max-width: 820px; margin: 0 auto; padding: 2rem 1.2rem 5rem;
+         background:#16181d; color:#e6e6e6; }
+  h1 { color:#ffd24a; border-bottom:2px solid #333; padding-bottom:.3rem; }
+  h2 { color:#7ec8ff; margin-top:2rem; }
+  code, kbd { background:#23262e; padding:.1rem .35rem; border-radius:4px; font-size:.95em; }
+  table { border-collapse:collapse; width:100%; margin:1rem 0; }
+  th,td { border:1px solid #333; padding:.5rem .7rem; text-align:left; }
+  th { background:#23262e; }
+  .tag { font-weight:bold; }
+  .audience { background:#1d2733; border-left:4px solid #7ec8ff; padding:.7rem 1rem; border-radius:4px; }
+  .red{color:#ff6b6b}.green{color:#7CFC8A}.blue{color:#7ec8ff}.cyan{color:#6fe3e0}
+  .yellow{color:#ffd24a}.purple{color:#c78bff}
+  footer{margin-top:3rem;color:#888;font-size:.85em;border-top:1px solid #333;padding-top:1rem}
+</style>
+</head>
+<body>
+<h1>Slay the Text — How to Play</h1>
+<p class="audience"><strong>Audience:</strong> Brand-new players. If you have never
+played Slay the Spire (or its text version), start here. No prior knowledge assumed.</p>
+
+<h2>What is this game?</h2>
+<p>Slay the Text is a single-player, turn-based <em>deck-building roguelike</em>. You pick
+one of three heroes and climb a tower called <strong>The Spire</strong>. Along the way you
+fight monsters with a deck of <span class="blue">cards</span>, collect
+<span class="red">relics</span> and <span class="cyan">potions</span>, and try to reach the
+top without dying. When you die, the run is over — that is the "roguelike" part.</p>
+
+<h2>How you control the game</h2>
+<p>Everything is text. In almost every situation the game shows you a numbered list and you
+type the <span class="yellow">number</span> of what you want, then press <kbd>Enter</kbd>.</p>
+<ul>
+  <li>Don't know what something does? Type its <strong>exact name</strong> (e.g. <code>Strike</code>,
+      <code>Burning Blood</code>) at most prompts to get a short explanation.</li>
+  <li>You can <span class="yellow">save</span> only <em>during a battle</em>: type <code>Save</code> and press Enter.</li>
+  <li>The very first time you launch, say <strong>Yes</strong> to the built-in tutorial — it covers the same basics live.</li>
+</ul>
+
+<h2>The three heroes</h2>
+<table>
+  <tr><th>Hero</th><th>Style</th></tr>
+  <tr><td class="green">The Silent</td><td>Lots of cards, poison, and dagger/shiv combos.</td></tr>
+  <tr><td class="red">The Ironclad</td><td>Raw strength, big attacks, and self-healing.</td></tr>
+  <tr><td class="blue">The Defect</td><td>Channels elemental <em>Orbs</em> (Lightning, Frost, Dark, Plasma).</td></tr>
+</table>
+
+<h2>The map</h2>
+<p>Each <strong>Act</strong> is a branching map. You pick which connected room to enter next:</p>
+<table>
+  <tr><th>Room</th><th>What happens</th></tr>
+  <tr><td class="red">Creep</td><td>A normal fight.</td></tr>
+  <tr><td class="purple">Elite</td><td>A harder fight that always drops a <span class="red">Relic</span>.</td></tr>
+  <tr><td class="blue">Event (?)</td><td>A story choice — could be good or risky.</td></tr>
+  <tr><td class="yellow">Shop ($)</td><td>Spend gold on cards, relics, potions, or card removal.</td></tr>
+  <tr><td class="green">Fires (Rest Site)</td><td>Heal, or upgrade a card.</td></tr>
+  <tr><td class="red">Chest</td><td>A free relic.</td></tr>
+  <tr><td>Boss</td><td>The Act boss. Beat it to advance.</td></tr>
+</table>
+
+<h2>A turn of combat, step by step</h2>
+<ol>
+  <li>You gain <span class="yellow">Energy</span> (3 by default) and draw 5 cards.</li>
+  <li>Each card costs Energy. <span class="red">Attacks</span> deal damage,
+      <span class="green">Skills</span> defend or help, <span class="blue">Powers</span> are
+      permanent buffs for the rest of the fight.</li>
+  <li>Look at each enemy's <span class="red">Intent</span> — it tells you what they will do next
+      turn — and decide whether to attack or defend.</li>
+  <li><span class="green">Block</span> soaks up incoming damage but disappears at the start of
+      your next turn, so spend it the turn you make it.</li>
+  <li>End your turn. Leftover cards are discarded; enemies act; repeat until someone wins.</li>
+</ol>
+
+<h2>Words you'll see a lot</h2>
+<table>
+  <tr><td class="cyan">Vulnerable</td><td>Target takes <strong>50% more</strong> attack damage.</td></tr>
+  <tr><td class="cyan">Weak</td><td>Target deals <strong>25% less</strong> attack damage.</td></tr>
+  <tr><td class="cyan">Frail</td><td>Target gains <strong>25% less</strong> Block.</td></tr>
+  <tr><td class="green">Poison</td><td>Lose that much HP each turn; the number then drops by 1.</td></tr>
+  <tr><td class="red">Strength</td><td>+damage on each attack hit.</td></tr>
+  <tr><td class="green">Dexterity</td><td>+Block from each Block card.</td></tr>
+  <tr><td>Exhaust</td><td>Card leaves the deck for the rest of this combat.</td></tr>
+</table>
+
+<h2>Your first goals</h2>
+<ol>
+  <li><strong>Stay alive.</strong> HP carries between fights and is hard to get back.</li>
+  <li><strong>Keep your deck small.</strong> Remove weak starter cards at shops so you draw your good cards more often.</li>
+  <li><strong>Block the big hits, attack the small ones.</strong> Read intents and react.</li>
+  <li><strong>Don't hoard potions.</strong> A potion that saves your run is worth more than one you never used.</li>
+</ol>
+
+<p>When this feels comfortable, read <a href="general-tips.html" style="color:#7ec8ff">General Tips</a>.</p>
+
+<footer>Slay the Spire is a registered trademark of Mega Crit, LLC. This is a fan text version;
+please support the developers by buying the original game.</footer>
+</body>
+</html>
