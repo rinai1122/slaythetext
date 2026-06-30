@@ -1162,34 +1162,51 @@ class Char():
     def card_is_played (self,card,turn_counter,repeat: bool = False,exhaust:bool=False):
         
         self.card_in_play = card
-        n = self.card_in_play.get("Name")
         enemy_check = len(entities.list_of_enemies)
-
+        
         if repeat or exhaust:
             color = self.get_cardColor(self.card_in_play.get("Type"))
             ansiprint(f"<{color}>{self.card_in_play.get('Name')}</{color}> was played!")
 
         if self.card_in_play["Owner"] == "Silent":
             
-            if n in ("Strike", "Strike +"):
+            if self.card_in_play.get("Name") == "Strike":               
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+            elif self.card_in_play.get("Name") == "Strike +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
             
-            elif n in ("Defend", "Defend +"):
+            elif self.card_in_play.get("Name") == "Defend":
+                self.blocking(self.card_in_play["Block"])
+            
+            elif self.card_in_play.get("Name") == "Defend +":
                 self.blocking(self.card_in_play["Block"])
 
-            elif n in ("Neutralize", "Neutralize +"):
+            elif self.card_in_play.get("Name") == "Neutralize":             
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+                if enemy_check == len(entities.list_of_enemies):
+                    entities.list_of_enemies[self.target].set_weakness(self.card_in_play["Weakness"])
+                
+            elif self.card_in_play.get("Name") == "Neutralize +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 
                 if enemy_check == len(entities.list_of_enemies):
                     entities.list_of_enemies[self.target].set_weakness(self.card_in_play["Weakness"])
 
-            elif n in ("Survivor", "Survivor +"):
+            elif self.card_in_play.get("Name") == "Survivor":
+                self.blocking(self.card_in_play["Block"])
+                self.discard(self.card_in_play["Discard"])
+            
+            elif self.card_in_play.get("Name") == "Survivor +":
                 self.blocking(self.card_in_play["Block"])
                 self.discard(self.card_in_play["Discard"])
 
-            elif n in ("Bane", "Bane +"):
+            elif self.card_in_play.get("Name") == "Bane":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 
@@ -1197,7 +1214,15 @@ class Char():
                     if entities.list_of_enemies[self.target].poison > 0:                        
                         self.attack(self.card_in_play["Damage"])
 
-            elif n in ("Dagger Spray", "Dagger Spray +"):
+            elif self.card_in_play.get("Name") == "Bane +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+                if enemy_check == len(entities.list_of_enemies):
+                    if entities.list_of_enemies[self.target].poison > 0:                        
+                        self.attack(self.card_in_play["Damage"])
+
+            elif self.card_in_play.get("Name") == "Dagger Spray":
                 i = 0
 
                 while i < len(entities.list_of_enemies):
@@ -1215,19 +1240,55 @@ class Char():
                     if enemy_check == len(entities.list_of_enemies):
                         i += 1
 
-            elif n in ("Dagger Throw", "Dagger Throw +"):
+            elif self.card_in_play.get("Name") == "Dagger Spray +":
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check = len(entities.list_of_enemies)
+                    self.target = i
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        i += 1
+                
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check = len(entities.list_of_enemies)
+                    self.target = i                 
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        i += 1
+
+            elif self.card_in_play.get("Name") == "Dagger Throw":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.draw(self.card_in_play["Draw"])
+                self.discard(self.card_in_play["Discard"])
+
+            elif self.card_in_play.get("Name") == "Dagger Throw +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.draw(self.card_in_play["Draw"])
                 self.discard(self.card_in_play["Discard"])
             
                 
-            elif n in ("Flying Knee", "Flying Knee +"):
+            elif self.card_in_play.get("Name") == "Flying Knee":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.energyBoost(self.card_in_play["Energy Gain"])
 
-            elif n in ("Poisoned Stab", "Poisoned Stab +"):
+            elif self.card_in_play.get("Name") == "Flying Knee +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.energyBoost(self.card_in_play["Energy Gain"])
+
+            elif self.card_in_play.get("Name") == "Poisoned Stab":
+                enemy_check = len(entities.list_of_enemies)
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+                if enemy_check == len(entities.list_of_enemies):
+                    entities.list_of_enemies[self.target].set_poison(self.card_in_play["Poison"])
+            
+            elif self.card_in_play.get("Name") == "Poisoned Stab +":
                 enemy_check = len(entities.list_of_enemies)
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
@@ -1235,23 +1296,39 @@ class Char():
                 if enemy_check == len(entities.list_of_enemies):
                     entities.list_of_enemies[self.target].set_poison(self.card_in_play["Poison"])
 
-            elif n in ("Quick Slash", "Quick Slash +"):
+            elif self.card_in_play.get("Name") == "Quick Slash":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.draw(self.card_in_play["Draw"])
 
-            elif n in ("Slice", "Slice +"):
+            elif self.card_in_play.get("Name") == "Quick Slash +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.draw(self.card_in_play["Draw"])
+
+            elif self.card_in_play.get("Name") == "Slice":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
 
-            elif n in ("Sneaky Strike", "Sneaky Strike +"):
+            elif self.card_in_play.get("Name") == "Slice +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+
+            elif self.card_in_play.get("Name") == "Sneaky Strike":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 
                 if self.discard_counter > 0:
                     self.gainEnergy(self.card_in_play["Energy Gain"])
 
-            elif n in ("Sucker Punch", "Sucker Punch +"):
+            elif self.card_in_play.get("Name") == "Sneaky Strike +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+                if self.discard_counter > 0:
+                    self.gainEnergy(self.card_in_play["Energy Gain"])
+
+            elif self.card_in_play.get("Name") == "Sucker Punch":
                 
                 self.choose_enemy()     
                 self.attack(self.card_in_play["Damage"])
@@ -1259,8 +1336,15 @@ class Char():
                 if enemy_check == len(entities.list_of_enemies):
                     entities.list_of_enemies[self.target].set_weakness(self.card_in_play["Weakness"])
 
+            elif self.card_in_play.get("Name") == "Sucker Punch +":
+                self.choose_enemy()     
+                self.attack(self.card_in_play["Damage"])
+                
+                if enemy_check == len(entities.list_of_enemies):
+                    entities.list_of_enemies[self.target].set_weakness(self.card_in_play["Weakness"])
 
-            elif n in ("All-Out Attack", "All-Out Attack +"):
+
+            elif self.card_in_play.get("Name") == "All-Out Attack":
                 i = 0
                 while i < len(entities.list_of_enemies):
                     enemy_check = len(entities.list_of_enemies)
@@ -1270,34 +1354,61 @@ class Char():
                         i += 1
 
                 self.discard(self.card_in_play["Discard"],True)
+            
+            elif self.card_in_play.get("Name") == "All-Out Attack +":
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check = len(entities.list_of_enemies)
+                    self.target = i
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        i += 1
+        
+                self.discard(self.card_in_play["Discard"],True)
 
 
-            elif n in ("Backstab", "Backstab +"):
+            elif self.card_in_play.get("Name") == "Backstab":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
 
-            elif n in ("Choke", "Choke +"):
+            elif self.card_in_play.get("Name") == "Backstab +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+
+            elif self.card_in_play.get("Name") == "Choke":
                 self.choose_enemy()         
                 self.attack(self.card_in_play["Damage"])
                 
                 if enemy_check == len(entities.list_of_enemies):
                     entities.list_of_enemies[self.target].set_choke(self.card_in_play["Choking"])
 
-            elif n in ("Dash", "Dash +"):
+            elif self.card_in_play.get("Name") == "Choke +":
+                self.choose_enemy()         
+                self.attack(self.card_in_play["Damage"])
+                
+                if enemy_check == len(entities.list_of_enemies):
+                    entities.list_of_enemies[self.target].set_choke(self.card_in_play["Choking"])
+
+            elif self.card_in_play.get("Name") == "Dash":
+                self.choose_enemy()
+                self.blocking(self.card_in_play["Block"])
+                self.attack(self.card_in_play["Damage"])
+
+            elif self.card_in_play.get("Name") == "Dash +":
                 self.choose_enemy()
                 self.blocking(self.card_in_play["Block"])
                 self.attack(self.card_in_play["Damage"])
             
-            elif n == "Endless Agony":
+            elif self.card_in_play.get("Name") == "Endless Agony":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 #needs to create copy on draw and exhauste on play.
             
-            elif n == "Endless Agony +":
+            elif self.card_in_play.get("Name") == "Endless Agony +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
 
-            elif n in ("Eviscerate", "Eviscerate +"):
+            elif self.card_in_play.get("Name") == "Eviscerate":
                 self.choose_enemy()             
                 i = 0
                 while i < 3:
@@ -1306,7 +1417,26 @@ class Char():
                         break
                     i+=1
 
-            elif n in ("Finisher", "Finisher +"):
+            elif self.card_in_play.get("Name") == "Eviscerate +":
+                self.choose_enemy()             
+                i = 0
+                while i < 3:
+                    self.attack(self.card_in_play["Damage"])                    
+                    if enemy_check != len(entities.list_of_enemies):
+                        break
+                    i+=1        
+
+            elif self.card_in_play.get("Name") == "Finisher":
+                self.choose_enemy()             
+                i = 0
+                while i < self.attack_counter:
+                    self.attack(self.card_in_play["Damage"])
+            
+                    if enemy_check != len(entities.list_of_enemies):
+                        break
+                    i+=1
+
+            elif self.card_in_play.get("Name") == "Finisher +":
                 self.choose_enemy()             
                 i = 0
                 while i < self.attack_counter:
@@ -1316,7 +1446,7 @@ class Char():
                         break
                     i+=1
             
-            elif n in ("Flechettes", "Flechettes +"):
+            elif self.card_in_play.get("Name") == "Flechettes":
                 self.choose_enemy()
                 k = 0
                 for card in self.hand:
@@ -1329,7 +1459,30 @@ class Char():
                         break
                     i+=1
 
-            elif n in ("Heel Hook", "Heel Hook +"):
+            elif self.card_in_play.get("Name") == "Flechettes +":
+                self.choose_enemy()
+                k = 0
+                for card in self.hand:
+                    if card.get("Type") == "Skill":
+                        k += 1
+                i = 0
+                while i < k:
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check != len(entities.list_of_enemies):
+                        break
+                    i+=1
+
+            elif self.card_in_play.get("Name") == "Heel Hook":
+                self.choose_enemy()
+                heelhooky = False
+                if entities.list_of_enemies[self.target].weak > 0:
+                        heelhooky = True
+                self.attack(self.card_in_play["Damage"])
+                if heelhooky:
+                    self.gainEnergy(self.card_in_play["Energy Gain"])
+                    self.draw(self.card_in_play["Draw"])
+            
+            elif self.card_in_play.get("Name") == "Heel Hook +":
                 self.choose_enemy()
                 heelhooky = False
                 if entities.list_of_enemies[self.target].weak > 0:
@@ -1339,17 +1492,35 @@ class Char():
                     self.gainEnergy(self.card_in_play["Energy Gain"])
                     self.draw(self.card_in_play["Draw"])
 
-            elif n in ("Masterful Stab", "Masterful Stab +"):
+            elif self.card_in_play.get("Name") == "Masterful Stab":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+
+            elif self.card_in_play.get("Name") == "Masterful Stab +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                         
-            elif n in ("Predator", "Predator +"):
+            elif self.card_in_play.get("Name") == "Predator":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.set_tempDraw(self.card_in_play["Drawboost"])
+
+            elif self.card_in_play.get("Name") == "Predator +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.set_tempDraw(self.card_in_play["Drawboost"])
 
 
-            elif n in ("Riddle with Holes", "Riddle with Holes +"):
+            elif self.card_in_play.get("Name") == "Riddle with Holes":
+                self.choose_enemy()
+                i = 0
+                while i < 5:
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check != len(entities.list_of_enemies):
+                        break
+                    i+=1
+
+            elif self.card_in_play.get("Name") == "Riddle with Holes +":
                 self.choose_enemy()
                 i = 0
                 while i < 5:
@@ -1359,7 +1530,16 @@ class Char():
                     i+=1
                 
 
-            elif n in ("Skewer", "Skewer +"):
+            elif self.card_in_play.get("Name") == "Skewer":
+                self.choose_enemy()
+                i = 0
+                while i < self.energy:
+                    self.attack(self.card_in_play["Damage"])            
+                    if enemy_check != len(entities.list_of_enemies):
+                        break
+                    i+=1
+
+            elif self.card_in_play.get("Name") == "Skewer +":
                 self.choose_enemy()
                 i = 0
                 while i < self.energy:
@@ -1369,7 +1549,7 @@ class Char():
                     i+=1
             
 
-            elif n in ("Die Die Die", "Die Die Die +"):
+            elif self.card_in_play.get("Name") == "Die Die Die":
                 i = 0
                 while i < len(entities.list_of_enemies):
                     enemy_check =len(entities.list_of_enemies)
@@ -1379,9 +1559,30 @@ class Char():
                         pass
                     else:
                         i+=1
+            
+            elif self.card_in_play.get("Name") == "Die Die Die +":
+                i = 0
+                while i < len(entities.list_of_enemies):                    
+                    enemy_check =len(entities.list_of_enemies)
+                    self.target = i
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check != len(entities.list_of_enemies):
+                        pass
+                    else:
+                        i+=1
 
 
-            elif n in ("Glass Knife", "Glass Knife +"):
+            elif self.card_in_play.get("Name") == "Glass Knife":
+                self.choose_enemy()             
+                i = 0
+                while i < 2:
+                    self.attack(self.card_in_play["Damage"])                
+                    if enemy_check != len(entities.list_of_enemies):
+                        break
+                    i+=1
+                self.card_in_play["Damage"] -= 2
+
+            elif self.card_in_play.get("Name") == "Glass Knife +":
                 self.choose_enemy()             
                 i = 0
                 while i < 2:
@@ -1392,7 +1593,18 @@ class Char():
                 self.card_in_play["Damage"] -= 2
             
 
-            elif n in ("Grand Finale", "Grand Finale +"):
+            elif self.card_in_play.get("Name") == "Grand Finale":
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check =len(entities.list_of_enemies)
+                    self.target = i
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check != len(entities.list_of_enemies):
+                        pass
+                    else:
+                        i+=1
+
+            elif self.card_in_play.get("Name") == "Grand Finale +":
                 i = 0
                 while i < len(entities.list_of_enemies):
                     enemy_check =len(entities.list_of_enemies)
@@ -1403,22 +1615,35 @@ class Char():
                     else:
                         i+=1
                 
-            elif n in ("Unload", "Unload +"):
+            elif self.card_in_play.get("Name") == "Unload":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.discard_cards_by_type_opposite(self.card_in_play["DiscardType"])
 
-            elif n in ("Acrobatics", "Acrobatics +"):
+            elif self.card_in_play.get("Name") == "Unload +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.discard_cards_by_type_opposite(self.card_in_play["DiscardType"])
+
+            elif self.card_in_play.get("Name") == "Acrobatics":
+                self.draw(self.card_in_play["Draw"])
+                self.discard(self.card_in_play["Discard"])
+
+            elif self.card_in_play.get("Name") == "Acrobatics +":
                 self.draw(self.card_in_play["Draw"])
                 self.discard(self.card_in_play["Discard"])
 
 
-            elif n in ("Backflip", "Backflip +"):
+            elif self.card_in_play.get("Name") == "Backflip":
+                self.blocking(self.card_in_play["Block"])
+                self.draw(self.card_in_play["Draw"])
+
+            elif self.card_in_play.get("Name") == "Backflip +":
                 self.blocking(self.card_in_play["Block"])
                 self.draw(self.card_in_play["Draw"])
 
 
-            elif n in ("Blade Dance", "Blade Dance +"):
+            elif self.card_in_play.get("Name") == "Blade Dance":
                 i = 0
                 while i < self.card_in_play["Shivs"]:
                     if len(self.hand) < 10:
@@ -1427,7 +1652,16 @@ class Char():
                         self.add_CardToDiscardpile({"Name":"Shiv","Energy":0,"Damage":4,"Exhaust":True,"Type":"Attack","Rarity": "Common","Owner":"Silent"})
                     i += 1
 
-            elif n in ("Cloak and Dagger", "Cloak and Dagger +"):
+            elif self.card_in_play.get("Name") == "Blade Dance +":
+                i = 0
+                while i < self.card_in_play["Shivs"]:
+                    if len(self.hand) < 10:
+                        self.add_CardToHand({"Name":"Shiv","Energy":0,"Damage":4,"Exhaust":True,"Type":"Attack","Rarity": "Common","Owner":"Silent"})
+                    else:
+                        self.add_CardToDiscardpile({"Name":"Shiv","Energy":0,"Damage":4,"Exhaust":True,"Type":"Attack","Rarity": "Common","Owner":"Silent"})
+                    i += 1      
+
+            elif self.card_in_play.get("Name") == "Cloak and Dagger":
                 self.blocking(self.card_in_play["Block"])
                 i = 0
                 while i < self.card_in_play["Shivs"]:
@@ -1437,61 +1671,111 @@ class Char():
                         self.discard_pile.append({"Name":"Shiv","Energy":0,"Damage":4,"Exhaust":True,"Type":"Attack","Rarity": "Common","Owner":"Silent"})
                     i += 1
 
-            elif n in ("Deadly Poison", "Deadly Poison +"):
+            elif self.card_in_play.get("Name") == "Cloak and Dagger +":
+                self.blocking(self.card_in_play["Block"])
+                i = 0
+                while i < self.card_in_play["Shivs"]:
+                    if len(self.hand) < 10:
+                        self.hand.append({"Name":"Shiv","Energy":0,"Damage":4,"Exhaust":True,"Type":"Attack","Rarity": "Common","Owner":"Silent"})
+                    else:
+                        self.discard_pile.append({"Name":"Shiv","Energy":0,"Damage":4,"Exhaust":True,"Type":"Attack","Rarity": "Common","Owner":"Silent"})
+                    i += 1
+
+            elif self.card_in_play.get("Name") == "Deadly Poison":
+                self.choose_enemy()
+                entities.list_of_enemies[self.target].set_poison(self.card_in_play["Poison"])
+            
+            elif self.card_in_play.get("Name") == "Deadly Poison +":
                 self.choose_enemy()
                 entities.list_of_enemies[self.target].set_poison(self.card_in_play["Poison"])
 
-            elif n in ("Deflect", "Deflect +"):
+            elif self.card_in_play.get("Name") == "Deflect":
+                self.blocking(self.card_in_play["Block"])
+            
+            elif self.card_in_play.get("Name") == "Deflect +":
                 self.blocking(self.card_in_play["Block"])
 
-            elif n in ("Dodge and Roll", "Dodge and Roll +"):
+            elif self.card_in_play.get("Name") == "Dodge and Roll":
                 self.blocking(self.card_in_play["Block"])
                 self.blockingNextTurn(self.card_in_play["Block"])
 
-            elif n in ("Outmaneuver", "Outmaneuver +"):
+            elif self.card_in_play.get("Name") == "Dodge and Roll +":
+                self.blocking(self.card_in_play["Block"])
+                self.blockingNextTurn(self.card_in_play["Block"])
+
+            elif self.card_in_play.get("Name") == "Outmaneuver":
                 self.energyBoost(self.card_in_play["Energy Gain"])
 
-            elif n in ("Piercing Wail", "Piercing Wail +"):
+            elif self.card_in_play.get("Name") == "Outmaneuver +":
+                self.energyBoost(self.card_in_play["Energy Gain"])
+
+            elif self.card_in_play.get("Name") == "Piercing Wail":
                 for enemy in entities.list_of_enemies:
                     enemy.set_tempStrength(self.card_in_play["Strength Modifier"])
                     
 
-            elif n in ("Prepared", "Prepared +"):
+            elif self.card_in_play.get("Name") == "Piercing Wail +":
+                for enemy in entities.list_of_enemies:
+                    enemy.set_tempStrength(self.card_in_play["Strength Modifier"])
+                    
+
+            elif self.card_in_play.get("Name") == "Prepared":
                 self.draw(self.card_in_play["Draw"])
                 self.discard(self.card_in_play["Discard"])
 
-            elif n in ("Blur", "Blur +"):
+            elif self.card_in_play.get("Name") == "Prepared +":
+                self.draw(self.card_in_play["Draw"])
+                self.discard(self.card_in_play["Discard"])
+
+            elif self.card_in_play.get("Name") == "Blur":
                 self.blocking(self.card_in_play["Block"])
                 self.set_dontLoseBlock(self.card_in_play["KeepBlock"])
 
-            elif n == "Bouncing Flask":
+            elif self.card_in_play.get("Name") == "Blur +":
+                self.blocking(self.card_in_play["Block"])
+                self.set_dontLoseBlock(self.card_in_play["KeepBlock"])
+
+            elif self.card_in_play.get("Name") == "Bouncing Flask":
                 i = 0
                 while i < self.card_in_play["Bounces"]:
                     if len(entities.list_of_enemies) > 0:
                         entities.list_of_enemies[rd.randint(0,len(entities.list_of_enemies)-1)].set_poison(self.card_in_play.get("Poison"))
                     i += 1
 
-            elif n == "Bouncing Flask +":
+            elif self.card_in_play.get("Name") == "Bouncing Flask +":
                 i = 0
                 while i < self.card_in_play["Bounces"]:
                     if len(entities.list_of_enemies) > 0:
                         entities.list_of_enemies[rd.randint(0,len(entities.list_of_enemies)-1)].set_poison(self.card_in_play("Poison"))
                     i += 1
 
-            elif n in ("Calculated Gamble", "Calculated Gamble +"):
+            elif self.card_in_play.get("Name") == "Calculated Gamble":
                 draw_power = len(self.hand)
                 self.discard(len(self.hand), True)
                 self.draw(draw_power)
 
-            elif n in ("Catalyst", "Catalyst +"):
+            elif self.card_in_play.get("Name") == "Calculated Gamble +":
+                draw_power = len(self.hand)
+                self.discard(len(self.hand), True)
+                self.draw(draw_power)
+
+            elif self.card_in_play.get("Name") == "Catalyst":
                 self.choose_enemy()
                 entities.list_of_enemies[self.target].multiply_poison(self.card_in_play["Multiplikator"])
 
-            elif n in ("Concentrate", "Concentrate +"):
+            elif self.card_in_play.get("Name") == "Catalyst +":
+                self.choose_enemy()
+                entities.list_of_enemies[self.target].multiply_poison(self.card_in_play["Multiplikator"])
+
+            elif self.card_in_play.get("Name") == "Concentrate":                
                 self.discard(self.card_in_play["Discard"])
                 self.gainEnergy(self.card_in_play["Energy Gain"])
 
-            elif n in ("Crippling Cloud", "Crippling Cloud +"):
+            elif self.card_in_play.get("Name") == "Concentrate +":
+                self.discard(self.card_in_play["Discard"])
+                self.gainEnergy(self.card_in_play["Energy Gain"])
+
+            elif self.card_in_play.get("Name") == "Crippling Cloud":                    
                 i = 0
                 while i < len(entities.list_of_enemies):
                     enemy_check = len(entities.list_of_enemies)
@@ -1502,91 +1786,169 @@ class Char():
                         if enemy_check == len(entities.list_of_enemies):
                             i += 1      
 
-            elif n in ("Distraction", "Distraction +"):
+            elif self.card_in_play.get("Name") == "Crippling Cloud +":
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check = len(entities.list_of_enemies)
+                    entities.list_of_enemies[i].set_poison(self.card_in_play["Poison"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        enemy_check = len(entities.list_of_enemies)
+                        entities.list_of_enemies[i].set_weakness(self.card_in_play["Weakness"])
+                        if enemy_check == len(entities.list_of_enemies):
+                            i += 1  
+
+            elif self.card_in_play.get("Name") == "Distraction":
                 skill_cards = {k:v for k,v in entities.cards.items() if v.get("Type") == "Skill" and v.get("Owner") == self.name and v.get("Rarity") != "Basic" and v.get("Upgraded") == None}
                 card = rd.choices(list(skill_cards.items()))[0][1]              
                 card["This turn Energycost changed"] = True
                 card["Energy"] = 0              
                 self.add_CardToHand(card)
 
-            elif n in ("Escape Plan", "Escape Plan +"):
+            elif self.card_in_play.get("Name") == "Distraction +":
+                skill_cards = {k:v for k,v in entities.cards.items() if v.get("Type") == "Skill" and v.get("Owner") == self.name and v.get("Rarity") != "Basic" and v.get("Upgraded") == None}
+                card = rd.choices(list(skill_cards.items()))[0][1]              
+                card["This turn Energycost changed"] = True
+                card["Energy"] = 0              
+                self.add_CardToHand(card)
+
+            elif self.card_in_play.get("Name") == "Escape Plan":
                 self.draw(self.card_in_play["Draw"])
                 if self.hand[-1]["Type"] == "Skill":
                     self.blocking(self.card_in_play["Block"])
 
-            elif n in ("Expertise", "Expertise +"):
+            elif self.card_in_play.get("Name") == "Escape Plan +":
+                self.draw(self.card_in_play["Draw"])
+                if self.hand[-1]["Type"] == "Skill":
+                    self.blocking(self.card_in_play["Block"])
+
+            elif self.card_in_play.get("Name") == "Expertise":
                 while len(self.hand) < self.card_in_play["Draw"]:
                     self.draw(1)
 
-            elif n in ("Leg Sweep", "Leg Sweep +"):
+            elif self.card_in_play.get("Name") == "Expertise +":
+                while len(self.hand) < self.card_in_play["Draw"]:
+                    self.draw(1)
+
+            elif self.card_in_play.get("Name") == "Leg Sweep":
                 self.choose_enemy()
                 self.blocking(self.card_in_play["Block"])
                 entities.list_of_enemies[self.target].set_weakness(self.card_in_play["Weakness"])
 
-            elif n in ("Reflex", "Reflex +"):
+            elif self.card_in_play.get("Name") == "Leg Sweep +":
+                self.choose_enemy()
+                self.blocking(self.card_in_play["Block"])
+                entities.list_of_enemies[self.target].set_weakness(self.card_in_play["Weakness"])
+
+            elif self.card_in_play.get("Name") == "Reflex":
                 print("This card is unplayable.")
 
-            elif n in ("Tactician", "Tactician +"):
+            elif self.card_in_play.get("Name") == "Reflex +":
                 print("This card is unplayable.")
 
-            elif n in ("Setup", "Setup +"):
+            elif self.card_in_play.get("Name") == "Tactician":
+                print("This card is unplayable.")
+
+            elif self.card_in_play.get("Name") == "Tactician +":
+                print("This card is unplayable.")
+
+            elif self.card_in_play.get("Name") == "Setup":
                 self.putBackOnDeckFromHand(self.card_in_play["Back Putter"],0,"Energy changed until played")
 
-            elif n in ("Terror", "Terror +"):
+            elif self.card_in_play.get("Name") == "Setup +":                
+                self.putBackOnDeckFromHand(self.card_in_play["Back Putter"],0,"Energy changed until played")
+
+            elif self.card_in_play.get("Name") == "Terror":
                 self.choose_enemy()
                 entities.list_of_enemies[self.target].set_vulnerable(self.card_in_play["Vulnerable"])
 
-            elif n in ("Adrenaline", "Adrenaline +"):
+            elif self.card_in_play.get("Name") == "Terror +":
+                self.choose_enemy()
+                entities.list_of_enemies[self.target].set_vulnerable(self.card_in_play["Vulnerable"])
+
+            elif self.card_in_play.get("Name") == "Adrenaline":
                 self.gainEnergy(self.card_in_play["Energy Gain"])
                 self.draw(self.card_in_play["Draw"])
 
-            elif n in ("Alchemize", "Alchemize +"):
+            elif self.card_in_play.get("Name") == "Adrenaline +":
+                self.gainEnergy(self.card_in_play["Energy Gain"])
+                self.draw(self.card_in_play["Draw"])
+
+            elif self.card_in_play.get("Name") == "Alchemize":
                 
                 onePotionAlchemize = helping_functions.generatePotionRewards(event = True,amount = 1)[0]
                 self.add_potion(onePotionAlchemize)
                 
-            elif n in ("Corpse Explosion", "Corpse Explosion +"):
+            elif self.card_in_play.get("Name") == "Alchemize +":
+                onePotionAlchemize = helping_functions.generatePotionRewards(event = True,amount = 1)[0]
+                self.add_potion(onePotionAlchemize)
+                
+            elif self.card_in_play.get("Name") == "Corpse Explosion":
+                self.choose_enemy()
+                entities.list_of_enemies[self.target].set_poison(self.card_in_play["Poison"])
+                entities.list_of_enemies[self.target].set_corpseExplosion(True)
+
+            elif self.card_in_play.get("Name") == "Corpse Explosion +":
                 self.choose_enemy()
                 entities.list_of_enemies[self.target].set_poison(self.card_in_play["Poison"])
                 entities.list_of_enemies[self.target].set_corpseExplosion(True)
                 
-            elif n == "Doppelganger":
+            elif self.card_in_play.get("Name") == "Doppelganger":
                 self.energyBoost(self.energy)
                 self.set_tempDraw(self.energy)
 
-            elif n == "Doppelganger +":
+            elif self.card_in_play.get("Name") == "Doppelganger +":
                 self.energyBoost(self.energy + 1)
                 self.set_tempDraw(self.energy + 1)
 
-            elif n == "Malaise":
+            elif self.card_in_play.get("Name") == "Malaise":
                 self.choose_enemy()
                 entities.list_of_enemies[self.target].set_weakness(self.energy)
                 entities.list_of_enemies[self.target].set_strength(-self.energy)
 
-            elif n == "Malaise +":
+            elif self.card_in_play.get("Name") == "Malaise +":
                 self.choose_enemy()
                 entities.list_of_enemies[self.target].set_weakness(self.energy + 1)
                 entities.list_of_enemies[self.target].set_strength(-(self.energy +1))
 
-            elif n == "Nightmare":
+            elif self.card_in_play.get("Name") == "Nightmare":
                 self.copyCardsForNextTurn(self.card_in_play["Nightmare"])
 
-            elif n == "Nightmare":
+            elif self.card_in_play.get("Name") == "Nightmare":
                 self.copyCardsForNextTurn(self.card_in_play["Nightmare"])
 
-            elif n in ("Phantasmal Killer", "Phantasmal Killer +"):
+            elif self.card_in_play.get("Name") == "Phantasmal Killer":
                 i = 0
                 while i < self.card_in_play["DoubleDamage"]:
                     self.doubleDamage.append(turn_counter+1+len(self.doubleDamage))
                     i += 1
 
-            elif n in ("Bullet Time", "Bullet Time +"):
+            elif self.card_in_play.get("Name") == "Phantasmal Killer +":
+                i = 0
+                while i < self.card_in_play["DoubleDamage"]:
+                    self.doubleDamage.append(turn_counter+1+len(self.doubleDamage))
+                    i += 1
+
+            elif self.card_in_play.get("Name") == "Bullet Time":
                 self.set_cantDraw()
                 for card in self.hand:
                     card["This turn Energycost changed"] = True 
                     card["Energy"] = 0
 
-            elif n in ("Storm of Steel", "Storm of Steel +"):
+            elif self.card_in_play.get("Name") == "Bullet Time +":
+                self.set_cantDraw()
+                for card in self.hand:
+                    card["This turn Energycost changed"] = True 
+                    card["Energy"] = 0
+
+            elif self.card_in_play.get("Name") == "Storm of Steel":
+                shiv_draw_power = len(self.hand)
+                self.discard(len(self.hand), True)
+                i = 0
+                while i < shiv_draw_power:
+                    self.add_CardToHand({"Name":"Shiv","Energy":0,"Damage":4,"Exhaust":True,"Type":"Attack","Rarity": "Common","Owner":"Silent"})
+                    i += 1
+            
+            elif self.card_in_play.get("Name") == "Storm of Steel +":
                 shiv_draw_power = len(self.hand)
                 self.discard(len(self.hand), True)
                 i = 0
@@ -1594,78 +1956,147 @@ class Char():
                     self.add_CardToHand({"Name":"Shiv","Energy":0,"Damage":4,"Exhaust":True,"Type":"Attack","Rarity": "Common","Owner":"Silent"})
                     i += 1
 
-            elif n in ("Shiv", "Shiv +"):
+            elif self.card_in_play.get("Name") == "Shiv":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
 
-            elif n in ("Accuracy", "Accuracy +"):
+            elif self.card_in_play.get("Name") == "Shiv +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+
+            elif self.card_in_play.get("Name") == "Accuracy":
                 self.set_accuracy(self.card_in_play["Accuracy"])
 
-            elif n in ("Caltrops", "Caltrops +"):
-                self.set_spikes(self.card_in_play["Spikes"])
+            elif self.card_in_play.get("Name") == "Accuracy +":
+                self.set_accuracy(self.card_in_play["Accuracy"])
 
-            elif n in ("Footwork", "Footwork +"):
+            elif self.card_in_play.get("Name") == "Caltrops":
+                self.set_spikes(self.card_in_play["Spikes"])
+            
+            elif self.card_in_play.get("Name") == "Caltrops +":
+                self.set_spikes(self.card_in_play["Spikes"])            
+
+            elif self.card_in_play.get("Name") == "Footwork":
                 self.set_dexterity(self.card_in_play["Dexterity"])
 
-            elif n in ("Infinite Blades", "Infinite Blades +"):
+            elif self.card_in_play.get("Name") == "Footwork +":
+                self.set_dexterity(self.card_in_play["Dexterity"])
+
+            elif self.card_in_play.get("Name") == "Infinite Blades":
                 self.set_infiniteBlades(self.card_in_play["Infinite Blades"])
 
-            elif n in ("Noxious Fumes", "Noxious Fumes +"):
+            elif self.card_in_play.get("Name") == "Infinite Blades +":
+                self.set_infiniteBlades(self.card_in_play["Infinite Blades"])
+
+            elif self.card_in_play.get("Name") == "Noxious Fumes":
                 self.set_noxiousFumes(self.card_in_play["Noxiousness"])
 
-            elif n in ("Well-Laid Plans", "Well-Laid Plans +"):
+            elif self.card_in_play.get("Name") == "Noxious Fumes +":
+                self.set_noxiousFumes(self.card_in_play["Noxiousness"])
+
+            elif self.card_in_play.get("Name") == "Well-Laid Plans":
                 self.set_wellLaidPlans(self.card_in_play["Well Planed"])
             
-            elif n in ("A Thousand Cuts", "A Thousand Cuts +"):
+            elif self.card_in_play.get("Name") == "Well-Laid Plans +":
+                self.set_wellLaidPlans(self.card_in_play["Well Planed"])
+            
+            elif self.card_in_play.get("Name") == "A Thousand Cuts":
                 self.set_thousandCuts(self.card_in_play["Thousand Cuts"])
 
-            elif n in ("After Image", "After Image +"):
+            elif self.card_in_play.get("Name") == "A Thousand Cuts +":
+                self.set_thousandCuts(self.card_in_play["Thousand Cuts"])
+
+            elif self.card_in_play.get("Name") == "After Image":
                 self.set_afterImage(self.card_in_play["After Image"])
 
-            elif n in ("Envenom", "Envenom +"):
+            elif self.card_in_play.get("Name") == "After Image +":
+                self.set_afterImage(self.card_in_play["After Image"])
+
+            elif self.card_in_play.get("Name") == "Envenom":
                 self.set_envenom(self.card_in_play["Envenom"])
 
-            elif n in ("Tools of the Trade", "Tools of the Trade +"):
+            elif self.card_in_play.get("Name") == "Envenom +":
+                self.set_envenom(self.card_in_play["Envenom"])
+
+            elif self.card_in_play.get("Name") == "Tools of the Trade":
+                self.set_toolsOfTheTrade(self.card_in_play["Tools"])
+            
+            elif self.card_in_play.get("Name") == "Tools of the Trade +":
                 self.set_toolsOfTheTrade(self.card_in_play["Tools"])
 
-            elif n in ("Wraith Form", "Wraith Form +"):
+            elif self.card_in_play.get("Name") == "Wraith Form":
+                self.set_intangible(self.card_in_play["Intangible"])
+                self.set_wraithForm(self.card_in_play["Wraithness"])
+            
+            elif self.card_in_play.get("Name") == "Wraith Form +":
                 self.set_intangible(self.card_in_play["Intangible"])
                 self.set_wraithForm(self.card_in_play["Wraithness"])
 
-            elif n in ("Burst", "Burst +"):
+            elif self.card_in_play.get("Name") == "Burst":
+                preBurst = self.card_in_play.get("Burst")
+
+            elif self.card_in_play.get("Name") == "Burst +":
                 preBurst = self.card_in_play.get("Burst")
 
         elif self.card_in_play["Owner"] == "Ironclad":
             
-            if n in ("Strike", "Strike +"):
+            if self.card_in_play.get("Name") == "Strike":               
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+            elif self.card_in_play.get("Name") == "Strike +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
             
-            elif n in ("Defend", "Defend +"):
+            elif self.card_in_play.get("Name") == "Defend":
+                self.blocking(self.card_in_play["Block"])
+            
+            elif self.card_in_play.get("Name") == "Defend +":
                 self.blocking(self.card_in_play["Block"])
 
-            elif n in ("Bash", "Bash +"):
+            elif self.card_in_play.get("Name") == "Bash":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+                if enemy_check == len(entities.list_of_enemies):
+                    entities.list_of_enemies[self.target].set_vulnerable(self.card_in_play["Vulnerable"])
+                
+            elif self.card_in_play.get("Name") == "Bash +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 
                 if enemy_check == len(entities.list_of_enemies):
                     entities.list_of_enemies[self.target].set_vulnerable(self.card_in_play["Vulnerable"])
 
-            elif n in ("Anger", "Anger +"):
+            elif self.card_in_play.get("Name") == "Anger":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 
                 self.add_CardToDiscardpile(self.card_in_play)
 
-            elif n in ("Body Slam", "Body Slam +"):
+            elif self.card_in_play.get("Name") == "Anger +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+                self.add_CardToDiscardpile(self.card_in_play)
+
+            elif self.card_in_play.get("Name") == "Body Slam":
                 self.choose_enemy()
                 self.attack(self.block)
             
-            elif n in ("Clash", "Clash +"):
+            elif self.card_in_play.get("Name") == "Body Slam +":
+                self.choose_enemy()
+                self.attack(self.block)
+            
+            elif self.card_in_play.get("Name") == "Clash":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
 
-            elif n in ("Cleave", "Cleave +"):
+            elif self.card_in_play.get("Name") == "Clash +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+
+            elif self.card_in_play.get("Name") == "Cleave":
                 i = 0
 
                 while i < len(entities.list_of_enemies):
@@ -1675,45 +2106,86 @@ class Char():
                     if enemy_check == len(entities.list_of_enemies):
                         i += 1
 
-            elif n in ("Clothesline", "Clothesline +"):
+            elif self.card_in_play.get("Name") == "Cleave +":
+                i = 0
+
+                while i < len(entities.list_of_enemies):
+                    enemy_check = len(entities.list_of_enemies)
+                    self.target = i
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        i += 1
+
+            elif self.card_in_play.get("Name") == "Clothesline":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 
                 if enemy_check == len(entities.list_of_enemies):
                     entities.list_of_enemies[self.target].set_weakness(self.card_in_play["Weakness"])
 
-            elif n in ("Headbutt", "Headbutt +"):
+            elif self.card_in_play.get("Name") == "Clothesline +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+                if enemy_check == len(entities.list_of_enemies):
+                    entities.list_of_enemies[self.target].set_weakness(self.card_in_play["Weakness"])
+
+            elif self.card_in_play.get("Name") == "Headbutt":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 
                 self.putBackOnDeckFromDiscardPile(amount = 1, energyChange = None, energyChangeType = None, bottom = False, skip = False)
 
-            elif n in ("Heavy Blade", "Heavy Blade +"):
+            elif self.card_in_play.get("Name") == "Headbutt +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+                self.putBackOnDeckFromDiscardPile(amount = 1, energyChange = None, energyChangeType = None, bottom = False, skip = False)
+
+            elif self.card_in_play.get("Name") == "Heavy Blade":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+            elif self.card_in_play.get("Name") == "Heavy Blade +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
 
-            elif n in ("Iron Wave", "Iron Wave +"):
+            elif self.card_in_play.get("Name") == "Iron Wave":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.blocking(self.card_in_play.get("Block"))
 
-            elif n in ("Perfected Strike", "Perfected Strike +"):
+            elif self.card_in_play.get("Name") == "Iron Wave +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.blocking(self.card_in_play.get("Block"))
+
+            elif self.card_in_play.get("Name") == "Perfected Strike":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+
+            elif self.card_in_play.get("Name") == "Perfected Strike +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
             
-            elif n in ("Pommel Strike", "Pommel Strike +"):
+            elif self.card_in_play.get("Name") == "Pommel Strike":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.draw(self.card_in_play.get("Draw"))
 
-            elif n == "Sword Boomerang":
+            elif self.card_in_play.get("Name") == "Pommel Strike +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.draw(self.card_in_play.get("Draw"))
+
+            elif self.card_in_play.get("Name") == "Sword Boomerang":
                 i = 0
                 while i < self.card_in_play["Attacks"]:
                     if len(entities.list_of_enemies) > 0: #length needs to be checked because all enemies could die and then the random number would throw an exception
                         self.target = rd.randint(0,len(entities.list_of_enemies)-1)
                         self.attack(self.card_in_play["Damage"])    
                     i += 1
-            elif n == "Sword Boomerang +":
+            elif self.card_in_play.get("Name") == "Sword Boomerang +":
                 i = 0
                 while i < self.card_in_play["Attacks"]:
                     if len(entities.list_of_enemies) > 0:
@@ -1721,7 +2193,7 @@ class Char():
                         self.attack(self.card_in_play["Damage"])    
                     i += 1
             
-            elif n in ("Thunderclap", "Thunderclap +"):
+            elif self.card_in_play.get("Name") == "Thunderclap":
                 i = 0
                 while i < len(entities.list_of_enemies):
                     enemy_check = len(entities.list_of_enemies)
@@ -1737,7 +2209,23 @@ class Char():
                     if enemy_check == len(entities.list_of_enemies):
                         i += 1
 
-            elif n in ("Twin Strike", "Twin Strike +"):
+            elif self.card_in_play.get("Name") == "Thunderclap +":
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check = len(entities.list_of_enemies)
+                    self.target = i
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        i += 1
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check = len(entities.list_of_enemies)
+                    self.target = i
+                    entities.list_of_enemies[self.target].set_vulnerable(self.card_in_play["Vulnerable"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        i += 1
+
+            elif self.card_in_play.get("Name") == "Twin Strike":
                 self.choose_enemy()
                 i = 0
                 while i < 2:
@@ -1746,20 +2234,53 @@ class Char():
                         break
                     i+=1
 
-            elif n in ("Wild Strike", "Wild Strike +"):
+            elif self.card_in_play.get("Name") == "Twin Strike +":
+                self.choose_enemy()
+                i = 0
+                while i < 2:
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check != len(entities.list_of_enemies):
+                        break
+                    i+=1
+
+            elif self.card_in_play.get("Name") == "Wild Strike":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.add_CardToDiscardpile({"Name": "Wound", "Type": "Status", "Rarity": "Enemy","Owner":"The Spire","Info":"<RED>Unplayable</RED>."})
 
-            elif n in ("Blood for Blood", "Blood for Blood +"):
+            elif self.card_in_play.get("Name") == "Wild Strike +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.add_CardToDiscardpile({"Name": "Wound", "Type": "Status", "Rarity": "Enemy","Owner":"The Spire","Info":"<RED>Unplayable</RED>."})
+
+            elif self.card_in_play.get("Name") == "Blood for Blood":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+            elif self.card_in_play.get("Name") == "Blood for Blood +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
 
-            elif n in ("Carnage", "Carnage +"):
+            elif self.card_in_play.get("Name") == "Carnage":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])                
 
-            elif n in ("Dropkick", "Dropkick +"):
+            elif self.card_in_play.get("Name") == "Carnage +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+
+            elif self.card_in_play.get("Name") == "Dropkick":
+                self.choose_enemy()
+                vulnerable = False
+                if entities.list_of_enemies[self.target].vulnerable > 0:
+                    vulnerable = True                   
+                self.attack(self.card_in_play["Damage"])
+
+                if vulnerable:
+                    self.draw(self.card_in_play.get("Draw"))
+                    self.gainEnergy(self.card_in_play["Energy Gain"])
+                
+            elif self.card_in_play.get("Name") == "Dropkick +":
                 self.choose_enemy()
                 vulnerable = False
                 if entities.list_of_enemies[self.target].vulnerable > 0:
@@ -1770,12 +2291,17 @@ class Char():
                     self.draw(self.card_in_play.get("Draw"))
                     self.gainEnergy(self.card_in_play["Energy Gain"])
             
-            elif n in ("Hemokinesis", "Hemokinesis +"):
+            elif self.card_in_play.get("Name") == "Hemokinesis":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.receive_recoil_damage(self.card_in_play.get("Selfhurt"),directDamage= True)
 
-            elif n in ("Pummel", "Pummel +"):
+            elif self.card_in_play.get("Name") == "Hemokinesis +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.receive_recoil_damage(self.card_in_play.get("Selfhurt"),directDamage= True)
+
+            elif self.card_in_play.get("Name") == "Pummel":
                 self.choose_enemy()
                 i = 0
                 while i < self.card_in_play.get("Attacks"):
@@ -1784,21 +2310,44 @@ class Char():
                         break
                     i+=1
 
-            elif n in ("Rampage", "Rampage +"):
+            elif self.card_in_play.get("Name") == "Pummel +":
+                self.choose_enemy()
+                i = 0
+                while i < self.card_in_play.get("Attacks"):
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check != len(entities.list_of_enemies):
+                        break
+                    i+=1
+
+            elif self.card_in_play.get("Name") == "Rampage":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.card_in_play["Damage"] += self.card_in_play["Damage Gain"]
 
-            elif n in ("Reckless Charge", "Reckless Charge +"):
+            elif self.card_in_play.get("Name") == "Rampage +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.card_in_play["Damage"] += self.card_in_play["Damage Gain"]
+
+            elif self.card_in_play.get("Name") == "Reckless Charge":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.add_CardToDrawpile({"Name": "Dazed", "Ethereal": True, "Type": "Status", "Rarity": "Enemy", "Owner":"The Spire","Info":"<BLUE>Ethereal</BLUE>. <RED>Unplayable</RED>."})
 
-            elif n in ("Searing Blow", "Searing Blow +"):
+            elif self.card_in_play.get("Name") == "Reckless Charge +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.add_CardToDrawpile({"Name": "Dazed", "Ethereal": True, "Type": "Status", "Rarity": "Enemy", "Owner":"The Spire","Info":"<BLUE>Ethereal</BLUE>. <RED>Unplayable</RED>."})
+
+            elif self.card_in_play.get("Name") == "Searing Blow":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+            elif self.card_in_play.get("Name") == "Searing Blow +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
 
-            elif n in ("Sever Soul", "Sever Soul +"):
+            elif self.card_in_play.get("Name") == "Sever Soul":
                 self.choose_enemy()
                 i = 0
                 while i < len(self.hand):
@@ -1808,7 +2357,27 @@ class Char():
                         i+=1
                 self.attack(self.card_in_play["Damage"])
 
-            elif n in ("Uppercut", "Uppercut +"):
+            elif self.card_in_play.get("Name") == "Sever Soul +":
+                self.choose_enemy()
+                i = 0
+                while i < len(self.hand):
+                    if self.hand[i].get("Type") != "Attack":
+                        self.add_CardToExhaustQueue(self.hand.pop(i))
+                    else:
+                        i+=1
+                self.attack(self.card_in_play["Damage"])
+
+            elif self.card_in_play.get("Name") == "Uppercut":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+                if enemy_check == len(entities.list_of_enemies):
+                    entities.list_of_enemies[self.target].set_weakness(self.card_in_play["Weakness"])
+                
+                if enemy_check == len(entities.list_of_enemies):
+                    entities.list_of_enemies[self.target].set_vulnerable(self.card_in_play["Vulnerable"])
+
+            elif self.card_in_play.get("Name") == "Uppercut +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 
@@ -1819,7 +2388,7 @@ class Char():
                     entities.list_of_enemies[self.target].set_vulnerable(self.card_in_play["Vulnerable"])
 
 
-            elif n in ("Whirlwind", "Whirlwind +"):
+            elif self.card_in_play.get("Name") == "Whirlwind":                              
                 e = 0
                 while e < self.energy:
                     i = 0
@@ -1831,17 +2400,39 @@ class Char():
                             i+=1
                     e+=1
 
-            elif n in ("Bludgeon", "Bludgeon +"):
+            elif self.card_in_play.get("Name") == "Whirlwind +":                                
+                e = 0
+                while e < self.energy:
+                    i = 0
+                    while i < len(entities.list_of_enemies):
+                        enemy_check = len(entities.list_of_enemies)
+                        self.target = i
+                        self.attack(self.card_in_play["Damage"])
+                        if enemy_check == len(entities.list_of_enemies):
+                            i+=1
+                    e+=1
+
+            elif self.card_in_play.get("Name") == "Bludgeon":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
 
-            elif n in ("Feed", "Feed +"):
+            elif self.card_in_play.get("Name") == "Bludgeon +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+
+            elif self.card_in_play.get("Name") == "Feed":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 if enemy_check != len(entities.list_of_enemies):
                     self.set_maxHealth(self.card_in_play.get("MaxHealth Gain"))
 
-            elif n in ("Fiend Fire", "Fiend Fire +"):
+            elif self.card_in_play.get("Name") == "Feed +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                if enemy_check != len(entities.list_of_enemies):
+                    self.set_maxHealth(self.card_in_play.get("MaxHealth Gain"))
+
+            elif self.card_in_play.get("Name") == "Fiend Fire":
                 self.choose_enemy()
                 i = 0
                 while i < len(self.hand):
@@ -1853,7 +2444,20 @@ class Char():
                 while i < len(self.hand):
                     self.add_CardToExhaustQueue(self.hand.pop(i))
 
-            elif n in ("Immolate", "Immolate +"):
+            elif self.card_in_play.get("Name") == "Fiend Fire +":
+                self.choose_enemy()
+                i = 0
+                while i < len(self.hand):
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check != len(entities.list_of_enemies):
+                        break
+                    i+=1
+
+                i = 0
+                while i < len(self.hand):
+                    self.add_CardToExhaustQueue(self.hand.pop(i))
+
+            elif self.card_in_play.get("Name") == "Immolate":                               
 
                 i = 0
                 while i < len(entities.list_of_enemies):
@@ -1864,9 +2468,37 @@ class Char():
                         i+=1
                 
                 self.add_CardToDiscardpile({"Name": "Burn", "DiscardDamage": 2, "Type": "Status", "Rarity": "Enemy","Owner":"The Spire","Info":"<RED>Unplayable</RED>. At the end of your turn, take <red>2 damage</red>."})
+            
+            elif self.card_in_play.get("Name") == "Immolate +":                             
+
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check = len(entities.list_of_enemies)
+                    self.target = i
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        i+=1
+                
+                self.add_CardToDiscardpile({"Name": "Burn", "DiscardDamage": 2, "Type": "Status", "Rarity": "Enemy","Owner":"The Spire","Info":"<RED>Unplayable</RED>. At the end of your turn, take <red>2 damage</red>."})    
 
 
-            elif n in ("Reaper", "Reaper +"):
+            elif self.card_in_play.get("Name") == "Reaper":                             
+                healamount = 0
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check = len(entities.list_of_enemies)
+                    health_check = entities.list_of_enemies[i].health
+                    self.target = i
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        healamount += health_check - entities.list_of_enemies[i].health
+                        i+=1
+                    else:
+                        healamount += health_check
+
+                self.heal(healamount)
+
+            elif self.card_in_play.get("Name") == "Reaper +":                               
                 healamount = 0
                 i = 0
                 while i < len(entities.list_of_enemies):
@@ -1882,11 +2514,11 @@ class Char():
 
                 self.heal(healamount)
             
-            elif n == "Armaments":                              
+            elif self.card_in_play.get("Name") == "Armaments":                              
                 self.blocking(self.card_in_play["Block"])
                 self.removeCardsFromHand(amount = 1 , removeType = "Upgrade")
                 
-            elif n == "Armaments +":                                
+            elif self.card_in_play.get("Name") == "Armaments +":                                
                 i = 0
                 while i < len(self.hand):
                     if self.hand[i].get("Type") != "Status" and self.hand[i].get("Type") != "Curse" and self.hand[i].get("Upgraded") != True:
@@ -1894,11 +2526,23 @@ class Char():
                     else:
                         i+=1
 
-            elif n in ("Flex", "Flex +"):
+            elif self.card_in_play.get("Name") == "Flex":                               
                 self.set_strengthDecrease(self.card_in_play["Strength"])
                 self.set_strength(self.card_in_play["Strength"])
+            
+            elif self.card_in_play.get("Name") == "Flex +":                             
+                self.set_strengthDecrease(self.card_in_play["Strength"])
+                self.set_strength(self.card_in_play["Strength"])            
 
-            elif n in ("Havoc", "Havoc +"):
+            elif self.card_in_play.get("Name") == "Havoc":                              
+                storedHavoc = self.card_in_play.copy()
+                try:
+                    self.playCardFromTopOfDeck(exhaust=True)
+                except Exception as e:
+                    print(e)
+                self.card_in_play = storedHavoc.copy()
+
+            elif self.card_in_play.get("Name") == "Havoc +":
                 storedHavoc = self.card_in_play.copy()
                 try:
                     self.playCardFromTopOfDeck(exhaust=True)
@@ -1906,55 +2550,98 @@ class Char():
                     print(e)
                 self.card_in_play = storedHavoc.copy()
             
-            elif n in ("Shrug It Off", "Shrug It Off +"):
+            elif self.card_in_play.get("Name") == "Shrug It Off":
+                self.blocking(self.card_in_play.get("Block"))
+                self.draw(self.card_in_play.get("Draw"))
+
+            elif self.card_in_play.get("Name") == "Shrug It Off +":
                 self.blocking(self.card_in_play.get("Block"))
                 self.draw(self.card_in_play.get("Draw"))
             
-            elif n == "True Grit":
+            elif self.card_in_play.get("Name") == "True Grit":
                 self.blocking(self.card_in_play.get("Block"))
                 self.exhaust(1,random = True)
 
-            elif n == "True Grit +":
+            elif self.card_in_play.get("Name") == "True Grit +":
                 self.blocking(self.card_in_play.get("Block"))
                 self.exhaust(1,random = False)
             
-            elif n in ("War Cry", "War Cry +"):
+            elif self.card_in_play.get("Name") == "War Cry":
+                self.draw(self.card_in_play.get("Draw"))
+                self.putBackOnDeckFromHand(1,bottom = False,skip=False)
+            
+            elif self.card_in_play.get("Name") == "War Cry +":
                 self.draw(self.card_in_play.get("Draw"))
                 self.putBackOnDeckFromHand(1,bottom = False,skip=False)
 
-            elif n in ("Battle Trance", "Battle Trance +"):
+            elif self.card_in_play.get("Name") == "Battle Trance":
                 self.draw(self.card_in_play.get("Draw"))
                 self.set_cantDraw()
 
-            elif n in ("Blood Letting", "Blood Letting +"):
+            elif self.card_in_play.get("Name") == "Battle Trance +":
+                self.draw(self.card_in_play.get("Draw"))
+                self.set_cantDraw()
+
+            elif self.card_in_play.get("Name") == "Blood Letting":
                 self.receive_recoil_damage(self.card_in_play.get("Selfhurt"),directDamage=True)
                 self.gainEnergy(self.card_in_play["Energy Gain"])
             
-            elif n in ("Burning Pact", "Burning Pact +"):
+            elif self.card_in_play.get("Name") == "Blood Letting +":
+                self.receive_recoil_damage(self.card_in_play.get("Selfhurt"),directDamage=True)
+                self.gainEnergy(self.card_in_play["Energy Gain"])
+            
+            elif self.card_in_play.get("Name") == "Burning Pact":
                 self.exhaust(self.card_in_play.get("Exhaustion Amount"))
                 self.draw(self.card_in_play.get("Draw"))
 
-            elif n in ("Disarm", "Disarm +"):
+            elif self.card_in_play.get("Name") == "Burning Pact +":
+                self.exhaust(self.card_in_play.get("Exhaustion Amount"))
+                self.draw(self.card_in_play.get("Draw"))
+
+            elif self.card_in_play.get("Name") == "Disarm":
                 self.choose_enemy()
                 entities.list_of_enemies[self.target].set_strength(self.card_in_play.get("Strength"))
 
-            elif n == "Dual Wield":
+            elif self.card_in_play.get("Name") == "Disarm +":
+                self.choose_enemy()
+                entities.list_of_enemies[self.target].set_strength(self.card_in_play.get("Strength"))
+
+            elif self.card_in_play.get("Name") == "Dual Wield":
                 self.removeCardsFromHand(amount = self.card_in_play.get("Copy Amount"), removeType = "Duplicate")
             
-            elif n == "Dual Wield +":
+            elif self.card_in_play.get("Name") == "Dual Wield +":
                     self.removeCardsFromHand(amount = self.card_in_play.get("Copy Amount"), removeType = "Duplicate")
 
-            elif n in ("Entrench", "Entrench +"):
+            elif self.card_in_play.get("Name") == "Entrench":
+                self.blocking(self.block)
+            
+            elif self.card_in_play.get("Name") == "Entrench +":
                 self.blocking(self.block)
 
-            elif n in ("Flame Barrier", "Flame Barrier +"):
+            elif self.card_in_play.get("Name") == "Flame Barrier":
                 self.blocking(self.card_in_play.get("Block"))
                 self.set_tempSpikes(self.card_in_play.get("Spikes"))
             
-            elif n in ("Ghostly Armor", "Ghostly Armor +"):
+            elif self.card_in_play.get("Name") == "Flame Barrier +":
+                self.blocking(self.card_in_play.get("Block"))
+                self.set_tempSpikes(self.card_in_play.get("Spikes"))
+            
+            elif self.card_in_play.get("Name") == "Ghostly Armor":
+                self.blocking(self.block)
+            
+            elif self.card_in_play.get("Name") == "Ghostly Armor +":
                 self.blocking(self.block)
 
-            elif n in ("Infernal Blade", "Infernal Blade +"):
+            elif self.card_in_play.get("Name") == "Infernal Blade":
+                try:
+                    attack_cards = {k:v for k,v in entities.cards.items() if v.get("Type") == "Attack" and v.get("Owner") == self.name and v.get("Rarity") != "Basic" and v.get("Upgraded") == None}
+                    card = rd.choices(list(attack_cards.items()))[0][1]             
+                    card["This turn Energycost changed"] = True
+                    card["Energy"] = 0
+                    self.add_CardToHand(card)
+                except Exception as e:
+                    print("Infernal Blade:",e)
+            elif self.card_in_play.get("Name") == "Infernal Blade +":
                 try:
                     attack_cards = {k:v for k,v in entities.cards.items() if v.get("Type") == "Attack" and v.get("Owner") == self.name and v.get("Rarity") != "Basic" and v.get("Upgraded") == None}
                     card = rd.choices(list(attack_cards.items()))[0][1]             
@@ -1964,22 +2651,37 @@ class Char():
                 except Exception as e:
                     print("Infernal Blade:",e)
 
-            elif n in ("Intimidate", "Intimidate +"):
+            elif self.card_in_play.get("Name") == "Intimidate":
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    entities.list_of_enemies[i].set_weakness(self.card_in_play["Weakness"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        i+=1
+            
+            elif self.card_in_play.get("Name") == "Intimidate +":
                 i = 0
                 while i < len(entities.list_of_enemies):
                     entities.list_of_enemies[i].set_weakness(self.card_in_play["Weakness"])
                     if enemy_check == len(entities.list_of_enemies):
                         i+=1
 
-            elif n in ("Power Through", "Power Through +"):
+            elif self.card_in_play.get("Name") == "Power Through":
                 self.blocking(self.card_in_play.get("Block"))
                 self.add_CardToHand({"Name": "Wound", "Type": "Status", "Rarity": "Enemy","Owner":"The Spire","Info":"<RED>Unplayable</RED>."})
                 self.add_CardToHand({"Name": "Wound", "Type": "Status", "Rarity": "Enemy","Owner":"The Spire","Info":"<RED>Unplayable</RED>."})
 
-            elif n in ("Rage", "Rage +"):
+            elif self.card_in_play.get("Name") == "Power Through +":
+                self.blocking(self.card_in_play.get("Block"))
+                self.add_CardToHand({"Name": "Wound", "Type": "Status", "Rarity": "Enemy","Owner":"The Spire","Info":"<RED>Unplayable</RED>."})
+                self.add_CardToHand({"Name": "Wound", "Type": "Status", "Rarity": "Enemy","Owner":"The Spire","Info":"<RED>Unplayable</RED>."})
+
+            elif self.card_in_play.get("Name") == "Rage":
+                self.set_rage(self.card_in_play.get("Block"))
+            
+            elif self.card_in_play.get("Name") == "Rage +":
                 self.set_rage(self.card_in_play.get("Block"))
 
-            elif n in ("Second Wind", "Second Wind +"):
+            elif self.card_in_play.get("Name") == "Second Wind":
                 lencheck = len(self.hand)
                 i = 0
                 while i < len(self.hand):
@@ -1990,14 +2692,32 @@ class Char():
                 
                 blocking = (lencheck - len(self.hand)) * self.card_in_play.get("Block")
                 self.blocking(blocking)
+            
+            elif self.card_in_play.get("Name") == "Second Wind +":
+                lencheck = len(self.hand)
+                i = 0
+                while i < len(self.hand):
+                    if self.hand[i].get("Type") != "Attack":
+                        self.add_CardToExhaustQueue(self.hand.pop(i))
+                    else:
+                        i+=1
 
-            elif n in ("Seeing Red", "Seeing Red +"):
+                blocking = (lencheck - len(self.hand)) * self.card_in_play.get("Block")
+                self.blocking(blocking)
+
+            elif self.card_in_play.get("Name") == "Seeing Red":
+                self.gainEnergy(self.card_in_play["Energy Gain"])
+            
+            elif self.card_in_play.get("Name") == "Seeing Red +":
                 self.gainEnergy(self.card_in_play["Energy Gain"])
 
-            elif n in ("Sentinel", "Sentinel +"):
+            elif self.card_in_play.get("Name") == "Sentinel":
+                self.blocking(self.card_in_play["Block"])
+            
+            elif self.card_in_play.get("Name") == "Sentinel +":
                 self.blocking(self.card_in_play["Block"])
     
-            elif n in ("Shockwave", "Shockwave +"):
+            elif self.card_in_play.get("Name") == "Shockwave":
                 
                 i = 0
                 while i < len(entities.list_of_enemies):
@@ -2009,97 +2729,197 @@ class Char():
                         if enemy_check == len(entities.list_of_enemies):
                             i += 1
 
-            elif n in ("Spot Weakness", "Spot Weakness +"):
+            elif self.card_in_play.get("Name") == "Shockwave +":
+
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check = len(entities.list_of_enemies)
+                    entities.list_of_enemies[i].set_weakness(self.card_in_play["Weakness"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        enemy_check = len(entities.list_of_enemies)
+                        entities.list_of_enemies[i].set_vulnerable(self.card_in_play["Vulnerable"])
+                        if enemy_check == len(entities.list_of_enemies):
+                            i += 1              
+
+            elif self.card_in_play.get("Name") == "Spot Weakness":
                 self.choose_enemy()
 
                 if self.enemy_preview(self.target,spotWeaknessCheck=True):
                     self.set_strength(self.card_in_play.get("Strength"))
+            
+            
+            elif self.card_in_play.get("Name") == "Spot Weakness +":
+                self.choose_enemy()
+                
+                if self.enemy_preview(self.target,spotWeaknessCheck=True):
+                    self.set_strength(self.card_in_play.get("Strength"))
 
-            elif n in ("Double Tap", "Double Tap +"):
+            elif self.card_in_play.get("Name") == "Double Tap":
+                self.set_doubleTap(self.card_in_play.get("Tap"))
+            
+            elif self.card_in_play.get("Name") == "Double Tap +":
                 self.set_doubleTap(self.card_in_play.get("Tap"))
 
-            elif n in ("Exhume", "Exhume +"):
+            elif self.card_in_play.get("Name") == "Exhume":
                 self.draw_specific_cards_from_place(amount = 1,place = "Exhaustpile")
 
-            elif n in ("Impervious", "Impervious +"):
+            elif self.card_in_play.get("Name") == "Exhume +":
+                self.draw_specific_cards_from_place(amount = 1,place = "Exhaustpile")
+
+            elif self.card_in_play.get("Name") == "Impervious":
                 self.blocking(self.card_in_play.get("Block"))
 
-            elif n in ("Limit Break", "Limit Break +"):
+            elif self.card_in_play.get("Name") == "Impervious +":
+                self.blocking(self.card_in_play.get("Block"))   
+
+            elif self.card_in_play.get("Name") == "Limit Break":                
+                if self.strength >= 0:
+                    self.set_strength(self.strength)
+                else:
+                    self.set_strength(-self.strength)
+            elif self.card_in_play.get("Name") == "Limit Break +":
                 if self.strength >= 0:
                     self.set_strength(self.strength)
                 else:
                     self.set_strength(-self.strength)
 
-            elif n in ("Offering", "Offering +"):
+            elif self.card_in_play.get("Name") == "Offering":
                 self.receive_recoil_damage(self.card_in_play.get("Selfhurt"),directDamage=True)
                 self.draw(self.card_in_play.get("Draw"))
                 self.gainEnergy(self.card_in_play["Energy Gain"])
 
-            elif n in ("Combust", "Combust +"):
+            elif self.card_in_play.get("Name") == "Offering +":
+                self.receive_recoil_damage(self.card_in_play.get("Selfhurt"),directDamage=True)
+                self.draw(self.card_in_play.get("Draw"))
+                self.gainEnergy(self.card_in_play["Energy Gain"])  
+
+            elif self.card_in_play.get("Name") == "Combust":
                 self.set_combust(damage=5,selfharm=1)
 
-            elif n in ("Dark Embrace", "Dark Embrace +"):
+            elif self.card_in_play.get("Name") == "Combust +":
+                self.set_combust(damage=5,selfharm=1)
+
+            elif self.card_in_play.get("Name") == "Dark Embrace":
                 self.set_darkEmbrace(self.card_in_play.get("Draw"))
 
-            elif n in ("Evolve", "Evolve +"):
+            elif self.card_in_play.get("Name") == "Dark Embrace +":
+                self.set_darkEmbrace(self.card_in_play.get("Draw"))
+
+            elif self.card_in_play.get("Name") == "Evolve":
+                self.set_evolve(self.card_in_play.get("Draw"))
+            
+            elif self.card_in_play.get("Name") == "Evolve +":
                 self.set_evolve(self.card_in_play.get("Draw"))
 
-            elif n in ("Feel No Pain", "Feel No Pain +"):
+            elif self.card_in_play.get("Name") == "Feel No Pain":
                 self.set_feelNoPain(self.card_in_play.get("Block"))
 
-            elif n in ("Fire Breathing", "Fire Breathing +"):
+            elif self.card_in_play.get("Name") == "Feel No Pain +":
+                self.set_feelNoPain(self.card_in_play.get("Block"))
+
+            elif self.card_in_play.get("Name") == "Fire Breathing":
                 self.set_fireBreathing(self.card_in_play.get("Damage"))
 
-            elif n in ("Inflame", "Inflame +"):
+            elif self.card_in_play.get("Name") == "Fire Breathing +":
+                self.set_fireBreathing(self.card_in_play.get("Damage"))
+
+            elif self.card_in_play.get("Name") == "Inflame":
                 self.set_strength(self.card_in_play.get("Strength"))
 
-            elif n in ("Metallicize", "Metallicize +"):
+            elif self.card_in_play.get("Name") == "Inflame +":
+                self.set_strength(self.card_in_play.get("Strength"))
+
+            elif self.card_in_play.get("Name") == "Metallicize":
                 self.set_metallicice(self.card_in_play.get("Block"))
 
-            elif n in ("Rupture", "Rupture +"):
+            elif self.card_in_play.get("Name") == "Metallicize +":
+                self.set_metallicice(self.card_in_play.get("Block"))
+
+            elif self.card_in_play.get("Name") == "Rupture":
                 self.set_rupture(self.card_in_play.get("Strength"))
 
-            elif n in ("Barricade", "Barricade +"):
+            elif self.card_in_play.get("Name") == "Rupture +":
+                self.set_rupture(self.card_in_play.get("Strength"))
+
+            elif self.card_in_play.get("Name") == "Barricade":
+                self.set_barricade()
+
+            elif self.card_in_play.get("Name") == "Barricade +":
                 self.set_barricade()
             
-            elif n in ("Berserk", "Berserk +"):
+            elif self.card_in_play.get("Name") == "Berserk":
+                self.set_vulnerable(self.card_in_play.get("Vulnerable"))
+                self.set_energyGain(1)
+            
+            elif self.card_in_play.get("Name") == "Berserk +":
                 self.set_vulnerable(self.card_in_play.get("Vulnerable"))
                 self.set_energyGain(1)
 
-            elif n in ("Brutality", "Brutality +"):
+            elif self.card_in_play.get("Name") == "Brutality":
                 self.set_drawStrength(self.card_in_play.get("Draw"))
                 self.set_brutality(self.card_in_play.get("Selfhurt"))
 
-            elif n in ("Corruption", "Corruption +"):
-                self.set_corruption()
+            elif self.card_in_play.get("Name") == "Brutality +":
+                self.set_drawStrength(self.card_in_play.get("Draw"))
+                self.set_brutality(self.card_in_play.get("Selfhurt")) 
 
-            elif n in ("Demon Form", "Demon Form +"):
+            elif self.card_in_play.get("Name") == "Corruption":
+                self.set_corruption()
+                
+            elif self.card_in_play.get("Name") == "Corruption +":
+                self.set_corruption()   
+
+            elif self.card_in_play.get("Name") == "Demon Form":             
+                self.set_demonForm(self.card_in_play.get("Strength"))
+
+            elif self.card_in_play.get("Name") == "Demon Form +":
                 self.set_demonForm(self.card_in_play.get("Strength"))
         
-            elif n in ("Juggernaut", "Juggernaut +"):
+            elif self.card_in_play.get("Name") == "Juggernaut":
+                self.set_juggernaut(self.card_in_play.get("Damage"))
+
+            elif self.card_in_play.get("Name") == "Juggernaut +":
                 self.set_juggernaut(self.card_in_play.get("Damage"))
         
         elif self.card_in_play["Owner"] == "Defect":
 
-            if n in ("Strike", "Strike +"):
+            if self.card_in_play.get("Name") == "Strike":               
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+            elif self.card_in_play.get("Name") == "Strike +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
 
-            elif n in ("Defend", "Defend +"):
+            elif self.card_in_play.get("Name") == "Defend":
                 self.blocking(self.card_in_play["Block"])
 
-            elif n in ("Zap", "Zap +"):
+            elif self.card_in_play.get("Name") == "Defend +":
+                self.blocking(self.card_in_play["Block"])
+
+            elif self.card_in_play.get("Name") == "Zap":                                        
+                self.channelOrb("Lightning")
+                
+            elif self.card_in_play.get("Name") == "Zap +":
                 self.channelOrb("Lightning")
 
-            elif n in ("Dualcast", "Dualcast +"):
+            elif self.card_in_play.get("Name") == "Dualcast":
                 self.evokeOrb(amount=2)
 
-            elif n in ("Ball Lightning", "Ball Lightning +"):
+            elif self.card_in_play.get("Name") == "Dualcast +":
+                self.evokeOrb(amount=2)
+
+            elif self.card_in_play.get("Name") == "Ball Lightning":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.channelOrb("Lightning")
 
-            elif n in ("Barrage", "Barrage +"):
+            elif self.card_in_play.get("Name") == "Ball Lightning +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.channelOrb("Lightning")
+
+            elif self.card_in_play.get("Name") == "Barrage":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 
@@ -2110,29 +2930,61 @@ class Char():
                         break
                     i+=1
 
-            elif n in ("Beam Cell", "Beam Cell +"):
+            elif self.card_in_play.get("Name") == "Barrage +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                i = 0
+                while i < len(self.orbs):
+                    self.attack(self.card_in_play["Damage"])          
+                    if enemy_check != len(entities.list_of_enemies):
+                        break
+                    i+=1
+
+            elif self.card_in_play.get("Name") == "Beam Cell":             
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 
                 if enemy_check == len(entities.list_of_enemies):
                     entities.list_of_enemies[self.target].set_vulnerable(self.card_in_play["Vulnerable"])
 
-            elif n in ("Claw", "Claw +"):
+            elif self.card_in_play.get("Name") == "Beam Cell +":             
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+                if enemy_check == len(entities.list_of_enemies):
+                    entities.list_of_enemies[self.target].set_vulnerable(self.card_in_play["Vulnerable"])
+
+            elif self.card_in_play.get("Name") == "Claw":             
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.claw += self.card_in_play["Increase"]
 
-            elif n in ("Cold Snap", "Cold Snap +"):
+            elif self.card_in_play.get("Name") == "Claw +":             
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.claw += self.card_in_play["Increase"]
+
+            elif self.card_in_play.get("Name") == "Cold Snap":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.channelOrb("Frost")
 
-            elif n in ("Compile Driver", "Compile Driver +"):
+            elif self.card_in_play.get("Name") == "Cold Snap +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.channelOrb("Frost")
+
+            elif self.card_in_play.get("Name") == "Compile Driver":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])                    
                 self.draw(self.count_unique_orbs())
 
-            elif n in ("Go for the Eyes", "Go for the Eyes +"):
+            elif self.card_in_play.get("Name") == "Compile Driver +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])                    
+                self.draw(self.count_unique_orbs())
+
+            elif self.card_in_play.get("Name") == "Go for the Eyes":             
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 
@@ -2140,17 +2992,35 @@ class Char():
                     if self.enemy_preview(self.target,spotWeaknessCheck=True):
                         entities.list_of_enemies[self.target].set_weakness(self.card_in_play["Weakness"])
 
-            elif n in ("Rebound", "Rebound +"):
+            elif self.card_in_play.get("Name") == "Go for the Eyes +":             
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+                if enemy_check == len(entities.list_of_enemies):
+                    if self.enemy_preview(self.target,spotWeaknessCheck=True):
+                        entities.list_of_enemies[self.target].set_weakness(self.card_in_play["Weakness"])
+
+            elif self.card_in_play.get("Name") == "Rebound":             
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.preRebound += 1
 
-            elif n in ("Streamline", "Streamline +"):
+            elif self.card_in_play.get("Name") == "Rebound +":             
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.preRebound += 1
+
+            elif self.card_in_play.get("Name") == "Streamline":             
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.card_in_play["Pending Energy Reduction"] = True                    
 
-            elif n in ("Sweeping Beam", "Sweeping Beam +"):
+            elif self.card_in_play.get("Name") == "Streamline +":             
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.card_in_play["Pending Energy Reduction"] = True
+
+            elif self.card_in_play.get("Name") == "Sweeping Beam":             
                 i = 0
                 while i < len(entities.list_of_enemies):
                     enemy_check =len(entities.list_of_enemies)
@@ -2160,7 +3030,26 @@ class Char():
                         i+=1
                 self.draw(self.card_in_play["Draw"])
 
-            elif n in ("Blizzard", "Blizzard +"):
+            elif self.card_in_play.get("Name") == "Sweeping Beam +":             
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check =len(entities.list_of_enemies)
+                    self.target = i
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        i+=1
+                self.draw(self.card_in_play["Draw"])
+
+            elif self.card_in_play.get("Name") == "Blizzard":             
+                i = 0
+                while i < self.frostCounter:
+                    enemy_check =len(entities.list_of_enemies)
+                    self.target = i
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        i+=1
+                
+            elif self.card_in_play.get("Name") == "Blizzard +":
                 i = 0
                 while i < self.frostCounter:
                     enemy_check =len(entities.list_of_enemies)
@@ -2169,14 +3058,21 @@ class Char():
                     if enemy_check == len(entities.list_of_enemies):
                         i+=1
 
-            elif n in ("Bullseye", "Bullseye +"):
+            elif self.card_in_play.get("Name") == "Bullseye":             
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 
                 if enemy_check == len(entities.list_of_enemies):
                     entities.list_of_enemies[self.target].set_lockon(self.card_in_play["Lock-On"])
 
-            elif n in ("Doom and Gloom", "Doom and Gloom +"):
+            elif self.card_in_play.get("Name") == "Bullseye +":             
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+                if enemy_check == len(entities.list_of_enemies):
+                    entities.list_of_enemies[self.target].set_lockon(self.card_in_play["Lock-On"])
+
+            elif self.card_in_play.get("Name") == "Doom and Gloom":             
                 i = 0
                 while i < len(entities.list_of_enemies):
                     enemy_check =len(entities.list_of_enemies)
@@ -2186,20 +3082,52 @@ class Char():
                         i+=1
                 self.channelOrb(self.card_in_play["Orb"])
 
-            elif n in ("FTL", "FTL +"):
+            elif self.card_in_play.get("Name") == "Doom and Gloom +":             
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check =len(entities.list_of_enemies)
+                    self.target = i
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        i+=1
+                self.channelOrb(self.card_in_play["Orb"])
+
+            elif self.card_in_play.get("Name") == "FTL":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                
+                if self.card_counter <= self.card_in_play["Max"]:
+                    self.draw(self.card_in_play["Draw"])
+                    
+            elif self.card_in_play.get("Name") == "FTL +":             
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 
                 if self.card_counter <= self.card_in_play["Max"]:
                     self.draw(self.card_in_play["Draw"])
 
-            elif n in ("Melter", "Melter +"):
+            elif self.card_in_play.get("Name") == "Melter":             
+                self.choose_enemy()
+                entities.list_of_enemies[self.target].block = 0
+                self.attack(self.card_in_play["Damage"])
+                
+            elif self.card_in_play.get("Name") == "Melter +":             
                 self.choose_enemy()
                 entities.list_of_enemies[self.target].block = 0
                 self.attack(self.card_in_play["Damage"])
                 
 
-            elif n in ("Rip and Tear", "Rip and Tear +"):
+            elif self.card_in_play.get("Name") == "Rip and Tear":
+                randomEnemy = rd.randint(0,len(entities.list_of_enemies)-1)
+                self.target = randomEnemy
+                i = 0
+                while i < 2:
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check != len(entities.list_of_enemies):
+                        break
+                    i+=1
+                 
+            elif self.card_in_play.get("Name") == "Rip and Tear +":             
                 randomEnemy = rd.randint(0,len(entities.list_of_enemies)-1)
                 self.target = randomEnemy
                 i = 0
@@ -2209,7 +3137,7 @@ class Char():
                         break
                     i+=1
 
-            elif n == "Scrape":             
+            elif self.card_in_play.get("Name") == "Scrape":             
                 handLength = len(self.hand)
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])                    
@@ -2228,7 +3156,7 @@ class Char():
                 
                     self.discard(len(discardList),index=discardList,noMessage=False)
                 
-            elif n == "Scrape +":             
+            elif self.card_in_play.get("Name") == "Scrape +":             
                 handLength = len(self.hand)
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
@@ -2243,13 +3171,19 @@ class Char():
                 if len(discardList) > 0:
                     self.discard(len(discardList),index=discardList,noMessage=False)
 
-            elif n in ("Sunder", "Sunder +"):
+            elif self.card_in_play.get("Name") == "Sunder":             
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                if enemy_check != len(entities.list_of_enemies):
+                    self.gainEnergy(self.card_in_play.get("Energy Gain"))
+
+            elif self.card_in_play.get("Name") == "Sunder +":             
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 if enemy_check != len(entities.list_of_enemies):
                     self.gainEnergy(self.card_in_play.get("Energy Gain"))
                 
-            elif n in ("All for One", "All for One +"):
+            elif self.card_in_play.get("Name") == "All for One":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 if enemy_check == len(entities.list_of_enemies):
@@ -2262,12 +3196,30 @@ class Char():
                     if len(indexList) > 0:
                         self.draw_specific_cards_from_place(len(indexList),place="Discardpile",indexes = indexList)
 
-            elif n in ("Core Surge", "Core Surge +"):
+            elif self.card_in_play.get("Name") == "All for One +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                if enemy_check == len(entities.list_of_enemies):
+                    indexList = []
+                    i = 0
+                    for card in self.discard_pile:
+                        if card.get("Energy") == 0:
+                            indexList.append(i)
+                        i+=1
+                    if len(indexList) > 0:
+                        self.draw_specific_cards_from_place(len(indexList),place="Discardpile",indexes = indexList)
+
+            elif self.card_in_play.get("Name") == "Core Surge":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.set_artifact(self.card_in_play["Artifact"])
 
-            elif n in ("Hyperbeam", "Hyperbeam +"):
+            elif self.card_in_play.get("Name") == "Core Surge +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.set_artifact(self.card_in_play["Artifact"])
+
+            elif self.card_in_play.get("Name") == "Hyperbeam":
                 i = 0
                 while i < len(entities.list_of_enemies):
                     enemy_check = len(entities.list_of_enemies)
@@ -2277,7 +3229,24 @@ class Char():
                         i += 1
                 self.set_focus(self.card_in_play["Focus"])
 
-            elif n in ("Meteor Strike", "Meteor Strike +"):
+            elif self.card_in_play.get("Name") == "Hyperbeam +":
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check = len(entities.list_of_enemies)
+                    self.target = i
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check == len(entities.list_of_enemies):
+                        i += 1
+                self.set_focus(self.card_in_play["Focus"])
+
+            elif self.card_in_play.get("Name") == "Meteor Strike":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.channelOrb(self.card_in_play["Orb"])
+                self.channelOrb(self.card_in_play["Orb"])
+                self.channelOrb(self.card_in_play["Orb"])
+
+            elif self.card_in_play.get("Name") == "Meteor Strike +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.channelOrb(self.card_in_play["Orb"])
@@ -2285,7 +3254,7 @@ class Char():
                 self.channelOrb(self.card_in_play["Orb"])
 
 
-            elif n in ("Thunder Strike", "Thunder Strike +"):
+            elif self.card_in_play.get("Name") == "Thunder Strike":
                 
                 i = 0
                 while i < self.lightningCounter:
@@ -2295,54 +3264,106 @@ class Char():
                         self.attack(self.card_in_play["Damage"])
 
                     i += 1
-            elif n in ("Charge Battery", "Charge Battery +"):
+
+            elif self.card_in_play.get("Name") == "Thunder Strike +":
+                
+                i = 0
+                while i < self.lightningCounter:
+                    if len(entities.list_of_enemies) > 0:                        
+                        randomEnemy = rd.randint(0,len(entities.list_of_enemies)-1)
+                        self.target = randomEnemy
+                        self.attack(self.card_in_play["Damage"])
+
+                    i += 1
+            elif self.card_in_play.get("Name") == "Charge Battery":
                 self.blocking(self.card_in_play.get("Block"))
                 self.energyBoost(self.card_in_play["Energy Gain"])
 
-            elif n in ("Coolheaded", "Coolheaded +"):
+            elif self.card_in_play.get("Name") == "Charge Battery +":
+                self.blocking(self.card_in_play.get("Block"))
+                self.energyBoost(self.card_in_play["Energy Gain"])
+
+            elif self.card_in_play.get("Name") == "Coolheaded":
                 self.channelOrb(self.card_in_play.get("Orb"))
                 self.draw(self.card_in_play["Draw"])
 
-            elif n in ("Hologram", "Hologram +"):
+            elif self.card_in_play.get("Name") == "Coolheaded +":
+                self.channelOrb(self.card_in_play.get("Orb"))
+                self.draw(self.card_in_play["Draw"])
+
+            elif self.card_in_play.get("Name") == "Hologram":
                 self.blocking(self.card_in_play.get("Block"))
                 self.draw_specific_cards_from_place(amount=1,place="Discardpile")
 
-            elif n in ("Leap", "Leap +"):
+            elif self.card_in_play.get("Name") == "Hologram +":
+                self.blocking(self.card_in_play.get("Block"))
+                self.draw_specific_cards_from_place(amount=1,place="Discardpile")
+
+            elif self.card_in_play.get("Name") == "Leap":
                 self.blocking(self.card_in_play.get("Block"))
 
-            elif n in ("Recursion", "Recursion +"):
+            elif self.card_in_play.get("Name") == "Leap +":
+                self.blocking(self.card_in_play.get("Block"))
+
+            elif self.card_in_play.get("Name") == "Recursion":
                 if len(self.orbs) > 0:
                     self.channelOrb(copy.copy(self.orbs[0]))
 
-            elif n == "Stack":
+            elif self.card_in_play.get("Name") == "Recursion +":
+                if len(self.orbs) > 0:
+                    self.channelOrb(copy.copy(self.orbs[0]))
+
+            elif self.card_in_play.get("Name") == "Stack":
                 self.blocking(len(self.discard_pile))
 
-            elif n == "Stack +":
+            elif self.card_in_play.get("Name") == "Stack +":
                 self.blocking(len(self.discard_pile) + 3)
 
-            elif n in ("Steam Barrier", "Steam Barrier +"):
+            elif self.card_in_play.get("Name") == "Steam Barrier":
                 
                 self.blocking(self.card_in_play.get("Block"))
                 if self.card_in_play["Block"] > 0:
                     self.card_in_play["Block"] -= 1
 
-            elif n in ("TURBO", "TURBO +"):
+            elif self.card_in_play.get("Name") == "Steam Barrier +":
+                
+                self.blocking(self.card_in_play.get("Block"))
+                if self.card_in_play["Block"] > 0:
+                    self.card_in_play["Block"] -= 1
+
+            elif self.card_in_play.get("Name") == "TURBO":
                 
                 self.gainEnergy(self.card_in_play.get("Energy Gain"))
                 self.add_CardToDiscardpile({"Name": "Void", "Ethereal": True, "Type": "Status", "Rarity": "Enemy", "Owner":"The Spire","Info":"Unplayable Whenever this card is drawn, lose 1 Energy. Ethereal."})
 
-            elif n in ("Aggregate", "Aggregate +"):
+            elif self.card_in_play.get("Name") == "TURBO +":
+                
+                self.gainEnergy(self.card_in_play.get("Energy Gain"))
+                self.add_CardToDiscardpile({"Name": "Void", "Ethereal": True, "Type": "Status", "Rarity": "Enemy", "Owner":"The Spire","Info":"Unplayable Whenever this card is drawn, lose 1 Energy. Ethereal."})
+
+            elif self.card_in_play.get("Name") == "Aggregate":
                 energyGain = math.floor(len(self.draw_pile)/self.card_in_play["Energy Divider"])
                 self.gainEnergy(energyGain)
 
-            elif n in ("Auto-Shields", "Auto-Shields +"):
+            elif self.card_in_play.get("Name") == "Aggregate +":
+                energyGain = math.floor(len(self.draw_pile)/self.card_in_play["Energy Divider"])
+                self.gainEnergy(energyGain)
+
+            elif self.card_in_play.get("Name") == "Auto-Shields":
                 if self.block == 0:
                     self.blocking(self.card_in_play.get("Block"))
 
-            elif n in ("Boot Sequence", "Boot Sequence +"):
+            elif self.card_in_play.get("Name") == "Auto-Shields +":
+                if self.block == 0:
+                    self.blocking(self.card_in_play.get("Block"))
+
+            elif self.card_in_play.get("Name") == "Boot Sequence":
                 self.blocking(self.card_in_play.get("Block"))
 
-            elif n in ("Chaos", "Chaos +"):
+            elif self.card_in_play.get("Name") == "Boot Sequence +":
+                self.blocking(self.card_in_play.get("Block"))
+
+            elif self.card_in_play.get("Name") == "Chaos":
                 orbs = ["Lightning","Frost","Dark","Plasma"]
                 orbs = rd.sample(orbs,counts=[2,2,2,2],k=self.card_in_play["Orb Amount"])
                 i = 0
@@ -2350,20 +3371,38 @@ class Char():
                     self.channelOrb(orbs[i])
                     i+=1
 
-            elif n in ("Chill", "Chill +"):
+            elif self.card_in_play.get("Name") == "Chaos +":
+                orbs = ["Lightning","Frost","Dark","Plasma"]
+                orbs = rd.sample(orbs,counts=[2,2,2,2],k=self.card_in_play["Orb Amount"])
+                i = 0
+                while i < len(orbs):
+                    self.channelOrb(orbs[i])
+                    i+=1
+
+            elif self.card_in_play.get("Name") == "Chill":
                 i = 0
                 while i < len(entities.list_of_enemies):
                     self.channelOrb("Frost")
                     i+=1
 
-            elif n in ("Consume", "Consume +"):
+            elif self.card_in_play.get("Name") == "Chill +":
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    self.channelOrb("Frost")
+                    i+=1
+
+            elif self.card_in_play.get("Name") == "Consume":
                 self.set_focus(self.card_in_play["Focus"])
                 self.set_orbslots(-self.card_in_play["Orb Loss"])
 
-            elif n == "Darkness":
+            elif self.card_in_play.get("Name") == "Consume +":
+                self.set_focus(self.card_in_play["Focus"])
+                self.set_orbslots(-self.card_in_play["Orb Loss"])
+
+            elif self.card_in_play.get("Name") == "Darkness":
                 self.channelOrb(self.card_in_play["Orb"])
                 
-            elif n == "Darkness +":
+            elif self.card_in_play.get("Name") == "Darkness +":
                 self.channelOrb(self.card_in_play["Orb"])
                 for orb in self.orbs:
                     if orb.get("Name") == "Dark":
@@ -2372,25 +3411,35 @@ class Char():
                             darkchange = 0
                         orb["Evokation"] += darkchange
 
-            elif n == "Double Energy":
+            elif self.card_in_play.get("Name") == "Double Energy":
                 if self.energy > 0:
                     self.gainEnergy(self.energy - 1)
                     
-            elif n == "Double Energy +":
+            elif self.card_in_play.get("Name") == "Double Energy +":
                 if self.energy > 0:
                     self.gainEnergy(self.energy)
 
-            elif n in ("Equilibrium", "Equilibrium +"):
+            elif self.card_in_play.get("Name") == "Equilibrium":
                 self.blocking(self.card_in_play.get("Block"))
                 self.equilibrium += 1
 
-            elif n in ("Force Field", "Force Field +"):
+            elif self.card_in_play.get("Name") == "Equilibrium +":
+                self.blocking(self.card_in_play.get("Block"))
+                self.equilibrium += 1
+
+            elif self.card_in_play.get("Name") == "Force Field":
                 self.blocking(self.card_in_play.get("Block"))
 
-            elif n in ("Fusion", "Fusion +"):
+            elif self.card_in_play.get("Name") == "Force Field +":
+                self.blocking(self.card_in_play.get("Block"))
+
+            elif self.card_in_play.get("Name") == "Fusion":
                 self.channelOrb(self.card_in_play["Orb"])
 
-            elif n in ("Genetic Algorithm", "Genetic Algorithm +"):
+            elif self.card_in_play.get("Name") == "Fusion +":
+                self.channelOrb(self.card_in_play["Orb"])
+
+            elif self.card_in_play.get("Name") == "Genetic Algorithm":
                 self.blocking(self.card_in_play.get("Block"))
                     
                 for card in self.deck:
@@ -2398,20 +3447,37 @@ class Char():
                         card["Block"] += self.card_in_play["Increase"]
                 self.card_in_play["Block"] += self.card_in_play["Increase"]
 
-            elif n in ("Glacier", "Glacier +"):
+            elif self.card_in_play.get("Name") == "Genetic Algorithm +":
+                self.blocking(self.card_in_play.get("Block"))
+                    
+                for card in self.deck:
+                    if card.get("Unique ID") == self.card_in_play.get("Unique ID"):
+                        card["Block"] += self.card_in_play["Increase"]
+                self.card_in_play["Block"] += self.card_in_play["Increase"]
+
+            elif self.card_in_play.get("Name") == "Glacier":
                 self.blocking(self.card_in_play.get("Block"))
                 self.channelOrb(self.card_in_play["Orb"])
                 self.channelOrb(self.card_in_play["Orb"])
 
-            elif n in ("Overclock", "Overclock +"):
+            elif self.card_in_play.get("Name") == "Glacier +":
+                self.blocking(self.card_in_play.get("Block"))
+                self.channelOrb(self.card_in_play["Orb"])
+                self.channelOrb(self.card_in_play["Orb"])
+
+            elif self.card_in_play.get("Name") == "Overclock":
                 self.draw(self.card_in_play.get("Draw"))
                 self.add_CardToDiscardpile({"Name": "Burn", "DiscardDamage": 2, "Type": "Status", "Rarity": "Enemy","Owner":"The Spire","Info":"Unplayable. At the end of your turn, take 2 damage."})
 
-            elif n == "Overclock +":
+            elif self.card_in_play.get("Name") == "Overclock +":
                 self.draw(self.card_in_play.get("Draw"))
                 self.add_CardToDiscardpile({"Name": "Burn", "DiscardDamage": 2, "Type": "Status", "Rarity": "Enemy","Owner":"The Spire","Info":"Unplayable. At the end of your turn, take 2 damage."})
 
-            elif n == "Recycle":
+            elif self.card_in_play.get("Name") == "Overclock +":
+                self.draw(self.card_in_play.get("Draw"))
+                self.add_CardToDiscardpile({"Name": "Burn", "DiscardDamage": 2, "Type": "Status", "Rarity": "Enemy","Owner":"The Spire","Info":"Unplayable. At the end of your turn, take 2 damage."})
+
+            elif self.card_in_play.get("Name") == "Recycle":
 
                 if len(self.hand) > 0:
                     energyGain = 0
@@ -2436,7 +3502,7 @@ class Char():
                     self.gainEnergy(energyGain)
                     
 
-            elif n == "Recycle +":
+            elif self.card_in_play.get("Name") == "Recycle +":
                 answers = ["Yes","No"]
                 if len(self.hand) > 0:
                     energyGain = 0
@@ -2461,34 +3527,49 @@ class Char():
                     self.gainEnergy(energyGain)
                     
 
-            elif n in ("Reinforced Body", "Reinforced Body +"):
+            elif self.card_in_play.get("Name") == "Reinforced Body":
                 e = 0
                 while e < self.energy:
                     if len(entities.list_of_enemies) > 0:
                         self.blocking(self.card_in_play.get("Block"))
                     e+=1
 
-            elif n in ("Reprogram", "Reprogram +"):
+            elif self.card_in_play.get("Name") == "Reinforced Body +":
+                e = 0
+                while e < self.energy:
+                    if len(entities.list_of_enemies) > 0:
+                        self.blocking(self.card_in_play.get("Block"))
+                    e+=1            
+
+            elif self.card_in_play.get("Name") == "Reprogram":
                 self.set_strength(self.card_in_play.get("Changer"))
                 self.set_dexterity(self.card_in_play.get("Changer"))
                 self.set_focus(- self.card_in_play.get("Changer"))
 
-            elif n in ("Skim", "Skim +"):
+            elif self.card_in_play.get("Name") == "Reprogram +":
+                self.set_strength(self.card_in_play.get("Changer"))
+                self.set_dexterity(self.card_in_play.get("Changer"))
+                self.set_focus(- self.card_in_play.get("Changer"))
+
+            elif self.card_in_play.get("Name") == "Skim":
                 self.draw(self.card_in_play.get("Draw"))
 
-            elif n == "Tempest":
+            elif self.card_in_play.get("Name") == "Skim +":
+                self.draw(self.card_in_play.get("Draw"))                    
+
+            elif self.card_in_play.get("Name") == "Tempest":
                 e = 0
                 while e < self.energy:
                     self.channelOrb(self.card_in_play["Orb"])
                     e+=1
 
-            elif n == "Tempest +":
+            elif self.card_in_play.get("Name") == "Tempest +":
                 e = -1
                 while e < self.energy:
                     self.channelOrb(self.card_in_play["Orb"])
                     e+=1
 
-            elif n in ("White Noise", "White Noise +"):
+            elif self.card_in_play.get("Name") == "White Noise":
 
                 power_cards = {k:v for k,v in entities.cards.items() if v.get("Type") == "Power" and v.get("Owner") == self.name and v.get("Rarity") != "Basic" and v.get("Upgraded") == None}
                 card = rd.choices(list(power_cards.items()))[0][1]               
@@ -2497,17 +3578,29 @@ class Char():
                 card["Energy"] = 0              
                 self.add_CardToHand(card,unConfusable=True)
 
-            elif n in ("Amplify", "Amplify +"):
+            elif self.card_in_play.get("Name") == "White Noise +":
+
+                power_cards = {k:v for k,v in entities.cards.items() if v.get("Type") == "Power" and v.get("Owner") == self.name and v.get("Rarity") != "Basic" and v.get("Upgraded") == None}
+                card = rd.choices(list(power_cards.items()))[0][1]               
+                card = card.copy()
+                card["This turn Energycost changed"] = True
+                card["Energy"] = 0              
+                self.add_CardToHand(card,unConfusable=True)
+
+            elif self.card_in_play.get("Name") == "Amplify":
                 self.set_amplify(self.card_in_play.get("Amplificicy"))
 
-            elif n == "Fission":
+            elif self.card_in_play.get("Name") == "Amplify +":
+                self.set_amplify(self.card_in_play.get("Amplificicy"))
+
+            elif self.card_in_play.get("Name") == "Fission":
                 if len(self.orbs) > 0:
                     drawAndEnergy = len(self.orbs)
                     self.orbs = []
                     self.draw(drawAndEnergy)
                     self.gainEnergy(drawAndEnergy)
 
-            elif n == "Fission +":
+            elif self.card_in_play.get("Name") == "Fission +":
                 if len(self.orbs) > 0:
                     drawAndEnergy = len(self.orbs)
                     
@@ -2517,70 +3610,124 @@ class Char():
                     self.draw(drawAndEnergy)
                     self.gainEnergy(drawAndEnergy)
 
-            elif n == "Multicast":
+            elif self.card_in_play.get("Name") == "Multicast":
                 self.evokeOrb(amount=self.energy)
 
-            elif n == "Multicast +":
+            elif self.card_in_play.get("Name") == "Multicast +":
                 self.evokeOrb(amount=self.energy+1)
 
-            elif n in ("Rainbow", "Rainbow +"):
+            elif self.card_in_play.get("Name") == "Rainbow":
                 self.channelOrb("Lightning")
                 self.channelOrb("Frost")
                 self.channelOrb("Dark")
 
-            elif n in ("Reboot", "Reboot +"):
+            elif self.card_in_play.get("Name") == "Rainbow +":
+                self.channelOrb("Lightning")
+                self.channelOrb("Frost")
+                self.channelOrb("Dark")
+
+            elif self.card_in_play.get("Name") == "Reboot":
                 self.putBackOnDeckFromHand(len(self.hand),allCards=True)
                 self.discardBackInDrawpile()
                 self.draw(self.card_in_play["Draw"])
 
-            elif n in ("Seek", "Seek +"):
+            elif self.card_in_play.get("Name") == "Reboot +":
+                self.putBackOnDeckFromHand(len(self.hand),allCards=True)
+                self.discardBackInDrawpile()
+                self.draw(self.card_in_play["Draw"])
+
+            elif self.card_in_play.get("Name") == "Seek":
                 self.draw_specific_cards_from_place(amount = self.card_in_play["Draw"],place = "Drawpile")
 
-            elif n in ("Capacitor", "Capacitor +"):
+            elif self.card_in_play.get("Name") == "Seek +":
+                self.draw_specific_cards_from_place(amount = self.card_in_play["Draw"],place = "Drawpile")
+
+            elif self.card_in_play.get("Name") == "Capacitor":
                 self.set_orbslots(self.card_in_play["Orb"])
 
-            elif n in ("Defragment", "Defragment +"):
+            elif self.card_in_play.get("Name") == "Capacitor +":
+                self.set_orbslots(self.card_in_play["Orb"])
+
+            elif self.card_in_play.get("Name") == "Defragment":
                 self.set_focus(self.card_in_play.get("Focus"))
 
-            elif n in ("Heatsinks", "Heatsinks +"):
+            elif self.card_in_play.get("Name") == "Defragment +":
+                self.set_focus(self.card_in_play.get("Focus"))
+
+            elif self.card_in_play.get("Name") == "Heatsinks":
                 self.set_heatsinks(self.card_in_play.get("Draw"))
 
-            elif n in ("Hello World", "Hello World +"):
+            elif self.card_in_play.get("Name") == "Heatsinks +":
+                self.set_heatsinks(self.card_in_play.get("Draw"))
+
+            elif self.card_in_play.get("Name") == "Hello World":
                 self.set_helloWorld(1)
 
-            elif n in ("Loop", "Loop +"):
+            elif self.card_in_play.get("Name") == "Hello World +":
+                self.set_helloWorld(1)
+
+            elif self.card_in_play.get("Name") == "Loop":
                 self.set_loop(self.card_in_play.get("Loop"))
 
-            elif n in ("Self Repair", "Self Repair +"):
+            elif self.card_in_play.get("Name") == "Loop +":
+                self.set_loop(self.card_in_play.get("Loop"))
+
+            elif self.card_in_play.get("Name") == "Self Repair":
                 self.set_selfRepair(self.card_in_play.get("Heal"))
 
-            elif n == "Static Discharge":
+            elif self.card_in_play.get("Name") == "Self Repair +":
+                self.set_selfRepair(self.card_in_play.get("Heal"))
+
+            elif self.card_in_play.get("Name") == "Static Discharge":
                 self.set_staticDischarge(1)
 
-            elif n == "Static Discharge +":
+            elif self.card_in_play.get("Name") == "Static Discharge +":
                 self.set_staticDischarge(2)
 
-            elif n in ("Storm", "Storm +"):
+            elif self.card_in_play.get("Name") == "Storm":
                 self.set_storm(1)
 
-            elif n in ("Biased Cognition", "Biased Cognition +"):
+            elif self.card_in_play.get("Name") == "Storm +":
+                self.set_storm(1)
+
+            elif self.card_in_play.get("Name") == "Biased Cognition":
                 self.set_focus(self.card_in_play["Focus"])
                 self.set_biasedCognition(1)
 
-            elif n in ("Buffer", "Buffer +"):
+            elif self.card_in_play.get("Name") == "Biased Cognition +":
+                self.set_focus(self.card_in_play["Focus"])
+                self.set_biasedCognition(1)
+
+            elif self.card_in_play.get("Name") == "Buffer":
                 self.set_buffer(self.card_in_play["Buffer"])
 
-            elif n in ("Creative AI", "Creative AI +"):
+            elif self.card_in_play.get("Name") == "Buffer +":
+                self.set_buffer(self.card_in_play["Buffer"])
+
+            elif self.card_in_play.get("Name") == "Creative AI":
                 self.set_creativeAI(1)
 
-            elif n in ("Echo Form", "Echo Form +"):
+            elif self.card_in_play.get("Name") == "Creative AI +":
+                self.set_creativeAI(1)
+
+            elif self.card_in_play.get("Name") == "Echo Form":                    
                 self.set_echoForm(1)
 
-            elif n in ("Electrodynamics", "Electrodynamics +"):
+            elif self.card_in_play.get("Name") == "Echo Form +":
+                self.set_echoForm(1)
+
+            elif self.card_in_play.get("Name") == "Electrodynamics":
                 self.channelOrb(orb="Lightning",amount=self.card_in_play["Orbs"])
                 self.set_electrodynamics()
 
-            elif n in ("Machine Learning", "Machine Learning +"):
+            elif self.card_in_play.get("Name") == "Electrodynamics +":
+                self.channelOrb(orb="Lightning",amount=self.card_in_play["Orbs"])
+                self.set_electrodynamics()
+
+            elif self.card_in_play.get("Name") == "Machine Learning":
+                self.set_drawStrength(self.card_in_play["Draw"])
+
+            elif self.card_in_play.get("Name") == "Machine Learning +":
                 self.set_drawStrength(self.card_in_play["Draw"])
 
 
@@ -2588,14 +3735,17 @@ class Char():
 
         elif self.card_in_play["Owner"] == "Colorless":
 
-            if n in ("Bandage Up", "Bandage Up +"):
+            if self.card_in_play.get("Name") == "Bandage Up":
                 self.heal(self.card_in_play["Heal"])
 
-            elif n == "Blind":
+            elif self.card_in_play.get("Name") == "Bandage Up +":
+                self.heal(self.card_in_play["Heal"])
+
+            elif self.card_in_play.get("Name") == "Blind":
                 self.choose_enemy()
                 entities.list_of_enemies[self.target].set_weakness(self.card_in_play["Weakness"])
 
-            elif n == "Blind +":
+            elif self.card_in_play.get("Name") == "Blind +":
                 i = 0
                 while i < len(entities.list_of_enemies):
                     entities.list_of_enemies[i].set_weakness(self.card_in_play["Weakness"])
@@ -2604,17 +3754,26 @@ class Char():
                     else:
                         i+=1
 
-            elif n in ("Dark Shackles", "Dark Shackles +"):
+            elif self.card_in_play.get("Name") == "Dark Shackles":
+                self.choose_enemy()
+                entities.list_of_enemies[self.target].set_tempStrength(self.card_in_play["Strength Modifier"])
+                entities.list_of_enemies[self.target].set_strength(-self.card_in_play["Strength Modifier"])
+
+            elif self.card_in_play.get("Name") == "Dark Shackles +":
                 self.choose_enemy()
                 entities.list_of_enemies[self.target].set_tempStrength(self.card_in_play["Strength Modifier"])
                 entities.list_of_enemies[self.target].set_strength(-self.card_in_play["Strength Modifier"])
 
             
-            elif n in ("Deep Breath", "Deep Breath +"):
+            elif self.card_in_play.get("Name") == "Deep Breath":
                 self.discardBackInDrawpile()
                 self.draw(self.card_in_play["Draw"])
                 
-            elif n in ("Discovery", "Discovery +"):
+            elif self.card_in_play.get("Name") == "Deep Breath +":
+                self.discardBackInDrawpile()                
+                self.draw(self.card_in_play["Draw"])
+                
+            elif self.card_in_play.get("Name") == "Discovery":
                 
                 neutral_cards = {k:v for k,v in entities.cards.items() if v.get("Owner") == "Colorless"}
                 cards = rd.choices(list(neutral_cards.items()),k=3)
@@ -2627,7 +3786,20 @@ class Char():
 
                 helping_functions.pickCard(three_options,"Hand")
 
-            elif n in ("Dramatic Entrance", "Dramatic Entrance +"):
+            elif self.card_in_play.get("Name") == "Discovery +":
+                
+                neutral_cards = {k:v for k,v in entities.cards.items() if v.get("Owner") == "Colorless"}
+                cards = rd.choices(list(neutral_cards.items()),k=3)
+                
+                three_options = []
+                for card in cards:
+                    card[1]["This turn Energycost changed"] = True
+                    card[1]["Energy"] = 0
+                    three_options.append(copy.deepcopy(card[1]))
+
+                helping_functions.pickCard(three_options,"Hand")
+
+            elif self.card_in_play.get("Name") == "Dramatic Entrance":
                 i = 0
                 while i < len(entities.list_of_enemies):                    
                     enemy_check = len(entities.list_of_enemies)
@@ -2638,7 +3810,18 @@ class Char():
                     else:
                         i+=1
 
-            elif n == "Enlightenment":
+            elif self.card_in_play.get("Name") == "Dramatic Entrance +":
+                i = 0
+                while i < len(entities.list_of_enemies):
+                    enemy_check = len(entities.list_of_enemies)
+                    self.target = i
+                    self.attack(self.card_in_play["Damage"])
+                    if enemy_check != len(entities.list_of_enemies):
+                        pass
+                    else:
+                        i+=1
+
+            elif self.card_in_play.get("Name") == "Enlightenment":
                 for card in self.hand:
                     if type(card.get("Energy")) == int:
                         if card["Energy"] > 0:
@@ -2646,7 +3829,7 @@ class Char():
                             card["Energy"] = 1
                 ansiprint("All cards in your hand now cost <yellow>1 Energy</yellow> for the rest of the turn.")
             
-            elif n == "Enlightenment +":
+            elif self.card_in_play.get("Name") == "Enlightenment +":
                 for card in self.hand:
                     if type(card.get("Energy")) == int:
                         if card["Energy"] > 0:
@@ -2655,27 +3838,49 @@ class Char():
                     ansiprint("All cards in your hand now cost <yellow>1 Energy</yellow> for the rest of the battle.")
 
 
-            elif n in ("Finesse", "Finesse +"):
+            elif self.card_in_play.get("Name") == "Finesse":
                 self.blocking(self.card_in_play["Block"])
                 self.draw(self.card_in_play["Draw"])
 
-            elif n in ("Flash of Steel", "Flash of Steel +"):
+            elif self.card_in_play.get("Name") == "Finesse +":
+                self.blocking(self.card_in_play["Block"])
+                self.draw(self.card_in_play["Draw"])
+
+            elif self.card_in_play.get("Name") == "Flash of Steel":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.draw(self.card_in_play["Draw"])
+
+            elif self.card_in_play.get("Name") == "Flash of Steel +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.draw(self.card_in_play["Draw"])
             
-            elif n == "Forethought":
+            elif self.card_in_play.get("Name") == "Forethought":
 
                 self.putBackOnDeckFromHand(self.card_in_play["Back Putter"],self.card_in_play["Energy Change"],self.card_in_play["Energy Change Type"],bottom = True)
             
-            elif n == "Forethought +":
+            elif self.card_in_play.get("Name") == "Forethought +":
 
                 self.putBackOnDeckFromHand(len(self.hand),self.card_in_play["Energy Change"],self.card_in_play["Energy Change Type"],bottom = True,skip=True)
 
-            elif n in ("Good Instincts", "Good Instincts +"):
+            elif self.card_in_play.get("Name") == "Good Instincts":
                 self.blocking(self.card_in_play["Block"])
 
-            elif n in ("Impatience", "Impatience +"):
+            elif self.card_in_play.get("Name") == "Good Instincts +":
+                self.blocking(self.card_in_play["Block"])   
+
+            elif self.card_in_play.get("Name") == "Impatience":
+                attackCheck = [card for card in self.hand if card.get("Type") == "Attack"]
+                if len(attackCheck) == 0:
+                    self.draw(self.card_in_play["Draw"])                
+                else:
+                    print("This card is only playable if you have no attack cards in hand.")
+                    self.hand.append(self.card_in_play)
+                    self.card_in_play = None
+                    return
+
+            elif self.card_in_play.get("Name") == "Impatience +":
                 attackCheck = [card for card in self.hand if card.get("Type") == "Attack"]
                 if len(attackCheck) == 0:
                     self.draw(self.card_in_play["Draw"])                
@@ -2685,14 +3890,14 @@ class Char():
                     self.card_in_play = None
                     return
             
-            elif n == "Jack of All Trades":
+            elif self.card_in_play.get("Name") == "Jack of All Trades":
                 neutral_cards = {k:v for k,v in entities.cards.items() if v.get("Owner") == "Colorless" and v.get("Upgraded") == None}
                 card = rd.choices(list(neutral_cards.items()))[0][1]
                 card["This turn Energycost changed"] = True
                 card["Energy"] = 0
                 self.add_CardToHand(card)
 
-            elif n == "Jack of All Trades +":
+            elif self.card_in_play.get("Name") == "Jack of All Trades +":
                 i = 0
                 while i < 2:
                     neutral_cards = {k:v for k,v in entities.cards.items() if v.get("Owner") == "Colorless" and v.get("Upgraded") == None}
@@ -2702,7 +3907,7 @@ class Char():
                     self.add_CardToHand(card)
                     i+=1
 
-            elif n in ("Madness", "Madness +"):
+            elif self.card_in_play.get("Name") == "Madness":
                 if len(self.hand) > 0:
                     indexOfRandomCardInHand = rd.randint(0,len(self.hand)-1)
                     self.hand[indexOfRandomCardInHand]["Energy changed for the battle"] = True
@@ -2711,18 +3916,38 @@ class Char():
                 else:
                     print("You have no cards left in your hand.")       
 
-            elif n in ("Mind Blast", "Mind Blast +"):
+            elif self.card_in_play.get("Name") == "Madness +":
+                if len(self.hand) > 0:
+                    indexOfRandomCardInHand = rd.randint(0,len(self.hand)-1)
+                    self.hand[indexOfRandomCardInHand]["Energy changed for the battle"] = True
+                    self.hand[indexOfRandomCardInHand]["Energy"] = 0
+                    ansiprint("<blue>"+self.hand[indexOfRandomCardInHand]["Name"]+"</blue>","now costs 0 <yellow>Energy</yellow> for the rest of the battle.")
+                else:
+                    print("You have no cards left in your hand.")
+
+            elif self.card_in_play.get("Name") == "Mind Blast":
                 self.choose_enemy()
                 self.attack(len(self.draw_pile))
 
-            elif n in ("Panacea", "Panacea +"):
+            elif self.card_in_play.get("Name") == "Mind Blast +":
+                self.choose_enemy()
+                self.attack(len(self.draw_pile))
+
+            elif self.card_in_play.get("Name") == "Panacea":
                 self.set_artifact(self.card_in_play["Artifact"])
 
-            elif n in ("Panic Button", "Panic Button +"):
+            elif self.card_in_play.get("Name") == "Panacea +":
+                self.set_artifact(self.card_in_play["Artifact"])
+
+            elif self.card_in_play.get("Name") == "Panic Button":
                 self.blocking(self.card_in_play["Block"])
                 self.set_noBlock(2)
 
-            elif n in ("Purify", "Purify +"):
+            elif self.card_in_play.get("Name") == "Panic Button +":
+                self.blocking(self.card_in_play["Block"])
+                self.set_noBlock(2)
+
+            elif self.card_in_play.get("Name") == "Purify":             
                 i = 0
                 self.showHand()
                 answers = ["1","2"]
@@ -2739,22 +3964,72 @@ class Char():
                         print("Please type either 1 or 2.")
                         self.explainer_function(snap,answer=False)
 
-            elif n in ("Swift Strike", "Swift Strike +"):
+            elif self.card_in_play.get("Name") == "Purify +":               
+                i = 0
+                self.showHand()
+                answers = ["1","2"]
+                while i < self.card_in_play["Exhausting"]:
+                    snap = input("Do you want to exhaust another card? (Yes/No)")
+                    if snap not in answers:
+                        print("You have to type either 1 or 2.")
+                    if snap == "1":
+                        self.exhaust(1)
+                        i += 1
+                    elif snap == "2":
+                        break
+                    else:
+                        print("Please type either 1 or 2.")
+                        self.explainer_function(snap,answer=False)
+
+            elif self.card_in_play.get("Name") == "Swift Strike":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
 
-            elif n == "Trip":
+            elif self.card_in_play.get("Name") == "Swift Strike +":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+
+            elif self.card_in_play.get("Name") == "Trip":
                 self.choose_enemy()
                 entities.list_of_enemies[self.target].set_vulnerable(self.card_in_play["Vulnerable"])
 
-            elif n == "Trip +":
+            elif self.card_in_play.get("Name") == "Trip +":
                 i = 0
                 while i < len(entities.list_of_enemies):
                     entities.list_of_enemies[i].set_weakness(self.card_in_play["Weakness"])
                     if enemy_check == len(entities.list_of_enemies):
                         i+=1
 
-            elif n in ("Apotheosis", "Apotheosis +"):
+            elif self.card_in_play.get("Name") == "Apotheosis":
+                i = 0
+                while i < len(self.hand):
+                    if self.hand[i].get("Type") != "Status" and self.hand[i].get("Type") != "Curse" and self.hand[i].get("Upgrade") == None:
+                        helping_functions.upgradeCard(self.hand.pop(i),"Hand",index = i)
+                    
+                    i+=1
+                
+                i = 0
+                while i < len(self.draw_pile):
+                    if self.draw_pile[i].get("Type") != "Status" and self.draw_pile[i].get("Type") != "Curse" and self.draw_pile[i].get("Upgrade") == None:
+                        helping_functions.upgradeCard(self.draw_pile.pop(i),"Drawpile",index = i)
+                    
+                    i+=1    
+
+                i = 0
+                while i < len(self.discard_pile):
+                    if self.discard_pile[i].get("Type") != "Status" and self.discard_pile[i].get("Type") != "Curse" and self.discard_pile[i].get("Upgrade") == None:
+                        helping_functions.upgradeCard(self.discard_pile.pop(i),"Discardpile",index = i)
+                    
+                    i+=1
+
+                i = 0
+                while i < len(self.exhaust_pile):
+                    if self.exhaust_pile[i].get("Type") != "Status" and self.exhaust_pile[i].get("Type") != "Curse" and self.exhaust_pile[i].get("Upgrade") == None:
+                        helping_functions.upgradeCard(self.exhaust_pile.pop(i),"Exhaustpile",index = i)
+                    
+                    i+=1
+            
+            elif self.card_in_play.get("Name") == "Apotheosis +":
                 i = 0
                 while i < len(self.hand):
                     if self.hand[i].get("Type") != "Status" and self.hand[i].get("Type") != "Curse" and self.hand[i].get("Upgrade") == None:
@@ -2783,7 +4058,18 @@ class Char():
                     
                     i+=1
 
-            elif n in ("Chrysalis", "Chrysalis +"):
+            elif self.card_in_play.get("Name") == "Chrysalis":
+                i = 0
+                while i < self.card_in_play["Cards"]:
+                    skill_cards = {k:v for k,v in entities.cards.items() if v.get("Type") == "Skill" and v.get("Owner") == self.name and v.get("Rarity") != "Basic"}
+                    #create a list of banned cards and exclude them from this pool via "not in list"
+                    card = rd.choices(list(skill_cards.items()))[0][1]
+                    card["Energy changed for the battle"] = True
+                    card["Energy"] = 0
+                    self.add_CardToDrawpile(card)
+                    i += 1
+            
+            elif self.card_in_play.get("Name") == "Chrysalis +":
                 i = 0
                 while i < self.card_in_play["Cards"]:
                     skill_cards = {k:v for k,v in entities.cards.items() if v.get("Type") == "Skill" and v.get("Owner") == self.name and v.get("Rarity") != "Basic"}
@@ -2794,7 +4080,7 @@ class Char():
                     self.add_CardToDrawpile(card)
                     i += 1
 
-            elif n in ("Metamorphosis", "Metamorphosis +"):
+            elif self.card_in_play.get("Name") == "Metamorphosis":
                 i = 0
                 while i < self.card_in_play["Cards"]:
                     attack_cards = {k:v for k,v in entities.cards.items() if v.get("Type") == "Attack" and v.get("Owner") == self.name and v.get("Rarity") != "Basic"}
@@ -2804,38 +4090,79 @@ class Char():
                     self.add_CardToDrawpile(card)
                     i += 1
 
-            elif n in ("Swift Strike", "Swift Strike +"):
+            elif self.card_in_play.get("Name") == "Metamorphosis +":
+                i = 0
+                while i < self.card_in_play["Cards"]:
+                    attack_cards = {k:v for k,v in entities.cards.items() if v.get("Type") == "Attack" and v.get("Owner") == self.name and v.get("Rarity") != "Basic"}
+                    card = rd.choices(list(skill_cards.items()))[0][1]                  
+                    card["Energy changed for the battle"] = True
+                    card["Energy"] = 0
+                    self.add_CardToDrawpile(card)
+                    i += 1
+
+            elif self.card_in_play.get("Name") == "Swift Strike":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+            
+            elif self.card_in_play.get("Name") == "Swift Strike +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
 
-            elif n in ("Hand of Greed", "Hand of Greed +"):
+            elif self.card_in_play.get("Name") == "Hand of Greed":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                if len(entities.list_of_enemies) < enemy_check:
+                    self.set_gold(self.card_in_play["Gold"])
+            
+            elif self.card_in_play.get("Name") == "Hand of Greed +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 if len(entities.list_of_enemies) < enemy_check:
                     self.set_gold(self.card_in_play["Gold"])
 
-            elif n in ("Magnetism", "Magnetism +"):
+            elif self.card_in_play.get("Name") == "Magnetism":
+                self.set_magnetism(1)
+            
+            elif self.card_in_play.get("Name") == "Magnetism +":
                 self.set_magnetism(1)
 
-            elif n in ("Master of Strategy", "Master of Strategy +"):
+            elif self.card_in_play.get("Name") == "Master of Strategy":             
                 self.draw(self.card_in_play["Draw"])
             
-            elif n in ("Mayhem", "Mayhem +"):
+            elif self.card_in_play.get("Name") == "Master of Strategy +":               
+                self.draw(self.card_in_play["Draw"])
+            
+            elif self.card_in_play.get("Name") == "Mayhem":             
+                self.set_mayhem(1)
+            
+            elif self.card_in_play.get("Name") == "Mayhem +":
                 self.set_mayhem(1)
 
-            elif n in ("Panache", "Panache +"):
+            elif self.card_in_play.get("Name") == "Panache":
+                self.set_panache(self.card_in_play["Damage"])
+            
+            elif self.card_in_play.get("Name") == "Panache +":
                 self.set_panache(self.card_in_play["Damage"])
 
-            elif n in ("Secret Technique", "Secret Technique +"):
+            elif self.card_in_play.get("Name") == "Secret Technique":
+                self.draw_specific_cards_from_place(self.card_in_play["Draw"],self.card_in_play["Place"],self.card_in_play["Typing"])
+            
+            elif self.card_in_play.get("Name") == "Secret Technique +":
+                self.draw_specific_cards_from_place(self.card_in_play["Draw"],self.card_in_play["Place"],self.card_in_play["Typing"])           
+
+            elif self.card_in_play.get("Name") == "Secret Weapon":
                 self.draw_specific_cards_from_place(self.card_in_play["Draw"],self.card_in_play["Place"],self.card_in_play["Typing"])
 
-            elif n in ("Secret Weapon", "Secret Weapon +"):
-                self.draw_specific_cards_from_place(self.card_in_play["Draw"],self.card_in_play["Place"],self.card_in_play["Typing"])
+            elif self.card_in_play.get("Name") == "Secret Weapon +":
+                self.draw_specific_cards_from_place(self.card_in_play["Draw"],self.card_in_play["Place"],self.card_in_play["Typing"])               
 
-            elif n in ("The Bomb", "The Bomb +"):
+            elif self.card_in_play.get("Name") == "The Bomb":
+                self.set_theBomb(self.card_in_play["Damage"],turn_counter)
+            
+            elif self.card_in_play.get("Name") == "The Bomb +":
                 self.set_theBomb(self.card_in_play["Damage"],turn_counter)
 
-            elif n == "Transmutation":
+            elif self.card_in_play.get("Name") == "Transmutation":
                 neutral_cards = {k:v for k,v in entities.cards.items() if v.get("Owner") == "Colorless"}
                 while i < self.energy:
                     card = rd.choices(list(neutral_cards.items()))[0][1]
@@ -2844,7 +4171,7 @@ class Char():
                     self.add_CardToHand(card)
                     i += 1
 
-            elif n == "Transmutation +":
+            elif self.card_in_play.get("Name") == "Transmutation +":
                 neutral_cards = {k:v for k,v in entities.cards.items() if v.get("Owner") == "Colorless" and v.get("Upgraded") == True}
                 while i < self.energy:
                     card = rd.choices(list(neutral_cards.items()))[0][1]
@@ -2853,17 +4180,36 @@ class Char():
                     self.add_CardToHand(card)
                     i += 1
 
-            elif n in ("Violence", "Violence +"):
+            elif self.card_in_play.get("Name") == "Violence":               
                 self.draw_specific_cards_from_place(self.card_in_play["Draw"],self.card_in_play["Place"],self.card_in_play["Typing"],random = True)
             
-            elif n in ("Thinking Ahead", "Thinking Ahead +"):
+            elif self.card_in_play.get("Name") == "Violence +": 
+                self.draw_specific_cards_from_place(self.card_in_play["Draw"],self.card_in_play["Place"],self.card_in_play["Typing"],random = True)
+            
+            elif self.card_in_play.get("Name") == "Thinking Ahead":
+                self.draw(self.card_in_play["Draw"])
+                self.putBackOnDeckFromHand(self.card_in_play["Back Putter"],bottom = True)
+            
+            elif self.card_in_play.get("Name") == "Thinking Ahead +":
                 self.draw(self.card_in_play["Draw"])
                 self.putBackOnDeckFromHand(self.card_in_play["Back Putter"],bottom = True)
 
-            elif n in ("Apparition", "Apparition +"):
+            elif self.card_in_play.get("Name") == "Apparition":
+                self.set_intangible(self.card_in_play["Intangible"])
+            
+            elif self.card_in_play.get("Name") == "Apparition +":
                 self.set_intangible(self.card_in_play["Intangible"])
 
-            elif n in ("Ritual Dagger", "Ritual Dagger +"):
+            elif self.card_in_play.get("Name") == "Ritual Dagger":
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                if enemy_check != len(entities.list_of_enemies):
+                    for card in self.deck:
+                        if card.get("Unique ID") == self.card_in_play.get("Unique ID"):
+                            card["Damage"] += self.card_in_play["FatalBonus"]
+                            self.card_in_play["Damage"] += self.card_in_play["FatalBonus"]
+                                            
+            elif self.card_in_play.get("Name") == "Ritual Dagger +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 if enemy_check != len(entities.list_of_enemies):
@@ -2872,12 +4218,21 @@ class Char():
                             card["Damage"] += self.card_in_play["FatalBonus"]
                             self.card_in_play["Damage"] += self.card_in_play["FatalBonus"]
 
-            elif n in ("JAX", "JAX +"):
+            elif self.card_in_play.get("Name") == "JAX":
+                self.receive_recoil_damage(-self.card_in_play.get("Harm"),directDamage=True)
+                self.set_strength(self.card_in_play.get("Strength"))
+                
+            elif self.card_in_play.get("Name") == "JAX +":
                 self.receive_recoil_damage(-self.card_in_play.get("Harm"),directDamage=True)
                 self.set_strength(self.card_in_play.get("Strength"))
 
-            elif n in ("Bite", "Bite +"):
+            elif self.card_in_play.get("Name") == "Bite":               
 
+                self.choose_enemy()
+                self.attack(self.card_in_play["Damage"])
+                self.heal(self.card_in_play["Heal"])
+
+            elif self.card_in_play.get("Name") == "Bite +":
                 self.choose_enemy()
                 self.attack(self.card_in_play["Damage"])
                 self.heal(self.card_in_play["Heal"])
@@ -2892,7 +4247,7 @@ class Char():
             ansiprint("<m>"+self.card_in_play.get("Name")+"</m> is exhausted and is removed from play because of <light-red>Blue Candle</light-red>!")
             self.receive_recoil_damage(-1,directDamage=True)
         
-        elif n == "Slimed":
+        elif self.card_in_play.get("Name") == "Slimed":
             ansiprint("You are no longer <green>slimed</green>.")
 
         elif self.card_in_play.get("Type") == "Status":

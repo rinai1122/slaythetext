@@ -135,46 +135,46 @@ def fill_enemy_list():
             miniList = []
             if snap == 1:
                 enemy = "Cultist"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
             elif snap == 2:                                             
                 enemy = "Jaw Worm"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
             elif snap == 3:
                 lousecheck = rd.randint(0,2)
                 if lousecheck == 0:
                     
                     enemy = "Green Louse"
-                    miniList.append(spawn(enemy, " 1"))
-                    miniList.append(spawn(enemy, " 2"))
+                    miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                    miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                     
                 elif lousecheck == 1:
                     
                     enemy = "Red Louse"
-                    miniList.append(spawn(enemy, " 1"))
-                    miniList.append(spawn(enemy, " 2"))
+                    miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                    miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
                 elif lousecheck == 2:
                     enemy = "Red Louse"
-                    miniList.append(spawn(enemy))
+                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                     enemy = "Green Louse"
-                    miniList.append(spawn(enemy))
+                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
             elif snap == 4:
                 
                 if rd.randint(0,1) == 0:
                     
                     enemy = "Medium Acid Slime"
-                    miniList.append(spawn(enemy))
+                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                     enemy = "Small Spike Slime"
-                    miniList.append(spawn(enemy))
+                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
                 else:
                     enemy = "Small Acid Slime"
-                    miniList.append(spawn(enemy))
+                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                     enemy = "Medium Spike Slime"
-                    miniList.append(spawn(enemy))
+                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
             encounterList.append(miniList)
             i += 1
@@ -190,36 +190,36 @@ def fill_enemy_list():
                 gremls = 0
                 while gremls < 4:
                     enemy = gremlins.pop(rd.randint(0,len(gremlins) - 1))
-                    miniList.append(spawn(enemy))
+                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                     gremls += 1
             
             elif setup == 1:
                 if rd.randint(0,1) == 0:
                     enemy = "Large Acid Slime"
-                    miniList.append(spawn(enemy))
+                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                 else:
                     enemy = "Large Spike Slime"
-                    miniList.append(spawn(enemy))
+                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
             elif setup == 2:
                 enemy = "Small Acid Slime"
                 
-                miniList.append(spawn(enemy, " 1"))
-                miniList.append(spawn(enemy, " 2"))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
                 enemy = "Small Spike Slime"
 
-                miniList.append(spawn(enemy, " 1"))
-                miniList.append(spawn(enemy, " 2"))
-                miniList.append(spawn(enemy, " 3"))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 3",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
            
             elif setup == 3:
                 enemy = "Red Slaver"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
             elif setup == 4:
                 enemy = "Blue Slaver"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
             
             elif setup == 5:
                 i = 0
@@ -229,15 +229,15 @@ def fill_enemy_list():
                     else:
                         enemy = "Green Louse"
                 
-                    miniList.append(spawn(enemy))
+                    miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                     i += 1
 
             elif setup == 6:
                 
                 enemy = "Fungi Beast"
                 
-                miniList.append(spawn(enemy, " 1"))
-                miniList.append(spawn(enemy, " 2"))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
             elif setup == 7:
             
@@ -249,7 +249,7 @@ def fill_enemy_list():
                     enemy = rd.choices(["Medium Acid Slime","Medium Spike Slime"])[0]
         
 
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
                 kindOfThug = rd.randint(0,2)
 
@@ -262,13 +262,13 @@ def fill_enemy_list():
                 elif kindOfThug == 2:
                     enemy = rd.choices(["Blue Slaver","Red Slaver"])[0]
                 
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                
             elif setup == 8:
             
                 enemy = rd.choices(["Fungi Beast","Jaw Worm"])[0]
                     
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
                 kindOfBeast = rd.randint(0,2)
 
@@ -280,12 +280,12 @@ def fill_enemy_list():
                     enemy = rd.choices(["Medium Acid Slime","Medium Spike Slime"])[0]
                     
                 
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                
             elif setup == 9:
             
                 enemy = "Looter"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
             encounterList.append(miniList)
 
@@ -304,24 +304,24 @@ def fill_enemy_list():
 
             elif snap == 2:
                 enemy = "Chosen"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
             elif snap == 3:
                 enemy = "Shelled Parasite"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
             elif snap == 4:
                 enemy = "Byrd"
-                miniList.append(spawn(enemy, " 1"))
-                miniList.append(spawn(enemy, " 2"))
-                miniList.append(spawn(enemy, " 3"))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 3",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                 
 
             elif snap == 5:
                 enemy = "Looter"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                 enemy = "Mugger"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                 
             
             encounterList.append(miniList)
@@ -333,14 +333,14 @@ def fill_enemy_list():
             miniList = []
             if setup == 1:
                 enemy = "Byrd"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                 enemy = "Chosen"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
             elif setup == 2:
                 enemy = "Cultist"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                 enemy = "Chosen"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
             elif setup == 3:
                 enemy = "Bolt Sentry"
                 miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death"), artifact = enemies[enemy].get("Artifact")))
@@ -348,25 +348,25 @@ def fill_enemy_list():
                 miniList.append(Enemy(name = enemies[enemy].get("Name"),block = enemies[enemy].get("Block"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death"),artifact = enemies[enemy].get("Artifact")))
             elif setup == 4:
                 enemy = "Snake Plant"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
             elif setup == 5:
                 enemy = "Snecko"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
             elif setup == 6:
                 enemy = "Centurion"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                 enemy = "Mystic"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
             elif setup == 7:
                 enemy = "Cultist"
-                miniList.append(spawn(enemy, " 1"))
-                miniList.append(spawn(enemy, " 2"))
-                miniList.append(spawn(enemy, " 3"))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 3",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
             elif setup == 8:
                 enemy = "Shelled Parasite"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                 enemy = "Fungi Beast"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
             encounterList.append(miniList)
         return encounterList
             
@@ -379,9 +379,9 @@ def fill_enemy_list():
             miniList = []
             if snap == 1:
                 enemy = "Darkling"
-                miniList.append(spawn(enemy, " 1"))
-                miniList.append(spawn(enemy, " 2"))
-                miniList.append(spawn(enemy, " 3"))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(Enemy(name = enemies[enemy].get("Name") +" 3",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
             elif snap == 2:
                 enemy = "Orb Walker"
@@ -395,7 +395,7 @@ def fill_enemy_list():
                     former = subchecklist.pop(rd.randint(0,len(subchecklist)-1)) 
                     if former == 0:
                         enemy = "Spiker"
-                        miniList.append(spawn(enemy))
+                        miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                     
                     elif former == 1:
                         enemy = "Exploder"
@@ -420,7 +420,7 @@ def fill_enemy_list():
                     former = subchecklist.pop(rd.randint(0,len(subchecklist)-1)) 
                     if former == 0:
                         enemy = "Spiker"
-                        miniList.append(spawn(enemy))
+                        miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                     
                     elif former == 1:
                         enemy = "Exploder"
@@ -442,7 +442,7 @@ def fill_enemy_list():
                     
                     if former == 0:
                         enemy = "Spiker"
-                        miniList.append(spawn(enemy))
+                        miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
                     
                     elif former == 1:
                         enemy = "Exploder"
@@ -459,13 +459,13 @@ def fill_enemy_list():
 
             elif setup == 3:
                 enemy = "Darkling"
-                miniList.append(spawn(enemy))
-                miniList.append(spawn(enemy))
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
             elif setup == 4:
                 enemy = "Writhing Mass"                
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
             elif setup == 5:
                 enemy = "Jaw Worm Hard"
@@ -509,7 +509,7 @@ def fill_elite_list():
             
             elif setup == 2:
                 enemy = "Gremlin Nob"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
 
             encounterList.append(miniList)
@@ -588,11 +588,11 @@ def fill_boss_list(act):
             miniList = []
             if setup == 0:
                 enemy = "Slime Boss"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
             elif setup == 1:
                 enemy = "Hexaghost"
-                miniList.append(spawn(enemy))
+                miniList.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
             
             elif setup == 2:
                 enemy = "Guardian"
@@ -677,909 +677,883 @@ def create_superElite(superElite):
     return superElite
 
 
-# Compact builders so each entry skips repeated keys. "Name" is the dict key
-# (auto-filled by _setnames below). Remaining stats are keyword args; keys with
-# spaces use **{"Key": val}. Positional order:
-#   c(Type, Rarity, Owner, Info, **stats)   -- cards
-#   r(Rarity, Owner, Info, **stats)         -- relics (Type defaults to "Relic")
-#   p(Rarity, Owner, Info, **stats)         -- potions (Type defaults to "Potion")
-_P1 = "What do you want to do?\n"
-_P2 = "What do you want to do? Pick the corresponding number.\n"
-_M = object()
-def c(Type, Rarity, Owner, Info=_M, **stats):
-    d = {"Type": Type, "Rarity": Rarity, "Owner": Owner}
-    if Info is not _M: d["Info"] = Info
-    d.update(stats); return d
-def r(Rarity, Owner, Info=_M, Type="Relic", **stats):
-    d = {"Rarity": Rarity, "Owner": Owner, "Type": Type}
-    if Info is not _M: d["Info"] = Info
-    d.update(stats); return d
-def p(Rarity, Owner, Info=_M, Type="Potion", **stats):
-    d = {"Rarity": Rarity, "Owner": Owner, "Type": Type}
-    if Info is not _M: d["Info"] = Info
-    d.update(stats); return d
-def _setnames(d):
-    for k, v in d.items(): v.setdefault("Name", k)
-
 cards = {
     #The Silent
-    "Strike": c("Attack", "Basic", "Silent", "Deal <red>6 damage</red>.", Damage=6, Energy=1),
-    "Strike +": c("Attack", "Basic", "Silent", "Deal <red>9 damage</red>.", Upgraded=True, Damage=9, Energy=1),
+    "Strike": {"Name": "Strike", "Damage":6, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Silent","Info":"Deal <red>6 damage</red>."},
+    "Strike +": {"Name": "Strike +","Upgraded": True, "Damage":9, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Silent","Info":"Deal <red>9 damage</red>."},
 
-    "Defend": c("Skill", "Basic", "Silent", "Gain <green>6 Block</green>.", Block=5, Energy=1),
-    "Defend +": c("Skill", "Basic", "Silent", "Gain <green>8 Block</green>.", Upgraded=True, Block=8, Energy=1),
+    "Defend": {"Name": "Defend", "Block":5, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Silent","Info":"Gain <green>6 Block</green>."},
+    "Defend +": {"Name": "Defend +","Upgraded": True, "Block":8, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Silent","Info":"Gain <green>8 Block</green>."},
 
-    "Shiv": c("Attack", "Special", "Silent", "Deal <red>4 damage</red>. <BLUE>Exhaust</BLUE>.", Energy=0, Damage=4, Exhaust=True),
-    "Shiv +": c("Attack", "Special", "Silent", "Deal <red>4 damage</red>. <BLUE>Exhaust</BLUE>.", Energy=0, Damage=6, Exhaust=True, Upgraded=True),
+    "Shiv": {"Name": "Shiv","Energy": 0,"Damage":4,"Exhaust":True,"Type": "Attack","Rarity": "Special","Owner":"Silent","Info":"Deal <red>4 damage</red>. <BLUE>Exhaust</BLUE>."},
+    "Shiv +": {"Name": "Shiv +","Energy": 0,"Damage":6,"Exhaust":True,"Upgraded": True,"Type": "Attack","Rarity": "Special","Owner":"Silent","Info":"Deal <red>4 damage</red>. <BLUE>Exhaust</BLUE>."},
 
-    "Neutralize": c("Attack", "Basic", "Silent", "Deal <red>3 damage</red>. Apply <light-cyan>1 Weak</light-cyan>.", Damage=3, Weakness=1, Energy=0),
-    "Neutralize +": c("Attack", "Basic", "Silent", "Deal <red>3 damage</red>. Apply <light-cyan>1 Weak</light-cyan>.", Upgraded=True, Damage=4, Weakness=2, Energy=0),
+    "Neutralize": {"Name": "Neutralize", "Damage":3,"Weakness": 1,"Type":"Attack", "Energy": 0, "Rarity": "Basic","Owner":"Silent","Info":"Deal <red>3 damage</red>. Apply <light-cyan>1 Weak</light-cyan>."},
+    "Neutralize +": {"Name": "Neutralize +","Upgraded": True, "Damage":4,"Weakness": 2,"Type":"Attack", "Energy": 0, "Rarity": "Basic","Owner":"Silent","Info":"Deal <red>3 damage</red>. Apply <light-cyan>1 Weak</light-cyan>."},
 
-    "Survivor": c("Skill", "Basic", "Silent", "Gain <green>8 Block</green>. Discard 1 Card.", Block=8, Energy=1, Discard=1),
-    "Survivor +": c("Skill", "Basic", "Silent", "Gain <green>11 Block</green>. Discard 1 Card.", Block=11, Upgraded=True, Energy=1, Discard=1),   
+    "Survivor": {"Name": "Survivor", "Block":8, "Energy": 1, "Type":"Skill" ,"Discard": 1, "Rarity": "Basic","Owner":"Silent","Info":"Gain <green>8 Block</green>. Discard 1 Card."},
+    "Survivor +": {"Name": "Survivor +", "Block":11, "Upgraded": True, "Energy": 1, "Type":"Skill" ,"Discard": 1, "Rarity": "Basic","Owner":"Silent","Info":"Gain <green>11 Block</green>. Discard 1 Card."},   
 
-    "Bane": c("Attack", "Common", "Silent", "Deal <red>7 damage</red>. If the enemy has <green>Poison</green>, deal <red>7 damage</red> again", Damage=7, Energy=1),
-    "Bane +": c("Attack", "Common", "Silent", "Deal <red>7 damage</red>. If the enemy has <green>Poison</green>, deal <red>7 damage</red> again", Damage=10, Upgraded=True, Energy=1),
+    "Bane": {"Name": "Bane", "Damage":7, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Silent","Info":"Deal <red>7 damage</red>. If the enemy has <green>Poison</green>, deal <red>7 damage</red> again"},
+    "Bane +": {"Name": "Bane +", "Damage":10, "Upgraded": True,"Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Silent","Info":"Deal <red>7 damage</red>. If the enemy has <green>Poison</green>, deal <red>7 damage</red> again"},
 
-    "Dagger Spray": c("Attack", "Common", "Silent", "Deal <red>4 damage</red> to ALL enemies twice.", Damage=4, Energy=1),
-    "Dagger Spray +": c("Attack", "Common", "Silent", "Deal <red>6 damage</red> to ALL enemies twice.", Damage=6, Upgraded=True, Energy=1),
+    "Dagger Spray": {"Name": "Dagger Spray", "Damage":4, "Energy": 1, "Type":"Attack","Rarity":"Common","Owner":"Silent","Info":"Deal <red>4 damage</red> to ALL enemies twice."},
+    "Dagger Spray +": {"Name": "Dagger Spray +", "Damage":6,"Upgraded": True,"Energy": 1, "Type":"Attack","Rarity":"Common","Owner":"Silent","Info":"Deal <red>6 damage</red> to ALL enemies twice."},
 
-    "Dagger Throw": c("Attack", "Common", "Silent", "Deal <red>9 damage</red>. Draw 1 Card. Discard 1 Card.", Damage=9, Draw=1, Discard=1, Energy=1), 
-    "Dagger Throw +": c("Attack", "Common", "Silent", "Deal <red>12 damage</red>. Draw 1 Card. Discard 1 Card.", Upgraded=True, Damage=12, Draw=1, Discard=1, Energy=1), 
+    "Dagger Throw": {"Name": "Dagger Throw", "Damage":9,"Draw":1,"Discard":1,"Energy": 1,"Type": "Attack" , "Rarity": "Common", "Owner":"Silent","Info":"Deal <red>9 damage</red>. Draw 1 Card. Discard 1 Card."}, 
+    "Dagger Throw +": {"Name": "Dagger Throw +","Upgraded": True, "Damage":12,"Draw":1,"Discard":1,"Energy": 1,"Type": "Attack" , "Rarity": "Common", "Owner":"Silent","Info":"Deal <red>12 damage</red>. Draw 1 Card. Discard 1 Card."}, 
     
-    "Flying Knee": c("Attack", "Common", "Silent", "Deal <red>8 damage</red>. Next turn, gain <yellow>1 Energy</yellow>.", Damage=8, Energy=1, **{"Energy Gain":1}),
-    "Flying Knee +": c("Attack", "Common", "Silent", "Deal <red>11 damage</red>. Next turn, gain <yellow>1 Energy</yellow>.", Upgraded=True, Damage=11, Energy=1, **{"Energy Gain":1}),
+    "Flying Knee": {"Name": "Flying Knee", "Damage":8,"Energy Gain":1,"Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Silent","Info":"Deal <red>8 damage</red>. Next turn, gain <yellow>1 Energy</yellow>."},
+    "Flying Knee +": {"Name": "Flying Knee +", "Upgraded": True, "Damage":11,"Energy Gain":1,"Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Silent","Info":"Deal <red>11 damage</red>. Next turn, gain <yellow>1 Energy</yellow>."},
 
-    "Poisoned Stab": c("Attack", "Common", "Silent", "Deal <red>6 damage</red>. Apply <green>3 Poison</green>.", Damage=6, Poison=3, Energy=1),
-    "Poisoned Stab +": c("Attack", "Common", "Silent", "Deal <red>8 damage</red>. Apply <green>4 Poison</green>.", Damage=8, Poison=4, Energy=1, Upgraded=True),
+    "Poisoned Stab": {"Name": "Poisoned Stab", "Damage":6,"Poison":3,"Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Silent","Info":"Deal <red>6 damage</red>. Apply <green>3 Poison</green>."},
+    "Poisoned Stab +": {"Name": "Poisoned Stab +", "Damage":8,"Poison":4,"Energy": 1,"Type": "Attack" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Deal <red>8 damage</red>. Apply <green>4 Poison</green>."},
 
-    "Quick Slash": c("Attack", "Common", "Silent", "Deal <red>8 damage</red>. Draw 1 Card.", Damage=8, Draw=1, Energy=1),
-    "Quick Slash +": c("Attack", "Common", "Silent", "Deal <red>12 damage</red>. Draw 1 Card.", Damage=12, Draw=1, Energy=1, Upgraded=True),
+    "Quick Slash": {"Name": "Quick Slash", "Damage":8,"Draw":1,"Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Silent","Info":"Deal <red>8 damage</red>. Draw 1 Card."},
+    "Quick Slash +": {"Name": "Quick Slash +", "Damage":12,"Draw":1,"Energy": 1,"Type": "Attack" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Deal <red>12 damage</red>. Draw 1 Card."},
 
-    "Slice": c("Attack", "Common", "Silent", "Deal <red>6 damage</red>.", Damage=6, Energy=0),
-    "Slice +": c("Attack", "Common", "Silent", "Deal <red>9 damage</red>.", Damage=9, Energy=0, Upgraded=True),
+    "Slice": {"Name": "Slice", "Damage":6,"Energy": 0,"Type": "Attack" ,"Rarity": "Common","Owner":"Silent","Info": "Deal <red>6 damage</red>."},
+    "Slice +": {"Name": "Slice +", "Damage":9,"Energy": 0,"Type": "Attack" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info": "Deal <red>9 damage</red>."},
 
-    "Sneaky Strike": c("Attack", "Common", "Silent", "Deal <red>12 damage</red>. If you have discarded a Card this turn gain <yellow>2 Energy</yellow>.", Damage=12, Energy=2, **{"Energy Gain":2}),
-    "Sneaky Strike +": c("Attack", "Common", "Silent", "Deal <red>16 damage</red>. If you have discarded a Card this turn gain <yellow>2 Energy</yellow>.", Damage=16, Energy=2, Upgraded=True, **{"Energy Gain":2}),
+    "Sneaky Strike": {"Name": "Sneaky Strike", "Damage":12,"Energy": 2,"Energy Gain": 2,"Type": "Attack" ,"Rarity": "Common","Owner":"Silent","Info":"Deal <red>12 damage</red>. If you have discarded a Card this turn gain <yellow>2 Energy</yellow>."},
+    "Sneaky Strike +": {"Name": "Sneaky Strike +", "Damage":16,"Energy": 2,"Energy Gain": 2,"Type": "Attack" ,"Rarity": "Common","Upgraded": True,"Owner":"Silent","Info":"Deal <red>16 damage</red>. If you have discarded a Card this turn gain <yellow>2 Energy</yellow>."},
     
-    "Sucker Punch": c("Attack", "Common", "Silent", "Deal <red>7 damage</red>. Apply <light-cyan>1 Weak</light-cyan>.", Damage=7, Weakness=1, Energy=1),
-    "Sucker Punch +": c("Attack", "Common", "Silent", "Deal <red>9 damage</red>. Apply <light-cyan>2 Weak</light-cyan>.", Damage=9, Weakness=2, Energy=1, Upgraded=True),
+    "Sucker Punch": {"Name": "Sucker Punch", "Damage":7,"Weakness": 1,"Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Silent","Info":"Deal <red>7 damage</red>. Apply <light-cyan>1 Weak</light-cyan>."},
+    "Sucker Punch +": {"Name": "Sucker Punch +","Damage":9,"Weakness": 2,"Energy": 1,"Type": "Attack" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Deal <red>9 damage</red>. Apply <light-cyan>2 Weak</light-cyan>."},
     
-    "All-Out Attack": c("Attack", "Uncommon", "Silent", "Deal <red>10 damage</red> to ALL enemies. Discard 1 random Card.", Damage=10, Energy=1, Discard=1),
-    "All-Out Attack +": c("Attack", "Uncommon", "Silent", "Deal <red>14 damage</red> to ALL enemies. Discard 1 random Card.", Damage=14, Energy=1, Discard=1, Upgraded=True),
+    "All-Out Attack": {"Name": "All-Out Attack", "Damage":10,"Energy": 1,"Discard": 1,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>10 damage</red> to ALL enemies. Discard 1 random Card."},
+    "All-Out Attack +": {"Name": "All-Out Attack +", "Damage":14,"Energy": 1,"Discard": 1,"Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>14 damage</red> to ALL enemies. Discard 1 random Card."},
 
-    "Backstab": c("Attack", "Uncommon", "Silent", "Deal <red>11 damage</red>. <BLUE>Exhaust</BLUE>. <BLUE>Innate</BLUE>.", Damage=11, Energy=0, Innate=True, Exhaust=True),
-    "Backstab +": c("Attack", "Uncommon", "Silent", "Deal <red>15 damage</red>. <BLUE>Exhaust</BLUE>. <BLUE>Innate</BLUE>.", Damage=15, Energy=0, Innate=True, Exhaust=True, Upgraded=True),
+    "Backstab": {"Name": "Backstab", "Damage":11,"Energy": 0,"Innate": True,"Exhaust": True, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>11 damage</red>. <BLUE>Exhaust</BLUE>. <BLUE>Innate</BLUE>."},
+    "Backstab +": {"Name": "Backstab +", "Damage":15,"Energy": 0,"Innate": True,"Exhaust": True, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>15 damage</red>. <BLUE>Exhaust</BLUE>. <BLUE>Innate</BLUE>."},
 
-    "Choke": c("Attack", "Uncommon", "Silent", "Deal <red>12 damage</red>. Whenever you play a Card this turn, the enemy loses <red>3 HP</red>.", Damage=12, Energy=2, Choking=3),
-    "Choke +": c("Attack", "Uncommon", "Silent", "Deal <red>12 damage</red>. Whenever you play a Card this turn, the enemy loses <red>5 HP</red>.", Damage=12, Energy=2, Choking=5, Upgraded=True),
+    "Choke": {"Name": "Choke", "Damage":12,"Energy": 2, "Choking": 3, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>12 damage</red>. Whenever you play a Card this turn, the enemy loses <red>3 HP</red>."},
+    "Choke +": {"Name": "Choke +", "Damage":12,"Energy": 2, "Choking": 5, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>12 damage</red>. Whenever you play a Card this turn, the enemy loses <red>5 HP</red>."},
 
-    "Dash": c("Attack", "Uncommon", "Silent", "Gain <green>10 Block</green. Deal <red>10 damage</red>.", Damage=10, Block=10, Energy=2),
-    "Dash +": c("Attack", "Uncommon", "Silent", "Gain <green>12 Block</green. Deal <red>12 damage</red>.", Damage=13, Block=13, Energy=2, Upgraded=True),
+    "Dash": {"Name": "Dash", "Damage":10,"Block":10,"Energy": 2, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Gain <green>10 Block</green. Deal <red>10 damage</red>."},
+    "Dash +": {"Name": "Dash +", "Damage":13,"Block":13,"Energy": 2, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Gain <green>12 Block</green. Deal <red>12 damage</red>."},
 
-    "Endless Agony": c("Attack", "Uncommon", "Silent", "Whenever you draw this Card, add a copy of it into your hand. Deal <red>4 damage</red>. <BLUE>Exhaust</BLUE>", Damage=4, Exhaust=True, Energy=0),
-    "Endless Agony +": c("Attack", "Uncommon", "Silent", "Whenever you draw this Card, add a copy of it into your hand. Deal <red>6 damage</red>. <BLUE>Exhaust</BLUE>", Damage=6, Exhaust=True, Energy=0, Upgraded=True),
+    "Endless Agony": {"Name": "Endless Agony", "Damage":4,"Exhaust":True,"Energy": 0, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Whenever you draw this Card, add a copy of it into your hand. Deal <red>4 damage</red>. <BLUE>Exhaust</BLUE>"},
+    "Endless Agony +": {"Name": "Endless Agony +", "Damage":6,"Exhaust":True,"Energy": 0, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Whenever you draw this Card, add a copy of it into your hand. Deal <red>6 damage</red>. <BLUE>Exhaust</BLUE>"},
 
-    "Eviscerate": c("Attack", "Uncommon", "Silent", "Costs <yellow>1 Energy</yellow> less for each discarded Card this turn. Deal <red>7 damage</red> 3 times.", Damage=7, Energy=3),
-    "Eviscerate +": c("Attack", "Uncommon", "Silent", "Costs <yellow>1 Energy</yellow> less for each discarded Card this turn. Deal <red>9 damage</red> 3 times.", Damage=9, Energy=3, Upgraded=True),
+    "Eviscerate": {"Name": "Eviscerate", "Damage":7,"Energy": 3, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Costs <yellow>1 Energy</yellow> less for each discarded Card this turn. Deal <red>7 damage</red> 3 times."},
+    "Eviscerate +": {"Name": "Eviscerate +", "Damage":9,"Energy": 3, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Costs <yellow>1 Energy</yellow> less for each discarded Card this turn. Deal <red>9 damage</red> 3 times."},
 
-    "Finisher": c("Attack", "Uncommon", "Silent", "Deal <red>6 damage</red> for each <red>Attack</red> this turn.", Damage=6, Energy=1),
-    "Finisher +": c("Attack", "Uncommon", "Silent", "Deal <red>8 damage</red> for each <red>Attack</red> this turn.", Damage=8, Energy=1, Upgraded=True),
+    "Finisher": {"Name": "Finisher", "Damage":6,"Energy": 1, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>6 damage</red> for each <red>Attack</red> this turn."},
+    "Finisher +": {"Name": "Finisher +", "Damage":8,"Energy": 1, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>8 damage</red> for each <red>Attack</red> this turn."},
 
-    "Flechettes": c("Attack", "Uncommon", "Silent", "Deal <red>4 damage</red> for each <green>Skill</green> in your hand.", Damage=4, Energy=1),
-    "Flechettes +": c("Attack", "Uncommon", "Silent", "Deal <red>6 damage</red> for each <green>Skill</green> in your hand.", Damage=6, Energy=1, Upgraded=True),
+    "Flechettes": {"Name": "Flechettes", "Damage":4,"Energy": 1, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>4 damage</red> for each <green>Skill</green> in your hand."},
+    "Flechettes +": {"Name": "Flechettes +", "Damage":6,"Energy": 1, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>6 damage</red> for each <green>Skill</green> in your hand."},
 
-    "Heel Hook": c("Attack", "Uncommon", "Silent", "Deal <red>5 damage</red>. If the enemy has <light-cyan>Weak</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 Card.", Damage=5, Energy=1, Draw=1, **{"Energy Gain":1}),
-    "Heel Hook +": c("Attack", "Uncommon", "Silent", "Deal <red>5 damage</red>. If the enemy has <light-cyan>Weak</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 Card.", Damage=8, Energy=1, Draw=1, Upgraded=True, **{"Energy Gain":1}),
+    "Heel Hook": {"Name": "Heel Hook", "Damage":5,"Energy": 1,"Energy Gain":1,"Draw":1, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info": "Deal <red>5 damage</red>. If the enemy has <light-cyan>Weak</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 Card."},
+    "Heel Hook +": {"Name": "Heel Hook +", "Damage":8,"Energy": 1,"Energy Gain":1,"Draw":1, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info": "Deal <red>5 damage</red>. If the enemy has <light-cyan>Weak</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 Card."},
 
-    "Masterful Stab": c("Attack", "Uncommon", "Silent", "Cost <yellow>1 Energy</yellow> extra for each time you <red>lose HP</red> this combat. Deal <red>12 damage</red>.", Damage=12, Energy=0),
-    "Masterful Stab +": c("Attack", "Uncommon", "Silent", "Cost <yellow>1 Energy</yellow> extra for each time you <red>lose HP</red> this combat. Deal <red>16 damage</red>.", Damage=16, Energy=0, Upgraded=True),
+    "Masterful Stab": {"Name": "Masterful Stab", "Damage":12,"Energy": 0, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Cost <yellow>1 Energy</yellow> extra for each time you <red>lose HP</red> this combat. Deal <red>12 damage</red>."},
+    "Masterful Stab +": {"Name": "Masterful Stab +", "Damage":16,"Energy": 0, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Cost <yellow>1 Energy</yellow> extra for each time you <red>lose HP</red> this combat. Deal <red>16 damage</red>."},
 
-    "Predator": c("Attack", "Uncommon", "Silent", "Deal <red>15 damage</red>. Draw 2 additonal Cards next turn.", Damage=15, Energy=2, Drawboost=2),
-    "Predator +": c("Attack", "Uncommon", "Silent", "Deal <red>20 damage</red>. Draw 2 additonal Cards next turn.", Damage=20, Energy=2, Drawboost=2, Upgraded=True),
+    "Predator": {"Name": "Predator", "Damage":15,"Energy": 2,"Drawboost":2, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info": "Deal <red>15 damage</red>. Draw 2 additonal Cards next turn."},
+    "Predator +": {"Name": "Predator +", "Damage":20,"Energy": 2,"Drawboost":2, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info": "Deal <red>20 damage</red>. Draw 2 additonal Cards next turn."},
 
-    "Riddle with Holes": c("Attack", "Uncommon", "Silent", "Deal <red>3 damage</red> 5 times.", Damage=3, Energy=2),
-    "Riddle with Holes +": c("Attack", "Uncommon", "Silent", "Deal <red>4 damage</red> 5 times.", Damage=4, Energy=2, Upgraded=True),
+    "Riddle with Holes": {"Name": "Riddle with Holes","Damage":3,"Energy": 2, "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>3 damage</red> 5 times."},
+    "Riddle with Holes +": {"Name": "Riddle with Holes +","Damage":4,"Energy": 2, "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>4 damage</red> 5 times."},
 
-    "Skewer": c("Attack", "Uncommon", "Silent", "Deal <red>7 damage</red> <yellow>X</yellow> times.", Damage=7, Energy="X"),
-    "Skewer +": c("Attack", "Uncommon", "Silent", "Deal <red>10 damage</red> <yellow>X</yellow> times.", Damage=10, Energy="X", Upgraded=True),
+    "Skewer": {"Name": "Skewer", "Damage":7, "Energy": "X", "Type": "Attack" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>7 damage</red> <yellow>X</yellow> times."},
+    "Skewer +": {"Name": "Skewer +", "Damage":10, "Energy": "X", "Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Deal <red>10 damage</red> <yellow>X</yellow> times."},
 
-    "Die Die Die": c("Attack", "Rare", "Silent", "Deal <red>13 damage</red> to ALL enemies. <BLUE>Exhaust</BLUE>", Damage=13, Energy=1, Exhaust=True),
-    "Die Die Die +": c("Attack", "Rare", "Silent", "Deal <red>17 damage</red> to ALL enemies. <BLUE>Exhaust</BLUE>", Damage=17, Energy=1, Exhaust=True, Upgraded=True),
+    "Die Die Die": {"Name": "Die Die Die","Damage":13,"Energy": 1,"Exhaust":True, "Type": "Attack" ,"Rarity": "Rare","Owner":"Silent","Info":"Deal <red>13 damage</red> to ALL enemies. <BLUE>Exhaust</BLUE>"},
+    "Die Die Die +": {"Name": "Die Die Die +","Damage":17,"Energy": 1,"Exhaust":True, "Type": "Attack" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Deal <red>17 damage</red> to ALL enemies. <BLUE>Exhaust</BLUE>"},
     
-    "Glass Knife": c("Attack", "Rare", "Silent", "Deal <red>8 damage</red> twice. Decrease the damage of this card by 2 for this combat.", Damage=8, Energy=1),
-    "Glass Knife +": c("Attack", "Rare", "Silent", "Deal <red>8 damage</red> twice. Decrease the damage of this card by 2 for this combat.", Damage=12, Energy=1, Upgraded=True),
+    "Glass Knife": {"Name": "Glass Knife","Damage":8,"Energy": 1, "Type": "Attack" ,"Rarity": "Rare","Owner":"Silent","Info":"Deal <red>8 damage</red> twice. Decrease the damage of this card by 2 for this combat."},
+    "Glass Knife +": {"Name": "Glass Knife +","Damage":12,"Energy": 1, "Type": "Attack" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Deal <red>8 damage</red> twice. Decrease the damage of this card by 2 for this combat."},
 
-    "Grand Finale": c("Attack", "Rare", "Silent", "Can only be played if there are no cards in your Drawpile. Deal <red>50 damage</red> to ALL enemies.", Damage=50, Energy=1),
-    "Grand Finale +": c("Attack", "Rare", "Silent", "Can only be played if there are no cards in your Drawpile. Deal <red>60 damage</red> to ALL enemies.", Damage=60, Energy=1, Upgraded=True),
+    "Grand Finale": {"Name": "Grand Finale","Damage":50,"Energy": 1, "Type": "Attack" ,"Rarity": "Rare","Owner":"Silent","Info":"Can only be played if there are no cards in your Drawpile. Deal <red>50 damage</red> to ALL enemies."},
+    "Grand Finale +": {"Name": "Grand Finale +","Damage":60,"Energy": 1, "Type": "Attack" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Can only be played if there are no cards in your Drawpile. Deal <red>60 damage</red> to ALL enemies."},
     
-    "Unload": c("Attack", "Rare", "Silent", "Deal <red>14 damage</red>. Discard all <red>non-Attack</red> Cards from your hand.", Damage=14, Energy=1, DiscardType="Attack"),
-    "Unload +": c("Attack", "Rare", "Silent", "Deal <red>18 damage</red>. Discard all <red>non-Attack</red> Cards from your hand.", Damage=18, Energy=1, DiscardType="Attack", Upgraded=True),
+    "Unload": {"Name": "Unload","Damage":14,"Energy": 1, "Type": "Attack","DiscardType":"Attack","Rarity": "Rare","Owner":"Silent","Info":"Deal <red>14 damage</red>. Discard all <red>non-Attack</red> Cards from your hand."},
+    "Unload +": {"Name": "Unload +","Damage":18,"Energy": 1, "Type": "Attack","DiscardType":"Attack","Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Deal <red>18 damage</red>. Discard all <red>non-Attack</red> Cards from your hand."},
 
-    "Acrobatics": c("Skill", "Common", "Silent", "Draw 3 Cards. Discard 1 Card.", Draw=3, Discard=1, Energy=1),
-    "Acrobatics +": c("Skill", "Common", "Silent", "Draw 4 Cards. Discard 1 Card.", Draw=4, Discard=1, Energy=1, Upgraded=True),
+    "Acrobatics": {"Name": "Acrobatics", "Draw":3,"Discard":1, "Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Silent","Info":"Draw 3 Cards. Discard 1 Card."},
+    "Acrobatics +": {"Name": "Acrobatics +", "Draw":4,"Discard":1, "Energy": 1,"Type": "Skill" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Draw 4 Cards. Discard 1 Card."},
 
-    "Backflip": c("Skill", "Common", "Silent", "Gain <green>5 Block</green>. Draw 2 Cards.", Block=5, Draw=2, Energy=1),
-    "Backflip +": c("Skill", "Common", "Silent", "Gain <green>8 Block</green>. Draw 2 Cards.", Block=8, Draw=2, Energy=1, Upgraded=True),
+    "Backflip": {"Name": "Backflip","Block":5, "Draw":2, "Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Silent","Info":"Gain <green>5 Block</green>. Draw 2 Cards."},
+    "Backflip +": {"Name": "Backflip +","Block":8, "Draw":2, "Energy": 1,"Type": "Skill" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Gain <green>8 Block</green>. Draw 2 Cards."},
 
-    "Blade Dance": c("Skill", "Common", "Silent", "Add <red>3 Shivs</red> into your hand.", Shivs=3, Energy=1),
-    "Blade Dance +": c("Skill", "Common", "Silent", "Add <red>4 Shivs</red> into your hand.", Shivs=4, Energy=1, Upgraded=True),
+    "Blade Dance": {"Name": "Blade Dance","Shivs":3,"Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Silent","Info":"Add <red>3 Shivs</red> into your hand."},
+    "Blade Dance +": {"Name": "Blade Dance +","Shivs":4,"Energy": 1,"Type": "Skill" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Add <red>4 Shivs</red> into your hand."},
 
-    "Cloak and Dagger": c("Skill", "Common", "Silent", "Gain <green>6 Block</green>. Add <red>1 Shiv</red> to your hand.", Block=6, Shivs=1, Energy=1),
-    "Cloak and Dagger +": c("Skill", "Common", "Silent", "Gain <green>6 Block</green>. Add <red>2 Shiv</red> to your hand.", Block=6, Shivs=2, Energy=1, Upgraded=True),
+    "Cloak and Dagger": {"Name": "Cloak and Dagger","Block":6,"Shivs":1,"Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Silent","Info":"Gain <green>6 Block</green>. Add <red>1 Shiv</red> to your hand."},
+    "Cloak and Dagger +": {"Name": "Cloak and Dagger +","Block":6,"Shivs":2,"Energy": 1,"Type": "Skill" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Gain <green>6 Block</green>. Add <red>2 Shiv</red> to your hand."},
 
-    "Deadly Poison": c("Skill", "Common", "Silent", "Apply <green>5 Poison</green>.", Poison=5, Energy=1),
-    "Deadly Poison +": c("Skill", "Common", "Silent", "Apply <green>7 Poison</green>.", Poison=7, Energy=1, Upgraded=True),
+    "Deadly Poison": {"Name": "Deadly Poison","Poison":5,"Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Silent","Info":"Apply <green>5 Poison</green>."},
+    "Deadly Poison +": {"Name": "Deadly Poison +","Poison":7,"Energy": 1,"Type": "Skill" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Apply <green>7 Poison</green>."},
     
-    "Deflect": c("Skill", "Common", "Silent", "Gain <green>5 Block</green>", Block=5, Energy=0),
-    "Deflect +": c("Skill", "Common", "Silent", "Gain <green>8 Block</green>", Block=8, Energy=0, Upgraded=True),
+    "Deflect": {"Name": "Deflect","Block":5,"Energy": 0,"Type": "Skill" ,"Rarity": "Common","Owner":"Silent","Info":"Gain <green>5 Block</green>"},
+    "Deflect +": {"Name": "Deflect +","Block":8,"Energy": 0,"Type": "Skill" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Gain <green>8 Block</green>"},
     
-    "Dodge and Roll": c("Skill", "Common", "Silent", "Gain <green>4 Block</green>. Next turn, gain <green>4 Block</green>.", Block=4, Energy=1),
-    "Dodge and Roll +": c("Skill", "Common", "Silent", "Gain <green>6 Block</green>. Next turn, gain <green>6 Block</green>.", Block=6, Energy=1, Upgraded=True),
+    "Dodge and Roll": {"Name": "Dodge and Roll","Block":4,"Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Silent","Info":"Gain <green>4 Block</green>. Next turn, gain <green>4 Block</green>."},
+    "Dodge and Roll +": {"Name": "Dodge and Roll +","Block":6,"Energy": 1,"Type": "Skill" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Gain <green>6 Block</green>. Next turn, gain <green>6 Block</green>."},
 
-    "Outmaneuver": c("Skill", "Common", "Silent", "Next turn gain <yellow>2 Energy</yellow>.", Energy=1, **{"Energy Gain":2}),
-    "Outmaneuver +": c("Skill", "Common", "Silent", "Next turn gain <yellow>3 Energy</yellow>.", Energy=1, Upgraded=True, **{"Energy Gain":3}),
+    "Outmaneuver": {"Name": "Outmaneuver","Energy Gain":2,"Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Silent","Info":"Next turn gain <yellow>2 Energy</yellow>."},
+    "Outmaneuver +": {"Name": "Outmaneuver +","Energy Gain":3,"Energy": 1,"Type": "Skill" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Next turn gain <yellow>3 Energy</yellow>."},
 
-    "Piercing Wail": c("Skill", "Common", "Silent", "ALL enemies lose <red>6 Strength</red> this turn. <BLUE>Exhaust</BLUE>.", Energy=1, Exhaust=True, **{"Strength Modifier":6}),
-    "Piercing Wail +": c("Skill", "Common", "Silent", "ALL enemies lose <red>8 Strength</red> this turn. <BLUE>Exhaust</BLUE>.", Energy=1, Exhaust=True, Upgraded=True, **{"Strength Modifier":8}),
+    "Piercing Wail": {"Name": "Piercing Wail","Strength Modifier":6,"Energy": 1,"Exhaust": True,"Type": "Skill" ,"Rarity": "Common","Owner":"Silent","Info":"ALL enemies lose <red>6 Strength</red> this turn. <BLUE>Exhaust</BLUE>."},
+    "Piercing Wail +": {"Name": "Piercing Wail +","Strength Modifier":8,"Energy": 1,"Exhaust": True,"Type": "Skill" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"ALL enemies lose <red>8 Strength</red> this turn. <BLUE>Exhaust</BLUE>."},
     
-    "Prepared": c("Skill", "Common", "Silent", "Draw 1 Card. Discard 1 Card.", Draw=1, Discard=1, Energy=0),
-    "Prepared +": c("Skill", "Common", "Silent", "Draw 2 Cards. Discard 2 Cards.", Draw=2, Discard=2, Energy=0, Upgraded=True),
+    "Prepared": {"Name": "Prepared","Draw":1,"Discard":1,"Energy": 0,"Type": "Skill" ,"Rarity": "Common","Owner":"Silent","Info":"Draw 1 Card. Discard 1 Card."},
+    "Prepared +": {"Name": "Prepared +","Draw":2,"Discard":2,"Energy": 0,"Type": "Skill" ,"Upgraded": True,"Rarity": "Common","Owner":"Silent","Info":"Draw 2 Cards. Discard 2 Cards."},
 
-    "Blur": c("Skill", "Uncommon", "Silent", "Gain <green>5 Block</green>. <green>Block</green> is not removed at the start of your next turn.", Block=5, KeepBlock=1, Energy=1),
-    "Blur +": c("Skill", "Uncommon", "Silent", "Gain <green>8 Block</green>. <green>Block</green> is not removed at the start of your next turn.", Block=8, KeepBlock=1, Energy=1, Upgraded=True),
+    "Blur": {"Name": "Blur","Block":5,"KeepBlock":1,"Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Gain <green>5 Block</green>. <green>Block</green> is not removed at the start of your next turn."},
+    "Blur +": {"Name": "Blur +","Block":8,"KeepBlock":1,"Energy": 1,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Gain <green>8 Block</green>. <green>Block</green> is not removed at the start of your next turn."},
 
-    "Bouncing Flask": c("Skill", "Uncommon", "Silent", "Randomly apply <green>3 Poison</green> 3 times.", Poison=3, Bounces=3, Energy=2),
-    "Bouncing Flask +": c("Skill", "Uncommon", "Silent", "Randomly apply <green>3 Poison</green> 4 times.", Poison=3, Bounces=4, Energy=2, Upgraded=True),
+    "Bouncing Flask": {"Name": "Bouncing Flask","Poison":3,"Bounces":3,"Energy": 2,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Randomly apply <green>3 Poison</green> 3 times."},
+    "Bouncing Flask +": {"Name": "Bouncing Flask +","Poison":3,"Bounces":4,"Energy": 2,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Randomly apply <green>3 Poison</green> 4 times."},
     
-    "Calculated Gamble": c("Skill", "Uncommon", "Silent", "Discard your entire hand. Draw as many cards. <BLUE>Exhaust</BLUE>.", Exhaust=True, Energy=0),
-    "Calculated Gamble +": c("Skill", "Uncommon", "Silent", "Discard your entire hand. Draw as many cards.", Energy=0, Upgraded=True),
+    "Calculated Gamble": {"Name": "Calculated Gamble","Exhaust": True,"Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Discard your entire hand. Draw as many cards. <BLUE>Exhaust</BLUE>."},
+    "Calculated Gamble +": {"Name": "Calculated Gamble +","Energy": 0,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Discard your entire hand. Draw as many cards."},
 
-    "Catalyst": c("Skill", "Uncommon", "Silent", "Double the enemy's <green>Poison</green>. <BLUE>Exhaust</BLUE>.", Multiplikator=2, Energy=1, Exhaust=True),
-    "Catalyst +": c("Skill", "Uncommon", "Silent", "Triple the enemy's <green>Poison</green>. <BLUE>Exhaust</BLUE>.", Multiplikator=3, Energy=1, Exhaust=True, Upgraded=True),
+    "Catalyst": {"Name": "Catalyst","Multiplikator":2,"Energy": 1,"Exhaust": True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Double the enemy's <green>Poison</green>. <BLUE>Exhaust</BLUE>."},
+    "Catalyst +": {"Name": "Catalyst +","Multiplikator":3,"Energy": 1,"Exhaust": True,"Upgraded": True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Triple the enemy's <green>Poison</green>. <BLUE>Exhaust</BLUE>."},
     
-    "Concentrate" :c("Skill", "Uncommon", "Silent", "Discard 3 Cards. Gain <yellow>2 Energy</yellow>.", Discard=3, Energy=0, **{"Energy Gain":2}),
-    "Concentrate +" :c("Skill", "Uncommon", "Silent", "Discard 2 Cards. Gain <yellow>2 Energy</yellow>.", Discard=2, Energy=0, Upgraded=True, **{"Energy Gain":2}),
+    "Concentrate" :{"Name": "Concentrate","Energy Gain":2,"Discard": 3,"Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Discard 3 Cards. Gain <yellow>2 Energy</yellow>."},
+    "Concentrate +" :{"Name": "Concentrate +","Energy Gain":2,"Discard": 2,"Energy": 0,"Upgraded": True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Discard 2 Cards. Gain <yellow>2 Energy</yellow>."},
     
-    "Crippling Cloud" :c("Skill", "Uncommon", "Silent", "Apply <green>4 Poison</green> and <light-cyan>2 Weak</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>.", Poison=4, Weakness=2, Energy=2, Exhaust=True),
-    "Crippling Cloud +" :c("Skill", "Uncommon", "Silent", "Apply <green>6 Poison</green> and <light-cyan>2 Weak</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>.", Poison=7, Weakness=2, Energy=2, Exhaust=True, Upgraded=True),
+    "Crippling Cloud" :{"Name": "Crippling Cloud","Poison":4,"Weakness": 2,"Energy": 2,"Exhaust":True ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Apply <green>4 Poison</green> and <light-cyan>2 Weak</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>."},
+    "Crippling Cloud +" :{"Name": "Crippling Cloud +","Poison":7,"Weakness": 2,"Energy": 2,"Exhaust":True ,"Upgraded": True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Apply <green>6 Poison</green> and <light-cyan>2 Weak</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>."},
     
-    "Distraction" :c("Skill", "Uncommon", "Silent", "Add a random <green>Skill</green> into your hand. It costs <yellow>0 Energy</yellow> this turn.", Energy=1, Exhaust=True),
-    "Distraction +" :c("Skill", "Uncommon", "Silent", "Add a random <green>Skill</green> into your hand. It costs <yellow>0 Energy</yellow> this turn.", Energy=0, Exhaust=True, Upgraded=True),
+    "Distraction" :{"Name": "Distraction","Energy": 1,"Exhaust":True ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Add a random <green>Skill</green> into your hand. It costs <yellow>0 Energy</yellow> this turn."},
+    "Distraction +" :{"Name": "Distraction +","Energy": 0,"Exhaust":True ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Add a random <green>Skill</green> into your hand. It costs <yellow>0 Energy</yellow> this turn."},
     
-    "Escape Plan" :c("Skill", "Uncommon", "Silent", "Draw 1 Card. If you draw a <green>Skill</green>, gain <green>3 Block</green>.", Block=3, Draw=1, Energy=0),
-    "Escape Plan +" :c("Skill", "Uncommon", "Silent", "Draw 1 Card. If you draw a <green>Skill</green>, gain <green>5 Block</green>.", Block=5, Draw=1, Energy=0, Upgraded=True),
+    "Escape Plan" :{"Name": "Escape Plan","Block":3,"Draw": 1,"Energy": 0 ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Draw 1 Card. If you draw a <green>Skill</green>, gain <green>3 Block</green>."},
+    "Escape Plan +" :{"Name": "Escape Plan +","Block":5,"Draw": 1,"Energy": 0 ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Draw 1 Card. If you draw a <green>Skill</green>, gain <green>5 Block</green>."},
     
-    "Expertise" :c("Skill", "Uncommon", "Silent", "Draw until you have 6 cards in your hand.", Draw=6, Energy=1),
-    "Expertise +" :c("Skill", "Uncommon", "Silent", "Draw until you have 7 cards in your hand.", Draw=7, Energy=1, Upgraded=True),
+    "Expertise" :{"Name": "Expertise","Draw":6,"Energy": 1 ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Draw until you have 6 cards in your hand."},
+    "Expertise +" :{"Name": "Expertise +","Draw":7,"Energy": 1 ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Draw until you have 7 cards in your hand."},
     
-    "Leg Sweep" :c("Skill", "Uncommon", "Silent", "Apply <light-cyan>2 Weak</light-cyan>. Gain <green>11 Block</green>.", Block=11, Weakness=2, Energy=2),
-    "Leg Sweep +" :c("Skill", "Uncommon", "Silent", "Apply <light-cyan>3 Weak</light-cyan>. Gain <green>14 Block</green>.", Block=14, Weakness=3, Energy=2, Upgraded=True),
+    "Leg Sweep" :{"Name": "Leg Sweep","Block":11,"Weakness":2,"Energy": 2 ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Apply <light-cyan>2 Weak</light-cyan>. Gain <green>11 Block</green>."},
+    "Leg Sweep +" :{"Name": "Leg Sweep +","Block":14,"Weakness":3,"Energy": 2 ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Apply <light-cyan>3 Weak</light-cyan>. Gain <green>14 Block</green>."},
     
-    "Reflex" :c("Skill", "Uncommon", "Silent", "<RED>Unplayable</RED>. If this Card is discared, draw 2 Cards.", Draw=2),
-    "Reflex +" :c("Skill", "Uncommon", "Silent", "<RED>Unplayable</RED>. If this Card is discared, draw 3 Cards.", Draw=3, Upgraded=True),
+    "Reflex" :{"Name": "Reflex","Draw":2 ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"<RED>Unplayable</RED>. If this Card is discared, draw 2 Cards."},
+    "Reflex +" :{"Name": "Reflex +","Draw":3 ,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Silent","Info":"<RED>Unplayable</RED>. If this Card is discared, draw 3 Cards."},
     
-    "Tactician" :c("Skill", "Uncommon", "Silent", "<RED>Unplayable</RED>. If this Card is discared, gain <yellow>1 Energy</yellow>.", **{"Energy Gain":1}),
-    "Tactician +" :c("Skill", "Uncommon", "Silent", "<RED>Unplayable</RED>. If this Card is discared, gain <yellow>2 Energy</yellow>.", Name="Tactician", Upgraded=True, **{"Energy Gain":2}),
+    "Tactician" :{"Name": "Tactician","Energy Gain":1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"<RED>Unplayable</RED>. If this Card is discared, gain <yellow>1 Energy</yellow>."},
+    "Tactician +" :{"Name": "Tactician","Energy Gain":2 ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"<RED>Unplayable</RED>. If this Card is discared, gain <yellow>2 Energy</yellow>."},
     
-    "Setup" :c("Skill", "Uncommon", "Silent", "Put a Card from your hand on top of your Drawpile. It costs <yellow>0 Energy</yellow> until played", Energy=1, **{"Back Putter":1,"Energy Change Type":"Until Played","Energy Change":0}),
-    "Setup +" :c("Skill", "Uncommon", "Silent", "Put a Card from your hand on top of your Drawpile. It costs <yellow>0 Energy</yellow> until played", Energy=0, Upgraded=True, **{"Back Putter":1,"Energy Change Type":"Until Played","Energy Change":0}),
+    "Setup" :{"Name": "Setup","Back Putter":1,"Energy Change Type":"Until Played","Energy Change":0,"Energy": 1 ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Put a Card from your hand on top of your Drawpile. It costs <yellow>0 Energy</yellow> until played"},
+    "Setup +" :{"Name": "Setup +","Back Putter":1,"Energy Change Type":"Until Played","Energy Change":0,"Energy": 0,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Put a Card from your hand on top of your Drawpile. It costs <yellow>0 Energy</yellow> until played"},
 
-    "Terror" :c("Skill", "Uncommon", "Silent", "Apply <light-cyan>99 Vulnerable</light-cyan>.", Vulnerable=99, Energy=1, Exhaust=True),
-    "Terror +" :c("Skill", "Uncommon", "Silent", "Apply <light-cyan>99 Vulnerable</light-cyan>.", Vulnerable=99, Energy=0, Exhaust=True, Upgraded=True),
+    "Terror" :{"Name": "Terror", "Vulnerable":99, "Energy": 1 ,"Type": "Skill" ,"Exhaust":True ,"Rarity": "Uncommon","Owner":"Silent","Info":"Apply <light-cyan>99 Vulnerable</light-cyan>."},
+    "Terror +" :{"Name": "Terror +", "Vulnerable":99, "Energy": 0 ,"Type": "Skill" ,"Exhaust":True ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Apply <light-cyan>99 Vulnerable</light-cyan>."},
 
-    "Adrenaline" :c("Skill", "Rare", "Silent", "Draw 2 Cards. Gain <yellow>1 Energy</yellow>. <BLUE>Exhaust</BLUE>.", Draw=2, Energy=0, Exhaust=True, **{"Energy Gain":1}),
-    "Adrenaline +" :c("Skill", "Rare", "Silent", "Draw 2 Cards. Gain <yellow>2 Energy</yellow>. <BLUE>Exhaust</BLUE>.", Draw=2, Energy=0, Exhaust=True, Upgraded=True, **{"Energy Gain":2}),
+    "Adrenaline" :{"Name": "Adrenaline","Draw":2,"Energy": 0,"Energy Gain":1,"Exhaust":True ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Draw 2 Cards. Gain <yellow>1 Energy</yellow>. <BLUE>Exhaust</BLUE>."},
+    "Adrenaline +" :{"Name": "Adrenaline +","Draw":2,"Energy": 0,"Energy Gain":2,"Exhaust":True ,"Upgraded": True,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Draw 2 Cards. Gain <yellow>2 Energy</yellow>. <BLUE>Exhaust</BLUE>."},
 
-    "Alchemize" :c("Skill", "Rare", "Silent", "Obtain a random <c>Potion</c>. <BLUE>Exhaust</BLUE>.", Potion=1, Energy=1, Exhaust=True),
-    "Alchemize +" :c("Skill", "Rare", "Silent", "Obtain a random <c>Potion</c>. <BLUE>Exhaust</BLUE>.", Potion=1, Energy=0, Exhaust=True, Upgraded=True),
+    "Alchemize" :{"Name": "Alchemize","Potion":1,"Energy": 1,"Exhaust":True ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Obtain a random <c>Potion</c>. <BLUE>Exhaust</BLUE>."},
+    "Alchemize +" :{"Name": "Alchemize +","Potion":1,"Energy": 0,"Exhaust":True ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Obtain a random <c>Potion</c>. <BLUE>Exhaust</BLUE>."},
 
-    "Corpse Explosion" :c("Skill", "Rare", "Silent", "Apply <green>6 Poison</green>. When the enemy dies, deal <red>damage</red> equal to its Max HP to ALL enemies.", Poison=6, Energy=2),
-    "Corpse Explosion +" :c("Skill", "Rare", "Silent", "Apply <green>9 Poison</green>. When the enemy dies, deal <red>damage</red> equal to its Max HP to ALL enemies.", Poison=9, Energy=2, Upgraded=True),
+    "Corpse Explosion" :{"Name": "Corpse Explosion","Poison":6,"Energy": 2 ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Apply <green>6 Poison</green>. When the enemy dies, deal <red>damage</red> equal to its Max HP to ALL enemies."},
+    "Corpse Explosion +" :{"Name": "Corpse Explosion +","Poison":9,"Energy": 2 ,"Type": "Skill" ,"Rarity": "Rare","Upgraded": True,"Owner":"Silent","Info":"Apply <green>9 Poison</green>. When the enemy dies, deal <red>damage</red> equal to its Max HP to ALL enemies."},
 
-    "Doppelganger" :c("Skill", "Rare", "Silent", "Next turn, draw X Cards and gain <yellow>X Energy</yellow>.", Energy="X", Exhaust=True),
-    "Doppelganger +" :c("Skill", "Rare", "Silent", "Next turn, draw X+1 Cards and gain <yellow>X+1 Energy</yellow>.", Energy="X", Exhaust=True, Upgraded=True),
+    "Doppelganger" :{"Name": "Doppelganger","Energy": "X","Exhaust":True ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Next turn, draw X Cards and gain <yellow>X Energy</yellow>."},
+    "Doppelganger +" :{"Name": "Doppelganger +","Energy": "X","Exhaust":True ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Next turn, draw X+1 Cards and gain <yellow>X+1 Energy</yellow>."},
     
-    "Malaise" :c("Skill", "Rare", "Silent", "Enemy loses <red>X Stength</red>. Apply <light-cyan>X Weak</light-cyan>. <BLUE>Exhaust</BLUE>.", Energy="X", Exhaust=True),
-    "Malaise +" :c("Skill", "Rare", "Silent", "Enemy loses <red>X+1 Stength</red>. Apply <light-cyan>X+1 Weak</light-cyan>. <BLUE>Exhaust</BLUE>.", Energy="X", Exhaust=True, Upgraded=True),
+    "Malaise" :{"Name": "Malaise","Energy": "X","Exhaust":True ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Enemy loses <red>X Stength</red>. Apply <light-cyan>X Weak</light-cyan>. <BLUE>Exhaust</BLUE>."},
+    "Malaise +" :{"Name": "Malaise +","Energy": "X","Exhaust":True ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Enemy loses <red>X+1 Stength</red>. Apply <light-cyan>X+1 Weak</light-cyan>. <BLUE>Exhaust</BLUE>."},
     
-    "Phantasmal Killer" :c("Skill", "Rare", "Silent", "Next turn your <red>Attacks</red> deal double damage.", Energy=1, DoubleDamage=1),
-    "Phantasmal Killer +" :c("Skill", "Rare", "Silent", "Next turn your <red>Attacks</red> deal double damage.", Energy=0, DoubleDamage=1, Upgraded=True),
+    "Phantasmal Killer" :{"Name": "Phantasmal Killer","Energy": 1,"DoubleDamage":1 ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Next turn your <red>Attacks</red> deal double damage."},
+    "Phantasmal Killer +" :{"Name": "Phantasmal Killer +","Energy": 0,"DoubleDamage":1 ,"Upgraded": True,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Next turn your <red>Attacks</red> deal double damage."},
     
-    "Bullet Time" :c("Skill", "Rare", "Silent", "You cannot draw additonal Cards this turn. Reduce the cost of all Cards in your hand to <yellow>0 Energy</yellow> this turn.", Energy=3, **{"Bullet Time":1}),
-    "Bullet Time +" :c("Skill", "Rare", "Silent", "You cannot draw additonal Cards this turn. Reduce the cost of all Cards in your hand to <yellow>0 Energy</yellow> this turn.", Energy=2, Upgraded=True, **{"Bullet Time":1}),
+    "Bullet Time" :{"Name": "Bullet Time","Energy": 3,"Bullet Time":1 ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"You cannot draw additonal Cards this turn. Reduce the cost of all Cards in your hand to <yellow>0 Energy</yellow> this turn."},
+    "Bullet Time +" :{"Name": "Bullet Time +","Energy": 2,"Bullet Time":1 ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"You cannot draw additonal Cards this turn. Reduce the cost of all Cards in your hand to <yellow>0 Energy</yellow> this turn."},
 
-    "Storm of Steel" :c("Skill", "Rare", "Silent", "Discard your hand. Add <red>1 Shiv</red> for each card you discarded this way.", Energy=1),
-    "Storm of Steel +" :c("Skill", "Rare", "Silent", "Discard your hand. Add <red>1 Shiv +</red> for each card you discarded this way.", Energy=1, Upgraded=True),
+    "Storm of Steel" :{"Name": "Storm of Steel","Energy": 1 ,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"Discard your hand. Add <red>1 Shiv</red> for each card you discarded this way."},
+    "Storm of Steel +" :{"Name": "Storm of Steel +","Energy": 1 ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Discard your hand. Add <red>1 Shiv +</red> for each card you discarded this way."},
 
-    "Burst" :c("Skill", "Rare", "Silent", "This turn, your next <green>Skill</green> is played twice.", Burst=1, Energy=1),
-    "Burst +" :c("Skill", "Rare", "Silent", "This turn, your next <green>2 Skills</green> are played twice.", Burst=2, Energy=1, Upgraded=True),
+    "Burst" :{"Name": "Burst", "Burst":1, "Energy": 1,"Type": "Skill" ,"Rarity": "Rare","Owner":"Silent","Info":"This turn, your next <green>Skill</green> is played twice."},
+    "Burst +" :{"Name": "Burst +", "Burst":2, "Energy": 1,"Type": "Skill" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"This turn, your next <green>2 Skills</green> are played twice."},
 
-    "Accuracy" :c("Power", "Uncommon", "Silent", "<red>Shivs</red> deal an extra <red>4 damage</red>.", Accuracy=4, Energy=1),
-    "Accuracy +" :c("Power", "Uncommon", "Silent", "<red>Shivs</red> deal an extra <red>6 damage</red>.", Accuracy=6, Energy=1, Upgraded=True),
+    "Accuracy" :{"Name": "Accuracy", "Accuracy":4, "Energy": 1,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Silent","Info":"<red>Shivs</red> deal an extra <red>4 damage</red>."},
+    "Accuracy +" :{"Name": "Accuracy +", "Accuracy":6, "Energy": 1,"Type": "Power" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"<red>Shivs</red> deal an extra <red>6 damage</red>."},
 
-    "After Image" :c("Power", "Rare", "Silent", "Whenever you play a card, gain <green>1 Block</green>.", Energy=1, **{"After Image":1}),
-    "After Image +" :c("Power", "Rare", "Silent", "Whenever you play a card, gain <green>2 Block</green>.", Innate=True, Upgraded=True, Energy=1, **{"After Image":1}),
+    "After Image" :{"Name": "After Image", "After Image":1, "Energy": 1,"Type": "Power" ,"Rarity": "Rare","Owner":"Silent","Info":"Whenever you play a card, gain <green>1 Block</green>."},
+    "After Image +" :{"Name": "After Image +", "After Image":1, "Innate": True,"Upgraded":True, "Energy": 1,"Type": "Power" ,"Rarity": "Rare","Owner":"Silent","Info":"Whenever you play a card, gain <green>2 Block</green>."},
     
-    "Caltrops" :c("Power", "Uncommon", "Silent", "Whenever you are attacked, deal <red>3 damage</red> back.", Spikes=3, Energy=1),  
-    "Caltrops +" :c("Power", "Uncommon", "Silent", "Whenever you are attacked, deal <red>5 damage</red> back.", Spikes=5, Energy=1, Upgraded=True),
+    "Caltrops" :{"Name": "Caltrops", "Spikes":3, "Energy": 1,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Whenever you are attacked, deal <red>3 damage</red> back."},  
+    "Caltrops +" :{"Name": "Caltrops +", "Spikes":5, "Energy": 1,"Type": "Power" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Whenever you are attacked, deal <red>5 damage</red> back."},
     
-    "Footwork" :c("Power", "Uncommon", "Silent", "Gain <green>2 Dexterity</green>.", Dexterity=2, Energy=1),
-    "Footwork +" :c("Power", "Uncommon", "Silent", "Gain <green>3 Dexterity</green>.", Dexterity=3, Energy=1, Upgraded=True),
+    "Footwork" :{"Name": "Footwork", "Dexterity":2, "Energy": 1,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Silent","Info":"Gain <green>2 Dexterity</green>."},
+    "Footwork +" :{"Name": "Footwork +", "Dexterity":3, "Energy": 1,"Type": "Power" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"Gain <green>3 Dexterity</green>."},
 
-    "Infinite Blades" :c("Power", "Uncommon", "Silent", "At the start of your turn, add <red>1 Shiv</red> to your hand.", Energy=1, **{"Infinite Blades":1}),
-    "Infinite Blades +" :c("Power", "Uncommon", "Silent", "At the start of your turn, add <red>1 Shiv</red> to your hand. <BLUE>Innate</BLUE>.", Innate=True, Energy=1, Upgraded=True, **{"Infinite Blades":1}),
+    "Infinite Blades" :{"Name": "Infinite Blades", "Infinite Blades":1, "Energy": 1,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Silent","Info":"At the start of your turn, add <red>1 Shiv</red> to your hand."},
+    "Infinite Blades +" :{"Name": "Infinite Blades +", "Infinite Blades":1,"Innate": True, "Energy": 1,"Type": "Power" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"At the start of your turn, add <red>1 Shiv</red> to your hand. <BLUE>Innate</BLUE>."},
 
-    "NoxiousFumes" :c("Power", "Uncommon", "Silent", "At the start of your turn, apply <green>2 Poison</green> to ALL enemies.", Name="Noxious Fumes", Noxiousness=2, Energy=1),
-    "NoxiousFumes +" :c("Power", "Uncommon", "Silent", "At the start of your turn, apply <green>3 Poison</green> to ALL enemies.", Name="Noxious Fumes +", Noxiousness=3, Energy=1, Upgraded=True),
+    "NoxiousFumes" :{"Name": "Noxious Fumes", "Noxiousness":2, "Energy": 1,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Silent","Info":"At the start of your turn, apply <green>2 Poison</green> to ALL enemies."},
+    "NoxiousFumes +" :{"Name": "Noxious Fumes +", "Noxiousness":3, "Energy": 1,"Type": "Power" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Silent","Info":"At the start of your turn, apply <green>3 Poison</green> to ALL enemies."},
 
-    "Well-Laid Plans" :c("Power", "Uncommon", "Silent", "At the end of your turn, Retain up to 1 Card.", Energy=1, **{"Well Planed":1}),
-    "Well-Laid Plans +" :c("Power", "Uncommon", "Silent", "At the end of your turn, Retain up to 2 Card.", Energy=1, Upgraded=True, **{"Well Planed":2}),
+    "Well-Laid Plans" :{"Name": "Well-Laid Plans", "Well Planed":1, "Energy": 1,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Silent","Info":"At the end of your turn, Retain up to 1 Card."},
+    "Well-Laid Plans +" :{"Name": "Well-Laid Plans +", "Well Planed":2, "Energy": 1,"Upgraded": True,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Silent","Info":"At the end of your turn, Retain up to 2 Card."},
 
-    "A Thousand Cuts" :c("Power", "Rare", "Silent", "Whenever you play a Card, deal <red>1 damage</red> to ALL enemies.", Energy=2, **{"Thousand Cuts":1}),
-    "A Thousand Cuts +" :c("Power", "Rare", "Silent", "Whenever you play a Card, deal <red>2 damage</red> to ALL enemies.", Energy=2, Upgraded=True, **{"Thousand Cuts":2}),
+    "A Thousand Cuts" :{"Name": "A Thousand Cuts", "Thousand Cuts":1, "Energy": 2,"Type": "Power" ,"Rarity": "Rare","Owner":"Silent","Info":"Whenever you play a Card, deal <red>1 damage</red> to ALL enemies."},
+    "A Thousand Cuts +" :{"Name": "A Thousand Cuts +", "Thousand Cuts":2, "Energy": 2,"Upgraded": True,"Type": "Power" ,"Rarity": "Rare","Owner":"Silent","Info":"Whenever you play a Card, deal <red>2 damage</red> to ALL enemies."},
 
-    "Envenom" :c("Power", "Rare", "Silent", "Whenever an <red>Attack</red> deals unblocked <red>damaged</red>,apply <green>1 Poison</green>.", Envenom=1, Energy=2),
-    "Envenom +" :c("Power", "Rare", "Silent", "Whenever an <red>Attack</red> deals unblocked <red>damaged</red>,apply <green>1 Poison</green>.", Envenom=1, Energy=1, Upgraded=True),
+    "Envenom" :{"Name": "Envenom", "Envenom":1, "Energy": 2,"Type": "Power" ,"Rarity": "Rare","Owner":"Silent","Info":"Whenever an <red>Attack</red> deals unblocked <red>damaged</red>,apply <green>1 Poison</green>."},
+    "Envenom +" :{"Name": "Envenom +", "Envenom":1, "Energy": 1,"Type": "Power" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"Whenever an <red>Attack</red> deals unblocked <red>damaged</red>,apply <green>1 Poison</green>."},
 
-    "Tools of the Trade" :c("Power", "Rare", "Silent", "At the start of your turn: Draw 1 Card. Discard 1 Card.", Tools=1, Energy=1),
-    "Tools of the Trade +" :c("Power", "Rare", "Silent", "At the start of your turn: Draw 1 Card. Discard 1 Card.", Tools=1, Energy=0, Upgraded=True),
+    "Tools of the Trade" :{"Name": "Tools of the Trade", "Tools":1, "Energy": 1,"Type": "Power" ,"Rarity": "Rare","Owner":"Silent","Info":"At the start of your turn: Draw 1 Card. Discard 1 Card."},
+    "Tools of the Trade +" :{"Name": "Tools of the Trade +", "Tools":1, "Energy": 0,"Type": "Power" ,"Upgraded": True,"Rarity": "Rare","Owner":"Silent","Info":"At the start of your turn: Draw 1 Card. Discard 1 Card."},
 
-    "Wraith Form" :c("Power", "Rare", "Silent", "Gain <blue>2 Intangible</blue>. At the end of your turn, lose <green>1 Dexterity</green>.", Wraithness=1, Intangible=2, Energy=3),
-    "Wraith Form +" :c("Power", "Rare", "Silent", "Gain <blue>3 Intangible</blue>. At the end of your turn, lose <green>1 Dexterity</green>.", Wraithness=1, Intangible=3, Energy=3, Upgraded=True),
+    "Wraith Form" :{"Name": "Wraith Form", "Wraithness":1,"Intangible":2, "Energy": 3,"Type": "Power" ,"Rarity": "Rare","Owner":"Silent","Info":"Gain <blue>2 Intangible</blue>. At the end of your turn, lose <green>1 Dexterity</green>."},
+    "Wraith Form +" :{"Name": "Wraith Form +", "Wraithness":1,"Intangible":3, "Energy": 3,"Upgraded": True,"Type": "Power" ,"Rarity": "Rare","Owner":"Silent","Info":"Gain <blue>3 Intangible</blue>. At the end of your turn, lose <green>1 Dexterity</green>."},
 
     #Ironclad Cards
 
-    "Strike": c("Attack", "Basic", "Ironclad", "Deal <red>6 damage</red>.", Damage=6, Energy=1),
-    "Strike +": c("Attack", "Basic", "Ironclad", "Deal <red>9 damage</red>.", Upgraded=True, Damage=9, Energy=1),
+    "Strike": {"Name": "Strike", "Damage":6, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Ironclad","Info":"Deal <red>6 damage</red>."},
+    "Strike +": {"Name": "Strike +","Upgraded": True, "Damage":9, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Ironclad","Info":"Deal <red>9 damage</red>."},
 
-    "Defend": c("Skill", "Basic", "Ironclad", "Gain <green>6 Block</green>.", Block=5, Energy=1),
-    "Defend +": c("Skill", "Basic", "Ironclad", "Gain <green>8 Block</green>.", Upgraded=True, Block=8, Energy=1),
+    "Defend": {"Name": "Defend", "Block":5, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Ironclad","Info":"Gain <green>6 Block</green>."},
+    "Defend +": {"Name": "Defend +","Upgraded": True, "Block":8, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Ironclad","Info":"Gain <green>8 Block</green>."},
 
-    "Bash" :c("Attack", "Basic", "Ironclad", "Deal <red>8 damage</red>. Apply <light-blue>2 Vulnerable</light-blue>", Damage=8, Vulnerable=2, Energy=2),
-    "Bash +" :c("Attack", "Basic", "Ironclad", "Deal <red>10 damage</red>. Apply <light-blue>3 Vulnerable</light-blue>", Damage=10, Vulnerable=3, Energy=2, Upgraded=True),
+    "Bash" :{"Name":"Bash","Damage":8, "Vulnerable":2,"Energy":2,"Type":"Attack","Rarity":"Basic","Owner":"Ironclad","Info":"Deal <red>8 damage</red>. Apply <light-blue>2 Vulnerable</light-blue>"},
+    "Bash +" :{"Name":"Bash +","Damage":10, "Vulnerable":3,"Energy":2,"Type":"Attack", "Upgraded":True,"Rarity":"Basic","Owner":"Ironclad","Info":"Deal <red>10 damage</red>. Apply <light-blue>3 Vulnerable</light-blue>"},
     
-    "Anger" :c("Attack", "Common", "Ironclad", "Deal <red>6 damage</red>. Add a copy of this card to your Discardpile.", Damage=6, Energy=0),
-    "Anger +" :c("Attack", "Common", "Ironclad", "Deal <red>8 damage</red>. Add a copy of this card to your Discardpile.", Name="Anger", Damage=8, Energy=0, Upgraded=True),
+    "Anger" :{"Name":"Anger","Damage":6, "Energy":0,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>6 damage</red>. Add a copy of this card to your Discardpile."},
+    "Anger +" :{"Name":"Anger","Damage":8, "Energy":0,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>8 damage</red>. Add a copy of this card to your Discardpile."},
 
-    "Body Slam" :c("Attack", "Common", "Ironclad", "Deal <red>Damage</red> equal to your <green>Block</green>", Energy=1),
-    "Body Slam +" :c("Attack", "Common", "Ironclad", "Deal <red>Damage</red> equal to your <green>Block</green>", Energy=0, Upgraded=True),
+    "Body Slam" :{"Name":"Body Slam","Energy":1,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>Damage</red> equal to your <green>Block</green>"},
+    "Body Slam +" :{"Name":"Body Slam +","Energy":0,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>Damage</red> equal to your <green>Block</green>"},
 
-    "Clash" :c("Attack", "Common", "Ironclad", "Deal <red>14 Damage</red>. Can only be played if every Card in your Hand is an <red>Attack</red>.", Damage=14, Energy=0),
-    "Clash +" :c("Attack", "Common", "Ironclad", "Deal <red>18 Damage</red>. Can only be played if every Card in your Hand is an <red>Attack</red>.", Damage=18, Energy=0, Upgraded=True),    
+    "Clash" :{"Name":"Clash","Damage": 14,"Energy":0,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>14 Damage</red>. Can only be played if every Card in your Hand is an <red>Attack</red>."},
+    "Clash +" :{"Name":"Clash +","Damage": 18,"Energy":0,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>18 Damage</red>. Can only be played if every Card in your Hand is an <red>Attack</red>."},    
 
-    "Cleave" :c("Attack", "Common", "Ironclad", "Deal <red>8 Damage</red> to ALL enemies.", Damage=8, Energy=1),
-    "Cleave +" :c("Attack", "Common", "Ironclad", "Deal <red>11 Damage</red> to ALL enemies.", Damage=11, Energy=1, Upgraded=True),
+    "Cleave" :{"Name":"Cleave","Damage": 8,"Energy":1,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>8 Damage</red> to ALL enemies."},
+    "Cleave +" :{"Name":"Cleave +","Damage": 11,"Energy":1,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>11 Damage</red> to ALL enemies."},
 
-    "Clothesline" :c("Attack", "Common", "Ironclad", "Deal <red>12 Damage</red>. Apply <light-blue>2 Weak</light-blue>.", Damage=12, Weakness=2, Energy=2),
-    "Clothesline +" :c("Attack", "Common", "Ironclad", "Deal <red>14 Damage</red>. Apply <light-blue>3 Weak</light-blue>.", Damage=14, Weakness=3, Energy=2, Upgraded=True),
+    "Clothesline" :{"Name":"Clothesline","Damage": 12,"Weakness":2,"Energy":2,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>12 Damage</red>. Apply <light-blue>2 Weak</light-blue>."},
+    "Clothesline +" :{"Name":"Clothesline +","Damage": 14,"Weakness":3,"Energy":2,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>14 Damage</red>. Apply <light-blue>3 Weak</light-blue>."},
 
-    "Headbutt" :c("Attack", "Common", "Ironclad", "Deal <red>9 damage</red>. Put a card from your Discardpile on top of your Drawpile.", Damage=9, Energy=1),
-    "Headbutt +" :c("Attack", "Common", "Ironclad", "Deal <red>12 damage</red>. Put a card from your Discardpile on top of your Drawpile.", Damage=12, Energy=1, Upgraded=True),
+    "Headbutt" :{"Name":"Headbutt","Damage": 9,"Energy":1,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>9 damage</red>. Put a card from your Discardpile on top of your Drawpile."},
+    "Headbutt +" :{"Name":"Headbutt +","Damage": 12,"Energy":1,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>12 damage</red>. Put a card from your Discardpile on top of your Drawpile."},
 
-    "Heavy Blade" :c("Attack", "Common", "Ironclad", "Deal <red>14 damage</red>. <red>Strength</red> affects this card 3 times.", Damage=14, StrengthMultiplier=3, Energy=2),
-    "Heavy Blade +" :c("Attack", "Common", "Ironclad", "Deal <red>14 damage</red>. <red>Strength</red> affects this card 5 times.", Damage=14, StrengthMultiplier=5, Energy=2, Upgraded=True),
+    "Heavy Blade" :{"Name":"Heavy Blade","Damage": 14,"StrengthMultiplier":3,"Energy":2,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>14 damage</red>. <red>Strength</red> affects this card 3 times."},
+    "Heavy Blade +" :{"Name":"Heavy Blade +","Damage": 14,"StrengthMultiplier":5,"Energy":2,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>14 damage</red>. <red>Strength</red> affects this card 5 times."},
 
-    "Iron Wave" :c("Attack", "Common", "Ironclad", "Deal <red>5 damage</red>. Gain <green>5 Block</green>", Damage=5, Block=5, Energy=1),
-    "Iron Wave +" :c("Attack", "Common", "Ironclad", "Deal <red>7 damage</red>. Gain <green>7 Block</green>", Damage=7, Block=7, Energy=1, Upgraded=True),
+    "Iron Wave" :{"Name":"Iron Wave","Damage": 5,"Block":5,"Energy":1,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>5 damage</red>. Gain <green>5 Block</green>"},
+    "Iron Wave +" :{"Name":"Iron Wave +","Damage": 7,"Block":7,"Energy":1,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>7 damage</red>. Gain <green>7 Block</green>"},
     
-    "Perfected Strike" :c("Attack", "Common", "Ironclad", 'Deal <red>6 damage</red>. Deals <red>2 additional damage</red> for ALL your cards containing "Strike".', Damage=6, StrikeDamage=2, Energy=2),
-    "Perfected Strike +" :c("Attack", "Common", "Ironclad", 'Deal <red>6 damage</red>. Deals <red>3 additional damage</red> for ALL your cards containing "Strike".', Damage=6, StrikeDamage=3, Energy=2, Upgraded=True),
+    "Perfected Strike" :{"Name":"Perfected Strike","Damage": 6,"StrikeDamage":2,"Energy":2,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>6 damage</red>. Deals <red>2 additional damage</red> for ALL your cards containing \"Strike\"."},
+    "Perfected Strike +" :{"Name":"Perfected Strike +","Damage": 6,"StrikeDamage":3,"Energy":2,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>6 damage</red>. Deals <red>3 additional damage</red> for ALL your cards containing \"Strike\"."},
 
-    "Pommel Strike" :c("Attack", "Common", "Ironclad", "Deal <red>9 damage</red>. Draw 1 Card.", Damage=9, Draw=1, Energy=1),
-    "Pommel Strike +" :c("Attack", "Common", "Ironclad", "Deal <red>10 damage</red>. Draw 2 Cards.", Damage=10, Draw=2, Energy=1, Upgraded=True),
+    "Pommel Strike" :{"Name":"Pommel Strike","Damage": 9,"Draw":1,"Energy":1,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>9 damage</red>. Draw 1 Card."},
+    "Pommel Strike +" :{"Name":"Pommel Strike +","Damage": 10,"Draw":2,"Energy":1,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>10 damage</red>. Draw 2 Cards."},
 
-    "Sword Boomerang" :c("Attack", "Common", "Ironclad", "Deal <red>3 damage</red> to a random Enemy 3 times.", Damage=3, Attacks=3, Energy=1),
-    "Sword Boomerang +" :c("Attack", "Common", "Ironclad", "Deal <red>3 damage</red> to a random enemy 4 times.", Damage=4, Attacks=4, Energy=1, Upgraded=True),
+    "Sword Boomerang" :{"Name":"Sword Boomerang","Damage": 3,"Attacks":3,"Energy":1,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>3 damage</red> to a random Enemy 3 times."},
+    "Sword Boomerang +" :{"Name":"Sword Boomerang +","Damage": 4,"Attacks":4,"Energy":1,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>3 damage</red> to a random enemy 4 times."},
     
-    "Thunderclap" :c("Attack", "Common", "Ironclad", "Deal <red>4 damage</red> and apply <light-blue>1 Vulnerable</light-blue> to ALL Enemies.", Damage=4, Vulnerable=1, Energy=1),
-    "Thunderclap +" :c("Attack", "Common", "Ironclad", "Deal <red>7 damage</red> to and apply <light-blue>1 Vulnerable</light-blue> to ALL Enemies.", Damage=7, Vulnerable=1, Energy=1, Upgraded=True),
+    "Thunderclap" :{"Name":"Thunderclap","Damage": 4,"Vulnerable":1,"Energy":1,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>4 damage</red> and apply <light-blue>1 Vulnerable</light-blue> to ALL Enemies."},
+    "Thunderclap +" :{"Name":"Thunderclap +","Damage": 7,"Vulnerable":1,"Energy":1,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>7 damage</red> to and apply <light-blue>1 Vulnerable</light-blue> to ALL Enemies."},
     
-    "Twin Strike" :c("Attack", "Common", "Ironclad", "Deal <red>5 damage</red> twice.", Damage=5, Energy=1),
-    "Twin Strike +" :c("Attack", "Common", "Ironclad", "Deal <red>7 damage</red> twice.", Damage=7, Energy=1, Upgraded=True),
+    "Twin Strike" :{"Name":"Twin Strike","Damage": 5,"Energy":1,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>5 damage</red> twice."},
+    "Twin Strike +" :{"Name":"Twin Strike +","Damage": 7,"Energy":1,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>7 damage</red> twice."},
     
-    "Wild Strike" :c("Attack", "Common", "Ironclad", "Deal <red>12 damage</red> and shuffle <light-cyan>1 Wound</light-cyan> in your Drawpile.", Damage=12, Energy=1),
-    "Wild Strike +" :c("Attack", "Common", "Ironclad", "Deal <red>17 damage</red> and shuffle <light-cyan>1 Wound</light-cyan> in your Drawpile.", Damage=17, Energy=1, Upgraded=True),
+    "Wild Strike" :{"Name":"Wild Strike","Damage": 12,"Energy":1,"Type":"Attack","Rarity":"Common","Owner":"Ironclad","Info":"Deal <red>12 damage</red> and shuffle <light-cyan>1 Wound</light-cyan> in your Drawpile."},
+    "Wild Strike +" :{"Name":"Wild Strike +","Damage": 17,"Energy":1,"Type":"Attack","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>17 damage</red> and shuffle <light-cyan>1 Wound</light-cyan> in your Drawpile."},
     
-    "Blood for Blood" :c("Attack", "Uncommon", "Ironclad", "Costs <yellow>1 Energy</yellow> less for each time you lose <red>HP</red> this combat. Deal <red>18 damage</red>.", Damage=18, Energy=4),
-    "Blood for Blood +" :c("Attack", "Uncommon", "Ironclad", "Costs <yellow>1 Energy</yellow> less for each time you lose <red>HP</red> this combat. Deal <red>22 damage</red>.", Damage=22, Energy=3, Upgraded=True),
+    "Blood for Blood" :{"Name":"Blood for Blood","Damage": 18,"Energy":4,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Costs <yellow>1 Energy</yellow> less for each time you lose <red>HP</red> this combat. Deal <red>18 damage</red>."},
+    "Blood for Blood +" :{"Name":"Blood for Blood +","Damage": 22,"Energy":3,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Costs <yellow>1 Energy</yellow> less for each time you lose <red>HP</red> this combat. Deal <red>22 damage</red>."},
     
-    "Carnage" :c("Attack", "Uncommon", "Ironclad", "Deal <red>20 damage</red>. <BLUE>Ethereal</BLUE>", Damage=20, Energy=2, Ethereal=True),
-    "Carnage +" :c("Attack", "Uncommon", "Ironclad", "Deal <red>28 damage</red>. <BLUE>Ethereal</BLUE>", Damage=28, Energy=2, Ethereal=True, Upgraded=True),
+    "Carnage" :{"Name":"Carnage","Damage": 20,"Energy":2,"Ethereal":True,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>20 damage</red>. <BLUE>Ethereal</BLUE>"},
+    "Carnage +" :{"Name":"Carnage +","Damage": 28,"Energy":2,"Ethereal":True,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>28 damage</red>. <BLUE>Ethereal</BLUE>"},
 
-    "Dropkick" :c("Attack", "Uncommon", "Ironclad", "Deal <red>5 damage</red>. If the enemy has <light-cyan>Vulnerable</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 Card.", Damage=5, Draw=1, Energy=1, Ethereal=True, **{"Energy Gain":1}),
-    "Dropkick +" :c("Attack", "Uncommon", "Ironclad", "Deal <red>8 damage</red>. If the enemy has <light-cyan>Vulnerable</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 card.", Damage=8, Energy=1, Ethereal=True, Upgraded=True, **{"Energy Gain":1}),
+    "Dropkick" :{"Name":"Dropkick","Damage": 5,"Draw":1,"Energy Gain":1,"Energy":1,"Ethereal":True,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>5 damage</red>. If the enemy has <light-cyan>Vulnerable</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 Card."},
+    "Dropkick +" :{"Name":"Dropkick +","Damage": 8,"Energy":1,"Energy Gain":1,"Ethereal":True,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>8 damage</red>. If the enemy has <light-cyan>Vulnerable</light-cyan>, gain <yellow>1 Energy</yellow> and draw 1 card."},
 
-    "Hemokinesis" :c("Attack", "Uncommon", "Ironclad", "Lose <red>2 HP</red>. Deal <red>15 damage</red>.", Damage=15, Selfhurt=2, Energy=1, Ethereal=True),
-    "Hemokinesis +" :c("Attack", "Uncommon", "Ironclad", "Lose <red>2 HP</red>. Deal <red>20 damage</red>.", Damage=20, Selfhurt=2, Energy=1, Ethereal=True, Upgraded=True, **{"Energy Gain":1}),
+    "Hemokinesis" :{"Name":"Hemokinesis","Damage": 15,"Selfhurt":2,"Energy":1,"Ethereal":True,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Lose <red>2 HP</red>. Deal <red>15 damage</red>."},
+    "Hemokinesis +" :{"Name":"Hemokinesis +","Damage": 20,"Selfhurt":2,"Energy":1,"Energy Gain":1,"Ethereal":True,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Lose <red>2 HP</red>. Deal <red>20 damage</red>."},
     
-    "Pummel" :c("Attack", "Uncommon", "Ironclad", "Deal <red>2 damage</red> 4 times. <BLUE>Exhaust</BLUE>.", Damage=2, Energy=1, Attacks=4, Exhaust=True),
-    "Pummel +" :c("Attack", "Uncommon", "Ironclad", "Deal <red>2 damage</red> 5 times. <BLUE>Exhaust</BLUE>.", Damage=2, Energy=1, Attacks=5, Exhaust=True, Upgraded=True),
+    "Pummel" :{"Name":"Pummel","Damage": 2,"Energy":1,"Attacks":4,"Exhaust":True,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>2 damage</red> 4 times. <BLUE>Exhaust</BLUE>."},
+    "Pummel +" :{"Name":"Pummel +","Damage": 2,"Energy":1,"Attacks":5,"Exhaust":True,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>2 damage</red> 5 times. <BLUE>Exhaust</BLUE>."},
     
-    "Rampage" :c("Attack", "Uncommon", "Ironclad", "Deal <red>8 damage</red>. Increase this card's <red>damage</red> by <red>5</red> this combat", Damage=8, Energy=1, **{"Damage Gain":5}),
-    "Rampage +" :c("Attack", "Uncommon", "Ironclad", "Deal <red>8 damage</red>. Increase this card's <red>damage</red> by <red>5</red> this combat", Damage=8, Energy=1, Upgraded=True, **{"Damage Gain":8}),
+    "Rampage" :{"Name":"Rampage","Damage": 8,"Energy":1,"Damage Gain":5,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>8 damage</red>. Increase this card's <red>damage</red> by <red>5</red> this combat"},
+    "Rampage +" :{"Name":"Rampage +","Damage": 8,"Energy":1,"Damage Gain":8,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>8 damage</red>. Increase this card's <red>damage</red> by <red>5</red> this combat"},
     
-    "Reckless Charge" :c("Attack", "Uncommon", "Ironclad", "Deal <red>7 damage</red>. Shuffle a <light-cyan>Dazed</light-cyan> into your Drawpile.", Damage=7, Energy=0),
-    "Reckless Charge +" :c("Attack", "Uncommon", "Ironclad", "Deal <red>10 damage</red>. Shuffle a <light-cyan>Dazed</light-cyan> into your Drawpile.", Damage=10, Energy=0, Upgraded=True),
+    "Reckless Charge" :{"Name":"Reckless Charge","Damage": 7,"Energy":0,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>7 damage</red>. Shuffle a <light-cyan>Dazed</light-cyan> into your Drawpile."},
+    "Reckless Charge +" :{"Name":"Reckless Charge +","Damage": 10,"Energy":0,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>10 damage</red>. Shuffle a <light-cyan>Dazed</light-cyan> into your Drawpile."},
 
-    "Searing Blow" :c("Attack", "Uncommon", "Ironclad", "Deal <red>12 damage</red>. Can be Upgraded any number of times.", Damage=12, Energy=2, **{"Damage Gain":4}),
+    "Searing Blow" :{"Name":"Searing Blow","Damage": 12,"Damage Gain":4,"Energy":2,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>12 damage</red>. Can be Upgraded any number of times."},
     
-    "Sever Soul" :c("Attack", "Uncommon", "Ironclad", "<BLUE>Exhaust</BLUE> all non-Attack cards in your hand. <red>Deal 16 damage</red>.", Damage=16, Energy=2),
-    "Sever Soul +" :c("Attack", "Uncommon", "Ironclad", "<BLUE>Exhaust</BLUE> all non-Attack cards in your hand. <red>Deal 20 damage</red>.", Damage=20, Energy=2, Upgraded=True),   
+    "Sever Soul" :{"Name":"Sever Soul","Damage": 16,"Energy":2,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> all non-Attack cards in your hand. <red>Deal 16 damage</red>."},
+    "Sever Soul +" :{"Name":"Sever Soul +","Damage": 20,"Energy":2,"Upgraded":True,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> all non-Attack cards in your hand. <red>Deal 20 damage</red>."},   
 
-    "Uppercut" :c("Attack", "Uncommon", "Ironclad", "Deal <red>7 damage</red>. Shuffle a <light-cyan>Dazed</light-cyan> into your Drawpile.", Damage=13, Vulnerable=1, Weakness=1, Energy=2),
-    "Uppercut +" :c("Attack", "Uncommon", "Ironclad", "Deal <red>10 damage</red>. Shuffle a <light-cyan>Dazed</light-cyan> into your Drawpile.", Damage=13, Vulnerable=2, Weakness=2, Energy=2, Upgraded=True),
+    "Uppercut" :{"Name":"Uppercut","Damage": 13,"Vulnerable":1,"Weakness":1,"Energy":2,"Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>7 damage</red>. Shuffle a <light-cyan>Dazed</light-cyan> into your Drawpile."},
+    "Uppercut +" :{"Name":"Uppercut +","Damage": 13,"Vulnerable":2,"Weakness":2,"Energy":2,"Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>10 damage</red>. Shuffle a <light-cyan>Dazed</light-cyan> into your Drawpile."},
 
-    "Whirlwind" :c("Attack", "Uncommon", "Ironclad", "Deal <red>5 damage</red> to ALL enemies X times.", Damage=5, Energy="X"),
-    "Whirlwind +" :c("Attack", "Uncommon", "Ironclad", "Deal <red>8 damage</red> to ALL enemies X times.", Damage=8, Energy="X", Upgraded=True),
+    "Whirlwind" :{"Name":"Whirlwind","Damage": 5,"Energy":"X","Type":"Attack","Rarity":"Uncommon","Owner":"Ironclad","Info":"Deal <red>5 damage</red> to ALL enemies X times."},
+    "Whirlwind +" :{"Name":"Whirlwind +","Damage": 8,"Energy":"X","Type":"Attack","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>8 damage</red> to ALL enemies X times."},
 
-    "Bludgeon" :c("Attack", "Rare", "Ironclad", "Deal <red>32 damage</red>.", Damage=32, Energy=3),
-    "Bludgeon +" :c("Attack", "Rare", "Ironclad", "Deal <red>42 damage</red>.", Damage=42, Energy=3, Upgraded=True),
+    "Bludgeon" :{"Name":"Bludgeon","Damage": 32,"Energy":3,"Type":"Attack","Rarity":"Rare","Owner":"Ironclad","Info":"Deal <red>32 damage</red>."},
+    "Bludgeon +" :{"Name":"Bludgeon +","Damage": 42,"Energy":3,"Type":"Attack","Rarity":"Rare","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>42 damage</red>."},
 
-    "Feed" :c("Attack", "Rare", "Ironclad", "Deal <red>10 damage</red>. If Fatal, raise your <red>Max HP</red> by <red>3</red>. <BLUE>Exhaust</BLUE>.", Damage=10, Energy=1, Exhaust=True, **{"MaxHealth Gain":3}),
-    "Feed +" :c("Attack", "Rare", "Ironclad", "Deal <red>14 damage</red>. If Fatal, raise your <red>Max HP</red> by <red>4</red>. <BLUE>Exhaust</BLUE>.", Damage=12, Energy=1, Exhaust=True, Upgraded=True, **{"MaxHealth Gain":4}),
+    "Feed" :{"Name":"Feed","Damage": 10,"Energy":1,"MaxHealth Gain":3,"Exhaust":True,"Type":"Attack","Rarity":"Rare","Owner":"Ironclad","Info":"Deal <red>10 damage</red>. If Fatal, raise your <red>Max HP</red> by <red>3</red>. <BLUE>Exhaust</BLUE>."},
+    "Feed +" :{"Name":"Feed +","Damage": 12,"Energy":1,"MaxHealth Gain":4,"Exhaust":True,"Type":"Attack","Rarity":"Rare","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>14 damage</red>. If Fatal, raise your <red>Max HP</red> by <red>4</red>. <BLUE>Exhaust</BLUE>."},
 
-    "Fiend Fire" :c("Attack", "Rare", "Ironclad", "<BLUE>Exhaust</BLUE> all Cards in your hand. Deal <red>7 damage</red> for each Exhausted card. <BLUE>Exhaust</BLUE>.", Damage=7, Energy=2, Exhaust=True),
-    "Fiend Fire +" :c("Attack", "Rare", "Ironclad", "<BLUE>Exhaust</BLUE> all Cards in your hand. Deal <red>10 damage</red> for each Exhausted card. <BLUE>Exhaust</BLUE>.", Damage=10, Energy=2, Exhaust=True, Upgraded=True),
+    "Fiend Fire" :{"Name":"Fiend Fire","Damage": 7,"Energy":2,"Exhaust":True,"Type":"Attack","Rarity":"Rare","Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> all Cards in your hand. Deal <red>7 damage</red> for each Exhausted card. <BLUE>Exhaust</BLUE>."},
+    "Fiend Fire +" :{"Name":"Fiend Fire +","Damage": 10,"Energy":2,"Exhaust":True,"Type":"Attack","Rarity":"Rare","Upgraded":True,"Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> all Cards in your hand. Deal <red>10 damage</red> for each Exhausted card. <BLUE>Exhaust</BLUE>."},
 
-    "Immolate" :c("Attack", "Rare", "Ironclad", "Deal <red>21 damage</red> to ALL enemies. Add a <light-cyan>Burn</light-cyan> into your Discardpile.", Damage=21, Energy=2),
-    "Immolate +" :c("Attack", "Rare", "Ironclad", "Deal <red>28 damage</red> to ALL enemies. Add a <light-cyan>Burn</light-cyan> into your Discardpile.", Damage=28, Energy=2, Upgraded=True),
+    "Immolate" :{"Name":"Immolate","Damage": 21,"Energy":2,"Type":"Attack","Rarity":"Rare","Owner":"Ironclad","Info":"Deal <red>21 damage</red> to ALL enemies. Add a <light-cyan>Burn</light-cyan> into your Discardpile."},
+    "Immolate +" :{"Name":"Immolate +","Damage": 28,"Energy":2,"Type":"Attack","Rarity":"Rare","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>28 damage</red> to ALL enemies. Add a <light-cyan>Burn</light-cyan> into your Discardpile."},
 
-    "Reaper" :c("Attack", "Rare", "Ironclad", "Deal <red>4 damage</red> to ALL enemies. Heal <red>HP</red> equal to unblocked <red>damage</red>. <BLUE>Exhaust</BLUE>.", Damage=4, Energy=2, Exhaust=True),
-    "Reaper +" :c("Attack", "Rare", "Ironclad", "Deal <red>5 damage</red> to ALL enemies. Heal <red>HP</red> equal to unblocked <red>damage</red>. <BLUE>Exhaust</BLUE>.", Damage=5, Energy=2, Exhaust=True, Upgraded=True),
+    "Reaper" :{"Name":"Reaper","Damage": 4,"Energy":2,"Exhaust":True,"Type":"Attack","Rarity":"Rare","Owner":"Ironclad","Info":"Deal <red>4 damage</red> to ALL enemies. Heal <red>HP</red> equal to unblocked <red>damage</red>. <BLUE>Exhaust</BLUE>."},
+    "Reaper +" :{"Name":"Reaper +","Damage": 5,"Energy":2,"Exhaust":True,"Type":"Attack","Rarity":"Rare","Upgraded":True,"Owner":"Ironclad","Info":"Deal <red>5 damage</red> to ALL enemies. Heal <red>HP</red> equal to unblocked <red>damage</red>. <BLUE>Exhaust</BLUE>."},
 
-    "Armaments" :c("Skill", "Common", "Ironclad", "Gain <green>5 Block</green>. Upgrade a Card in your hand for the rest of combat.", Block=5, Energy=1),
-    "Armaments +" :c("Skill", "Common", "Ironclad", "Gain <green>5 Block</green>. Upgrade ALL Cards in your hand for the rest of combat.", Attack=5, Energy=1, Upgraded=True),
+    "Armaments" :{"Name":"Armaments","Block":5, "Energy":1,"Type":"Skill","Rarity":"Common","Owner":"Ironclad","Info":"Gain <green>5 Block</green>. Upgrade a Card in your hand for the rest of combat."},
+    "Armaments +" :{"Name":"Armaments +","Attack":5, "Energy":1,"Type":"Skill","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Gain <green>5 Block</green>. Upgrade ALL Cards in your hand for the rest of combat."},
 
-    "Flex" :c("Skill", "Common", "Ironclad", "Gain <red>2 Strength</red>. At the end of this turn, lose <red>2 Strength</red>.", Strength=2, Energy=0),
-    "Flex +" :c("Skill", "Common", "Ironclad", "Gain <red>4 Strength</red>. At the end of this turn, lose <red>4 Strength</red>.", Strength=4, Energy=0, Upgraded=True),
+    "Flex" :{"Name":"Flex","Strength":2, "Energy":0,"Type":"Skill","Rarity":"Common","Owner":"Ironclad","Info":"Gain <red>2 Strength</red>. At the end of this turn, lose <red>2 Strength</red>."},
+    "Flex +" :{"Name":"Flex +","Strength":4, "Energy":0,"Type":"Skill","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Gain <red>4 Strength</red>. At the end of this turn, lose <red>4 Strength</red>."},
 
-    "Havoc" :c("Skill", "Common", "Ironclad", "Play the top card of your draw pile and <BLUE>Exhaust</BLUE> it.", Draw=1, Energy=1),
-    "Havoc +" :c("Skill", "Common", "Ironclad", "Play the top card of your draw pile and <BLUE>Exhaust</BLUE> it.", Draw=1, Energy=0, Upgraded=True),
+    "Havoc" :{"Name":"Havoc","Draw":1, "Energy":1,"Type":"Skill","Rarity":"Common","Owner":"Ironclad","Info":"Play the top card of your draw pile and <BLUE>Exhaust</BLUE> it."},
+    "Havoc +" :{"Name":"Havoc +","Draw":1, "Energy":0,"Type":"Skill","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Play the top card of your draw pile and <BLUE>Exhaust</BLUE> it."},
 
-    "Shrug It Off" :c("Skill", "Common", "Ironclad", "Gain <green>8 Block</green>. Draw 1 Card.", Block=8, Energy=1, Draw=1),
-    "Shrug It Off +" :c("Skill", "Common", "Ironclad", "Gain <green>11 Block</green>. Draw 1 Card.", Block=11, Energy=1, Draw=1, Upgraded=True),
+    "Shrug It Off" :{"Name":"Shrug It Off","Block":8,"Energy":1, "Draw":1,"Type":"Skill","Rarity":"Common","Owner":"Ironclad","Info":"Gain <green>8 Block</green>. Draw 1 Card."},
+    "Shrug It Off +" :{"Name":"Shrug It Off +","Block":11,"Energy":1,"Draw":1,"Type":"Skill","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Gain <green>11 Block</green>. Draw 1 Card."},
 
-    "True Grit" :c("Skill", "Common", "Ironclad", "Gain <green>7 Block</green>. <BLUE>Exhaust</BLUE> 1 random Card.", Block=7, Energy=1),
-    "True Grit +" :c("Skill", "Common", "Ironclad", "Gain <green>9 Block</green>. <BLUE>Exhaust</BLUE> 1 Card.", Block=9, Energy=1, Upgraded=True),
+    "True Grit" :{"Name":"True Grit","Block":7,"Energy":1,"Type":"Skill","Rarity":"Common","Owner":"Ironclad","Info":"Gain <green>7 Block</green>. <BLUE>Exhaust</BLUE> 1 random Card."},
+    "True Grit +" :{"Name":"True Grit +","Block":9,"Energy":1,"Type":"Skill","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Gain <green>9 Block</green>. <BLUE>Exhaust</BLUE> 1 Card."},
 
-    "War Cry" :c("Skill", "Common", "Ironclad", "Draw 1 Card. Put a Card from your hand onto the top of your Drawpile. <BLUE>Exhaust</BLUE>.", Draw=1, Exhaust=True, Energy=0),
-    "War Cry +" :c("Skill", "Common", "Ironclad", "Draw 2 Cards. Put a Card from your hand onto the top of your Drawpile. <BLUE>Exhaust</BLUE>.", Draw=2, Exhaust=True, Energy=0, Upgraded=True),
+    "War Cry" :{"Name":"War Cry","Draw":1, "Exhaust": True,"Energy":0,"Type":"Skill","Rarity":"Common","Owner":"Ironclad","Info":"Draw 1 Card. Put a Card from your hand onto the top of your Drawpile. <BLUE>Exhaust</BLUE>."},
+    "War Cry +" :{"Name":"War Cry +","Draw":2, "Exhaust":True,"Energy":0,"Type":"Skill","Rarity":"Common","Upgraded":True,"Owner":"Ironclad","Info":"Draw 2 Cards. Put a Card from your hand onto the top of your Drawpile. <BLUE>Exhaust</BLUE>."},
 
-    "Battle Trance" :c("Skill", "Uncommon", "Ironclad", "Draw 3 Cards. You cannot draw additional Cards this turn.", Draw=3, Energy=0),
-    "Battle Trance +" :c("Skill", "Uncommon", "Ironclad", "Draw 4 Cards. You cannot draw additional Cards this turn.", Draw=4, Energy=0, Upgraded=True),
+    "Battle Trance" :{"Name":"Battle Trance","Draw":3,"Energy":0,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Draw 3 Cards. You cannot draw additional Cards this turn."},
+    "Battle Trance +" :{"Name":"Battle Trance +","Draw":4,"Energy":0,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Draw 4 Cards. You cannot draw additional Cards this turn."},
 
-    "Bloodletting" :c("Skill", "Uncommon", "Ironclad", "Lose <red>3 HP</red>. Gain <yellow>2 Energy</yellow>.", Selfhurt=3, Energy=0, **{"Energy Gain":2}),
-    "Bloodletting +" :c("Skill", "Uncommon", "Ironclad", "Lose <red>3 HP</red>. Gain <yellow>3 Energy</yellow>.", Selfhurt=3, Energy=0, Upgraded=True, **{"Energy Gain":3}),
+    "Bloodletting" :{"Name":"Bloodletting","Energy Gain":2,"Selfhurt":3,"Energy":0,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Lose <red>3 HP</red>. Gain <yellow>2 Energy</yellow>."},
+    "Bloodletting +" :{"Name":"Bloodletting +","Energy Gain":3,"Selfhurt":3,"Energy":0,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Lose <red>3 HP</red>. Gain <yellow>3 Energy</yellow>."},
 
-    "Burning Pact" :c("Skill", "Uncommon", "Ironclad", "<BLUE>Exhaust</BLUE> 1 card. Draw 2 cards.", Draw=2, Energy=1, **{"Exhaustion Amount":1}),
-    "Burning Pact +" :c("Skill", "Uncommon", "Ironclad", "<BLUE>Exhaust</BLUE> 1 card. Draw 3 cards.", Draw=3, Energy=1, Upgraded=True, **{"Exhaustion Amount":1}),
+    "Burning Pact" :{"Name":"Burning Pact","Draw":2,"Exhaustion Amount":1,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> 1 card. Draw 2 cards."},
+    "Burning Pact +" :{"Name":"Burning Pact +","Draw":3,"Exhaustion Amount":1,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> 1 card. Draw 3 cards."},
 
-    "Disarm" :c("Skill", "Uncommon", "Ironclad", "<BLUE>Exhaust</BLUE> 1 card. Draw 2 cards.", Strength=-2, Exhaust=True, Energy=1),
-    "Disarm +" :c("Skill", "Uncommon", "Ironclad", "<BLUE>Exhaust</BLUE> 1 card. Draw 3 cards.", Strength=-3, Exhaust=True, Energy=1, Upgraded=True),
+    "Disarm" :{"Name":"Disarm","Strength":-2,"Exhaust":True,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> 1 card. Draw 2 cards."},
+    "Disarm +" :{"Name":"Disarm +","Strength":-3,"Exhaust":True,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> 1 card. Draw 3 cards."},
 
-    "Dual Wield" :c("Skill", "Uncommon", "Ironclad", "Choose an <red>Attack</red> or <blue>Power</blue> card. Add a copy of that Card into your hand.", Energy=1, **{"Copy Amount":1}),
-    "Dual Wield +" :c("Skill", "Uncommon", "Ironclad", "Choose an <red>Attack</red> or <blue>Power</blue> card. Add 2 copies of that Card into your hand.", Energy=1, Upgraded=True, **{"Copy Amount":2}),
+    "Dual Wield" :{"Name":"Dual Wield","Copy Amount":1,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Choose an <red>Attack</red> or <blue>Power</blue> card. Add a copy of that Card into your hand."},
+    "Dual Wield +" :{"Name":"Dual Wield +","Copy Amount":2,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Choose an <red>Attack</red> or <blue>Power</blue> card. Add 2 copies of that Card into your hand."},
 
-    "Entrench" :c("Skill", "Uncommon", "Ironclad", "Double your <green>Block</green>", Energy=2),
-    "Entrench +" :c("Skill", "Uncommon", "Ironclad", "Double your <green>Block</green>", Energy=1, Upgraded=True),
+    "Entrench" :{"Name":"Entrench","Energy":2,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Double your <green>Block</green>"},
+    "Entrench +" :{"Name":"Entrench +","Energy":1,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Double your <green>Block</green>"},
 
-    "Flame Barrier" :c("Skill", "Uncommon", "Ironclad", "Gain <green>12 Block</green>. Whenever you are attacked this turn, deal <red>4 damage</red> back.", Block=12, Spikes=4, Energy=2),
-    "Flame Barrier +" :c("Skill", "Uncommon", "Ironclad", "Gain <green>16 Block</green>. Whenever you are attacked this turn, deal <red>6 damage</red> back.", Block=16, Spikes=6, Energy=2, Upgraded=True),
+    "Flame Barrier" :{"Name":"Flame Barrier","Block":12,"Spikes":4,"Energy":2,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Gain <green>12 Block</green>. Whenever you are attacked this turn, deal <red>4 damage</red> back."},
+    "Flame Barrier +" :{"Name":"Flame Barrier +","Block":16,"Spikes":6,"Energy":2,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Gain <green>16 Block</green>. Whenever you are attacked this turn, deal <red>6 damage</red> back."},
 
-    "Ghostly Armor" :c("Skill", "Uncommon", "Ironclad", "Gain <green>10 Block</green>. <BLUE>Ethereal</BLUE>", Block=10, Ethereal=True, Energy=1),
-    "Ghostly Armor +" :c("Skill", "Uncommon", "Ironclad", "Gain <green>13 Block</green>. <BLUE>Ethereal</BLUE>", Block=13, Ethereal=True, Energy=1, Upgraded=True),
+    "Ghostly Armor" :{"Name":"Ghostly Armor","Block":10,"Ethereal":True,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Gain <green>10 Block</green>. <BLUE>Ethereal</BLUE>"},
+    "Ghostly Armor +" :{"Name":"Ghostly Armor +","Block":13,"Ethereal":True,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Gain <green>13 Block</green>. <BLUE>Ethereal</BLUE>"},
 
-    "Infernal Blade" :c("Skill", "Uncommon", "Ironclad", "Add a random <red>Attack</red> into your hand. It costs <yellow>0 Energy</yellow> this turn. <BLUE>Exhaust</BLUE>.", Exhaust=True, Energy=1),
-    "Infernal Blade +" :c("Skill", "Uncommon", "Ironclad", "Add a random <red>Attack</red> into your hand. It costs <yellow>0 Energy</yellow> this turn. <BLUE>Exhaust</BLUE>.", Exhaust=True, Energy=0, Upgraded=True),
+    "Infernal Blade" :{"Name":"Infernal Blade","Exhaust":True,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Add a random <red>Attack</red> into your hand. It costs <yellow>0 Energy</yellow> this turn. <BLUE>Exhaust</BLUE>."},
+    "Infernal Blade +" :{"Name":"Infernal Blade +","Exhaust":True,"Energy":0,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Add a random <red>Attack</red> into your hand. It costs <yellow>0 Energy</yellow> this turn. <BLUE>Exhaust</BLUE>."},
 
-    "Intimidate" :c("Skill", "Uncommon", "Ironclad", "Apply <light-cyan>1 Weak</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>.", Weakness=1, Exhaust=True, Energy=0),
-    "Intimidate +" :c("Skill", "Uncommon", "Ironclad", "Apply <light-cyan>2 Weak</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>.", Weakness=2, Exhaust=True, Energy=0, Upgraded=True),
+    "Intimidate" :{"Name":"Intimidate","Weakness":1,"Exhaust":True,"Energy":0,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Apply <light-cyan>1 Weak</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>."},
+    "Intimidate +" :{"Name":"Intimidate +","Weakness":2,"Exhaust":True,"Energy":0,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Apply <light-cyan>2 Weak</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>."},
 
-    "Power Through" :c("Skill", "Uncommon", "Ironclad", "Add <light-cyan>2 Wounds</light-cyan> into your hand. Gain <green>15 Block</green>.", Block=15, Wounds=2, Energy=1),
-    "Power Through +" :c("Skill", "Uncommon", "Ironclad", "Add <light-cyan>2 Wounds</light-cyan> into your hand. Gain <green>20 Block</green>.", Block=20, Wounds=2, Energy=1, Upgraded=True),
+    "Power Through" :{"Name":"Power Through","Block":15,"Wounds":2,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Add <light-cyan>2 Wounds</light-cyan> into your hand. Gain <green>15 Block</green>."},
+    "Power Through +" :{"Name":"Power Through +","Block":20,"Wounds":2,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Add <light-cyan>2 Wounds</light-cyan> into your hand. Gain <green>20 Block</green>."},
 
-    "Rage" :c("Skill", "Uncommon", "Ironclad", "Whenever you play an <red>Attack</red> this turn, gain <green>3 Block</green>.", Block=3, Energy=0),
-    "Rage +" :c("Skill", "Uncommon", "Ironclad", "Whenever you play an <red>Attack</red> this turn, gain <green>5 Block</green>.", Block=5, Energy=0, Upgraded=True),
+    "Rage" :{"Name":"Rage","Block":3,"Energy":0,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Whenever you play an <red>Attack</red> this turn, gain <green>3 Block</green>."},
+    "Rage +" :{"Name":"Rage +","Block":5,"Energy":0,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Whenever you play an <red>Attack</red> this turn, gain <green>5 Block</green>."},
 
-    "Second Wind" :c("Skill", "Uncommon", "Ironclad", "<BLUE>Exhaust</BLUE> all non-Attack cards in your hand. Gain <green>5 Block</green> for each card <BLUE>Exhausted</BLUE>.", Block=5, Energy=1),
-    "Second Wind +" :c("Skill", "Uncommon", "Ironclad", "<BLUE>Exhaust</BLUE> all non-Attack cards in your hand. Gain <green>7 Block</green> for each card <BLUE>Exhausted</BLUE>.", Block=7, Energy=1, Upgraded=True),
+    "Second Wind" :{"Name":"Second Wind","Block":5,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> all non-Attack cards in your hand. Gain <green>5 Block</green> for each card <BLUE>Exhausted</BLUE>."},
+    "Second Wind +" :{"Name":"Second Wind +","Block":7,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"<BLUE>Exhaust</BLUE> all non-Attack cards in your hand. Gain <green>7 Block</green> for each card <BLUE>Exhausted</BLUE>."},
 
-    "Seeing Red" :c("Skill", "Uncommon", "Ironclad", "Gain <yellow>2 Energy</yellow>. <BLUE>Exhaust</BLUE>.", Energy=1, Exhaust=True, **{"Energy Gain":2}),
-    "Seeing Red +" :c("Skill", "Uncommon", "Ironclad", "Gain <yellow>2 Energy</yellow>. <BLUE>Exhaust</BLUE>.", Energy=0, Exhaust=True, Upgraded=True, **{"Energy Gain":2}),
+    "Seeing Red" :{"Name":"Seeing Red","Energy Gain":2,"Energy":1,"Exhaust":True,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Gain <yellow>2 Energy</yellow>. <BLUE>Exhaust</BLUE>."},
+    "Seeing Red +" :{"Name":"Seeing Red +","Energy Gain":2,"Energy":0,"Exhaust":True,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner":"Ironclad","Info":"Gain <yellow>2 Energy</yellow>. <BLUE>Exhaust</BLUE>."},
 
-    "Sentinel" :c("Skill", "Uncommon", "Ironclad", "Gain <green>5 Block</green>. If this card is <BLUE>Exhausted</BLUE>, gain <yellow>2 Energy</yellow>.", Block=5, Energy=1, **{"Energy Gain":2}),
-    "Sentinel +" :c("Skill", "Uncommon", "Ironclad", "Gain <green>8 Block</green>. If this card is <BLUE>Exhausted</BLUE>, gain <yellow>3 Energy</yellow>.", Block=8, Energy=1, Upgraded=True, **{"Energy Gain":3}),    
+    "Sentinel" :{"Name":"Sentinel","Block":5,"Energy Gain":2,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Gain <green>5 Block</green>. If this card is <BLUE>Exhausted</BLUE>, gain <yellow>2 Energy</yellow>."},
+    "Sentinel +" :{"Name":"Sentinel +","Block":8,"Energy Gain":3,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner": "Ironclad","Info":"Gain <green>8 Block</green>. If this card is <BLUE>Exhausted</BLUE>, gain <yellow>3 Energy</yellow>."},    
 
-    "Shockwave" :c("Skill", "Uncommon", "Ironclad", "Apply <light-cyan>3 Weak</light-cyan> and <light-cyan>5 Vulnerable</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>.", Weakness=3, Vulnerable=3, Exhaust=True, Energy=2),
-    "Shockwave +" :c("Skill", "Uncommon", "Ironclad", "Apply <light-cyan>5 Weak</light-cyan> and <light-cyan>5 Vulnerable</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>.", Weakness=5, Vulnerable=5, Exhaust=True, Energy=2, Upgraded=True),
+    "Shockwave" :{"Name":"Shockwave","Weakness":3,"Vulnerable":3,"Exhaust":True,"Energy":2,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"Apply <light-cyan>3 Weak</light-cyan> and <light-cyan>5 Vulnerable</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>."},
+    "Shockwave +" :{"Name":"Shockwave +","Weakness":5,"Vulnerable":5,"Exhaust":True,"Energy":2,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner": "Ironclad","Info":"Apply <light-cyan>5 Weak</light-cyan> and <light-cyan>5 Vulnerable</light-cyan> to ALL enemies. <BLUE>Exhaust</BLUE>."},
 
-    "Spot Weakness" :c("Skill", "Uncommon", "Ironclad", "If the enemy intends to attack, gain <red>3 Strength</red>.", Strength=3, Energy=1),
-    "Spot Weakness +" :c("Skill", "Uncommon", "Ironclad", "If the enemy intends to attack, gain <red>4 Strength</red>.", Strength=4, Energy=1, Upgraded=True),
+    "Spot Weakness" :{"Name":"Spot Weakness","Strength":3,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Ironclad","Info":"If the enemy intends to attack, gain <red>3 Strength</red>."},
+    "Spot Weakness +" :{"Name":"Spot Weakness +","Strength":4,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Upgraded":True,"Owner": "Ironclad","Info":"If the enemy intends to attack, gain <red>4 Strength</red>."},
 
-    "Double Tap" :c("Skill", "Rare", "Ironclad", "This turn, your next <red>Attack</red> is played twice.", Tap=1, Energy=1),
-    "Double Tap +" :c("Skill", "Rare", "Ironclad", "This turn, your next <red>2 Attacks</red> is played twice.", Tap=2, Energy=1, Upgraded=True),
+    "Double Tap" :{"Name":"Double Tap","Tap":1,"Energy":1,"Type":"Skill","Rarity":"Rare","Owner":"Ironclad","Info":"This turn, your next <red>Attack</red> is played twice."},
+    "Double Tap +" :{"Name":"Double Tap +","Tap":2,"Energy":1,"Type":"Skill","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"This turn, your next <red>2 Attacks</red> is played twice."},
 
-    "Exhume" :c("Skill", "Rare", "Ironclad", "Put a card from your <BLUE>Exhaust</BLUE> pile into your hand. <BLUE>Exhaust</BLUE>.", Energy=1, Exhaust=True),
-    "Exhume +" :c("Skill", "Rare", "Ironclad", "Put a card from your <BLUE>Exhaust</BLUE> pile into your hand. <BLUE>Exhaust</BLUE>.", Energy=0, Exhaust=True, Upgraded=True),
+    "Exhume" :{"Name":"Exhume","Energy":1,"Exhaust":True,"Type":"Skill","Rarity":"Rare","Owner":"Ironclad","Info":"Put a card from your <BLUE>Exhaust</BLUE> pile into your hand. <BLUE>Exhaust</BLUE>."},
+    "Exhume +" :{"Name":"Exhume +","Energy":0,"Exhaust":True,"Type":"Skill","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"Put a card from your <BLUE>Exhaust</BLUE> pile into your hand. <BLUE>Exhaust</BLUE>."},
 
-    "Impervious" :c("Skill", "Rare", "Ironclad", "Gain <green>30 Block</green>. <BLUE>Exhaust</BLUE>.", Block=20, Energy=2, Exhaust=True),
-    "Impervious +" :c("Skill", "Rare", "Ironclad", "Gain <green>40 Block</green>. <BLUE>Exhaust</BLUE>.", Block=30, Energy=2, Exhaust=True, Upgraded=True),
+    "Impervious" :{"Name":"Impervious","Block":20,"Energy":2,"Exhaust":True,"Type":"Skill","Rarity":"Rare","Owner":"Ironclad","Info":"Gain <green>30 Block</green>. <BLUE>Exhaust</BLUE>."},
+    "Impervious +" :{"Name":"Impervious +","Block":30,"Energy":2,"Exhaust":True,"Type":"Skill","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"Gain <green>40 Block</green>. <BLUE>Exhaust</BLUE>."},
 
-    "Limit Break" :c("Skill", "Rare", "Ironclad", "Double your <red>Strength</red>. <BLUE>Exhaust</BLUE>.", Energy=1, Exhaust=True),
-    "Limit Break +" :c("Skill", "Rare", "Ironclad", "Double your <red>Strength</red>.", Energy=1, Upgraded=True),
+    "Limit Break" :{"Name":"Limit Break","Energy":1,"Exhaust":True,"Type":"Skill","Rarity":"Rare","Owner":"Ironclad","Info":"Double your <red>Strength</red>. <BLUE>Exhaust</BLUE>."},
+    "Limit Break +" :{"Name":"Limit Break +","Energy":1,"Type":"Skill","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"Double your <red>Strength</red>."},
 
-    "Offering" :c("Skill", "Rare", "Ironclad", "Lose <red>6 HP</red>. Gain <yellow>3 Energy</yellow>. Draw 3 cards. <BLUE>Exhaust</BLUE>.", Draw=3, Selfhurt=6, Energy=0, Exhaust=True, **{"Energy Gain":2}),
-    "Offering +" :c("Skill", "Rare", "Ironclad", "Lose <red>6 HP</red>. Gain <yellow>3 Energy</yellow>. Draw 5 cards. <BLUE>Exhaust</BLUE>.", Draw=5, Selfhurt=6, Energy=0, Exhaust=True, Upgraded=True, **{"Energy Gain":2}),
+    "Offering" :{"Name":"Offering","Draw":3,"Selfhurt":6,"Energy Gain":2,"Energy":0,"Exhaust":True,"Type":"Skill","Rarity":"Rare","Owner":"Ironclad","Info":"Lose <red>6 HP</red>. Gain <yellow>3 Energy</yellow>. Draw 3 cards. <BLUE>Exhaust</BLUE>."},
+    "Offering +" :{"Name":"Offering +","Draw":5,"Selfhurt":6,"Energy Gain":2,"Energy":0,"Exhaust":True,"Type":"Skill","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"Lose <red>6 HP</red>. Gain <yellow>3 Energy</yellow>. Draw 5 cards. <BLUE>Exhaust</BLUE>."},
 
-    "Combust" :c("Power", "Uncommon", "Ironclad", "At the end of your turn, lose <red>1 HP</red> and deal <red>5 damage</red> to ALL enemies.", Damage=5, Energy=1),
-    "Combust +" :c("Power", "Uncommon", "Ironclad", "At the end of your turn, lose <red>1 HP</red> and deal <red>7 damage</red> to ALL enemies.", Damage=7, Energy=1, Upgraded=True),
+    "Combust" :{"Name":"Combust","Damage":5,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Ironclad","Info":"At the end of your turn, lose <red>1 HP</red> and deal <red>5 damage</red> to ALL enemies."},
+    "Combust +" :{"Name":"Combust +","Damage":7,"Energy":1,"Type":"Power","Rarity":"Uncommon","Upgraded":True,"Owner": "Ironclad","Info":"At the end of your turn, lose <red>1 HP</red> and deal <red>7 damage</red> to ALL enemies."},
 
-    "Dark Embrace" :c("Power", "Uncommon", "Ironclad", "Whenever a Card is <BLUE>Exhausted</BLUE>, draw 1 Card.", Draw=1, Energy=2),
-    "Dark Embrace +" :c("Power", "Uncommon", "Ironclad", "Whenever a Card is <BLUE>Exhausted</BLUE>, draw 1 Card.", Draw=1, Energy=1, Upgraded=True),
+    "Dark Embrace" :{"Name":"Dark Embrace","Draw":1,"Energy":2,"Type":"Power","Rarity":"Uncommon","Owner":"Ironclad","Info":"Whenever a Card is <BLUE>Exhausted</BLUE>, draw 1 Card."},
+    "Dark Embrace +" :{"Name":"Dark Embrace +","Draw":1,"Energy":1,"Type":"Power","Rarity":"Uncommon","Upgraded":True,"Owner": "Ironclad","Info":"Whenever a Card is <BLUE>Exhausted</BLUE>, draw 1 Card."},
 
-    "Evolve" :c("Power", "Uncommon", "Ironclad", "Whenever you draw a <light-cyan>Status</light-cyan>, draw 1 Card.", Draw=1, Energy=1),
-    "Evolve +" :c("Power", "Uncommon", "Ironclad", "Whenever you draw a <light-cyan>Status</light-cyan>, draw 2 Card.", Draw=2, Energy=1, Upgraded=True),
+    "Evolve" :{"Name":"Evolve","Draw":1,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Ironclad","Info":"Whenever you draw a <light-cyan>Status</light-cyan>, draw 1 Card."},
+    "Evolve +" :{"Name":"Evolve +","Draw":2,"Energy":1,"Type":"Power","Rarity":"Uncommon","Upgraded":True,"Owner": "Ironclad","Info":"Whenever you draw a <light-cyan>Status</light-cyan>, draw 2 Card."},
 
-    "Feel No Pain" :c("Power", "Uncommon", "Ironclad", "Whenever a card is <BLUE>Exhausted</BLUE>, gain <green>3 Block</green>.", Block=3, Energy=1),
-    "Feel No Pain +" :c("Power", "Uncommon", "Ironclad", "Whenever a card is <BLUE>Exhausted</BLUE>, gain <green>4 Block</green>.", Block=4, Energy=1, Upgraded=True),
+    "Feel No Pain" :{"Name":"Feel No Pain","Block":3,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Ironclad","Info":"Whenever a card is <BLUE>Exhausted</BLUE>, gain <green>3 Block</green>."},
+    "Feel No Pain +" :{"Name":"Feel No Pain +","Block":4,"Energy":1,"Type":"Power","Rarity":"Uncommon","Upgraded":True,"Owner": "Ironclad","Info":"Whenever a card is <BLUE>Exhausted</BLUE>, gain <green>4 Block</green>."},
 
-    "Fire Breathing" :c("Power", "Uncommon", "Ironclad", "Whenever you draw a <light-cyan>Status</light-cyan> or <m>Curse</m> card, deal <red>6 damage</red> to ALL enemies.", Damage=6, Energy=1),
-    "Fire Breathing +" :c("Power", "Uncommon", "Ironclad", "Whenever you draw a <light-cyan>Status</light-cyan> or <m>Curse</m> card, deal <red>10 damage</red> to ALL enemies.", Damage=10, Energy=1, Upgraded=True),
+    "Fire Breathing" :{"Name":"Fire Breathing","Damage":6,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Ironclad","Info":"Whenever you draw a <light-cyan>Status</light-cyan> or <m>Curse</m> card, deal <red>6 damage</red> to ALL enemies."},
+    "Fire Breathing +" :{"Name":"Fire Breathing +","Damage":10,"Energy":1,"Type":"Power","Rarity":"Uncommon","Upgraded":True,"Owner": "Ironclad","Info":"Whenever you draw a <light-cyan>Status</light-cyan> or <m>Curse</m> card, deal <red>10 damage</red> to ALL enemies."},
 
-    "Inflame" :c("Power", "Uncommon", "Ironclad", "Gain <red>2 Strength</red>", Strength=2, Energy=1),
-    "Inflame +" :c("Power", "Uncommon", "Ironclad", "Gain <red>3 Strength</red>", Strength=3, Energy=1, Upgraded=True),
+    "Inflame" :{"Name":"Inflame","Strength":2,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Ironclad","Info":"Gain <red>2 Strength</red>"},
+    "Inflame +" :{"Name":"Inflame +","Strength":3,"Energy":1,"Type":"Power","Rarity":"Uncommon","Upgraded":True,"Owner": "Ironclad","Info":"Gain <red>3 Strength</red>"},
 
-    "Metallicize" :c("Power", "Uncommon", "Ironclad", "At the end of your turn, gain <green>3 Block</green>.", Block=3, Energy=1),
-    "Metallicize +" :c("Power", "Uncommon", "Ironclad", "At the end of your turn, gain <green>4 Block</green>.", Block=4, Energy=1, Upgraded=True),
+    "Metallicize" :{"Name":"Metallicize","Block":3,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Ironclad","Info":"At the end of your turn, gain <green>3 Block</green>."},
+    "Metallicize +" :{"Name":"Metallicize +","Block":4,"Energy":1,"Type":"Power","Rarity":"Uncommon","Upgraded":True,"Owner": "Ironclad","Info":"At the end of your turn, gain <green>4 Block</green>."},
 
-    "Rupture" :c("Power", "Uncommon", "Ironclad", "Whenever you lose <red>HP</red> from a Card, gain <red>1 Strength</red>.", Strength=1, Energy=1),
-    "Rupture +" :c("Power", "Uncommon", "Ironclad", "Whenever you lose <red>HP</red> from a Card, gain <red>2 Strength</red>.", Strength=2, Energy=1, Upgraded=True),
+    "Rupture" :{"Name":"Rupture","Strength":1,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Ironclad","Info":"Whenever you lose <red>HP</red> from a Card, gain <red>1 Strength</red>."},
+    "Rupture +" :{"Name":"Rupture +","Strength":2,"Energy":1,"Type":"Power","Rarity":"Uncommon","Upgraded":True,"Owner": "Ironclad","Info":"Whenever you lose <red>HP</red> from a Card, gain <red>2 Strength</red>."},
 
-    "Barricade" :c("Power", "Rare", "Ironclad", "<green>Block</green> is not removed at the start of the turn.", Energy=3),
-    "Barricade +" :c("Power", "Rare", "Ironclad", "<green>Block</green> is not removed at the start of the turn.", Energy=2, Upgraded=True),
+    "Barricade" :{"Name":"Barricade","Energy":3,"Type":"Power","Rarity":"Rare","Owner":"Ironclad","Info":"<green>Block</green> is not removed at the start of the turn."},
+    "Barricade +" :{"Name":"Barricade +","Energy":2,"Type":"Power","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"<green>Block</green> is not removed at the start of the turn."},
 
-    "Berserk" :c("Power", "Rare", "Ironclad", "Gain <light-cyan>2 Vulnerable</light-cyan>. At the start of your turn, gain <yellow>1 Energy</yellow>.", Vulnerable=2, Energy=0),
-    "Berserk +" :c("Power", "Rare", "Ironclad", "Gain <light-cyan>1 Vulnerable</light-cyan>. At the start of your turn, gain <yellow>1 Energy</yellow>.", Vulnerable=1, Energy=0, Upgraded=True),
+    "Berserk" :{"Name":"Berserk","Vulnerable":2,"Energy":0,"Type":"Power","Rarity":"Rare","Owner":"Ironclad","Info":"Gain <light-cyan>2 Vulnerable</light-cyan>. At the start of your turn, gain <yellow>1 Energy</yellow>."},
+    "Berserk +" :{"Name":"Berserk +","Vulnerable":1,"Energy":0,"Type":"Power","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"Gain <light-cyan>1 Vulnerable</light-cyan>. At the start of your turn, gain <yellow>1 Energy</yellow>."},
 
-    "Brutality" :c("Power", "Rare", "Ironclad", "At the start of your turn, lose <red>1 HP</red> and draw 1 Card.", Draw=1, Selfhurt=1, Vulnerable=2, Energy=0),
-    "Brutality +" :c("Power", "Rare", "Ironclad", "At the start of your turn, lose <red>1 HP</red> and draw 1 Card. <BLUE>Innate</BLUE>", Draw=1, Selfhurt=1, Innate=True, Energy=0, Upgraded=True),
+    "Brutality" :{"Name":"Brutality","Draw":1,"Selfhurt":1,"Vulnerable":2,"Energy":0,"Type":"Power","Rarity":"Rare","Owner":"Ironclad","Info":"At the start of your turn, lose <red>1 HP</red> and draw 1 Card."},
+    "Brutality +" :{"Name":"Brutality +","Draw":1,"Selfhurt":1,"Innate":True,"Energy":0,"Type":"Power","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"At the start of your turn, lose <red>1 HP</red> and draw 1 Card. <BLUE>Innate</BLUE>"},
 
-    "Corruption" :c("Power", "Rare", "Ironclad", "<green>Skills</green> cost <yellow>0 Energy</yellow>. Whenever you play a <green>Skill</green>, <BLUE>Exhaust</BLUE> it.", Energy=3),
-    "Corruption +" :c("Power", "Rare", "Ironclad", "<green>Skills</green> cost <yellow>0 Energy</yellow>. Whenever you play a <green>Skill</green>, <BLUE>Exhaust</BLUE> it.", Energy=2, Upgraded=True),
+    "Corruption" :{"Name":"Corruption","Energy":3,"Type":"Power","Rarity":"Rare","Owner":"Ironclad","Info":"<green>Skills</green> cost <yellow>0 Energy</yellow>. Whenever you play a <green>Skill</green>, <BLUE>Exhaust</BLUE> it."},
+    "Corruption +" :{"Name":"Corruption +","Energy":2,"Type":"Power","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"<green>Skills</green> cost <yellow>0 Energy</yellow>. Whenever you play a <green>Skill</green>, <BLUE>Exhaust</BLUE> it."},
 
-    "Demon Form" :c("Power", "Rare", "Ironclad", "At the start of your turn, gain <red>2 Strength</red>.", Energy=3, Strength=2),
-    "Demon Form +" :c("Power", "Rare", "Ironclad", "At the start of your turn, gain <red>3 Strength</red>.", Energy=3, Strength=3, Upgraded=True),
+    "Demon Form" :{"Name":"Demon Form","Energy":3,"Strength":2,"Type":"Power","Rarity":"Rare","Owner":"Ironclad","Info":"At the start of your turn, gain <red>2 Strength</red>."},
+    "Demon Form +" :{"Name":"Demon Form +","Energy":3,"Strength":3,"Type":"Power","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"At the start of your turn, gain <red>3 Strength</red>."},
 
-    "Juggernaut" :c("Power", "Rare", "Ironclad", "Whenever you gain <green>Block</green>, deal <red>5 damage</red> to a random enemy.", Damage=5, Energy=2),
-    "Juggernaut +" :c("Power", "Rare", "Ironclad", "Whenever you gain <green>Block</green>, deal <red>5 damage</red> to a random enemy.", Damage=7, Energy=2, Upgraded=True),
+    "Juggernaut" :{"Name":"Juggernaut","Damage":5,"Energy":2,"Type":"Power","Rarity":"Rare","Owner":"Ironclad","Info":"Whenever you gain <green>Block</green>, deal <red>5 damage</red> to a random enemy."},
+    "Juggernaut +" :{"Name":"Juggernaut +","Damage":7,"Energy":2,"Type":"Power","Rarity":"Rare","Upgraded":True,"Owner": "Ironclad","Info":"Whenever you gain <green>Block</green>, deal <red>5 damage</red> to a random enemy."},
 
     #Defect Cards
 
-    "Strike": c("Attack", "Basic", "Defect", "Deal 6 damage.", Damage=6, Energy=1),
-    "Strike +": c("Attack", "Basic", "Defect", "Deal 9 damage.", Upgraded=True, Damage=9, Energy=1),
+    "Strike": {"Name": "Strike", "Damage":6, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Defect","Info":"Deal 6 damage."},
+    "Strike +": {"Name": "Strike +","Upgraded": True, "Damage":9, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Defect","Info":"Deal 9 damage."},
 
-    "Defend": c("Skill", "Basic", "Defect", "Gain 5 Block.", Block=5, Energy=1),
-    "Defend +": c("Skill", "Basic", "Defect", "Gain 8 Block.", Upgraded=True, Block=8, Energy=1),
+    "Defend": {"Name": "Defend", "Block":5, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Defect","Info":"Gain 5 Block."},
+    "Defend +": {"Name": "Defend +","Upgraded": True, "Block":8, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Defect","Info":"Gain 8 Block."},
 
-    "Zap": c("Skill", "Basic", "Defect", "Channel 1 Lightning.", Energy=1),
-    "Zap +": c("Skill", "Basic", "Defect", "Channel 1 Lightning.", Upgraded=True, Energy=0),
+    "Zap": {"Name": "Zap", "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Defect","Info":"Channel 1 Lightning."},
+    "Zap +": {"Name": "Zap +", "Upgraded": True, "Energy": 0,"Type": "Skill" ,"Rarity": "Basic","Owner":"Defect","Info":"Channel 1 Lightning."},
 
-    "Dualcast": c("Skill", "Basic", "Defect", "Evoke your next Orb twice.", Energy=1),
-    "Dualcast +": c("Skill", "Basic", "Defect", "Evoke your next Orb twice.", Upgraded=True, Energy=0),
+    "Dualcast": {"Name": "Dualcast", "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Defect","Info":"Evoke your next Orb twice."},
+    "Dualcast +": {"Name": "Dualcast +", "Upgraded": True, "Energy": 0,"Type": "Skill" ,"Rarity": "Basic","Owner":"Defect","Info":"Evoke your next Orb twice."},
     
-    "Ball Lightning": c("Attack", "Common", "Defect", "Deal 7 damage. Channel 1 Lightning", Orb="Lightning", Damage=7, Energy=1),
-    "Ball Lightning +": c("Attack", "Common", "Defect", "Deal 7 damage. Channel 1 Lightning", Orb="Lightning", Damage=10, Upgraded=True, Energy=1),
+    "Ball Lightning": {"Name": "Ball Lightning","Orb":"Lightning","Damage":7, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 7 damage. Channel 1 Lightning"},
+    "Ball Lightning +": {"Name": "Ball Lightning +","Orb":"Lightning","Damage":10,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 7 damage. Channel 1 Lightning"},
     
-    "Barrage": c("Attack", "Common", "Defect", "Deal 4 damage for each channeled Orb.", Damage=4, Energy=1),
-    "Barrage +": c("Attack", "Common", "Defect", "Deal 6 damage for each channeled Orb.", Damage=6, Upgraded=True, Energy=1),
+    "Barrage": {"Name": "Barrage","Damage":4, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 4 damage for each channeled Orb."},
+    "Barrage +": {"Name": "Barrage +","Damage":6,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 6 damage for each channeled Orb."},
 
-    "Beam Cell": c("Attack", "Common", "Defect", "Deal 3 damage. Apply 1 Vulnerable.", Damage=3, Vulnerable=1, Energy=0),
-    "Beam Cell +": c("Attack", "Common", "Defect", "Deal 4 damage. Apply 2 Vulnerable.", Damage=4, Vulnerable=2, Upgraded=True, Energy=0),
+    "Beam Cell": {"Name": "Beam Cell","Damage":3, "Vulnerable":1,"Energy": 0,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 3 damage. Apply 1 Vulnerable."},
+    "Beam Cell +": {"Name": "Beam Cell +","Damage":4,"Vulnerable":2,"Upgraded":True, "Energy": 0,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 4 damage. Apply 2 Vulnerable."},
 
-    "Claw": c("Attack", "Common", "Defect", "Deal 3 damage. Increase the damage of ALL Claw cards by 2 this combat.", Damage=3, Increase=2, Energy=0),
-    "Claw +": c("Attack", "Common", "Defect", "Deal 5 damage. Increase the damage of ALL Claw cards by 2 this combat.", Damage=5, Increase=2, Upgraded=True, Energy=0),
+    "Claw": {"Name": "Claw","Damage":3, "Increase":2,"Energy": 0,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 3 damage. Increase the damage of ALL Claw cards by 2 this combat."},
+    "Claw +": {"Name": "Claw +","Damage":5,"Increase":2,"Upgraded":True, "Energy": 0,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 5 damage. Increase the damage of ALL Claw cards by 2 this combat."},
 
-    "Cold Snap": c("Attack", "Common", "Defect", "Deal 6 damage. Channel 1 Frost.", Orb="Frost", Damage=6, Energy=1),
-    "Cold Snap +": c("Attack", "Common", "Defect", "Deal 9 damage. Channel 1 Frost.", Orb="Frost", Damage=9, Upgraded=True, Energy=1),
+    "Cold Snap": {"Name": "Cold Snap","Orb":"Frost","Damage":6, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 6 damage. Channel 1 Frost."},
+    "Cold Snap +": {"Name": "Cold Snap +","Orb":"Frost","Damage":9,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 9 damage. Channel 1 Frost."},
     
-    "Compile Driver": c("Attack", "Common", "Defect", "Deal 7 damage. Draw 1 Card for each unique Orb you have.", Damage=7, Energy=1),
-    "Compile Driver +": c("Attack", "Common", "Defect", "Deal 10 damage. Draw 1 Card for each unique Orb you have.", Damage=10, Upgraded=True, Energy=1),
+    "Compile Driver": {"Name": "Compile Driver","Damage":7, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 7 damage. Draw 1 Card for each unique Orb you have."},
+    "Compile Driver +": {"Name": "Compile Driver +","Damage":10,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 10 damage. Draw 1 Card for each unique Orb you have."},
     
-    "Go for the Eyes": c("Attack", "Common", "Defect", "Deal 3 damage. If the enemy inteds to attack, apply 1 Weak.", Damage=3, Weakness=1, Energy=0),
-    "Go for the Eyes +": c("Attack", "Common", "Defect", "Deal 4 damage. If the enemy inteds to attack, apply 2 Weak.", Damage=4, Weakness=2, Upgraded=True, Energy=0),
+    "Go for the Eyes": {"Name": "Go for the Eyes","Damage":3, "Weakness":1,"Energy": 0,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 3 damage. If the enemy inteds to attack, apply 1 Weak."},
+    "Go for the Eyes +": {"Name": "Go for the Eyes +","Damage":4,"Weakness":2,"Upgraded":True, "Energy": 0,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 4 damage. If the enemy inteds to attack, apply 2 Weak."},
 
-    "Rebound": c("Attack", "Common", "Defect", "Deal 9 damage. Put the next card you play this turn on top of your draw pile.", Damage=9, Energy=1),
-    "Rebound +": c("Attack", "Common", "Defect", "Deal 12 damage. Put the next card you play this turn on top of your draw pile.", Damage=12, Upgraded=True, Energy=1),
+    "Rebound": {"Name": "Rebound","Damage":9, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 9 damage. Put the next card you play this turn on top of your draw pile."},
+    "Rebound +": {"Name": "Rebound +","Damage":12,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 12 damage. Put the next card you play this turn on top of your draw pile."},
     
-    "Streamline": c("Attack", "Common", "Defect", "Deal 15 damage. Reduce this card's cost by 1 this combat.", Damage=15, Energy=2),
-    "Streamline +": c("Attack", "Common", "Defect", "Deal 20 damage. Reduce this card's cost by 1 this combat.", Damage=20, Upgraded=True, Energy=2),
+    "Streamline": {"Name": "Streamline","Damage":15, "Energy": 2,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 15 damage. Reduce this card's cost by 1 this combat."},
+    "Streamline +": {"Name": "Streamline +","Damage":20,"Upgraded":True, "Energy": 2,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 20 damage. Reduce this card's cost by 1 this combat."},
     
-    "Sweeping Beam": c("Attack", "Common", "Defect", "Deal 6 damage to ALL enemies. Draw 1 card.", Damage=6, Draw=1, Energy=1),
-    "Sweeping Beam +": c("Attack", "Common", "Defect", "Deal 9 damage to ALL enemies. Draw 1 card.", Damage=9, Draw=1, Upgraded=True, Energy=1),
+    "Sweeping Beam": {"Name": "Sweeping Beam","Damage":6,"Draw":1, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 6 damage to ALL enemies. Draw 1 card."},
+    "Sweeping Beam +": {"Name": "Sweeping Beam +","Damage":9,"Draw":1,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Common","Owner":"Defect","Info":"Deal 9 damage to ALL enemies. Draw 1 card."},
 
-    "Blizzard": c("Attack", "Uncommon", "Defect", "Deal damage equal to 2 times the number of Frost channeled this combat to ALL enemies.", Damage=2, Energy=1),
-    "Blizzard +": c("Attack", "Uncommon", "Defect", "Deal damage equal to 2 times the number of Frost channeled this combat to ALL enemies.", Damage=3, Upgraded=True, Energy=1),
+    "Blizzard": {"Name": "Blizzard","Damage":2, "Energy": 1,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal damage equal to 2 times the number of Frost channeled this combat to ALL enemies."},
+    "Blizzard +": {"Name": "Blizzard +","Damage":3,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal damage equal to 2 times the number of Frost channeled this combat to ALL enemies."},
 
-    "Bullseye": c("Attack", "Uncommon", "Defect", "Deal 8 damage. Apply 2 Lock-On.", Damage=8, Energy=1, **{"Lock-On":2}),
-    "Bullseye +": c("Attack", "Uncommon", "Defect", "Deal 11 damage. Apply 3 Lock-On.", Damage=11, Upgraded=True, Energy=1, **{"Lock-On":3}),
+    "Bullseye": {"Name": "Bullseye","Damage":8,"Lock-On":2, "Energy": 1,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal 8 damage. Apply 2 Lock-On."},
+    "Bullseye +": {"Name": "Bullseye +","Damage":11,"Lock-On":3,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal 11 damage. Apply 3 Lock-On."},
     
-    "Doom and Gloom": c("Attack", "Uncommon", "Defect", "Deal 10 damage. Channel 1 Dark.", Damage=10, Orb="Dark", Energy=2),
-    "Doom and Gloom +": c("Attack", "Uncommon", "Defect", "Deal 14 damage. Channel 1 Dark.", Damage=14, Orb="Dark", Upgraded=True, Energy=2),
+    "Doom and Gloom": {"Name": "Doom and Gloom","Damage":10,"Orb":"Dark", "Energy": 2,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal 10 damage. Channel 1 Dark."},
+    "Doom and Gloom +": {"Name": "Doom and Gloom +","Damage":14,"Orb":"Dark","Upgraded":True, "Energy": 2,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal 14 damage. Channel 1 Dark."},
     
-    "FTL": c("Attack", "Uncommon", "Defect", "Deal 5 damage. If you have played less than 3 cards this turn, draw 1 card.", Damage=5, Max=3, Draw=1, Energy=0),
-    "FTL +": c("Attack", "Uncommon", "Defect", "Deal 6 damage. If you have played less than 4 cards this turn, draw 1 card.", Damage=6, Max=4, Draw=1, Upgraded=True, Energy=0),
+    "FTL": {"Name": "FTL","Damage":5,"Max":3,"Draw":1, "Energy": 0,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal 5 damage. If you have played less than 3 cards this turn, draw 1 card."},
+    "FTL +": {"Name": "FTL +","Damage":6,"Max":4,"Draw":1,"Upgraded":True, "Energy": 0,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal 6 damage. If you have played less than 4 cards this turn, draw 1 card."},
     
-    "Melter": c("Attack", "Uncommon", "Defect", "Remove all Block from the enemy. Deal 10 damage.", Damage=10, Energy=1),
-    "Melter +": c("Attack", "Uncommon", "Defect", "Remove all Block from the enemy. Deal 14 damage.", Damage=14, Upgraded=True, Energy=1),
+    "Melter": {"Name": "Melter","Damage":10, "Energy": 1,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Remove all Block from the enemy. Deal 10 damage."},
+    "Melter +": {"Name": "Melter +","Damage":14,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Remove all Block from the enemy. Deal 14 damage."},
 
-    "Rip and Tear": c("Attack", "Uncommon", "Defect", "Deal 7 damage to a random enemy twice.", Damage=7, Energy=1),
-    "Rip and Tear +": c("Attack", "Uncommon", "Defect", "Deal 9 damage to a random enemy twice.", Damage=9, Upgraded=True, Energy=1),
+    "Rip and Tear": {"Name": "Rip and Tear","Damage":7, "Energy": 1,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal 7 damage to a random enemy twice."},
+    "Rip and Tear +": {"Name": "Rip and Tear +","Damage":9,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal 9 damage to a random enemy twice."},
     
-    "Scrape": c("Attack", "Uncommon", "Defect", "Deal 7 damage. Draw 4 cards. Discard all cards drawn this way that do not cost 0.", Damage=7, Draw=4, Energy=1),
-    "Scrape +": c("Attack", "Uncommon", "Defect", "Deal 10 damage. Draw 5 cards. Discard all cards drawn this way that do not cost 0.", Damage=10, Draw=5, Upgraded=True, Energy=1),
+    "Scrape": {"Name": "Scrape","Damage":7,"Draw":4, "Energy": 1,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal 7 damage. Draw 4 cards. Discard all cards drawn this way that do not cost 0."},
+    "Scrape +": {"Name": "Scrape +","Damage":10,"Draw":5,"Upgraded":True, "Energy": 1,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal 10 damage. Draw 5 cards. Discard all cards drawn this way that do not cost 0."},
     
-    "Sunder": c("Attack", "Uncommon", "Defect", "Deal 24 damage. If this kills an enemy, gain 3 Energy.", Damage=24, Energy=3, **{"Energy Gain":3}),
-    "Sunder +": c("Attack", "Uncommon", "Defect", "Deal 32 damage. If this kills an enemy, gain 3 Energy.", Damage=32, Upgraded=True, Energy=3, **{"Energy Gain":3}),
+    "Sunder": {"Name": "Sunder","Damage":24,"Energy Gain":3,"Energy": 3,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal 24 damage. If this kills an enemy, gain 3 Energy."},
+    "Sunder +": {"Name": "Sunder +","Damage":32,"Energy Gain":3,"Upgraded":True, "Energy": 3,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Deal 32 damage. If this kills an enemy, gain 3 Energy."},
     
-    "All for One": c("Attack", "Rare", "Defect", "Deal 10 damage. Put all cost 0 cards from your discard pile into your hand.", Damage=10, Energy=2),
-    "All for One +": c("Attack", "Rare", "Defect", "Deal 32 damage. If this kills an enemy, 3 Energy.", Damage=14, Upgraded=True, Energy=2),
+    "All for One": {"Name": "All for One","Damage":10,"Energy": 2,"Type": "Attack" ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 10 damage. Put all cost 0 cards from your discard pile into your hand."},
+    "All for One +": {"Name": "All for One +","Damage":14,"Upgraded":True, "Energy": 2,"Type": "Attack" ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 32 damage. If this kills an enemy, 3 Energy."},
     
-    "Core Surge": c("Attack", "Rare", "Defect", "Deal 11 damage. Gain 1 Artifact. Exhaust.", Damage=11, Energy=1, Exhaust=True, Artifact=1),
-    "Core Surge +": c("Attack", "Rare", "Defect", "Deal 15 damage. Gain 1 Artifact. Exhaust.", Damage=15, Upgraded=True, Energy=1, Exhaust=True, Artifact=1),
+    "Core Surge": {"Name": "Core Surge","Damage":11,"Energy": 1,"Exhaust":True,"Type": "Attack","Artifact":1 ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 11 damage. Gain 1 Artifact. Exhaust."},
+    "Core Surge +": {"Name": "Core Surge +","Damage":15,"Upgraded":True, "Energy": 1,"Exhaust":True,"Artifact":1,"Type": "Attack" ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 15 damage. Gain 1 Artifact. Exhaust."},
     
-    "Hyperbeam": c("Attack", "Rare", "Defect", "Deal 26 damage to ALL enemies. Lose 3 Focus.", Damage=26, Energy=2, Focus=-3),
-    "Hyperbeam +": c("Attack", "Rare", "Defect", "Deal 34 damage to ALL enemies. Lose 3 Focus.", Damage=34, Upgraded=True, Energy=2, Focus=-3),
+    "Hyperbeam": {"Name": "Hyperbeam","Damage":26,"Energy": 2,"Focus":-3,"Type": "Attack" ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 26 damage to ALL enemies. Lose 3 Focus."},
+    "Hyperbeam +": {"Name": "Hyperbeam +","Damage":34,"Upgraded":True, "Energy": 2,"Focus":-3,"Type": "Attack" ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 34 damage to ALL enemies. Lose 3 Focus."},
     
-    "Meteor Strike": c("Attack", "Rare", "Defect", "Deal 24 damage. Channel 3 Plasma.", Damage=24, Energy=5, Orb="Plasma"),
-    "Meteor Strike +": c("Attack", "Rare", "Defect", "Deal 30 damage. Channel 3 Plasma.", Damage=30, Upgraded=True, Energy=5, Orb="Plasma"),
+    "Meteor Strike": {"Name": "Meteor Strike","Damage":24,"Energy": 5,"Orb":"Plasma","Type": "Attack" ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 24 damage. Channel 3 Plasma."},
+    "Meteor Strike +": {"Name": "Meteor Strike +","Damage":30,"Upgraded":True, "Energy": 5,"Orb":"Plasma","Type": "Attack" ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 30 damage. Channel 3 Plasma."},
     
-    "Thunder Strike": c("Attack", "Rare", "Defect", "Deal 7 damage to a random enemy for each Lightning channeled this combat.", Damage=7, Energy=3),
-    "Thunder Strike +": c("Attack", "Rare", "Defect", "Deal 9 damage to a random enemy for each Lightning channeled this combat.", Damage=9, Upgraded=True, Energy=3),
+    "Thunder Strike": {"Name": "Thunder Strike","Damage":7,"Energy": 3,"Type": "Attack" ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 7 damage to a random enemy for each Lightning channeled this combat."},
+    "Thunder Strike +": {"Name": "Thunder Strike +","Damage":9,"Upgraded":True, "Energy": 3,"Type": "Attack" ,"Rarity": "Rare","Owner":"Defect","Info":"Deal 9 damage to a random enemy for each Lightning channeled this combat."},
     
-    "Charge Battery": c("Skill", "Common", "Defect", "Gain 7 Block. Next turn, gain 1 Energy.", Block=7, Energy=1, **{"Energy Gain":1}),
-    "Charge Battery +": c("Skill", "Common", "Defect", "Gain 7 Block. Next turn, gain 1 Energy.", Block=10, Upgraded=True, Energy=1, **{"Energy Gain":1}),
+    "Charge Battery": {"Name": "Charge Battery","Block":7, "Energy": 1,"Energy Gain":1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 7 Block. Next turn, gain 1 Energy."},
+    "Charge Battery +": {"Name": "Charge Battery +","Block":10,"Upgraded":True, "Energy": 1,"Energy Gain":1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 7 Block. Next turn, gain 1 Energy."},
 
-    "Coolheaded": c("Skill", "Common", "Defect", "Channel 1 Frost. Draw 1 card.", Orb="Frost", Draw=1, Energy=1),
-    "Coolheaded +": c("Skill", "Common", "Defect", "Channel 1 Frost. Draw 2 card.", Orb="Frost", Draw=2, Upgraded=True, Energy=1),
+    "Coolheaded": {"Name": "Coolheaded","Orb":"Frost","Draw":1,"Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Channel 1 Frost. Draw 1 card."},
+    "Coolheaded +": {"Name": "Coolheaded +","Orb":"Frost","Draw":2,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Channel 1 Frost. Draw 2 card."},
 
-    "Hologram": c("Skill", "Common", "Defect", "Exhaust. Gain 3 Block. Put a card from your discard pile into your hand.", Block=3, Energy=1, Exhaust=True),
-    "Hologram +": c("Skill", "Common", "Defect", "Gain 5 Block. Put a card from your discard pile into your hand.", Block=5, Upgraded=True, Energy=1),
+    "Hologram": {"Name": "Hologram","Block":3, "Energy": 1,"Type": "Skill","Exhaust":True ,"Rarity": "Common","Owner":"Defect","Info":"Exhaust. Gain 3 Block. Put a card from your discard pile into your hand."},
+    "Hologram +": {"Name": "Hologram +","Block":5,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 5 Block. Put a card from your discard pile into your hand."},
 
-    "Leap": c("Skill", "Common", "Defect", "Gain 9 Block.", Block=9, Energy=1),
-    "Leap +": c("Skill", "Common", "Defect", "Gain 12 Block.", Block=12, Upgraded=True, Energy=1),
+    "Leap": {"Name": "Leap","Block":9, "Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 9 Block."},
+    "Leap +": {"Name": "Leap +","Block":12,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 12 Block."},
 
-    "Recursion": c("Skill", "Common", "Defect", "Evoke your next Orb. Channel the Orb that was just Evoked.", Energy=1),
-    "Recursion +": c("Skill", "Common", "Defect", "Evoke your next Orb. Channel the Orb that was just Evoked.", Upgraded=True, Energy=1),
+    "Recursion": {"Name": "Recursion", "Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Evoke your next Orb. Channel the Orb that was just Evoked."},
+    "Recursion +": {"Name": "Recursion +","Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Evoke your next Orb. Channel the Orb that was just Evoked."},
 
-    "Stack": c("Skill", "Common", "Defect", "Gain Block equal to the number of cards in your discard pile.", Energy=1),
-    "Stack +": c("Skill", "Common", "Defect", "Gain Block equal to the number of cards in your discard pile.", Block=3, Upgraded=True, Energy=1),
+    "Stack": {"Name": "Stack", "Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain Block equal to the number of cards in your discard pile."},
+    "Stack +": {"Name": "Stack +","Block":3,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain Block equal to the number of cards in your discard pile."},
 
-    "Steam Barrier": c("Skill", "Common", "Defect", "Gain 6 Block. Decrease this card's Block by 1 this combat.", Block=6, Energy=0),
-    "Steam Barrier +": c("Skill", "Common", "Defect", "Gain 6 Block. Decrease this card's Block by 1 this combat.", Block=8, Upgraded=True, Energy=0),
+    "Steam Barrier": {"Name": "Steam Barrier","Block":6, "Energy": 0,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 6 Block. Decrease this card\'s Block by 1 this combat."},
+    "Steam Barrier +": {"Name": "Steam Barrier +","Block":8,"Upgraded":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 6 Block. Decrease this card\'s Block by 1 this combat."},
 
-    "TURBO": c("Skill", "Common", "Defect", "Gain 2 Energy. Add a Void into your discard pile.", Energy=0, **{"Energy Gain":2}),
-    "TURBO +": c("Skill", "Common", "Defect", "Gain 3 Energy. Add a Void into your discard pile.", Upgraded=True, Energy=0, **{"Energy Gain":3}),
+    "TURBO": {"Name": "TURBO","Energy Gain":2, "Energy": 0,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 2 Energy. Add a Void into your discard pile."},
+    "TURBO +": {"Name": "TURBO +","Energy Gain":3,"Upgraded":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Common","Owner":"Defect","Info":"Gain 3 Energy. Add a Void into your discard pile."},
 
-    "Aggregate": c("Skill", "Uncommon", "Defect", "Gain Energy for every 4 cards in your draw pile.", Energy=1, **{"Energy Divider":4}),
-    "Aggregate +": c("Skill", "Uncommon", "Defect", "Gain Energy for every 4 cards in your draw pile.", Upgraded=True, Energy=1, **{"Energy Divider":3}),
+    "Aggregate": {"Name": "Aggregate","Energy Divider":4, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain Energy for every 4 cards in your draw pile."},
+    "Aggregate +": {"Name": "Aggregate +","Energy Divider":3,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain Energy for every 4 cards in your draw pile."},
 
-    "Auto-Shields": c("Skill", "Uncommon", "Defect", "If you have no Block, gain 11 Block.", Block=11, Energy=1),
-    "Auto-Shields +": c("Skill", "Uncommon", "Defect", "If you have no Block, gain 15 Block.", Block=15, Upgraded=True, Energy=1),
+    "Auto-Shields": {"Name": "Auto-Shields","Block":11, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"If you have no Block, gain 11 Block."},
+    "Auto-Shields +": {"Name": "Auto-Shields +","Block":15,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"If you have no Block, gain 15 Block."},
 
-    "Boot Sequence": c("Skill", "Uncommon", "Defect", "Innate. Gain 10 Block. Exhaust.", Block=10, Innate=True, Energy=0),
-    "Boot Sequence +": c("Skill", "Uncommon", "Defect", "Innate. Gain 13 Block. Exhaust.", Block=13, Innate=True, Upgraded=True, Energy=0),
+    "Boot Sequence": {"Name": "Boot Sequence","Block":10,"Innate":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Innate. Gain 10 Block. Exhaust."},
+    "Boot Sequence +": {"Name": "Boot Sequence +","Block":13,"Innate":True,"Upgraded":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Innate. Gain 13 Block. Exhaust."},
 
-    "Chaos": c("Skill", "Uncommon", "Defect", "Channel 1 random Orb.", Energy=1, **{"Orb Amount":1}),
-    "Chaos +": c("Skill", "Uncommon", "Defect", "Channel 2 random Orbs.", Upgraded=True, Energy=1, **{"Orb Amount":2}),
+    "Chaos": {"Name": "Chaos","Orb Amount":1, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Channel 1 random Orb."},
+    "Chaos +": {"Name": "Chaos +","Orb Amount":2,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Channel 2 random Orbs."},
 
-    "Chill": c("Skill", "Uncommon", "Defect", "Channel 1 Frost for each enemy in combat. Exhaust.", Orb="Frost", Exhaust=True, Energy=0),
-    "Chill +": c("Skill", "Uncommon", "Defect", "Innate. Channel 1 Frost for each enemy in combat. Exhaust.", Orb="Frost", Exhaust=True, Innate=True, Upgraded=True, Energy=0),
+    "Chill": {"Name": "Chill","Orb":"Frost","Exhaust":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Channel 1 Frost for each enemy in combat. Exhaust."},
+    "Chill +": {"Name": "Chill +","Orb":"Frost","Exhaust":True,"Innate":True,"Upgraded":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Innate. Channel 1 Frost for each enemy in combat. Exhaust."},
 
-    "Consume": c("Skill", "Uncommon", "Defect", "Gain 2 Focus. Lose 1 Orb Slot.", Focus=2, Energy=2, **{"Orb Loss":1}),
-    "Consume +": c("Skill", "Uncommon", "Defect", "Gain 3 Focus. Lose 1 Orb Slot.", Focus=3, Upgraded=True, Energy=2, **{"Orb Loss":1}),
+    "Consume": {"Name": "Consume","Focus":2,"Orb Loss":1, "Energy": 2,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain 2 Focus. Lose 1 Orb Slot."},
+    "Consume +": {"Name": "Consume +","Focus":3,"Orb Loss":1,"Upgraded":True, "Energy": 2,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain 3 Focus. Lose 1 Orb Slot."},
 
-    "Darkness": c("Skill", "Uncommon", "Defect", "Channel 1 Dark.", Orb="Dark", Energy=1),
-    "Darkness +": c("Skill", "Uncommon", "Defect", "Channel 1 Dark. Trigger the passive ability of all Dark orbs.", Orb="Dark", Upgraded=True, Energy=1),
+    "Darkness": {"Name": "Darkness","Orb":"Dark", "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Channel 1 Dark."},
+    "Darkness +": {"Name": "Darkness +","Orb":"Dark","Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Channel 1 Dark. Trigger the passive ability of all Dark orbs."},
     
-    "Double Energy": c("Skill", "Uncommon", "Defect", "Double your Energy. Exhaust.", Multiplier=2, Energy=1, Exhaust=True),
-    "Double Energy +": c("Skill", "Uncommon", "Defect", "Double your Energy. Exhaust.", Multiplier=2, Upgraded=True, Exhaust=True, Energy=0),
+    "Double Energy": {"Name": "Double Energy","Multiplier":2, "Energy": 1,"Exhaust":True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Double your Energy. Exhaust."},
+    "Double Energy +": {"Name": "Double Energy +","Multiplier":2,"Upgraded":True,"Exhaust":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Double your Energy. Exhaust."},
     
-    "Equilibrium": c("Skill", "Uncommon", "Defect", "Gain 13 Block. Retain your hand this turn.", Block=13, Energy=2),
-    "Equilibrium +": c("Skill", "Uncommon", "Defect", "Gain 16 Block. Retain your hand this turn.", Block=16, Upgraded=True, Energy=2),
+    "Equilibrium": {"Name": "Equilibrium","Block":13, "Energy": 2,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain 13 Block. Retain your hand this turn."},
+    "Equilibrium +": {"Name": "Equilibrium +","Block":16,"Upgraded":True, "Energy": 2,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain 16 Block. Retain your hand this turn."},
 
-    "Force Field": c("Skill", "Uncommon", "Defect", "Costs 1 less Energy for each Power card played this combat. Gain 12 Block.", Block=12, Energy=4),
-    "Force Field +": c("Skill", "Uncommon", "Defect", "Costs 1 less Energy for each Power card played this combat. Gain 16 Block.", Block=16, Upgraded=True, Energy=4),
+    "Force Field": {"Name": "Force Field","Block":12, "Energy": 4,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Costs 1 less Energy for each Power card played this combat. Gain 12 Block."},
+    "Force Field +": {"Name": "Force Field +","Block":16,"Upgraded":True, "Energy": 4,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Costs 1 less Energy for each Power card played this combat. Gain 16 Block."},
 
-    "Fusion": c("Skill", "Uncommon", "Defect", "Channel 1 Plasma.", Orb="Plasma", Energy=2),
-    "Fusion +": c("Skill", "Uncommon", "Defect", "Channel 1 Plasma.", Orb="Plasma", Upgraded=True, Energy=1),
+    "Fusion": {"Name": "Fusion","Orb":"Plasma", "Energy": 2,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Channel 1 Plasma."},
+    "Fusion +": {"Name": "Fusion +","Orb":"Plasma","Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Channel 1 Plasma."},
 
-    "Genetic Algorithm": c("Skill", "Uncommon", "Defect", "Gain 1 Block. Permanently increase this card's Block by 2. Exhaust.", Block=1, Increase=2, Exhaust=True, Energy=1),
-    "Genetic Algorithm +": c("Skill", "Uncommon", "Defect", "Gain 1 Block. Permanently increase this card's Block by 3. Exhaust.", Block=1, Increase=3, Exhaust=True, Upgraded=True, Energy=1),
+    "Genetic Algorithm": {"Name": "Genetic Algorithm","Block":1,"Increase":2,"Exhaust":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain 1 Block. Permanently increase this card\'s Block by 2. Exhaust."},
+    "Genetic Algorithm +": {"Name": "Genetic Algorithm +","Block":1,"Increase":3,"Exhaust":True,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain 1 Block. Permanently increase this card\'s Block by 3. Exhaust."},
 
-    "Glacier": c("Skill", "Uncommon", "Defect", "Gain 7 Block. Channel 2 Frost.", Block=7, Orb="Frost", Energy=2, **{"Orb Amount":2}),
-    "Glacier +": c("Skill", "Uncommon", "Defect", "Gain 10 Block. Channel 2 Frost.", Block=10, Orb="Frost", Upgraded=True, Energy=1, **{"Orb Amount":2}),
+    "Glacier": {"Name": "Glacier","Block":7,"Orb":"Frost","Orb Amount":2, "Energy": 2,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain 7 Block. Channel 2 Frost."},
+    "Glacier +": {"Name": "Glacier +","Block":10,"Orb":"Frost","Orb Amount":2,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain 10 Block. Channel 2 Frost."},
 
-    "Overclock": c("Skill", "Uncommon", "Defect", "Draw 2 cards. Add a Burn into your discard pile.", Draw=2, Energy=0),
-    "Overclock +": c("Skill", "Uncommon", "Defect", "Draw 3 cards. Add a Burn into your discard pile.", Draw=3, Upgraded=True, Energy=0),
+    "Overclock": {"Name": "Overclock","Draw":2, "Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Draw 2 cards. Add a Burn into your discard pile."},
+    "Overclock +": {"Name": "Overclock +","Draw":3,"Upgraded":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Draw 3 cards. Add a Burn into your discard pile."},
 
-    "Recycle": c("Skill", "Uncommon", "Defect", "Exhaust a card. Gain Energy equal to its cost.", Energy=1),
-    "Recycle +": c("Skill", "Uncommon", "Defect", "Exhaust a card. Gain Energy equal to its cost.", Upgraded=True, Energy=0),
+    "Recycle": {"Name": "Recycle","Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Exhaust a card. Gain Energy equal to its cost."},
+    "Recycle +": {"Name": "Recycle +","Upgraded":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Exhaust a card. Gain Energy equal to its cost."},
 
-    "Reinforced Body": c("Skill", "Uncommon", "Defect", "Gain 7 Block X times.", Block=7, Energy="X"),
-    "Reinforced Body +": c("Skill", "Uncommon", "Defect", "Gain 9 Block X times.", Block=9, Upgraded=True, Energy="X"),
+    "Reinforced Body": {"Name": "Reinforced Body","Block":7,"Energy": "X","Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain 7 Block X times."},
+    "Reinforced Body +": {"Name": "Reinforced Body +","Block":9,"Upgraded":True, "Energy": "X","Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain 9 Block X times."},
 
-    "Reprogram": c("Skill", "Uncommon", "Defect", "Lose 1 Focus. Gain 1 Strength. Gain 1 Dexterity.", Energy=1, Changer=1),
-    "Reprogram +": c("Skill", "Uncommon", "Defect", "Lose 2 Focus. Gain 2 Strength. Gain 2 Dexterity.", Upgraded=True, Changer=2, Energy=1),
+    "Reprogram": {"Name": "Reprogram","Energy": 1,"Changer":1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Lose 1 Focus. Gain 1 Strength. Gain 1 Dexterity."},
+    "Reprogram +": {"Name": "Reprogram +","Upgraded":True,"Changer":2, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Lose 2 Focus. Gain 2 Strength. Gain 2 Dexterity."},
 
-    "Skim": c("Skill", "Uncommon", "Defect", "Draw 3 cards.", Draw=3, Energy=1),
-    "Skim +": c("Skill", "Uncommon", "Defect", "Draw 4 cards.", Draw=4, Upgraded=True, Energy=1),
+    "Skim": {"Name": "Skim","Draw":3, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Draw 3 cards."},
+    "Skim +": {"Name": "Skim +","Draw":4,"Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Draw 4 cards."},
 
-    "Tempest": c("Skill", "Uncommon", "Defect", "Channel X Lightning. Exhaust.", Exhaust=True, Orb="Lightning", Energy="X"),
-    "Tempest +": c("Skill", "Uncommon", "Defect", "Channel X+1 Lightning. Exhaust.", Exhaust=True, Orb="Lightning", Upgraded=True, Energy="X"),
+    "Tempest": {"Name": "Tempest","Exhaust":True,"Orb":"Lightning","Energy": "X","Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Channel X Lightning. Exhaust."},
+    "Tempest +": {"Name": "Tempest +","Exhaust":True,"Orb":"Lightning","Upgraded":True, "Energy": "X","Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Channel X+1 Lightning. Exhaust."},
 
-    "White Noise": c("Skill", "Uncommon", "Defect", "Add a random Power card into your hand. It costs 0 this turn. Exhaust.", Exhaust=True, Cardtype="Power", Energy=1),
-    "White Noise +": c("Skill", "Uncommon", "Defect", "Add a random Power card into your hand. It costs 0 this turn. Exhaust.", Exhaust=True, Cardtype="Power", Upgraded=True, Energy=0),
+    "White Noise": {"Name": "White Noise","Exhaust":True,"Cardtype":"Power","Energy": 1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Add a random Power card into your hand. It costs 0 this turn. Exhaust."},
+    "White Noise +": {"Name": "White Noise +","Exhaust":True,"Cardtype":"Power","Upgraded":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Add a random Power card into your hand. It costs 0 this turn. Exhaust."},
 
-    "Amplify": c("Skill", "Rare", "Defect", "This turn, your next Power card is played twice.", Amplificicy=1, Energy=1),
-    "Amplify +": c("Skill", "Rare", "Defect", "This turn, your next 2 Power cards are played twice.", Amplificicy=2, Cardtype="Power", Upgraded=True, Energy=1),
+    "Amplify": {"Name": "Amplify","Amplificicy":1,"Energy": 1,"Type": "Skill" ,"Rarity": "Rare","Owner":"Defect","Info":"This turn, your next Power card is played twice."},
+    "Amplify +": {"Name": "Amplify +","Amplificicy":2,"Cardtype":"Power","Upgraded":True, "Energy": 1,"Type": "Skill" ,"Rarity": "Rare","Owner":"Defect","Info":"This turn, your next 2 Power cards are played twice."},
 
-    "Fission": c("Skill", "Rare", "Defect", "Remove all your Orbs. Gain 1 Energy and draw 1 card for each Orb removed. Exhaust.", Exhaust=True, Energy=0),
-    "Fission +": c("Skill", "Rare", "Defect", "Evoke all your Orbs. Gain 1 Energy and draw 1 card for each Orb removed. Exhaust.", Exhaust=True, Upgraded=True, Energy=0),
+    "Fission": {"Name": "Fission","Exhaust":True,"Energy": 0,"Type": "Skill" ,"Rarity": "Rare","Owner":"Defect","Info":"Remove all your Orbs. Gain 1 Energy and draw 1 card for each Orb removed. Exhaust."},
+    "Fission +": {"Name": "Fission +","Exhaust":True,"Upgraded":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Rare","Owner":"Defect","Info":"Evoke all your Orbs. Gain 1 Energy and draw 1 card for each Orb removed. Exhaust."},
 
-    "Multicast": c("Skill", "Rare", "Defect", "Evoke your next Orb X times.", Energy="X"),
-    "Multicast +": c("Skill", "Rare", "Defect", "Evoke your next Orb X+1 times.", Upgraded=True, Energy="X"),
+    "Multicast": {"Name": "Multicast","Energy": "X","Type": "Skill" ,"Rarity": "Rare","Owner":"Defect","Info":"Evoke your next Orb X times."},
+    "Multicast +": {"Name": "Multicast +","Upgraded":True, "Energy": "X","Type": "Skill" ,"Rarity": "Rare","Owner":"Defect","Info":"Evoke your next Orb X+1 times."},
     
-    "Rainbow": c("Skill", "Rare", "Defect", "Channel 1 Lightning. Channel 1 Frost. Channel 1 Dark. Exhaust.", Exhaust=True, Energy=2),
-    "Rainbow +": c("Skill", "Rare", "Defect", "Channel 1 Lightning. Channel 1 Frost. Channel 1 Dark.", Upgraded=True, Energy=2),
+    "Rainbow": {"Name": "Rainbow","Exhaust":True,"Energy": 2,"Type": "Skill" ,"Rarity": "Rare","Owner":"Defect","Info":"Channel 1 Lightning. Channel 1 Frost. Channel 1 Dark. Exhaust."},
+    "Rainbow +": {"Name": "Rainbow +","Upgraded":True, "Energy": 2,"Type": "Skill" ,"Rarity": "Rare","Owner":"Defect","Info":"Channel 1 Lightning. Channel 1 Frost. Channel 1 Dark."},
     
-    "Reboot": c("Skill", "Rare", "Defect", "Shuffle ALL your cards into your draw pile. Draw 4 cards. Exhaust.", Draw=4, Exhaust=True, Energy=0),
-    "Reboot +": c("Skill", "Rare", "Defect", "Shuffle ALL your cards into your draw pile. Draw 6 cards. Exhaust.", Draw=6, Exhaust=True, Upgraded=True, Energy=0),
+    "Reboot": {"Name": "Reboot","Draw":4,"Exhaust":True,"Energy": 0,"Type": "Skill" ,"Rarity": "Rare","Owner":"Defect","Info":"Shuffle ALL your cards into your draw pile. Draw 4 cards. Exhaust."},
+    "Reboot +": {"Name": "Reboot +","Draw":6,"Exhaust":True,"Upgraded":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Rare","Owner":"Defect","Info":"Shuffle ALL your cards into your draw pile. Draw 6 cards. Exhaust."},
     
-    "Seek": c("Skill", "Rare", "Defect", "Put 1 card from your draw pile into your hand. Exhaust.", Draw=1, Exhaust=True, Energy=0),
-    "Seek +": c("Skill", "Rare", "Defect", "Put 2 cards from your draw pile into your hand. Exhaust.", Draw=2, Exhaust=True, Upgraded=True, Energy=0),
+    "Seek": {"Name": "Seek","Draw":1,"Exhaust":True,"Energy": 0,"Type": "Skill" ,"Rarity": "Rare","Owner":"Defect","Info":"Put 1 card from your draw pile into your hand. Exhaust."},
+    "Seek +": {"Name": "Seek +","Draw":2,"Exhaust":True,"Upgraded":True, "Energy": 0,"Type": "Skill" ,"Rarity": "Rare","Owner":"Defect","Info":"Put 2 cards from your draw pile into your hand. Exhaust."},
 
-    "Capacitor": c("Power", "Uncommon", "Defect", "Gain 2 Orb slots.", Orb=2, Energy=1),
-    "Capacitor +": c("Power", "Uncommon", "Defect", "Gain 3 Orb slots.", Orb=3, Upgraded=True, Energy=1),
+    "Capacitor": {"Name": "Capacitor","Orb":2,"Energy": 1,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain 2 Orb slots."},
+    "Capacitor +": {"Name": "Capacitor +","Orb":3,"Upgraded":True, "Energy": 1,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain 3 Orb slots."},
 
-    "Defragment": c("Power", "Uncommon", "Defect", "Gain 1 Focus.", Focus=1, Energy=1),
-    "Defragment +": c("Power", "Uncommon", "Defect", "Gain 2 Focus.", Focus=2, Upgraded=True, Energy=1),
+    "Defragment": {"Name": "Defragment","Focus":1,"Energy": 1,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain 1 Focus."},
+    "Defragment +": {"Name": "Defragment +","Focus":2,"Upgraded":True, "Energy": 1,"Type": "Power" ,"Rarity": "Uncommon","Owner":"Defect","Info":"Gain 2 Focus."},
     
-    "Heatsinks": c("Power", "Uncommon", "Defect", "Whenever you play a Power card, draw 1 card..", Draw=1, Energy=1),
-    "Heatsinks +": c("Power", "Uncommon", "Defect", "Whenever you play a Power card, draw 2 cards.", Draw=2, Upgraded=True, Energy=1),
+    "Heatsinks": {"Name": "Heatsinks","Draw":1,"Energy": 1,"Type":"Power","Rarity":"Uncommon","Owner":"Defect","Info":"Whenever you play a Power card, draw 1 card.."},
+    "Heatsinks +": {"Name": "Heatsinks +","Draw":2,"Upgraded":True,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Defect","Info":"Whenever you play a Power card, draw 2 cards."},
     
-    "Hello World": c("Power", "Uncommon", "Defect", "At the start of your turn, add a random Common card into your hand.", Energy=1),
-    "Hello World +": c("Power", "Uncommon", "Defect", "Innate. At the start of your turn, add a random Common card into your hand.", Innate=True, Upgraded=True, Energy=1),
+    "Hello World": {"Name": "Hello World","Energy": 1,"Type":"Power","Rarity":"Uncommon","Owner":"Defect","Info":"At the start of your turn, add a random Common card into your hand."},
+    "Hello World +": {"Name": "Hello World +","Innate":True,"Upgraded":True,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Defect","Info":"Innate. At the start of your turn, add a random Common card into your hand."},
     
-    "Loop": c("Power", "Uncommon", "Defect", "At the start of your turn, trigger the passive ability of your next Orb.", Energy=1, Loop=1),
-    "Loop +": c("Power", "Uncommon", "Defect", "At the start of your turn, trigger the passive ability of your next Orb 2 times.", Loop=2, Upgraded=True, Energy=1),
+    "Loop": {"Name": "Loop","Energy": 1,"Loop":1,"Type":"Power","Rarity":"Uncommon","Owner":"Defect","Info":"At the start of your turn, trigger the passive ability of your next Orb."},
+    "Loop +": {"Name": "Loop +","Loop":2,"Upgraded":True,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Defect","Info":"At the start of your turn, trigger the passive ability of your next Orb 2 times."},
     
-    "Self Repair": c("Power", "Uncommon", "Defect", "At the end of combat, heal 7 HP.", Energy=1, Heal=7),
-    "Self Repair +": c("Power", "Uncommon", "Defect", "At the end of combat, heal 10 HP.", Heal=10, Upgraded=True, Energy=1),
+    "Self Repair": {"Name": "Self Repair","Energy": 1,"Heal":7,"Type":"Power","Rarity":"Uncommon","Owner":"Defect","Info":"At the end of combat, heal 7 HP."},
+    "Self Repair +": {"Name": "Self Repair +","Heal":10,"Upgraded":True,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Defect","Info":"At the end of combat, heal 10 HP."},
     
-    "Static Discharge": c("Power", "Uncommon", "Defect", "Whenever you receive unblocked attack damage, Channel 1 Lightning.", Energy=1, Orb="Lightning"),
-    "Static Discharge +": c("Power", "Uncommon", "Defect", "Whenever you receive unblocked attack damage, Channel 2 Lightning.", Orb="Lightning", Upgraded=True, Energy=1),
+    "Static Discharge": {"Name": "Static Discharge","Energy": 1,"Orb":"Lightning","Type":"Power","Rarity":"Uncommon","Owner":"Defect","Info":"Whenever you receive unblocked attack damage, Channel 1 Lightning."},
+    "Static Discharge +": {"Name": "Static Discharge +","Orb":"Lightning","Upgraded":True,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Defect","Info":"Whenever you receive unblocked attack damage, Channel 2 Lightning."},
 
-    "Storm": c("Power", "Uncommon", "Defect", "Whenever you play a Power card, Channel 1 Lightning.", Energy=1, Orb="Lightning"),
-    "Storm +": c("Power", "Uncommon", "Defect", "Innate. Whenever you play a Power card, Channel 1 Lightning.", Orb="Lightning", Upgraded=True, Energy=1, Innate=True),
+    "Storm": {"Name": "Storm","Energy": 1,"Orb":"Lightning","Type":"Power","Rarity":"Uncommon","Owner":"Defect","Info":"Whenever you play a Power card, Channel 1 Lightning."},
+    "Storm +": {"Name": "Storm +","Orb":"Lightning","Upgraded":True,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Defect","Innate":True,"Info":"Innate. Whenever you play a Power card, Channel 1 Lightning."},
         
-    "Biased Cognition": c("Power", "Rare", "Defect", "Gain 4 Focus. At the start of your turn, lose 1 Focus.", Focus=4, Energy=1),
-    "Biased Cognition +": c("Power", "Rare", "Defect", "Gain 5 Focus. At the start of your turn, lose 1 Focus.", Focus=5, Upgraded=True, Energy=1),
+    "Biased Cognition": {"Name": "Biased Cognition","Focus":4,"Energy": 1,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"Gain 4 Focus. At the start of your turn, lose 1 Focus."},
+    "Biased Cognition +": {"Name": "Biased Cognition +","Focus":5,"Upgraded":True,"Energy":1,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"Gain 5 Focus. At the start of your turn, lose 1 Focus."},
     
-    "Buffer": c("Power", "Rare", "Defect", "Prevent the next time you would lose HP.", Buffer=1, Energy=2),
-    "Buffer +": c("Power", "Rare", "Defect", "Prevent the next 2 times you would lose HP.", Buffer=2, Upgraded=True, Energy=2),
+    "Buffer": {"Name": "Buffer","Buffer":1,"Energy": 2,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"Prevent the next time you would lose HP."},
+    "Buffer +": {"Name": "Buffer +","Buffer":2,"Upgraded":True,"Energy":2,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"Prevent the next 2 times you would lose HP."},
 
-    "Creative AI": c("Power", "Rare", "Defect", "At the start of your turn, add a random Power card into your hand.", Energy=3),
-    "Creative AI +": c("Power", "Rare", "Defect", "At the start of your turn, add a random Power card into your hand.", Upgraded=True, Energy=2),
+    "Creative AI": {"Name": "Creative AI","Energy": 3,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"At the start of your turn, add a random Power card into your hand."},
+    "Creative AI +": {"Name": "Creative AI +","Upgraded":True,"Energy":2,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"At the start of your turn, add a random Power card into your hand."},
 
-    "Echo Form": c("Power", "Rare", "Defect", "Ethereal. The first card you play each turn is played twice.", Energy=3, Ethereal=True),
-    "Echo Form +": c("Power", "Rare", "Defect", "The first card you play each turn is played twice.", Upgraded=True, Energy=3),
+    "Echo Form": {"Name": "Echo Form","Energy": 3,"Ethereal":True,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"Ethereal. The first card you play each turn is played twice."},
+    "Echo Form +": {"Name": "Echo Form +","Upgraded":True,"Energy":3,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"The first card you play each turn is played twice."},
 
-    "Electrodynamics": c("Power", "Rare", "Defect", "Lightning now hits ALL enemies. Channel 2 Lightning.", Energy=2, Orbs=2),
-    "Electrodynamics +": c("Power", "Rare", "Defect", "Lightning now hits ALL enemies. Channel 3 Lightning.", Upgraded=True, Orbs=3, Energy=2),
+    "Electrodynamics": {"Name": "Electrodynamics","Energy": 2,"Orbs":2,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"Lightning now hits ALL enemies. Channel 2 Lightning."},
+    "Electrodynamics +": {"Name": "Electrodynamics +","Upgraded":True,"Orbs":3,"Energy":2,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"Lightning now hits ALL enemies. Channel 3 Lightning."},
 
-    "Machine Learning": c("Power", "Rare", "Defect", "At the start of your turn, draw 1 additional card.", Energy=1, Draw=1),
-    "Machine Learning +": c("Power", "Rare", "Defect", "Innate. At the start of your turn, draw 1 additional card.", Upgraded=True, Draw=1, Energy=1, Innate=True),
+    "Machine Learning": {"Name": "Machine Learning","Energy": 1,"Draw":1,"Type":"Power","Rarity":"Rare","Owner":"Defect","Info":"At the start of your turn, draw 1 additional card."},
+    "Machine Learning +": {"Name": "Machine Learning +","Upgraded":True,"Draw":1,"Energy":1,"Type":"Power","Rarity":"Rare","Innate":True,"Owner":"Defect","Info":"Innate. At the start of your turn, draw 1 additional card."},
 
 
     #Neutral Cards
 
-    "Bandage Up": c("Skill", "Uncommon", "Colorless", "<red>Heal 4 HP</red>.<BLUE>Exhaust</BLUE>.", Heal=4, Energy=0, Exhaust=True),
-    "Bandage Up +": c("Skill", "Uncommon", "Colorless", "<red>Heal 6 HP</red>.<BLUE>Exhaust</BLUE>.", Heal=6, Energy=0, Exhaust=True, Upgraded=True),
+    "Bandage Up": {"Name": "Bandage Up","Heal": 4, "Energy": 0, "Exhaust": True, "Type": "Skill", "Rarity": "Uncommon", "Owner":"Colorless","Info":"<red>Heal 4 HP</red>.<BLUE>Exhaust</BLUE>."},
+    "Bandage Up +": {"Name": "Bandage Up +","Heal": 6, "Energy": 0, "Exhaust": True, "Type": "Skill","Upgraded": True, "Rarity": "Uncommon", "Owner":"Colorless","Info":"<red>Heal 6 HP</red>.<BLUE>Exhaust</BLUE>."},
     
-    "Blind": c("Skill", "Uncommon", "Colorless", "Apply <light-cyan>2 Weak</light-cyan>.", Weakness=2, Energy=0),
-    "Blind +": c("Skill", "Uncommon", "Colorless", "Apply <light-cyan>2 Weak</light-cyan> to ALL enemies.", Weakness=2, Energy=0, Upgraded=True),
+    "Blind": {"Name": "Blind","Weakness": 2, "Energy": 0, "Type": "Skill", "Rarity": "Uncommon", "Owner":"Colorless","Info":"Apply <light-cyan>2 Weak</light-cyan>."},
+    "Blind +": {"Name": "Blind +","Weakness": 2, "Energy": 0, "Type": "Skill", "Rarity": "Uncommon","Upgraded": True, "Owner":"Colorless","Info":"Apply <light-cyan>2 Weak</light-cyan> to ALL enemies."},
     
-    "Trip": c("Skill", "Uncommon", "Colorless", "Apply <light-cyan>2 Weak</light-cyan>.", Vulnerable=2, Energy=0),
-    "Trip +": c("Skill", "Uncommon", "Colorless", "Apply <light-cyan>2 Vulnerable</light-cyan> to ALL enemies.", Vulnerable=2, Energy=0, Upgraded=True),
+    "Trip": {"Name": "Trip","Vulnerable": 2, "Energy": 0, "Type": "Skill", "Rarity": "Uncommon", "Owner":"Colorless","Info":"Apply <light-cyan>2 Weak</light-cyan>."},
+    "Trip +": {"Name": "Trip +","Vulnerable": 2, "Energy": 0, "Type": "Skill", "Rarity": "Uncommon","Upgraded": True, "Owner":"Colorless","Info":"Apply <light-cyan>2 Vulnerable</light-cyan> to ALL enemies."},
 
-    "Dark Shackles": c("Skill", "Uncommon", "Colorless", "Enemy loses <red>9 Strength</red> this turn. <BLUE>Exhaust</BLUE>.", Energy=0, Exhaust=True, **{"Strength Modifier":9}),
-    "Dark Shackles +": c("Skill", "Uncommon", "Colorless", "Enemy loses <red>15 Strength</red> this turn. <BLUE>Exhaust</BLUE>.", Energy=0, Exhaust=True, Upgraded=True, **{"Strength Modifier":15}),
+    "Dark Shackles": {"Name": "Dark Shackles","Strength Modifier":9,"Energy": 0,"Exhaust": True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Enemy loses <red>9 Strength</red> this turn. <BLUE>Exhaust</BLUE>."},
+    "Dark Shackles +": {"Name": "Dark Shackles +","Strength Modifier":15,"Energy": 0,"Exhaust": True,"Type": "Skill","Upgraded": True,"Rarity": "Uncommon","Owner":"Colorless","Info":"Enemy loses <red>15 Strength</red> this turn. <BLUE>Exhaust</BLUE>."},
 
-    "Deep Breath": c("Skill", "Uncommon", "Colorless", "Shuffle your Discardpile into your Drawpile. Draw 1 card.", Draw=1, Energy=0),
-    "Deep Breath +": c("Skill", "Uncommon", "Colorless", "Shuffle your Discardpile into your Drawpile. Draw 2 card.", Draw=2, Energy=0, Upgraded=True),
+    "Deep Breath": {"Name": "Deep Breath","Draw":1,"Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Shuffle your Discardpile into your Drawpile. Draw 1 card."},
+    "Deep Breath +": {"Name": "Deep Breath +","Draw":2,"Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Shuffle your Discardpile into your Drawpile. Draw 2 card."},
 
-    "Discovery" :c("Skill", "Uncommon", "Colorless", "Choose 1 of 3 random cards to add into your hand. It costs 0 this turn. <BLUE>Exhaust</BLUE>.", Energy=1, Exhaust=True),
-    "Discovery +" :c("Skill", "Uncommon", "Colorless", "Choose 1 of 3 random cards to add into your hand. It costs 0 this turn. <BLUE>Exhaust</BLUE>.", Energy=0, Exhaust=True, Upgraded=True),
+    "Discovery" :{"Name": "Discovery","Energy": 1,"Exhaust":True ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Choose 1 of 3 random cards to add into your hand. It costs 0 this turn. <BLUE>Exhaust</BLUE>."},
+    "Discovery +" :{"Name": "Discovery +","Energy": 0,"Exhaust":True ,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Choose 1 of 3 random cards to add into your hand. It costs 0 this turn. <BLUE>Exhaust</BLUE>."},
 
-    "Dramatic Entrance": c("Attack", "Uncommon", "Colorless", "Deal <red>8 damage</red> to ALL enemies. <BLUE>Innate</BLUE>. <BLUE>Exhaust</BLUE>.", Damage=8, Energy=0, Innate=True, Exhaust=True),
-    "Dramatic Entrance +": c("Attack", "Uncommon", "Colorless", "Deal <red>12 damage</red> to ALL enemies. <BLUE>Innate</BLUE>. <BLUE>Exhaust</BLUE>.", Name="Dramatic Entrance", Damage=12, Energy=0, Innate=True, Exhaust=True, Upgraded=True),
+    "Dramatic Entrance": {"Name": "Dramatic Entrance","Damage":8,"Energy": 0,"Innate":True,"Exhaust":True,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Deal <red>8 damage</red> to ALL enemies. <BLUE>Innate</BLUE>. <BLUE>Exhaust</BLUE>."},
+    "Dramatic Entrance +": {"Name": "Dramatic Entrance","Damage":12,"Energy": 0,"Innate":True,"Exhaust":True,"Type": "Attack" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Colorless","Info":"Deal <red>12 damage</red> to ALL enemies. <BLUE>Innate</BLUE>. <BLUE>Exhaust</BLUE>."},
     
-    "Enlightenment": c("Skill", "Uncommon", "Colorless", "Reduce the cost of all cards in your hand to <yellow>1 Energy</yellow> this turn.", Energy=0),
-    "Enlightenment +": c("Skill", "Uncommon", "Colorless", "Reduce the cost of all cards in your hand to <yellow>1 Energy</yellow> for the rest of the battle.", Name="Enlightenment", Energy=0, Upgraded=True),
+    "Enlightenment": {"Name": "Enlightenment","Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Reduce the cost of all cards in your hand to <yellow>1 Energy</yellow> this turn."},
+    "Enlightenment +": {"Name": "Enlightenment","Energy": 0,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Reduce the cost of all cards in your hand to <yellow>1 Energy</yellow> for the rest of the battle."},
 
-    "Finesse": c("Skill", "Uncommon", "Colorless", "Gain <green>2 Block</green>. Draw 1 card.", Energy=0, Block=2, Draw=1),
-    "Finesse +": c("Skill", "Uncommon", "Colorless", "Gain <green>4 Block</green>. Draw 1 card.", Energy=0, Block=4, Draw=1, Upgraded=True),
+    "Finesse": {"Name": "Finesse","Energy": 0,"Block":2,"Draw":1,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Gain <green>2 Block</green>. Draw 1 card."},
+    "Finesse +": {"Name": "Finesse +","Energy": 0,"Block":4,"Draw":1,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Gain <green>4 Block</green>. Draw 1 card."},
     
-    "Flash of Steel": c("Attack", "Uncommon", "Colorless", Energy=0, Damage=3, Draw=1),
-    "Flash of Steel +": c("Attack", "Uncommon", "Colorless", Energy=0, Damage=5, Draw=1, Upgraded=True),
+    "Flash of Steel": {"Name": "Flash of Steel","Energy": 0,"Damage":3,"Draw":1,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Colorless"},
+    "Flash of Steel +": {"Name": "Flash of Steel +","Energy": 0,"Damage":5,"Draw":1,"Type": "Attack","Upgraded": True,"Rarity": "Uncommon","Owner":"Colorless"},
 
-    "Forethought": c("Skill", "Uncommon", "Colorless", "Put a Card from your hand to the bottom of your draw pile. It costs 0 until played.", Energy=0, **{"Back Putter":1,"Energy Change Type":"Energy changed until played","Energy Change":0}),
-    "Forethought +": c("Skill", "Uncommon", "Colorless", "Put any number of Cards from your hand to the bottom of your draw pile. It costs 0 until played.", Energy=0, Upgraded=True, **{"Energy Change Type":"Energy changed until played","Energy Change":0}),
+    "Forethought": {"Name": "Forethought","Back Putter":1,"Energy Change Type":"Energy changed until played","Energy Change":0,"Energy": 0 ,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Put a Card from your hand to the bottom of your draw pile. It costs 0 until played."},
+    "Forethought +": {"Name": "Forethought +","Energy Change Type":"Energy changed until played","Energy Change":0,"Energy": 0 ,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Colorless","Info":"Put any number of Cards from your hand to the bottom of your draw pile. It costs 0 until played."},
 
-    "Good Instincts": c("Skill", "Uncommon", "Colorless", "Gain <green>6 Block</green>.", Energy=0, Block=6),
-    "Good Instincts +": c("Skill", "Uncommon", "Colorless", "Gain <green>9 Block</green>.", Energy=0, Block=9, Upgraded=True),
+    "Good Instincts": {"Name": "Good Instincts","Energy": 0,"Block":6,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Gain <green>6 Block</green>."},
+    "Good Instincts +": {"Name": "Good Instincts +","Energy": 0,"Block":9,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Gain <green>9 Block</green>."},
 
-    "Impatience": c("Skill", "Uncommon", "Colorless", "If you have no <red>Attacks</red> in your hand, draw 2 cards.", Energy=0, Draw=2),
-    "Impatience +": c("Skill", "Uncommon", "Colorless", "If you have no <red>Attacks</red> in your hand, draw 3 cards.", Energy=0, Draw=3, Upgraded=True),
+    "Impatience": {"Name": "Impatience","Energy": 0,"Draw":2,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"If you have no <red>Attacks</red> in your hand, draw 2 cards."},
+    "Impatience +": {"Name": "Impatience +","Energy": 0,"Draw":3,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"If you have no <red>Attacks</red> in your hand, draw 3 cards."},
 
-    "Jack of All Trades": c("Skill", "Uncommon", "Colorless", "Add 1 random Colorless card into your hand. <BLUE>Exhaust</BLUE>.", Energy=0, Draw=1, Exhaust=True),
-    "Jack of All Trades +": c("Skill", "Uncommon", "Colorless", "Add 2 random Colorless card into your hand. <BLUE>Exhaust</BLUE>.", Energy=0, Draw=2, Exhaust=True, Upgraded=True),
+    "Jack of All Trades": {"Name": "Jack of All Trades","Energy": 0,"Draw":1,"Exhaust":True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Add 1 random Colorless card into your hand. <BLUE>Exhaust</BLUE>."},
+    "Jack of All Trades +": {"Name": "Jack of All Trades +","Energy": 0,"Draw":2,"Exhaust":True,"Upgraded": True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Add 2 random Colorless card into your hand. <BLUE>Exhaust</BLUE>."},
 
-    "Madness": c("Skill", "Uncommon", "Colorless", "Reduce the cost of a random card in your hand to <yellow>0 Energy</yellow> this combat. <BLUE>Exhaust</BLUE>.", Energy=1, Exhaust=True),
-    "Madness +": c("Skill", "Uncommon", "Colorless", "Reduce the cost of a random card in your hand to <yellow>0 Energy</yellow> this combat. <BLUE>Exhaust</BLUE>.", Name="Madness", Energy=0, Exhaust=True, Upgraded=True),
+    "Madness": {"Name": "Madness","Energy": 1,"Exhaust":True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Reduce the cost of a random card in your hand to <yellow>0 Energy</yellow> this combat. <BLUE>Exhaust</BLUE>."},
+    "Madness +": {"Name": "Madness","Energy": 0,"Exhaust":True,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Reduce the cost of a random card in your hand to <yellow>0 Energy</yellow> this combat. <BLUE>Exhaust</BLUE>."},
 
-    "Mind Blast": c("Attack", "Uncommon", "Colorless", "<BLUE>Innate</BLUE>. Deal <red>damage</red> equal to the number of cards in your draw pile.", Energy=2, Innate=True),
-    "Mind Blast +": c("Attack", "Uncommon", "Colorless", "<BLUE>Innate</BLUE>. Deal <red>damage</red> equal to the number of cards in your draw pile.", Energy=1, Innate=True, Upgraded=True),
+    "Mind Blast": {"Name": "Mind Blast","Energy": 2,"Innate":True,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"<BLUE>Innate</BLUE>. Deal <red>damage</red> equal to the number of cards in your draw pile."},
+    "Mind Blast +": {"Name": "Mind Blast +","Energy": 1,"Innate":True,"Type": "Attack" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"<BLUE>Innate</BLUE>. Deal <red>damage</red> equal to the number of cards in your draw pile."},
 
-    "Panacea": c("Skill", "Uncommon", "Colorless", "Gain <light-red>1 Artifact</light-red>. <BLUE>Exhaust</BLUE>.", Energy=0, Artifact=1, Exhaust=True),
-    "Panacea +": c("Skill", "Uncommon", "Colorless", "Gain <light-red>2 Artifact</light-red>. <BLUE>Exhaust</BLUE>.", Energy=0, Artifact=2, Exhaust=True, Upgraded=True),
+    "Panacea": {"Name": "Panacea","Energy": 0,"Artifact":1, "Exhaust":True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Gain <light-red>1 Artifact</light-red>. <BLUE>Exhaust</BLUE>."},
+    "Panacea +": {"Name": "Panacea +","Energy": 0,"Artifact":2, "Exhaust":True,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Gain <light-red>2 Artifact</light-red>. <BLUE>Exhaust</BLUE>."},
 
-    "Panic Button": c("Skill", "Uncommon", "Colorless", "Gain <green>30 Block</green>. You can't gain <green>Block</green> for 2 turns.", Energy=0, Block=30, NoBlock=2, Exhaust=True),
-    "Panic Button +": c("Skill", "Uncommon", "Colorless", "Gain <green>40 Block</green>. You can't gain <green>Block</green> for 2 turns.", Energy=0, Block=40, NoBlock=2, Exhaust=True, Upgraded=True),
+    "Panic Button": {"Name": "Panic Button","Energy": 0,"Block":30,"NoBlock":2, "Exhaust":True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Gain <green>30 Block</green>. You can't gain <green>Block</green> for 2 turns."},
+    "Panic Button +": {"Name": "Panic Button +","Energy": 0,"Block":40,"NoBlock":2, "Exhaust":True,"Type": "Skill" ,"Upgraded": True,"Rarity": "Uncommon","Owner":"Colorless","Info":"Gain <green>40 Block</green>. You can't gain <green>Block</green> for 2 turns."},
 
-    "Purify": c("Skill", "Uncommon", "Colorless", "Exhaust up to 3 Cards. <BLUE>Exhaust</BLUE>.", Energy=0, Exhausting=3, Exhaust=True),
-    "Purify +": c("Skill", "Uncommon", "Colorless", "Exhaust up to 5 Cards. <BLUE>Exhaust</BLUE>.", Energy=0, Exhausting=5, Exhaust=True, Upgraded=True),
+    "Purify": {"Name": "Purify","Energy": 0,"Exhausting":3, "Exhaust":True,"Type": "Skill" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Exhaust up to 3 Cards. <BLUE>Exhaust</BLUE>."},
+    "Purify +": {"Name": "Purify +","Energy": 0,"Exhausting":5, "Exhaust":True,"Type": "Skill" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Exhaust up to 5 Cards. <BLUE>Exhaust</BLUE>."},
 
-    "Swift Strike": c("Attack", "Uncommon", "Colorless", "Deal <red>7 damage</red>.", Damage=7, Energy=0),
-    "Swift Strike +": c("Attack", "Uncommon", "Colorless", "Deal <red>10 damage</red>.", Damage=10, Energy=0, Upgraded=True),
+    "Swift Strike": {"Name": "Swift Strike","Damage":7,"Energy": 0,"Type": "Attack" ,"Rarity": "Uncommon","Owner":"Colorless","Info":"Deal <red>7 damage</red>."},
+    "Swift Strike +": {"Name": "Swift Strike +","Damage":10,"Energy": 0,"Type": "Attack" ,"Rarity": "Uncommon","Upgraded": True,"Owner":"Colorless","Info":"Deal <red>10 damage</red>."},
 
-    "Apotheosis": c("Skill", "Rare", "Colorless", "Upgrade ALL Cards for this battle. <BLUE>Exhaust</BLUE>.", Energy=2, Exhaust=True),
-    "Apotheosis +": c("Skill", "Rare", "Colorless", "Upgrade ALL Cards for this battle. <BLUE>Exhaust</BLUE>.", Energy=1, Exhaust=True, Upgraded=True),
+    "Apotheosis": {"Name": "Apotheosis","Energy": 2,"Type": "Skill","Exhaust":True ,"Rarity": "Rare","Owner":"Colorless","Info":"Upgrade ALL Cards for this battle. <BLUE>Exhaust</BLUE>."},
+    "Apotheosis +": {"Name": "Apotheosis +","Energy": 1,"Type": "Skill","Exhaust":True ,"Rarity": "Rare","Upgraded": True,"Owner":"Colorless","Info":"Upgrade ALL Cards for this battle. <BLUE>Exhaust</BLUE>."},
 
-    "Chrysalis": c("Skill", "Rare", "Colorless", "Shuffle <green>3 random Skills</green> into your draw pile. They cost 0 this combat. <BLUE>Exhaust</BLUE>.", Cards=3, Energy=2, Exhaust=True),
-    "Chrysalis +": c("Skill", "Rare", "Colorless", "Shuffle <green>5 random Skills</green> into your draw pile. They cost 0 this combat. <BLUE>Exhaust</BLUE>.", Cards=5, Energy=2, Exhaust=True, Upgraded=True),
+    "Chrysalis": {"Name": "Chrysalis","Cards":3,"Energy": 2,"Type": "Skill","Exhaust":True ,"Rarity": "Rare","Owner":"Colorless","Info":"Shuffle <green>3 random Skills</green> into your draw pile. They cost 0 this combat. <BLUE>Exhaust</BLUE>."},
+    "Chrysalis +": {"Name": "Chrysalis +","Cards":5,"Energy": 2,"Type": "Skill","Exhaust":True ,"Rarity": "Rare","Upgraded": True,"Owner":"Colorless","Info":"Shuffle <green>5 random Skills</green> into your draw pile. They cost 0 this combat. <BLUE>Exhaust</BLUE>."},
 
-    "Hand of Greed": c("Attack", "Rare", "Colorless", "Deal <red>20 damage</red>. If this kills the enemy, gain <yellow>20 Gold</yellow>.", Damage=20, Gold=20, Energy=2),
-    "Hand of Greed +": c("Attack", "Rare", "Colorless", "Deal <red>25 damage</red>. If this kills the enemy, gain <yellow>25 Gold</yellow>.", Damage=25, Gold=25, Energy=2, Upgraded=True),
+    "Hand of Greed": {"Name": "Hand of Greed","Damage":20,"Gold":20,"Energy": 2,"Type": "Attack" ,"Rarity": "Rare","Owner":"Colorless","Info":"Deal <red>20 damage</red>. If this kills the enemy, gain <yellow>20 Gold</yellow>."},
+    "Hand of Greed +": {"Name": "Hand of Greed +","Damage":25,"Gold":25,"Energy": 2,"Type": "Attack" ,"Upgraded": True,"Rarity": "Rare","Owner":"Colorless","Info":"Deal <red>25 damage</red>. If this kills the enemy, gain <yellow>25 Gold</yellow>."},
 
-    "Magnetism": c("Power", "Rare", "Colorless", "At the start of your turn, add a random Colorless card into your hand.", Energy=2),
-    "Magnetism +": c("Power", "Rare", "Colorless", "At the start of your turn, add a random Colorless card into your hand.", Energy=1, Upgraded=True),
+    "Magnetism": {"Name": "Magnetism","Energy": 2,"Type": "Power","Rarity": "Rare","Owner":"Colorless","Info":"At the start of your turn, add a random Colorless card into your hand."},
+    "Magnetism +": {"Name": "Magnetism +","Energy": 1,"Type": "Power","Rarity": "Rare","Upgraded": True,"Owner":"Colorless","Info":"At the start of your turn, add a random Colorless card into your hand."},
 
-    "Master of Strategy": c("Skill", "Rare", "Colorless", "Draw 3 Cards. <BLUE>Exhaust</BLUE>.", Draw=3, Energy=0, Exhaust=True),
-    "Master of Strategy +": c("Skill", "Rare", "Colorless", "Draw 4 Cards. <BLUE>Exhaust</BLUE>.", Draw=4, Energy=0, Exhaust=True, Upgraded=True),
+    "Master of Strategy": {"Name": "Master of Strategy","Draw":3,"Energy": 0,"Exhaust":True,"Type": "Skill","Rarity": "Rare","Owner":"Colorless","Info":"Draw 3 Cards. <BLUE>Exhaust</BLUE>."},
+    "Master of Strategy +": {"Name": "Master of Strategy +","Draw":4,"Energy": 0,"Exhaust":True,"Type": "Skill","Upgraded": True,"Rarity": "Rare","Owner":"Colorless","Info":"Draw 4 Cards. <BLUE>Exhaust</BLUE>."},
 
-    "Mayhem": c("Power", "Rare", "Colorless", "At the start of your turn, play the top card of your Drawpile.", Energy=2),
-    "Mayhem +": c("Power", "Rare", "Colorless", "At the start of your turn, play the top card of your Drawpile.", Energy=1, Upgraded=True),
+    "Mayhem": {"Name": "Mayhem","Energy": 2,"Type": "Power","Rarity": "Rare","Owner":"Colorless","Info":"At the start of your turn, play the top card of your Drawpile."},
+    "Mayhem +": {"Name": "Mayhem +","Energy": 1,"Type": "Power","Rarity": "Rare","Upgraded": True,"Owner":"Colorless","Info":"At the start of your turn, play the top card of your Drawpile."},
     
-    "Metamorphosis": c("Skill", "Rare", "Colorless", "Shuffle <red>3 random Attacks</red> into your draw pile. They cost 0 this combat. <BLUE>Exhaust</BLUE>.", Energy=2, Cards=3, Exhaust=True),
-    "Metamorphosis +": c("Skill", "Rare", "Colorless", "Shuffle <red>5 random Attacks</red> into your draw pile. They cost 0 this combat. <BLUE>Exhaust</BLUE>.", Energy=2, Cards=5, Exhaust=True, Upgraded=True),
+    "Metamorphosis": {"Name": "Metamorphosis","Energy": 2,"Cards":3,"Exhaust":True,"Type": "Skill","Rarity": "Rare","Owner":"Colorless","Info":"Shuffle <red>3 random Attacks</red> into your draw pile. They cost 0 this combat. <BLUE>Exhaust</BLUE>."},
+    "Metamorphosis +": {"Name": "Metamorphosis +","Energy": 2,"Cards":5,"Exhaust":True,"Type": "Skill","Upgraded": True,"Rarity": "Rare","Owner":"Colorless","Info":"Shuffle <red>5 random Attacks</red> into your draw pile. They cost 0 this combat. <BLUE>Exhaust</BLUE>."},
     
-    "Panache": c("Power", "Rare", "Colorless", "Every time you play 5 cards in a single turn, deal <red>10 damage</red> to ALL enemies.", Energy=0, Damage=10),
-    "Panache +": c("Power", "Rare", "Colorless", "Every time you play 5 cards in a single turn, deal <red>14 damage</red> to ALL enemies.", Energy=0, Damage=14, Upgraded=True),
+    "Panache": {"Name": "Panache","Energy": 0,"Damage":10,"Type": "Power","Rarity": "Rare","Owner":"Colorless","Info":"Every time you play 5 cards in a single turn, deal <red>10 damage</red> to ALL enemies."},
+    "Panache +": {"Name": "Panache +","Energy": 0,"Damage":14,"Type": "Power","Rarity": "Rare","Upgraded": True,"Owner":"Colorless","Info":"Every time you play 5 cards in a single turn, deal <red>14 damage</red> to ALL enemies."},
     
-    "Sadistic Nature": c("Power", "Rare", "Colorless", "Whenever you apply a <light-cyan>debuff</light-cyan> to an enemy, they take <red>5 damage</red>.", Energy=0, Damage=5),
-    "Sadistic Nature +": c("Power", "Rare", "Colorless", "Whenever you apply a <light-cyan>debuff</light-cyan> to an enemy, they take <red>7 damage</red>.", Energy=0, Damage=7, Upgraded=True),
+    "Sadistic Nature": {"Name": "Sadistic Nature","Energy": 0,"Damage":5,"Type": "Power","Rarity": "Rare","Owner":"Colorless","Info":"Whenever you apply a <light-cyan>debuff</light-cyan> to an enemy, they take <red>5 damage</red>."},
+    "Sadistic Nature +": {"Name": "Sadistic Nature +","Energy": 0,"Damage":7,"Type": "Power","Upgraded": True,"Rarity": "Rare","Owner":"Colorless","Info":"Whenever you apply a <light-cyan>debuff</light-cyan> to an enemy, they take <red>7 damage</red>."},
     
-    "Secret Technique": c("Skill", "Rare", "Colorless", "Put a <green>Skill</green> from your Drawpile into your hand. <BLUE>Exhaust</BLUE>.", Draw=1, Place="Drawpile", Typing="Skill", Energy=0, Exhaust=True),
-    "Secret Technique +": c("Skill", "Rare", "Colorless", "Put a <green>Skill</green> from your Drawpile into your hand.", Draw=1, Place="Drawpile", Typing="Skill", Upgraded=True, Energy=0),
+    "Secret Technique": {"Name": "Secret Technique","Draw":1,"Place":"Drawpile","Typing": "Skill","Energy": 0,"Type": "Skill","Exhaust":True,"Rarity": "Rare","Owner":"Colorless","Info":"Put a <green>Skill</green> from your Drawpile into your hand. <BLUE>Exhaust</BLUE>."},
+    "Secret Technique +": {"Name": "Secret Technique +","Draw":1,"Place":"Drawpile","Typing": "Skill","Upgraded": True,"Energy": 0,"Type": "Skill","Rarity": "Rare","Owner":"Colorless","Info":"Put a <green>Skill</green> from your Drawpile into your hand."},
 
-    "Secret Weapon": c("Skill", "Rare", "Colorless", "Put a <red>Attack</red> from your Drawpile into your hand. <BLUE>Exhaust</BLUE>", Draw=1, Place="Drawpile", Typing="Attack", Energy=0, Exhaust=True),
-    "Secret Weapon +": c("Skill", "Rare", "Colorless", "Put a <red>Attack</red> from your Drawpile into your hand.", Draw=1, Place="Drawpile", Typing="Attack", Energy=0, Upgraded=True),
+    "Secret Weapon": {"Name": "Secret Weapon","Draw":1,"Place":"Drawpile","Typing": "Attack","Energy": 0,"Type": "Skill","Exhaust":True,"Rarity": "Rare","Owner":"Colorless","Info":"Put a <red>Attack</red> from your Drawpile into your hand. <BLUE>Exhaust</BLUE>"},
+    "Secret Weapon +": {"Name": "Secret Weapon +","Draw":1,"Place":"Drawpile","Typing": "Attack","Energy": 0,"Upgraded": True,"Type": "Skill","Rarity": "Rare","Owner":"Colorless","Info":"Put a <red>Attack</red> from your Drawpile into your hand."},
 
-    "The Bomb": c("Skill", "Rare", "Colorless", "At the end of 3 turns, deal <red>40 damage</red> to ALL enemies.", Energy=2, Damage=40),
-    "The Bomb +": c("Skill", "Rare", "Colorless", "At the end of 3 turns, deal <red>50 damage</red> to ALL enemies.", Energy=2, Damage=50, Upgraded=True),
+    "The Bomb": {"Name": "The Bomb","Energy": 2,"Damage":40,"Type": "Skill","Rarity": "Rare","Owner":"Colorless","Info":"At the end of 3 turns, deal <red>40 damage</red> to ALL enemies."},
+    "The Bomb +": {"Name": "The Bomb +","Energy": 2,"Damage":50,"Type": "Skill","Rarity": "Rare","Upgraded": True,"Owner":"Colorless","Info":"At the end of 3 turns, deal <red>50 damage</red> to ALL enemies."},
     
-    "Thinking Ahead": c("Skill", "Rare", "Colorless", "Draw 2 Cards. Put a Card from your hand on top of your Drawpile. <BLUE>Exhaust</BLUE>.", Energy=0, Draw=2, Exhaust=True, **{"Back Putter":1}),
-    "Thinking Ahead +": c("Skill", "Rare", "Colorless", "Draw 3 Cards. Put a Card from your hand on top of your Drawpile. <BLUE>Exhaust</BLUE>.", Energy=0, Draw=2, Upgraded=True, **{"Back Putter":1}),
+    "Thinking Ahead": {"Name": "Thinking Ahead","Energy": 0,"Draw":2,"Back Putter": 1,"Exhaust":True,"Type": "Skill","Rarity": "Rare","Owner":"Colorless","Info":"Draw 2 Cards. Put a Card from your hand on top of your Drawpile. <BLUE>Exhaust</BLUE>."},
+    "Thinking Ahead +": {"Name": "Thinking Ahead +","Energy": 0,"Draw":2,"Back Putter": 1,"Type": "Skill","Upgraded": True,"Rarity": "Rare","Owner":"Colorless","Info":"Draw 3 Cards. Put a Card from your hand on top of your Drawpile. <BLUE>Exhaust</BLUE>."},
 
-    "Transmutation": c("Skill", "Rare", "Colorless", "Add X random Colorless Cards into your hand. They cost <yellow>0 Energy</yellow> this turn. <BLUE>Exhaust</BLUE>.", Energy="X", Exhaust=True),
-    "Transmutation +": c("Skill", "Rare", "Colorless", "Add X random <blue>upgraded</blue> Colorless Cards into your hand. They cost <yellow>0 Energy</yellow> this turn. <BLUE>Exhaust</BLUE>.", Energy="X", Exhaust=True, Upgraded=True),
+    "Transmutation": {"Name": "Transmutation","Energy": "X","Exhaust":True,"Type": "Skill","Rarity": "Rare","Owner":"Colorless","Info":"Add X random Colorless Cards into your hand. They cost <yellow>0 Energy</yellow> this turn. <BLUE>Exhaust</BLUE>."},
+    "Transmutation +": {"Name": "Transmutation +","Energy": "X","Exhaust":True,"Type": "Skill","Rarity": "Rare","Upgraded": True,"Owner":"Colorless","Info":"Add X random <blue>upgraded</blue> Colorless Cards into your hand. They cost <yellow>0 Energy</yellow> this turn. <BLUE>Exhaust</BLUE>."},
 
-    "Violence": c("Skill", "Rare", "Colorless", "Put <red>3 random Attacks</red> from your Drawpile into your hand. <BLUE>Exhaust</BLUE>.", Energy=0, Draw=3, Place="Drawpile", Typing="Attack", Exhaust=True),
-    "Violence +": c("Skill", "Rare", "Colorless", "Put <red>4 random Attacks</red> from your Drawpile into your hand. <BLUE>Exhaust</BLUE>.", Energy=0, Draw=4, Place="Drawpile", Typing="Attack", Exhaust=True, Upgraded=True),
+    "Violence": {"Name": "Violence","Energy": 0,"Draw":3,"Place":"Drawpile","Typing":"Attack","Exhaust":True,"Type": "Skill","Rarity": "Rare","Owner":"Colorless","Info":"Put <red>3 random Attacks</red> from your Drawpile into your hand. <BLUE>Exhaust</BLUE>."},
+    "Violence +": {"Name": "Violence +","Energy": 0,"Draw":4,"Place":"Drawpile","Typing":"Attack","Exhaust":True,"Upgraded": True,"Type": "Skill","Rarity": "Rare","Owner":"Colorless","Info":"Put <red>4 random Attacks</red> from your Drawpile into your hand. <BLUE>Exhaust</BLUE>."},
     
-    "Apparition": c("Skill", "Special", "Colorless", "<BLUE>Ethereal</BLUE>. Gain <blue>1 Intangible</blue>. <BLUE>Exhaust</BLUE>.", Energy=1, Intangible=1, Exhaust=True, Ethereal=True),
-    "Apparition +": c("Skill", "Special", "Colorless", "Gain <blue>1 Intangible</blue>. <BLUE>Exhaust</BLUE>.", Energy=1, Intangible=1, Exhaust=True, Upgraded=True),
+    "Apparition": {"Name": "Apparition","Energy": 1,"Intangible":1,"Exhaust":True,"Ethereal":True,"Type": "Skill","Rarity": "Special","Owner":"Colorless","Info":"<BLUE>Ethereal</BLUE>. Gain <blue>1 Intangible</blue>. <BLUE>Exhaust</BLUE>."},
+    "Apparition +": {"Name": "Apparition +","Energy": 1,"Intangible":1,"Exhaust":True,"Type": "Skill","Upgraded": True,"Rarity": "Special","Owner":"Colorless","Info":"Gain <blue>1 Intangible</blue>. <BLUE>Exhaust</BLUE>."},
 
-    "Ritual Dagger": c("Attack", "Special", "Colorless", "Deal <red>15 damage</red>. If this kills the enemy, permanently increase this Card's <red>damage</red> by 3. <BLUE>Exhaust</BLUE>. UPGRADING THIS CARD IS CURRENLY ILL-ADVISED AS IT'S BUGGED!", Energy=1, Damage=15, FatalBonus=3, Exhaust=True),
-    "Ritual Dagger +": c("Attack", "Special", "Colorless", "Deal <red>15 damage</red>. If this kills the enemy, permanently increase this Card's <red>damage</red> by 5. <BLUE>Exhaust</BLUE>.", Energy=1, Damage=15, FatalBonus=5, Exhaust=True, Upgraded=True),
+    "Ritual Dagger": {"Name": "Ritual Dagger","Energy": 1,"Damage":15,"FatalBonus":3,"Exhaust":True,"Type": "Attack","Rarity": "Special","Owner":"Colorless","Info":"Deal <red>15 damage</red>. If this kills the enemy, permanently increase this Card's <red>damage</red> by 3. <BLUE>Exhaust</BLUE>. UPGRADING THIS CARD IS CURRENLY ILL-ADVISED AS IT'S BUGGED!"},
+    "Ritual Dagger +": {"Name": "Ritual Dagger +","Energy": 1,"Damage":15,"FatalBonus":5,"Exhaust":True,"Upgraded": True,"Type": "Attack","Rarity": "Special","Owner":"Colorless","Info":"Deal <red>15 damage</red>. If this kills the enemy, permanently increase this Card\'s <red>damage</red> by 5. <BLUE>Exhaust</BLUE>."},
 
-    "Bite": c("Attack", "Special", "Colorless", "Deal <red>6 damage</red>.", Damage=7, Heal=2, Energy=1),
-    "Bite +": c("Attack", "Special", "Colorless", "Deal <red>9 damage</red>.", Upgraded=True, Damage=8, Heal=3, Energy=1),
+    "Bite": {"Name": "Bite", "Damage":7,"Heal":2, "Energy": 1,"Type": "Attack" ,"Rarity": "Special","Owner":"Colorless","Info":"Deal <red>6 damage</red>."},
+    "Bite +": {"Name": "Bite +","Upgraded": True, "Damage":8,"Heal":3, "Energy": 1,"Type": "Attack" ,"Rarity": "Special","Owner":"Colorless","Info":"Deal <red>9 damage</red>."},
 
-    "JAX": c("Skill", "Special", "Colorless", "Lose <red>3 HP</red>. Gain <red>2 Strength</red>.", Energy=0, Strength=2, Harm=3),
-    "JAX +": c("Skill", "Special", "Colorless", "Lose <red>3 HP</red>. Gain <red>3 Strength</red>.", Energy=0, Strength=3, Harm=3, Upgraded=True),
+    "JAX": {"Name": "JAX","Energy": 0,"Strength":2,"Harm":3,"Type": "Skill","Rarity": "Special","Owner":"Colorless","Info":"Lose <red>3 HP</red>. Gain <red>2 Strength</red>."},
+    "JAX +": {"Name": "JAX +","Energy": 0,"Strength":3,"Harm":3,"Upgraded": True,"Type": "Skill","Rarity": "Special","Owner":"Colorless","Info":"Lose <red>3 HP</red>. Gain <red>3 Strength</red>."},
 
-    "Slimed": c("Status", "Enemy", "The Spire", "<BLUE>Exhaust</BLUE>.", Energy=1, Exhaust=True),
+    "Slimed": {"Name": "Slimed", "Energy": 1, "Exhaust": True, "Type": "Status", "Rarity": "Enemy", "Owner":"The Spire","Info":"<BLUE>Exhaust</BLUE>."},
     
-    "Dazed": c("Status", "Enemy", "The Spire", "<BLUE>Ethereal</BLUE>. <RED>Unplayable</RED>.", Ethereal=True),
+    "Dazed": {"Name": "Dazed", "Ethereal": True, "Type": "Status", "Rarity": "Enemy", "Owner":"The Spire","Info":"<BLUE>Ethereal</BLUE>. <RED>Unplayable</RED>."},
     
-    "Void": c("Status", "Enemy", "The Spire", "<RED>Unplayable</RED> Whenever this card is drawn, lose <yellow>1 Energy</yellow>. <BLUE>Ethereal</BLUE>.", Ethereal=True),
+    "Void": {"Name": "Void", "Ethereal": True, "Type": "Status", "Rarity": "Enemy", "Owner":"The Spire","Info":"<RED>Unplayable</RED> Whenever this card is drawn, lose <yellow>1 Energy</yellow>. <BLUE>Ethereal</BLUE>."},
 
-    "Burn" : c("Status", "Enemy", "The Spire", "<RED>Unplayable</RED>. At the end of your turn, take <red>2 damage</red>.", DiscardDamage=2),
-    "Burn +": c("Status", "Enemy", "The Spire", "<RED>Unplayable</RED>. At the end of your turn, take <red>4 damage</red>.", DiscardDamage=4, Upgraded=True),
-    "Wound" : c("Status", "Enemy", "The Spire", "<RED>Unplayable</RED>."),
+    "Burn" : {"Name": "Burn", "DiscardDamage": 2, "Type": "Status", "Rarity": "Enemy","Owner":"The Spire","Info":"<RED>Unplayable</RED>. At the end of your turn, take <red>2 damage</red>."},
+    "Burn +": {"Name": "Burn +", "DiscardDamage": 4, "Type": "Status", "Rarity": "Enemy","Upgraded": True,"Owner":"The Spire","Info":"<RED>Unplayable</RED>. At the end of your turn, take <red>4 damage</red>."},
+    "Wound" : {"Name": "Wound", "Type": "Status", "Rarity": "Enemy","Owner":"The Spire","Info":"<RED>Unplayable</RED>."},
 
 
-    "Clumsy": c("Curse", "Curse", "The Spire", "<BLUE>Ethereal</BLUE>. <RED>Unplayable</RED>.", Ethereal=True),
-    "Injury": c("Curse", "Curse", "The Spire", "<RED>Unplayable</RED>."),
-    "Decay": c("Curse", "Curse", "The Spire", "<RED>Unplayable</RED>. At the end of your turn, take <red>2 damage</red>."),
-    "Parasite": c("Curse", "Curse", "The Spire", "<RED>Unplayable</RED> If transformed or removed from your deck, lose <red>3 Max HP</red>."),
-    "Regret": c("Curse", "Curse", "The Spire", "<RED>Unplayable</RED>. At the end of your turn, lose <red>1 HP</red> for each Card in your hand."),
-    "Shame": c("Curse", "Curse", "The Spire", "<RED>Unplayable</RED>. At the end of your turn, gain <light-cyan>1 Frail</light-cyan>."),
-    "Doubt": c("Curse", "Curse", "The Spire", "<RED>Unplayable</RED>. At the end of your turn, gain <light-cyan>1 Weak</light-cyan>."),
-    "Pain": c("Curse", "Curse", "The Spire", "<RED>Unplayable</RED>. While in hand, lose <red>1 HP</red> when other cards are played."),
-    "Writhe": c("Curse", "Curse", "The Spire", "<RED>Unplayable</RED>. <BLUE>Innate</BLUE>.", Innate=True),
-    "Normality": c("Curse", "Curse", "The Spire", "<RED>Unplayable</RED>. You cannot play more than 3 Cards this turn."),
+    "Clumsy": {"Name": "Clumsy","Ethereal":True,"Type": "Curse","Rarity": "Curse","Owner":"The Spire","Info":"<BLUE>Ethereal</BLUE>. <RED>Unplayable</RED>."},
+    "Injury": {"Name": "Injury","Type": "Curse","Rarity": "Curse","Owner":"The Spire","Info":"<RED>Unplayable</RED>."},
+    "Decay": {"Name": "Decay","Type": "Curse","Rarity": "Curse","Owner":"The Spire","Info":"<RED>Unplayable</RED>. At the end of your turn, take <red>2 damage</red>."},
+    "Parasite": {"Name": "Parasite","Type": "Curse","Rarity": "Curse","Owner":"The Spire","Info":"<RED>Unplayable</RED> If transformed or removed from your deck, lose <red>3 Max HP</red>."},
+    "Regret": {"Name": "Regret","Type": "Curse","Rarity": "Curse","Owner":"The Spire","Info":"<RED>Unplayable</RED>. At the end of your turn, lose <red>1 HP</red> for each Card in your hand."},
+    "Shame": {"Name": "Shame","Type": "Curse","Rarity": "Curse","Owner":"The Spire","Info":"<RED>Unplayable</RED>. At the end of your turn, gain <light-cyan>1 Frail</light-cyan>."},
+    "Doubt": {"Name": "Doubt","Type": "Curse","Rarity": "Curse","Owner":"The Spire","Info":"<RED>Unplayable</RED>. At the end of your turn, gain <light-cyan>1 Weak</light-cyan>."},
+    "Pain": {"Name": "Pain","Type": "Curse","Rarity": "Curse","Owner":"The Spire","Info":"<RED>Unplayable</RED>. While in hand, lose <red>1 HP</red> when other cards are played."},
+    "Writhe": {"Name": "Writhe","Innate": True,"Type": "Curse","Rarity": "Curse","Owner":"The Spire","Info":"<RED>Unplayable</RED>. <BLUE>Innate</BLUE>."},
+    "Normality": {"Name": "Normality","Type": "Curse","Rarity": "Curse","Owner":"The Spire","Info":"<RED>Unplayable</RED>. You cannot play more than 3 Cards this turn."},
     
-    "Curse of the Bell": c("Curse", "Special", "The Spire", "<RED>Unplayable</RED>. Cannot be removed from your deck.", Irremovable=True),
-    "Necronomicurse": c("Curse", "Special", "The Spire", "<RED>Unplayable</RED>. Cannot be removed from your deck.", Irremovable=True),
-    "Ascender's Bane": c("Curse", "Special", "The Spire", "<BLUE>Ethereal</BLUE>. <RED>Unplayable</RED>. Can't be removed from the Deck.", Ethereal=True, Irremovable=True)
+    "Curse of the Bell": {"Name": "Curse of the Bell","Type": "Curse","Rarity": "Special","Irremovable":True,"Owner":"The Spire","Info":"<RED>Unplayable</RED>. Cannot be removed from your deck."},
+    "Necronomicurse": {"Name": "Necronomicurse","Type": "Curse","Rarity": "Special","Irremovable":True,"Owner":"The Spire","Info":"<RED>Unplayable</RED>. Cannot be removed from your deck."},
+    "Ascender's Bane": {"Name": "Ascender's Bane","Ethereal":True,"Type": "Curse","Irremovable":True,"Rarity": "Special","Owner":"The Spire","Info":"<BLUE>Ethereal</BLUE>. <RED>Unplayable</RED>. Can't be removed from the Deck."}
     }
-_setnames(cards)
 
 potions = {
     
-    "Ancient Potion": p("Uncommon", "The Spire", "Gain <light-red>1 Artifact</light-red>.", **{"Potion Yield":1}),
-    "Attack Potion": p("Common", "The Spire", "Choose 1 of <red>3 random Attack</red> Cards to add into your hand. It costs <yellow>0 Energy</yellow> this turn.", **{"Potion Yield":1}),
-    "Blessing of the Forge": p("Common", "The Spire", "<blue>Upgrade</blue> ALL cards in your hand."),
-    "Block Potion": p("Common", "The Spire", "Gain <green>12 Block</green>.", **{"Potion Yield":12}),
-    "Colorless Potion": p("Common", "The Spire", "Choose 1 of <white>3 random Colorless</white> Cards to add into your hand. It costs <yellow>0 Energy</yellow> this turn.", **{"Potion Yield":"Colorless"}),
-    "Cultist Potion": p("Rare", "The Spire", "Gain <red>1 Strength</red> at the start of each turn.", **{"Potion Yield":1}),
-    "Cunning Potion": p("Uncommon", "Silent", "Add <red>3 upgraded Shivs</red> to your hand.", **{"Potion Yield":3}),
-    "Dexterity Potion": p("Common", "The Spire", "Gain <green>2 Dexterity</green>.", **{"Potion Yield":2}),
-    "Strength Potion": p("Common", "The Spire", "Gain <red>2 Strength</red>.", **{"Potion Yield":2}),
-    "Distilled Chaos": p("Uncommon", "The Spire", "Play the top 3 Cards of your Drawpile.", **{"Potion Yield":3}),
-    "Duplication Potion": p("Uncommon", "The Spire", "This turn, your next Card is played twice.", **{"Potion Yield":1}),
-    "Energy Potion": p("Common", "The Spire", "Gain <yellow>2 Energy</yellow>.", **{"Potion Yield":2}),
+    "Ancient Potion": {"Name": "Ancient Potion", "Potion Yield":1, "Rarity": "Uncommon","Owner":"The Spire","Type": "Potion","Info":"Gain <light-red>1 Artifact</light-red>."},
+    "Attack Potion": {"Name": "Attack Potion","Potion Yield": 1, "Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Choose 1 of <red>3 random Attack</red> Cards to add into your hand. It costs <yellow>0 Energy</yellow> this turn."},
+    "Blessing of the Forge": {"Name": "Blessing of the Forge","Rarity": "Common","Owner":"The Spire","Type": "Potion","Type": "Potion","Info":"<blue>Upgrade</blue> ALL cards in your hand."},
+    "Block Potion": {"Name": "Block Potion","Potion Yield": 12,"Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Gain <green>12 Block</green>."},
+    "Colorless Potion": {"Name": "Colorless Potion","Potion Yield": "Colorless", "Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Choose 1 of <white>3 random Colorless</white> Cards to add into your hand. It costs <yellow>0 Energy</yellow> this turn."},
+    "Cultist Potion": {"Name": "Cultist Potion","Potion Yield":1,"Rarity": "Rare","Owner":"The Spire","Type": "Potion","Info":"Gain <red>1 Strength</red> at the start of each turn."},
+    "Cunning Potion": {"Name": "Cunning Potion","Potion Yield":3,"Rarity": "Uncommon","Owner":"Silent","Type": "Potion","Info":"Add <red>3 upgraded Shivs</red> to your hand."},
+    "Dexterity Potion": {"Name": "Dexterity Potion","Potion Yield":2,"Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Gain <green>2 Dexterity</green>."},
+    "Strength Potion": {"Name": "Strength Potion","Potion Yield":2,"Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Gain <red>2 Strength</red>."},
+    "Distilled Chaos": {"Name": "Distilled Chaos","Potion Yield":3,"Rarity": "Uncommon","Owner":"The Spire","Type": "Potion","Info":"Play the top 3 Cards of your Drawpile."},
+    "Duplication Potion": {"Name": "Duplication Potion","Potion Yield":1,"Rarity": "Uncommon","Owner":"The Spire","Type": "Potion","Info":"This turn, your next Card is played twice."},
+    "Energy Potion": {"Name": "Energy Potion","Potion Yield":2,"Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Gain <yellow>2 Energy</yellow>."},
 
-    "Entropic Brew": p("Rare", "The Spire", "Fill all your empty <c>potion slots</c> with <c>random potions</c>."),
+    "Entropic Brew": {"Name": "Entropic Brew","Rarity": "Rare","Owner":"The Spire","Type": "Potion","Info":"Fill all your empty <c>potion slots</c> with <c>random potions</c>."},
     
-    "Essence of Steel": p("Uncommon", "The Spire", "Gain <green>4 Plated Armor</green>.", **{"Potion Yield":4}),
-    "Explosive Potion": p("Uncommon", "The Spire", "Deal <red>10 damage</red> to all enemies.", **{"Potion Yield":10}),
-    "Fairy in a Bottle": p("Rare", "The Spire", "When you would <black>die</black>, <red>heal to 30% of your Max HP</red> instead and discard this <c>Potion</c>."),
-    "Fear Potion": p("Common", "The Spire", "Apply <light-cyan>3 Vulnerable</light-cyan>.", **{"Potion Yield":3}),
-    "Fire Potion": p("Common", "The Spire", "Deal <red>20 damage</red> to target enemy.", **{"Potion Yield":20}),
-    "Fruit Juice": p("Rare", "The Spire", "Gain <red>5 Max HP</red>.", **{"Potion Yield":5}),
-    "Gamblers Brew": p("Uncommon", "The Spire", "Discard any number of Cards, then draw that many."),
+    "Essence of Steel": {"Name": "Essence of Steel","Potion Yield": 4,"Rarity": "Uncommon","Owner":"The Spire","Type": "Potion","Info":"Gain <green>4 Plated Armor</green>."},
+    "Explosive Potion": {"Name": "Explosive Potion","Potion Yield": 10,"Rarity": "Uncommon","Owner":"The Spire","Type": "Potion","Info":"Deal <red>10 damage</red> to all enemies."},
+    "Fairy in a Bottle": {"Name": "Fairy in a Bottle","Rarity": "Rare","Owner":"The Spire","Type": "Potion","Info":"When you would <black>die</black>, <red>heal to 30% of your Max HP</red> instead and discard this <c>Potion</c>."},
+    "Fear Potion": {"Name": "Fear Potion","Potion Yield": 3,"Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Apply <light-cyan>3 Vulnerable</light-cyan>."},
+    "Fire Potion": {"Name": "Fire Potion","Potion Yield": 20,"Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Deal <red>20 damage</red> to target enemy."},
+    "Fruit Juice": {"Name": "Fruit Juice","Potion Yield": 5,"Rarity": "Rare","Owner":"The Spire","Type": "Potion","Info":"Gain <red>5 Max HP</red>."},
+    "Gamblers Brew": {"Name": "Gamblers Brew","Rarity": "Uncommon","Owner":"The Spire","Type": "Potion","Info":"Discard any number of Cards, then draw that many."},
 
-    "Ghost in a Jar": p("Uncommon", "Silent", "Gain <blue>1 Intangible</blue>.", **{"Potion Yield":1}),
-    "Liquid Bronze": p("Uncommon", "The Spire", "Gain <blue>3 Thorns</blue>.", **{"Potion Yield":3}),
+    "Ghost in a Jar": {"Name": "Ghost in a Jar","Potion Yield": 1,"Rarity": "Uncommon","Owner":"Silent","Type": "Potion","Info":"Gain <blue>1 Intangible</blue>."},
+    "Liquid Bronze": {"Name": "Liquid Bronze","Potion Yield": 3,"Rarity": "Uncommon","Owner":"The Spire","Type": "Potion","Info":"Gain <blue>3 Thorns</blue>."},
     
-    "Liquid Memories": p("Uncommon", "The Spire", "Choose a card in your Discardpile and return it to your hand. It costs <yellow>0 Energy</yellow> this turn."),
+    "Liquid Memories": {"Name": "Liquid Memories","Rarity": "Uncommon","Owner":"The Spire","Type": "Potion","Info":"Choose a card in your Discardpile and return it to your hand. It costs <yellow>0 Energy</yellow> this turn."},
     
-    "Essence of Darkness": p("Rare", "Defect", "Channel 1 Dark for each orb slot."),
-    "Focus Potion": p("Common", "Defect", "Gain 2 Focus.", **{"Potion Yield":2}),
-    "Potion of Capacity": p("Common", "Defect", "Gain 2 Orb slots.", **{"Potion Yield":2}),
+    "Essence of Darkness": {"Name": "Essence of Darkness","Rarity": "Rare","Owner":"Defect","Type": "Potion","Info":"Channel 1 Dark for each orb slot."},
+    "Focus Potion": {"Name": "Focus Potion","Potion Yield":2,"Rarity": "Common","Owner":"Defect","Type": "Potion","Info":"Gain 2 Focus."},
+    "Potion of Capacity": {"Name": "Potion of Capacity","Potion Yield":2,"Rarity": "Common","Owner":"Defect","Type": "Potion","Info":"Gain 2 Orb slots."},
 
-    "Poison Potion": p("Common", "Silent", "Apply <green>6 Poison</green> to target enemy.", **{"Potion Yield":6}),
-    "Power Potion": p("Common", "The Spire", "Add 1 of 3 random <blue>Power Cards</blue> to your hand, it costs <yellow> 0 Energy</yellow> this turn.", **{"Potion Yield":1}),
-    "Regen Potion": p("Uncommon", "The Spire", "Gain <green>6 Regeneration</green>.", **{"Potion Yield":5}),
-    "Skill Potion": p("Common", "The Spire", "Choose 1 of 3 <green>random Skill</green> Cards to add into your hand. It costs <yellow>0 Energy</yellow> this turn.", **{"Potion Yield":1}),
-    "Smoke Bomb": p("Rare", "The Spire", "Escape from a non-boss combat. Receive no rewards."),
-    "Snecko Oil": p("Rare", "The Spire", "Draw 5 Cards. Randomize the costs of all Cards in your hand for the rest of the combat.", **{"Potion Yield":5}),
-    "Speed Potion": p("Common", "The Spire", "Gain <green>5 Dexterity</green>. At the end of your turn lose <green>5 Dexterity</green>.", **{"Potion Yield":5}),
-    "Flex Potion": p("Common", "The Spire", "Gain <red>5 Strength</red>. At the end of your turn lose <red>5 Strength</red>.", **{"Potion Yield":5}),
-    "Swift Potion": p("Common", "The Spire", "Draw 3 Cards.", **{"Potion Yield":3}),
-    "Weak Potion": p("Common", "The Spire", "Apply <light-cyan>3 Weak</light-cyan>.", **{"Potion Yield":3}),
+    "Poison Potion": {"Name": "Poison Potion","Potion Yield":6,"Rarity": "Common","Owner":"Silent","Type": "Potion","Info":"Apply <green>6 Poison</green> to target enemy."},
+    "Power Potion": {"Name": "Power Potion","Potion Yield":1,"Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Add 1 of 3 random <blue>Power Cards</blue> to your hand, it costs <yellow> 0 Energy</yellow> this turn."},
+    "Regen Potion": {"Name": "Regen Potion","Potion Yield":5,"Rarity": "Uncommon","Owner":"The Spire","Type": "Potion","Info":"Gain <green>6 Regeneration</green>."},
+    "Skill Potion": {"Name": "Skill Potion","Potion Yield":1,"Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Choose 1 of 3 <green>random Skill</green> Cards to add into your hand. It costs <yellow>0 Energy</yellow> this turn."},
+    "Smoke Bomb": {"Name": "Smoke Bomb","Rarity": "Rare","Owner":"The Spire","Type": "Potion","Info":"Escape from a non-boss combat. Receive no rewards."},
+    "Snecko Oil": {"Name": "Snecko Oil","Potion Yield":5,"Rarity": "Rare","Owner":"The Spire","Type": "Potion","Info":"Draw 5 Cards. Randomize the costs of all Cards in your hand for the rest of the combat."},
+    "Speed Potion": {"Name": "Speed Potion","Potion Yield":5,"Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Gain <green>5 Dexterity</green>. At the end of your turn lose <green>5 Dexterity</green>."},
+    "Flex Potion": {"Name": "Flex Potion","Potion Yield":5,"Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Gain <red>5 Strength</red>. At the end of your turn lose <red>5 Strength</red>."},
+    "Swift Potion": {"Name": "Swift Potion","Potion Yield": 3,"Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Draw 3 Cards."},
+    "Weak Potion": {"Name": "Weak Potion","Potion Yield": 3,"Rarity": "Common","Owner":"The Spire","Type": "Potion","Info":"Apply <light-cyan>3 Weak</light-cyan>."},
     
-    "Blood Potion": p("Common", "Ironclad", "<red>Heal for 20%</red> of your <red>Max HP</red>."),    
-    "Elixir": p("Common", "Ironclad", "Exhaust any number of cards in your hand."),
-    "Heart Of Iron": p("Rare", "Ironclad", "Gain 6 Metallicize.", **{"Potion Yield":6}),
+    "Blood Potion": {"Name": "Blood Potion","Rarity": "Common","Owner":"Ironclad","Type": "Potion","Info":"<red>Heal for 20%</red> of your <red>Max HP</red>."},    
+    "Elixir": {"Name": "Elixir","Rarity": "Common","Owner":"Ironclad","Type": "Potion","Info":"Exhaust any number of cards in your hand."},
+    "Heart Of Iron": {"Name": "Heart Of Iron","Potion Yield":6,"Rarity": "Rare","Owner":"Ironclad","Type": "Potion","Info":"Gain 6 Metallicize."},
 
     }
-_setnames(potions)
 
 potionNames = ["Ancient Potion","Attack Potion","Blessing of the Forge","Block Potion","Blood Potion","Colorless Potion","Cultist Potion",
 "Cunning Potion","Dexterity Potion","Strength Potion","Distilled Chaos","Duplication Potion","Energy Potion","Entropic Brew","Essence of Steel",
@@ -1588,198 +1562,197 @@ potionNames = ["Ancient Potion","Attack Potion","Blessing of the Forge","Block P
 
 
 relics = {
-    "Burning Blood":r("Starter", "Ironclad", "At the end of combat, <red>heal 6 HP</red>."),
-    "Ring of the Snake": r("Starter", "Silent", "At the start of each combat, draw 2 additional cards."),
-    "Cracked Core": r("Starter", "Defect", "At the start of each combat, Channel 1 Lightning."),
+    "Burning Blood":{"Name":"Burning Blood","Rarity":"Starter","Owner":"Ironclad","Type":"Relic","Info":"At the end of combat, <red>heal 6 HP</red>."},
+    "Ring of the Snake": {"Name":"Ring of the Snake","Rarity":"Starter","Owner":"Silent","Type":"Relic","Info":"At the start of each combat, draw 2 additional cards."},
+    "Cracked Core": {"Name":"Cracked Core","Rarity":"Starter","Owner":"Defect","Type":"Relic","Info":"At the start of each combat, Channel 1 Lightning."},
 
-    "Data Disk": r("Common", "Defect", "Start each combat with 1 Focus."),
-    "Gold-Plated Cables": r("Uncommon", "Defect", "Your rightmost Orb triggers its passive an additional time."),
-    "Symbiotic Virus": r("Uncommon", "Defect", "At the Start of each combat, Channel 1 Dark"),
-    "Emotion Chip": r("Rare", "Defect", "If you lost HP during the previous turn, trigger the passive ability of all Orbs at the start of your turn."),
-    "Frozen Core": r("Boss", "Defect", "If you end your turn with empty Orb slots, channel 1 Frost."),
-    "Inserter": r("Boss", "Defect", "Every 2 turns, gain 1 Orb slot.", Counter=0),
-    "Nuclear Battery": r("Boss", "Defect", "At the start of each combat, Channel 1 Plasma."),
-    "Runic Capacitor": r("Shop", "Defect", "Start each combat with 3 additional Orb slots."),
+    "Data Disk": {"Name":"Data Disk","Rarity":"Common","Owner":"Defect","Type":"Relic","Info":"Start each combat with 1 Focus."},
+    "Gold-Plated Cables": {"Name":"Gold-Plated Cables","Rarity":"Uncommon","Owner":"Defect","Type":"Relic","Info":"Your rightmost Orb triggers its passive an additional time."},
+    "Symbiotic Virus": {"Name":"Symbiotic Virus","Rarity":"Uncommon","Owner":"Defect","Type":"Relic","Info":"At the Start of each combat, Channel 1 Dark"},
+    "Emotion Chip": {"Name":"Emotion Chip","Rarity":"Rare","Owner":"Defect","Type":"Relic","Info":"If you lost HP during the previous turn, trigger the passive ability of all Orbs at the start of your turn."},
+    "Frozen Core": {"Name":"Frozen Core","Rarity":"Boss","Owner":"Defect","Type":"Relic","Info":"If you end your turn with empty Orb slots, channel 1 Frost."},
+    "Inserter": {"Name":"Inserter","Rarity":"Boss","Owner":"Defect","Counter":0,"Type":"Relic","Info":"Every 2 turns, gain 1 Orb slot."},
+    "Nuclear Battery": {"Name":"Nuclear Battery","Rarity":"Boss","Owner":"Defect","Type":"Relic","Info":"At the start of each combat, Channel 1 Plasma."},
+    "Runic Capacitor": {"Name":"Runic Capacitor","Rarity":"Shop","Owner":"Defect","Type":"Relic","Info":"Start each combat with 3 additional Orb slots."},
 
-    "Akabeko":r("Common", "The Spire", "Your first attack each combat deals <red>8 additional damage</red>"),
-    "Anchor":r("Common", "The Spire", "Start each combat with <green>10 Block</green>."),
-    "Ancient Tea Set":r("Common", "The Spire", "Whenever you enter a <blue>Rest Site</blue>, start the next combat with <yellow>2 extra Energy</yellow>."),
-    "Art of War":r("Common", "The Spire", "If you do not play any <red>Attacks</red> during your turn, gain <yellow>1 extra Energy</yellow> next turn."),
-    "Bag of Marbles":r("Common", "The Spire", "At the start of each combat, apply <light-cyan>1 Vulnerable</light-cyan> to ALL enemies."),
-    "Bag of Preparation":r("Common", "The Spire", "At the start of each combat, draw 2 additional cards."),
-    "Blood Vial":r("Common", "The Spire", "At the start of each combat, <red>heal 2 HP</red>."),
-    "Bronze Scales":r("Common", "The Spire", "Start each combat with <blue>3 Thorns</blue>."),
-    "Champion Belt":r("Rare", "Ironclad", "Whenever you apply <light-cyan>Vulnerable</light-cyan>, also apply <light-cyan>1 Weak</light-cyan>."),
-    "Charon's Ashes":r("Rare", "Ironclad", "Whenever you <BLUE>Exhaust</BLUE> a card, deal <red>3 damage</red> to ALL enemies."),
-    "Centennial Puzzle":r("Common", "The Spire", "The first time you lose HP each combat, draw 3 cards."),
-    "Ceramic Fish":r("Common", "The Spire", "Whenever you add a Card to your deck, gain <yellow>9 gold</yellow>."),
-    "Dream Catcher":r("Common", "The Spire", "Whenever you <blue>rest</blue>, you may add a Card to your deck."),
-    "Happy Flower":r("Common", "The Spire", "Every 3 turns, gain <yellow>1 Energy</yellow>.", Counter=0),
-    "Juzu Bracelet":r("Common", "The Spire", "Regular enemy combats are no longer encountered in <blue>Event rooms</blue>."),
-    "Lantern":r("Common", "The Spire", "Gain <yellow>1 Energy</yellow> on the first turn of each combat."),
-    "Maw Bank":r("Common", "The Spire", "Whenever you climb a floor, gain <yellow>12 Gold</yellow>. No longer works when you spend any Gold at the <yellow>Shop$</yellow>.", Working=True),
-    "Meal Ticket":r("Common", "The Spire", "Whenever you enter a <yellow>Shop$</yellow> room, <red>heal 15 HP</red>."),
-    "Nunchaku":r("Common", "The Spire", "Every time you play <red>10 Attacks</red>, gain <yellow>1 Energy</yellow>.", Counter=0),
-    "Oddly Smooth Stone":r("Common", "The Spire", "At the start of each combat, gain <green>1 Dexterity</green>."),
-    "Omamori":r("Common", "The Spire", "Negate the next <m>2 Curses</m> you obtain.", Counter=2),
-    "Orichalcum":r("Common", "The Spire", "If you end your turn without <green>Block</green>, gain <green>6 Block</green>."),
-    "Red Skull":r("Common", "Ironclad", "While your <red>HP</red> is at or below 50%, you have <red>3</red> additional <red>Strength</red>."),
+    "Akabeko":{"Name":"Akabeko","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Your first attack each combat deals <red>8 additional damage</red>"},
+    "Anchor":{"Name":"Anchor","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Start each combat with <green>10 Block</green>."},
+    "Ancient Tea Set":{"Name":"Ancient Tea Set","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Whenever you enter a <blue>Rest Site</blue>, start the next combat with <yellow>2 extra Energy</yellow>."},
+    "Art of War":{"Name":"Art of War","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"If you do not play any <red>Attacks</red> during your turn, gain <yellow>1 extra Energy</yellow> next turn."},
+    "Bag of Marbles":{"Name":"Bag of Marbles","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, apply <light-cyan>1 Vulnerable</light-cyan> to ALL enemies."},
+    "Bag of Preparation":{"Name":"Bag of Preparation","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, draw 2 additional cards."},
+    "Blood Vial":{"Name":"Blood Vial","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, <red>heal 2 HP</red>."},
+    "Bronze Scales":{"Name":"Bronze Scales","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Start each combat with <blue>3 Thorns</blue>."},
+    "Champion Belt":{"Name":"Champion Belt","Rarity":"Rare","Owner":"Ironclad","Type":"Relic","Info":"Whenever you apply <light-cyan>Vulnerable</light-cyan>, also apply <light-cyan>1 Weak</light-cyan>."},
+    "Charon's Ashes":{"Name":"Charon's Ashes","Rarity":"Rare","Owner":"Ironclad","Type":"Relic","Info":"Whenever you <BLUE>Exhaust</BLUE> a card, deal <red>3 damage</red> to ALL enemies."},
+    "Centennial Puzzle":{"Name":"Centennial Puzzle","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"The first time you lose HP each combat, draw 3 cards."},
+    "Ceramic Fish":{"Name":"Ceramic Fish","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Whenever you add a Card to your deck, gain <yellow>9 gold</yellow>."},
+    "Dream Catcher":{"Name":"Dream Catcher","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Whenever you <blue>rest</blue>, you may add a Card to your deck."},
+    "Happy Flower":{"Name":"Happy Flower","Counter":0,"Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Every 3 turns, gain <yellow>1 Energy</yellow>."},
+    "Juzu Bracelet":{"Name":"Juzu Bracelet","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Regular enemy combats are no longer encountered in <blue>Event rooms</blue>."},
+    "Lantern":{"Name":"Lantern","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>1 Energy</yellow> on the first turn of each combat."},
+    "Maw Bank":{"Name":"Maw Bank","Working":True,"Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Whenever you climb a floor, gain <yellow>12 Gold</yellow>. No longer works when you spend any Gold at the <yellow>Shop$</yellow>."},
+    "Meal Ticket":{"Name":"Meal Ticket","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Whenever you enter a <yellow>Shop$</yellow> room, <red>heal 15 HP</red>."},
+    "Nunchaku":{"Name":"Nunchaku","Counter":0,"Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Every time you play <red>10 Attacks</red>, gain <yellow>1 Energy</yellow>."},
+    "Oddly Smooth Stone":{"Name":"Oddly Smooth Stone","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, gain <green>1 Dexterity</green>."},
+    "Omamori":{"Name":"Omamori","Counter":2,"Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Negate the next <m>2 Curses</m> you obtain."},
+    "Orichalcum":{"Name":"Orichalcum","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"If you end your turn without <green>Block</green>, gain <green>6 Block</green>."},
+    "Red Skull":{"Name":"Red Skull","Rarity":"Common","Owner":"Ironclad","Type":"Relic","Info":"While your <red>HP</red> is at or below 50%, you have <red>3</red> additional <red>Strength</red>."},
 
-    "Pen Nib":r("Common", "The Spire", "Every <red>10th Attack</red> you play deals double damage.", Counter=0),
+    "Pen Nib":{"Name":"Pen Nib","Counter":0,"Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Every <red>10th Attack</red> you play deals double damage."},
     
-    "Potion Belt":r("Common", "The Spire", "Upon pick up, gain <c>2 Potion slots</c>."),
-    "Preserved Insect":r("Common", "The Spire", "Enemies in Elite rooms have <red>25% less HP</red>."),
-    "Regal Pillow":r("Common", "The Spire", "<red>Heal an additional 15</red> HP when you <blue>rest</blue>."),
-    "Smiling Mask":r("Common", "The Spire", "The <yellow>Merchant's</yellow> Card removal service now always costs <yellow>50 Gold</yellow>."),
-    "Snecko Skull":r("Common", "Silent", "Whenever you apply <green>Poison</green>, apply an additional <green>1 Poison</green>."),
-    "Strawberry":r("Common", "The Spire", "If you end your turn without <green>Block</green>, gain <green>6 Block</green>."),
-    "The Boot":r("Common", "The Spire", "Whenever you would deal <red>4 or less unblocked Attack damage</red>, increase it to <red>5</red>."),    
-    "Tiny Chest":r("Common", "The Spire", "Every 4th <blue>Event</blue> room is a <yellow>Treasure</yellow> room.", Counter=0),
-    "Toy Ornithopter":r("Common", "The Spire", "Whenever you drink a <c>Potion</c>, <red>heal 5 HP</red>."),
-    "Vajra":r("Common", "The Spire", "At the start of each combat, gain <red>1 Strength</red>."),
-    "War Paint":r("Common", "The Spire", "Upon pickup upgrade <green>2 random Skills</green>."),
-    "Whetstone":r("Common", "The Spire", "Upon pickup upgrade <red>2 random Attacks</red>."),
+    "Potion Belt":{"Name":"Potion Belt","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Upon pick up, gain <c>2 Potion slots</c>."},
+    "Preserved Insect":{"Name":"Preserved Insect","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Enemies in Elite rooms have <red>25% less HP</red>."},
+    "Regal Pillow":{"Name":"Regal Pillow","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"<red>Heal an additional 15</red> HP when you <blue>rest</blue>."},
+    "Smiling Mask":{"Name":"Smiling Mask","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"The <yellow>Merchant's</yellow> Card removal service now always costs <yellow>50 Gold</yellow>."},
+    "Snecko Skull":{"Name":"Snecko Skull","Rarity":"Common","Owner":"Silent","Type":"Relic","Info":"Whenever you apply <green>Poison</green>, apply an additional <green>1 Poison</green>."},
+    "Strawberry":{"Name":"Strawberry","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"If you end your turn without <green>Block</green>, gain <green>6 Block</green>."},
+    "The Boot":{"Name":"The Boot","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Whenever you would deal <red>4 or less unblocked Attack damage</red>, increase it to <red>5</red>."},    
+    "Tiny Chest":{"Name":"Tiny Chest","Rarity":"Common","Counter":0,"Owner":"The Spire","Type":"Relic","Info":"Every 4th <blue>Event</blue> room is a <yellow>Treasure</yellow> room."},
+    "Toy Ornithopter":{"Name":"Toy Ornithopter","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Whenever you drink a <c>Potion</c>, <red>heal 5 HP</red>."},
+    "Vajra":{"Name":"Vajra","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, gain <red>1 Strength</red>."},
+    "War Paint":{"Name":"War Paint","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Upon pickup upgrade <green>2 random Skills</green>."},
+    "Whetstone":{"Name":"Whetstone","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"Upon pickup upgrade <red>2 random Attacks</red>."},
     
-    "Blue Candle":r("Uncommon", "The Spire", "<m>Curse</m> Cards can now be played. Playing a <m>Curse</m> will make you <red>lose 1 HP</red> and Exhausts the Card."),
-    "Bottled Flame":r("Uncommon", "The Spire", "Upon pick up, choose an <red>Attack</red>. Start each combat with this Card in your hand."),
-    "Bottled Lightning":r("Uncommon", "The Spire", "Upon pick up, choose a <green>Skill</green>. Start each combat with this Card in your hand."),
-    "Bottled Tornado":r("Uncommon", "The Spire", "Upon pick up, choose a <blue>Power</blue>. Start each combat with this Card in your hand."),
-    "Darkstone Periapt":r("Uncommon", "The Spire", "Whenever you obtain a <m>Curse</m>, increase your <red>Max HP by 6</red>."),
-    "Eternal Feather":r("Uncommon", "The Spire", "For every 5 Cards in your deck, <red>heal 3</red> HP whenever you enter a <blue>Rest Site</blue>."),
-    "Frozen Egg":r("Uncommon", "The Spire", "Whenever you add a <blue>Power</blue> to your deck, it is Upgraded."),
-    "Gremlin Horn":r("Uncommon", "The Spire", "Whenever an enemy dies, gain <yellow>1 Energy</yellow> and draw 1 Card."),
-    "Horn Cleat":r("Uncommon", "The Spire", "At the start of your 2nd turn, gain <green>14 Block</green>."),
-    "Ink Bottle":r("Uncommon", "The Spire", "Whenever you play 10 cards, draw 1 Card.", Counter=0),
-    "Kunai":r("Uncommon", "The Spire", "Every time you play <red>3 Attacks</red> in a single turn, gain <green>1 Dexterity</green>."),
-    "Letter Opener":r("Uncommon", "The Spire", "Every time you play <green>3 Skills</green> in a single turn, deal <red>5 damage</red> to ALL enemies."),
-    "Matryoshka":r("Uncommon", "The Spire", "The next <yellow>2 Chests</yellow> you open contain <light-red>2 Relics</light-red>.", Counter=2),
-    "Meat on the Bone":r("Uncommon", "The Spire", "If your <red>HP</HP> is at or below 50% at the end of combat, <red>heal 12 HP</red>."),
-    "Mercury Hourglass":r("Uncommon", "The Spire", "At the start of your turn, deal <red>3 damage</red> to ALL enemies."),
-    "Molten Egg":r("Uncommon", "The Spire", "Whenever you add an <red>Attack</red> to your deck, it is Upgraded."),
-    "Mummified Hand":r("Uncommon", "The Spire", "Whenever you play a <blue>Power</blue>, a random card in your hand costs <yellow>0 Energy</yellow> for the turn."),
-    "Ninja Scroll":r("Uncommon", "Silent", "Start each combat with <red>3 Shivs</red> in hand."),
-    "Ornamental Fan":r("Uncommon", "The Spire", "Every time you play <red>3 Attacks</red> in a single turn, gain <green>4 Block</green>."),
+    "Blue Candle":{"Name":"Blue Candle","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"<m>Curse</m> Cards can now be played. Playing a <m>Curse</m> will make you <red>lose 1 HP</red> and Exhausts the Card."},
+    "Bottled Flame":{"Name":"Bottled Flame","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Upon pick up, choose an <red>Attack</red>. Start each combat with this Card in your hand."},
+    "Bottled Lightning":{"Name":"Bottled Lightning","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Upon pick up, choose a <green>Skill</green>. Start each combat with this Card in your hand."},
+    "Bottled Tornado":{"Name":"Bottled Tornado","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Upon pick up, choose a <blue>Power</blue>. Start each combat with this Card in your hand."},
+    "Darkstone Periapt":{"Name":"Darkstone Periapt","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Whenever you obtain a <m>Curse</m>, increase your <red>Max HP by 6</red>."},
+    "Eternal Feather":{"Name":"Eternal Feather","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"For every 5 Cards in your deck, <red>heal 3</red> HP whenever you enter a <blue>Rest Site</blue>."},
+    "Frozen Egg":{"Name":"Frozen Egg","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Whenever you add a <blue>Power</blue> to your deck, it is Upgraded."},
+    "Gremlin Horn":{"Name":"Gremlin Horn","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Whenever an enemy dies, gain <yellow>1 Energy</yellow> and draw 1 Card."},
+    "Horn Cleat":{"Name":"Horn Cleat","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"At the start of your 2nd turn, gain <green>14 Block</green>."},
+    "Ink Bottle":{"Name":"Ink Bottle","Counter":0,"Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Whenever you play 10 cards, draw 1 Card."},
+    "Kunai":{"Name":"Kunai","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Every time you play <red>3 Attacks</red> in a single turn, gain <green>1 Dexterity</green>."},
+    "Letter Opener":{"Name":"Letter Opener","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Every time you play <green>3 Skills</green> in a single turn, deal <red>5 damage</red> to ALL enemies."},
+    "Matryoshka":{"Name":"Matryoshka","Counter":2,"Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"The next <yellow>2 Chests</yellow> you open contain <light-red>2 Relics</light-red>."},
+    "Meat on the Bone":{"Name":"Meat on the Bone","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"If your <red>HP</HP> is at or below 50% at the end of combat, <red>heal 12 HP</red>."},
+    "Mercury Hourglass":{"Name":"Mercury Hourglass","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"At the start of your turn, deal <red>3 damage</red> to ALL enemies."},
+    "Molten Egg":{"Name":"Molten Egg","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Whenever you add an <red>Attack</red> to your deck, it is Upgraded."},
+    "Mummified Hand":{"Name":"Mummified Hand","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Whenever you play a <blue>Power</blue>, a random card in your hand costs <yellow>0 Energy</yellow> for the turn."},
+    "Ninja Scroll":{"Name":"Ninja Scroll","Rarity":"Uncommon","Owner":"Silent","Type":"Relic","Info":"Start each combat with <red>3 Shivs</red> in hand."},
+    "Ornamental Fan":{"Name":"Ornamental Fan","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Every time you play <red>3 Attacks</red> in a single turn, gain <green>4 Block</green>."},
     
-    "Pantograph":r("Uncommon", "The Spire", "At the start of <black>Boss</black> combats, <red>heal 25 HP</red>."),
-    "Paper Krane":r("Uncommon", "Silent", "Enemies with <light-cyan>Weak</light-cyan> deal 50% less damage rather than 25%."),
-    "Paper Phrog":r("Uncommon", "Ironclad", "Enemies with <light-cyan>Vulnerable</light-cyan> take 75% more <red>damage</red> rather than 50%."),
-    "Pear":r("Uncommon", "The Spire", "Raise your <red>Max HP by 10</red>."),
-    "Question Card":r("Uncommon", "The Spire", "On future Card Reward screens you have 1 additional Card to choose from."),
-    "Self-Forming Clay":r("Uncommon", "Ironclad", "Whenever you lose <red>HP</red> in combat, gain <green>3 Block</green> next turn."),
-    "Shuriken":r("Uncommon", "The Spire", "Every time you play <red>3 Attacks</red> in a single turn, gain <red>1 Strength</red>."),
-    "Singing Bowl":r("Uncommon", "The Spire", "When adding Cards to your deck, you may gain <red>+2 Max HP</red> instead."),
-    "Strike Dummy":r("Uncommon", "The Spire", 'Cards containing "Strike" deal <red>3 additional damage</red>.'),
-    "Sundial":r("Uncommon", "The Spire", "Every 3 times you shuffle your Drawpile, gain <yellow>2 Energy</yellow>."),
-    "The Courier":r("Uncommon", "The Spire", "The <yellow>merchant</yellow> no longer runs out of Cards, <light-red>Relics</light-red>, or <c>Potions</c> and his prices are reduced by 20%."),
-    "Toxic Egg":r("Uncommon", "The Spire", "Whenever you add a <green>Skill</green> to your deck, it is Upgraded."),
+    "Pantograph":{"Name":"Pantograph","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"At the start of <black>Boss</black> combats, <red>heal 25 HP</red>."},
+    "Paper Krane":{"Name":"Paper Krane","Rarity":"Uncommon","Owner":"Silent","Type":"Relic","Info":"Enemies with <light-cyan>Weak</light-cyan> deal 50% less damage rather than 25%."},
+    "Paper Phrog":{"Name":"Paper Phrog","Rarity":"Uncommon","Owner":"Ironclad","Type":"Relic","Info":"Enemies with <light-cyan>Vulnerable</light-cyan> take 75% more <red>damage</red> rather than 50%."},
+    "Pear":{"Name":"Pear","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Raise your <red>Max HP by 10</red>."},
+    "Question Card":{"Name":"Question Card","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"On future Card Reward screens you have 1 additional Card to choose from."},
+    "Self-Forming Clay":{"Name":"Self-Forming Clay","Rarity":"Uncommon","Owner":"Ironclad","Type":"Relic","Info":"Whenever you lose <red>HP</red> in combat, gain <green>3 Block</green> next turn."},
+    "Shuriken":{"Name":"Shuriken","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Every time you play <red>3 Attacks</red> in a single turn, gain <red>1 Strength</red>."},
+    "Singing Bowl":{"Name":"Singing Bowl","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"When adding Cards to your deck, you may gain <red>+2 Max HP</red> instead."},
+    "Strike Dummy":{"Name":"Strike Dummy","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Cards containing \"Strike\" deal <red>3 additional damage</red>."},
+    "Sundial":{"Name":"Sundial","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Every 3 times you shuffle your Drawpile, gain <yellow>2 Energy</yellow>."},
+    "The Courier":{"Name":"The Courier","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"The <yellow>merchant</yellow> no longer runs out of Cards, <light-red>Relics</light-red>, or <c>Potions</c> and his prices are reduced by 20%."},
+    "Toxic Egg":{"Name":"Toxic Egg","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"Whenever you add a <green>Skill</green> to your deck, it is Upgraded."},
 
-    "White Beast Statue":r("Uncommon", "The Spire", "<c>Potions</c> always drop after combat."),
+    "White Beast Statue":{"Name":"White Beast Statue","Rarity":"Uncommon","Owner":"The Spire","Type":"Relic","Info":"<c>Potions</c> always drop after combat."},
     
-    "Bird-Faced Urn":r("Rare", "The Spire", "Whenever you play a <blue>Power</blue>, <red>heal 2 HP</red>."),
-    "Calipers":r("Rare", "The Spire", "At the start of your turn, lose <green>15 Block</green> rather than all of your <green>Block</green>."),
-    "Captain's Wheel":r("Rare", "The Spire", "At the start of your 3rd turn, gain <green>18 Block</green>."),
-    "Dead Branch":r("Rare", "The Spire", "Whenever you Exhaust a Card, add a random Card to your hand."),
-    "Du-Vu Doll":r("Rare", "The Spire", "For each <m>Curse</m> in your deck, start each combat with <red>1 additional Strength</red>."),
-    "Fossilized Helix":r("Rare", "The Spire", "Prevent the first time you would <red>lose HP</red> in combat."),
+    "Bird-Faced Urn":{"Name":"Bird-Faced Urn","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Whenever you play a <blue>Power</blue>, <red>heal 2 HP</red>."},
+    "Calipers":{"Name":"Calipers","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"At the start of your turn, lose <green>15 Block</green> rather than all of your <green>Block</green>."},
+    "Captain's Wheel":{"Name":"Captain's Wheel","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"At the start of your 3rd turn, gain <green>18 Block</green>."},
+    "Dead Branch":{"Name":"Dead Branch","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Whenever you Exhaust a Card, add a random Card to your hand."},
+    "Du-Vu Doll":{"Name":"Du-Vu Doll","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"For each <m>Curse</m> in your deck, start each combat with <red>1 additional Strength</red>."},
+    "Fossilized Helix":{"Name":"Fossilized Helix","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Prevent the first time you would <red>lose HP</red> in combat."},
     
-    "Ginger":r("Rare", "The Spire", "You can no longer become <light-cyan>Weakened</light-cyan>."),
+    "Ginger":{"Name":"Ginger","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"You can no longer become <light-cyan>Weakened</light-cyan>."},
     
-    "Girya":r("Rare", "The Spire", "You can now gain <red>Strength</red> at <blue>Rest Sites</blue>. (3 times max)", Counter=3),
-    "Ice Cream":r("Rare", "The Spire", "<yellow>Energy</yellow> is now conserved between turns."),
-    "Lizard Tail":r("Rare", "The Spire", "When you would <black>die</black>, <red>heal to 50%</red> of your </red>Max HP</red> instead (works once).", Counter=1),
-    "Magic Flower":r("Rare", "Ironclad", "<red>Healing</red> is 50% more effective during combat."),
-    "Mango":r("Rare", "The Spire", "Upon pickup, raise your <red>Max HP by 14</red>."),
-    "Old Coin":r("Rare", "The Spire", "Gain <yellow>300 Gold</yellow>."),
-    "Peace Pipe":r("Rare", "The Spire", "You can now remove Cards from your deck at <blue>Rest Sites</blue>."),
-    "Pocketwatch":r("Rare", "The Spire", "Whenever you play 3 or less Cards in a turn, draw 3 additional Cards at the start of your next turn."),
-    "Prayer Wheel":r("Rare", "The Spire", "Normal enemies drop an additional Card reward."),
-    "Shovel":r("Rare", "The Spire", "You can now Dig for <light-red>Relics</light-red> at <blue>Rest Sites</blue>."),
-    "Stone Calendar":r("Rare", "The Spire", "At the end of turn 7, deal <red>52 damage</red> to ALL enemies."),
-    "The Specimen":r("Rare", "Silent", "Whenever an enemy <black>dies</black>, transfer any <green>Poison</green> it has to a random enemy."),
+    "Girya":{"Name":"Girya","Counter":3,"Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"You can now gain <red>Strength</red> at <blue>Rest Sites</blue>. (3 times max)"},
+    "Ice Cream":{"Name":"Ice Cream","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"<yellow>Energy</yellow> is now conserved between turns."},
+    "Lizard Tail":{"Name":"Lizard Tail","Counter":1,"Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"When you would <black>die</black>, <red>heal to 50%</red> of your </red>Max HP</red> instead (works once)."},
+    "Magic Flower":{"Name":"Magic Flower","Rarity":"Rare","Owner":"Ironclad","Type":"Relic","Info":"<red>Healing</red> is 50% more effective during combat."},
+    "Mango":{"Name":"Mango","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Upon pickup, raise your <red>Max HP by 14</red>."},
+    "Old Coin":{"Name":"Old Coin","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>300 Gold</yellow>."},
+    "Peace Pipe":{"Name":"Peace Pipe","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"You can now remove Cards from your deck at <blue>Rest Sites</blue>."},
+    "Pocketwatch":{"Name":"Pocketwatch","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Whenever you play 3 or less Cards in a turn, draw 3 additional Cards at the start of your next turn."},
+    "Prayer Wheel":{"Name":"Prayer Wheel","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Normal enemies drop an additional Card reward."},
+    "Shovel":{"Name":"Shovel","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"You can now Dig for <light-red>Relics</light-red> at <blue>Rest Sites</blue>."},
+    "Stone Calendar":{"Name":"Stone Calendar","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"At the end of turn 7, deal <red>52 damage</red> to ALL enemies."},
+    "The Specimen":{"Name":"The Specimen","Rarity":"Rare","Owner":"Silent","Type":"Relic","Info":"Whenever an enemy <black>dies</black>, transfer any <green>Poison</green> it has to a random enemy."},
     
-    "Thread and Needle":r("Rare", "The Spire", "At the start of each combat, gain <green>4 Plated Armor</green>."),
-    "Tingsha":r("Rare", "Silent", "Whenever you discard a card during your turn, deal <red>3 damage</red> to a random enemy for each card discarded."),
-    "Torii":r("Rare", "The Spire", "Whenever you would receive <red>5 or less unblocked Attack damage</red>, reduce it to <red>1</red>."),
-    "Tough Bandages":r("Rare", "Silent", "Whenever you discard a Card during your turn, gain <green>3 Block</green>."),
-    "Tungsten Rod":r("Rare", "The Spire", "Whenever you would lose <red>HP</red>, lose <red>1</red> less.."),
-    "Turnip":r("Rare", "The Spire", "Gain <yellow>300 Gold</yellow>."),
-    "Unceasing Top":r("Rare", "The Spire", "Whenever you have no Cards in hand during your turn, draw a Card."),
+    "Thread and Needle":{"Name":"Thread and Needle","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, gain <green>4 Plated Armor</green>."},
+    "Tingsha":{"Name":"Tingsha","Rarity":"Rare","Owner":"Silent","Type":"Relic","Info":"Whenever you discard a card during your turn, deal <red>3 damage</red> to a random enemy for each card discarded."},
+    "Torii":{"Name":"Torii","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Whenever you would receive <red>5 or less unblocked Attack damage</red>, reduce it to <red>1</red>."},
+    "Tough Bandages":{"Name":"Tough Bandages","Rarity":"Rare","Owner":"Silent","Type":"Relic","Info":"Whenever you discard a Card during your turn, gain <green>3 Block</green>."},
+    "Tungsten Rod":{"Name":"Tungsten Rod","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Whenever you would lose <red>HP</red>, lose <red>1</red> less.."},
+    "Turnip":{"Name":"Turnip","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>300 Gold</yellow>."},
+    "Unceasing Top":{"Name":"Unceasing Top","Rarity":"Rare","Owner":"The Spire","Type":"Relic","Info":"Whenever you have no Cards in hand during your turn, draw a Card."},
     
-    "Astrolabe":r("Boss", "The Spire", "Upon pickup, choose and Transform 3 Cards, then Upgrade them."), 
-    "Black Star":r("Boss", "The Spire", "Elites drop an additional <light-red>Relic</light-red> when defeated."),
-    "Black Blood":r("Boss", "Ironclad", "Replaces <light-red>Burning Blood<light-red>. At the end of combat, <red>heal 12 HP</red>."),
-    "Busted Crown":r("Boss", "The Spire", "Gain <yellow>1 Energy</yellow> at the start of each turn. On Card Reward screens, you have 2 fewer Cards to choose from."),
-    "Calling Bell":r("Boss", "The Spire", "Upon pickup, obtain a unique <m>Curse</m> and <light-red>3 Relics</light-red>."),
-    "Coffee Dripper":r("Boss", "The Spire", "Gain <yellow>1 Energy</yellow> at the start of each turn. You can no longer <blue>Rest at Rest Sites</blue>."),
-    "Cursed Key":r("Boss", "The Spire", "Gain <yellow>1 Energy</yellow> at the start of each turn. Whenever you open a non-boss chest, obtain a <m>Curse</m>."),
-    "Ectoplasm":r("Boss", "The Spire", "Gain <yellow>1 Energy</yellow> at the start of each turn. You can no longer gain <yellow>Gold</yellow>."),
-    "Empty Cage":r("Boss", "The Spire", "Upon pickup, remove 2 Cards from your Deck."),
-    "Fusion Hammer":r("Boss", "The Spire", "Gain <yellow>1 Energy</yellow> at the start of each turn. You can no longer Smith at <blue>Rest Sites</blue>."),
-    "Hovering Kite":r("Boss", "Silent", "The first time you discard a Card each turn, gain <yellow>1 Energy</yellow>."),
-    "Mark of Pain":r("Boss", "Ironclad", "Gain <yellow>1 Energy</yellow> at the start of each turn. Start combats with <light-cyan>2 Wounds</light-cyan> in your Drawpile."),
-    "Pandora's Box":r("Boss", "The Spire", "Transform all <red>Strikes</red> and <green>Defends</green>."),
-    "Philosopher's Stone":r("Boss", "The Spire", "Gain <yellow>1 Energy</yellow> at the start of each turn. ALL enemies start with <red>1 Strength</red>."),
-    "Ring of the Serpent":r("Boss", "Silent", "Replaces <light-red>Ring of the Snake</light-red>. At the start of your turn, draw 1 additional Card."),
-    "Runic Cube":r("Boss", "Ironclad", "Whenever you lose <red>HP</red>, draw 1 card."),
-    "Runic Dome":r("Boss", "The Spire", "Gain <yellow>1 Energy</yellow> at the start of each turn. You can no longer see enemy Intents."),
-    "Runic Pyramid":r("Boss", "The Spire", "At the end of your turn, you no longer discard your hand."),
-    "Sacred Bark":r("Boss", "The Spire", "Double the effectiveness of most <c>Potions</c>."),
-    "Slaver's Collar":r("Boss", "The Spire", "During <black>Boss</black> and Elite combats, gain <yellow>1 Energy</yellow> at the start of your turn."),
-    "Sozu":r("Boss", "The Spire", "Gain <yellow>1 Energy</yellow> at the start of each turn. You can no longer obtain <c>Potions</c>."),
-    "Snecko Eye":r("Boss", "The Spire", "Draw 2 additional cards each turn. Start each combat <light-cyan>Confused</light-cyan>."),
-    "Tiny House":r("Boss", "The Spire", "Obtain <c>1 Potion</c>. Gain <yellow>50 Gold</yellow>. Raise your <red>Max HP by 5</red>. Obtain 1 Card. Upgrade 1 Random Card."),
-    "Velvet Choker":r("Boss", "The Spire", "Gain <yellow>1 Energy</yellow> at the start of each turn. You cannot play more than 6 Cards per turn."),
-    "Wrist Blade":r("Boss", "Silent", "<red>Attacks</red> that cost <yellow>0 Energy</yellow> deal <red>4 additional damage</red>."),
+    "Astrolabe":{"Name":"Astrolabe","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Upon pickup, choose and Transform 3 Cards, then Upgrade them."}, 
+    "Black Star":{"Name":"Black Star","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Elites drop an additional <light-red>Relic</light-red> when defeated."},
+    "Black Blood":{"Name":"Black Blood","Rarity":"Boss","Owner":"Ironclad","Type":"Relic","Info":"Replaces <light-red>Burning Blood<light-red>. At the end of combat, <red>heal 12 HP</red>."},
+    "Busted Crown":{"Name":"Busted Crown","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>1 Energy</yellow> at the start of each turn. On Card Reward screens, you have 2 fewer Cards to choose from."},
+    "Calling Bell":{"Name":"Calling Bell","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Upon pickup, obtain a unique <m>Curse</m> and <light-red>3 Relics</light-red>."},
+    "Coffee Dripper":{"Name":"Coffee Dripper","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>1 Energy</yellow> at the start of each turn. You can no longer <blue>Rest at Rest Sites</blue>."},
+    "Cursed Key":{"Name":"Cursed Key","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>1 Energy</yellow> at the start of each turn. Whenever you open a non-boss chest, obtain a <m>Curse</m>."},
+    "Ectoplasm":{"Name":"Ectoplasm","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>1 Energy</yellow> at the start of each turn. You can no longer gain <yellow>Gold</yellow>."},
+    "Empty Cage":{"Name":"Empty Cage","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Upon pickup, remove 2 Cards from your Deck."},
+    "Fusion Hammer":{"Name":"Fusion Hammer","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>1 Energy</yellow> at the start of each turn. You can no longer Smith at <blue>Rest Sites</blue>."},
+    "Hovering Kite":{"Name":"Hovering Kite","Rarity":"Boss","Owner":"Silent","Type":"Relic","Info":"The first time you discard a Card each turn, gain <yellow>1 Energy</yellow>."},
+    "Mark of Pain":{"Name":"Mark of Pain","Rarity":"Boss","Owner":"Ironclad","Type":"Relic","Info":"Gain <yellow>1 Energy</yellow> at the start of each turn. Start combats with <light-cyan>2 Wounds</light-cyan> in your Drawpile."},
+    "Pandora's Box":{"Name":"Pandora's Box","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Transform all <red>Strikes</red> and <green>Defends</green>."},
+    "Philosopher's Stone":{"Name":"Philosopher's Stone","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>1 Energy</yellow> at the start of each turn. ALL enemies start with <red>1 Strength</red>."},
+    "Ring of the Serpent":{"Name":"Ring of the Serpent","Rarity":"Boss","Owner":"Silent","Type":"Relic","Info":"Replaces <light-red>Ring of the Snake</light-red>. At the start of your turn, draw 1 additional Card."},
+    "Runic Cube":{"Name":"Runic Cube","Rarity":"Boss","Owner":"Ironclad","Type":"Relic","Info":"Whenever you lose <red>HP</red>, draw 1 card."},
+    "Runic Dome":{"Name":"Runic Dome","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>1 Energy</yellow> at the start of each turn. You can no longer see enemy Intents."},
+    "Runic Pyramid":{"Name":"Runic Pyramid","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"At the end of your turn, you no longer discard your hand."},
+    "Sacred Bark":{"Name":"Sacred Bark","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Double the effectiveness of most <c>Potions</c>."},
+    "Slaver's Collar":{"Name":"Slaver's Collar","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"During <black>Boss</black> and Elite combats, gain <yellow>1 Energy</yellow> at the start of your turn."},
+    "Sozu":{"Name":"Sozu","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>1 Energy</yellow> at the start of each turn. You can no longer obtain <c>Potions</c>."},
+    "Snecko Eye":{"Name":"Snecko Eye","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Draw 2 additional cards each turn. Start each combat <light-cyan>Confused</light-cyan>."},
+    "Tiny House":{"Name":"Tiny House","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Obtain <c>1 Potion</c>. Gain <yellow>50 Gold</yellow>. Raise your <red>Max HP by 5</red>. Obtain 1 Card. Upgrade 1 Random Card."},
+    "Velvet Choker":{"Name":"Velvet Choker","Rarity":"Boss","Owner":"The Spire","Type":"Relic","Info":"Gain <yellow>1 Energy</yellow> at the start of each turn. You cannot play more than 6 Cards per turn."},
+    "Wrist Blade":{"Name":"Wrist Blade","Rarity":"Boss","Owner":"Silent","Type":"Relic","Info":"<red>Attacks</red> that cost <yellow>0 Energy</yellow> deal <red>4 additional damage</red>."},
 
-    "Cultist Headpiece":r("Event", "The Spire", "CAW CAW CAWWWW!"),
+    "Cultist Headpiece":{"Name":"Cultist Headpiece","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"CAW CAW CAWWWW!"},
     
-    "Face of Cleric":r("Event", "The Spire", "Raise your <red>Max HP by 1</red> after each combat."),
-    "Golden Idol":r("Event", "The Spire", "Enemies drop 25% more <yellow>Gold</yellow>."),
-    "Bloody Idol":r("Event", "The Spire", "Whenever you gain <yellow>Gold</yellow>, heal <red>5 HP</red>."),
+    "Face of Cleric":{"Name":"Face of Cleric","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"Raise your <red>Max HP by 1</red> after each combat."},
+    "Golden Idol":{"Name":"Golden Idol","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"Enemies drop 25% more <yellow>Gold</yellow>."},
+    "Bloody Idol":{"Name":"Bloody Idol","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"Whenever you gain <yellow>Gold</yellow>, heal <red>5 HP</red>."},
 
-    "Gremlin Visage":r("Event", "The Spire", "Start each combat with <light-cyan>1 Weak</light-cyan>."),
-    "Mark of the Bloom":r("Event", "The Spire", "You can no longer <red>heal</red>."),
-    "Mutagenic Strength":r("Event", "The Spire", "Start each combat with <red>3 Strength</red> that is lost at the end of your turn."),
+    "Gremlin Visage":{"Name":"Gremlin Visage","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"Start each combat with <light-cyan>1 Weak</light-cyan>."},
+    "Mark of the Bloom":{"Name":"Mark of the Bloom","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"You can no longer <red>heal</red>."},
+    "Mutagenic Strength":{"Name":"Mutagenic Strength","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"Start each combat with <red>3 Strength</red> that is lost at the end of your turn."},
     
-    "Necronomicon":r("Event", "The Spire", "The first <red>Attack</red> played each turn that costs 2 or more is played twice. When you take this <light-red>Relic</light-red>, become <m>Cursed</m>."),
-    "Nilry's Codex":r("Event", "The Spire", "At the end of each turn, you can choose 1 of 3 random Cards to shuffle into your Drawpile."),
-    "Enchiridion":r("Event", "The Spire", "At the start of each combat, add a random <blue>Power</blue> to your hand. It costs <yellow>0 Energy</yellow> until the end of turn."),
+    "Necronomicon":{"Name":"Necronomicon","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"The first <red>Attack</red> played each turn that costs 2 or more is played twice. When you take this <light-red>Relic</light-red>, become <m>Cursed</m>."},
+    "Nilry's Codex":{"Name":"Nilry's Codex","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"At the end of each turn, you can choose 1 of 3 random Cards to shuffle into your Drawpile."},
+    "Enchiridion":{"Name":"Enchiridion","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, add a random <blue>Power</blue> to your hand. It costs <yellow>0 Energy</yellow> until the end of turn."},
 
-    "Neow's Lament":r("Event", "The Spire", "Enemies in your first 3 combats will have <red>1 HP</red>.", Counter=3),
-    "N'loth's Hungry Face": r("Event", "The Spire", "The next non-boss chest you open is empty.", Counter=1),
-    "Odd Mushroom":r("Event", "The Spire", "When <light-cyan>Vulnerable</light-cyan>, take 25% more <red>damage</red> rather than 50%."),
-    "Ssserpent Head":r("Event", "The Spire", "Whenever you enter an <blue>Event</blue> room, gain <yellow>50 Gold</yellow>."),
-    "Warped Tongs":r("Event", "The Spire", "At the start of your turn, Upgrade a random Card in your hand for the rest of combat."),
-    "Red Mask":r("Event", "The Spire", "At the start of each combat, apply <light-cyan>1 Weakness</light-cyan> to ALL enemies."),
-    "N'loth's Gift": r("Event", "The Spire", "Triples the chance of receiving rare Cards as monster rewards."),
+    "Neow's Lament":{"Name":"Neow's Lament","Counter":3,"Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"Enemies in your first 3 combats will have <red>1 HP</red>."},
+    "N'loth's Hungry Face": {"Name":"N'loth's Hungry Face","Counter":1,"Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"The next non-boss chest you open is empty."},
+    "Odd Mushroom":{"Name":"Odd Mushroom","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"When <light-cyan>Vulnerable</light-cyan>, take 25% more <red>damage</red> rather than 50%."},
+    "Ssserpent Head":{"Name":"Ssserpent Head","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"Whenever you enter an <blue>Event</blue> room, gain <yellow>50 Gold</yellow>."},
+    "Warped Tongs":{"Name":"Warped Tongs","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"At the start of your turn, Upgrade a random Card in your hand for the rest of combat."},
+    "Red Mask":{"Name":"Red Mask","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, apply <light-cyan>1 Weakness</light-cyan> to ALL enemies."},
+    "N'loth's Gift": {"Name":"N'loth's Gift","Rarity":"Event","Owner":"The Spire","Type":"Relic","Info":"Triples the chance of receiving rare Cards as monster rewards."},
 
-    "Cauldron":r("Shop", "The Spire", "Upon pickup, brews 5 random <c>Potions</c>."),
-    "Chemical X":r("Shop", "The Spire", "Whenever you play a cost <yellow>X</yellow> Card, its effects are increased by 2."),
-    "Clockwork Souvenir":r("Shop", "The Spire", "At the start of each combat, gain <light-cyan>1 Artifact</light-cyan>."),
-    "Dolly's Mirror":r("Shop", "The Spire", "Upon pickup, obtain an additional copy of a Card in your deck."),
-    "Frozen Eye":r("Shop", "The Spire", "When viewing your Drawpile, the Cards are now shown in order."),
-    "Hand Drill":r("Shop", "The Spire", "Whenever you break an enemy's <green>Block</green>, apply <light-cyan>2 Vulnerable</light-cyan>."),
-    "Lee's Waffle":r("Shop", "The Spire", "Raise your <red>Max HP by 7</red> and <red>heal</red> all of your <red>HP</red>."),
-    "Medical Kit":r("Shop", "The Spire", "<light-cyan>Status</light-cyan> Cards can now be played. Playing a <light-cyan>Status</light-cyan> will Exhaust the Card."),
-    "Membership Card":r("Shop", "The Spire", "50% discount on all products in the <yellow>Shop$</yellow>!"),
-    "Prismatic Shard":r("Shop", "The Spire", "Combat reward screens now contain colorless cards and cards from other colors."),
-    "Orrery":r("Shop", "The Spire", "Choose and add 5 Cards to your deck."),
-    "Sling of Courage":r("Shop", "The Spire", "Start each Elite combat with <red>2 Strength</red>. (Does not work against <black>Bosses</black>)"),
-    "Strange Spoon":r("Shop", "The Spire", "Cards which Exhaust when played will instead discard 50% of the time."),
-    "The Abacus":r("Shop", "The Spire", "Gain <green>6 Block</green> whenever you shuffle your Drawpile."),
-    "Brim Stone":r("Shop", "Ironclad", "At the start of your turn, gain <red>2 Strength</red> and ALL enemies gain <red>1 Strength</red>."),
-    "Orange Pellets":r("Shop", "The Spire", "Whenever you play a <blue>Power</blue>, <red>Attack</red>, and <green>Skill</green> in the same turn, remove all of your <light-cyan>Debuffs</light-cyan>.", **{"Power Counter":0,"Attack Counter":0,"Skill Counter":0}),
+    "Cauldron":{"Name":"Cauldron","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"Upon pickup, brews 5 random <c>Potions</c>."},
+    "Chemical X":{"Name":"Chemical X","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"Whenever you play a cost <yellow>X</yellow> Card, its effects are increased by 2."},
+    "Clockwork Souvenir":{"Name":"Clockwork Souvenir","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, gain <light-cyan>1 Artifact</light-cyan>."},
+    "Dolly's Mirror":{"Name":"Dolly's Mirror","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"Upon pickup, obtain an additional copy of a Card in your deck."},
+    "Frozen Eye":{"Name":"Frozen Eye","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"When viewing your Drawpile, the Cards are now shown in order."},
+    "Hand Drill":{"Name":"Hand Drill","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"Whenever you break an enemy's <green>Block</green>, apply <light-cyan>2 Vulnerable</light-cyan>."},
+    "Lee's Waffle":{"Name":"Lee's Waffle","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"Raise your <red>Max HP by 7</red> and <red>heal</red> all of your <red>HP</red>."},
+    "Medical Kit":{"Name":"Medical Kit","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"<light-cyan>Status</light-cyan> Cards can now be played. Playing a <light-cyan>Status</light-cyan> will Exhaust the Card."},
+    "Membership Card":{"Name":"Membership Card","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"50% discount on all products in the <yellow>Shop$</yellow>!"},
+    "Prismatic Shard":{"Name":"Prismatic Shard","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"Combat reward screens now contain colorless cards and cards from other colors."},
+    "Orrery":{"Name":"Orrery","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"Choose and add 5 Cards to your deck."},
+    "Sling of Courage":{"Name":"Sling of Courage","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"Start each Elite combat with <red>2 Strength</red>. (Does not work against <black>Bosses</black>)"},
+    "Strange Spoon":{"Name":"Strange Spoon","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"Cards which Exhaust when played will instead discard 50% of the time."},
+    "The Abacus":{"Name":"The Abacus","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"Gain <green>6 Block</green> whenever you shuffle your Drawpile."},
+    "Brim Stone":{"Name":"Brim Stone","Rarity":"Shop","Owner":"Ironclad","Type":"Relic","Info":"At the start of your turn, gain <red>2 Strength</red> and ALL enemies gain <red>1 Strength</red>."},
+    "Orange Pellets":{"Name":"Orange Pellets","Power Counter":0,"Attack Counter":0,"Skill Counter":0,"Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"Whenever you play a <blue>Power</blue>, <red>Attack</red>, and <green>Skill</green> in the same turn, remove all of your <light-cyan>Debuffs</light-cyan>."},
 
-    "Toolbox":r("Shop", "The Spire", "At the start of each combat, choose 1 of 3 random Colorless Cards and add the chosen Card into your hand."),
-    "Twisted Funnel":r("Shop", "Silent", "At the start of each combat, apply <green>4 Poison</green> to ALL enemies."),
+    "Toolbox":{"Name":"Toolbox","Rarity":"Shop","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, choose 1 of 3 random Colorless Cards and add the chosen Card into your hand."},
+    "Twisted Funnel":{"Name":"Twisted Funnel","Rarity":"Shop","Owner":"Silent","Type":"Relic","Info":"At the start of each combat, apply <green>4 Poison</green> to ALL enemies."},
 
-    "Red Key": r("Special", "The Spire", "You need to obtain the <red>Red</red>,<green>Green</green> and <blue>Blue</blue> Key. Why? Find out yourself!"),
-    "Blue Key": r("Special", "The Spire", "You need to obtain the <red>Red</red>,<green>Green</green> and <blue>Blue</blue> Key. Why? Find out yourself!"),
-    "Green Key": r("Special", "The Spire", "You need to obtain the <red>Red</red>,<green>Green</green> and <blue>Blue</blue> Key. Why? Find out yourself!")
+    "Red Key": {"Name":"Red Key","Rarity":"Special","Owner":"The Spire","Type":"Relic","Info":"You need to obtain the <red>Red</red>,<green>Green</green> and <blue>Blue</blue> Key. Why? Find out yourself!"},
+    "Blue Key": {"Name":"Blue Key","Rarity":"Special","Owner":"The Spire","Type":"Relic","Info":"You need to obtain the <red>Red</red>,<green>Green</green> and <blue>Blue</blue> Key. Why? Find out yourself!"},
+    "Green Key": {"Name":"Green Key","Rarity":"Special","Owner":"The Spire","Type":"Relic","Info":"You need to obtain the <red>Red</red>,<green>Green</green> and <blue>Blue</blue> Key. Why? Find out yourself!"}
 
 
     }
-_setnames(relics)
 
 # silent_deck = [ {"Name": "Strike", "Damage":100, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Silent"},
 #                 {"Name": "Strike", "Damage":100, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Silent"},
@@ -1797,110 +1770,104 @@ _setnames(relics)
 #ACT 1 Encounter
 
 enemies = {"Gremlin": {"Name":"Fat Gremlin","Health":(14,18),"Intentions":["Smash 5/1"],"Intentions_Logic":[["Random"],[0]*100]},
-            "Cultist": {"Health": (50,56),"Intentions":[1],"Intentions_Logic":[["First Move Set"],["Ritual 5"]]},
-            "Jaw Worm": {"Health": (42,46),"Intentions":[12, "Thrash 7/5", "Bellow 5|9"],"Intentions_Logic":[["Jaw Worm"]]},
+            "Cultist": {"Name":"Cultist", "Health": (50,56),"Intentions":[1],"Intentions_Logic":[["First Move Set"],["Ritual 5"]]},
+            "Jaw Worm": {"Name": "Jaw Worm","Health": (42,46),"Intentions":[12, "Thrash 7/5", "Bellow 5|9"],"Intentions_Logic":[["Jaw Worm"]]},
             "Jaw Worm Hard": {"Name": "Jaw Worm","Health": (42,46),"Block":9,"Strength":5,"Intentions":[12, "Thrash 7/5", "Bellow 5|9"],"Intentions_Logic":[["Jaw Worm"]]},
 
-            "Red Louse": {"Health":(11,17),"Intentions": [(6,8),"Grow 2"], "Intentions_Logic":[["Red Louse"]],"On_hit_or_death":[["Curl","Hit"]]},
-            "Green Louse": {"Health":(12,18),"Intentions": [(6,8),"Weak 2"], "Intentions_Logic":[["Green Louse"]],"On_hit_or_death":[["Curl","Hit"]]},
+            "Red Louse": {"Name":"Red Louse","Health":(11,17),"Intentions": [(6,8),"Grow 2"], "Intentions_Logic":[["Red Louse"]],"On_hit_or_death":[["Curl","Hit"]]},
+            "Green Louse": {"Name":"Green Louse","Health":(12,18),"Intentions": [(6,8),"Weak 2"], "Intentions_Logic":[["Green Louse"]],"On_hit_or_death":[["Curl","Hit"]]},
             
-            "Looter": {"Health":(46,50),"Intentions":["Steal 11/20", "Lunge 14/20", "SmokeBomb 6"],"Intentions_Logic":[["Looter"]]},
+            "Looter": {"Name": "Looter","Health":(46,50),"Intentions":["Steal 11/20", "Lunge 14/20", "SmokeBomb 6"],"Intentions_Logic":[["Looter"]]},
             
-            "Red Slaver": {"Health":(48,52),"Intentions":[14,"Scape 9/2","Entangle"],"Intentions_Logic":[["Red Slaver"]]},
-            "Blue Slaver": {"Health":(48,52),"Intentions":[13,"Rake 8/2"],"Intentions_Logic":[["Blue Slaver"]]},
+            "Red Slaver": {"Name": "Red Slaver","Health":(48,52),"Intentions":[14,"Scape 9/2","Entangle"],"Intentions_Logic":[["Red Slaver"]]},
+            "Blue Slaver": {"Name": "Blue Slaver","Health":(48,52),"Intentions":[13,"Rake 8/2"],"Intentions_Logic":[["Blue Slaver"]]},
 
-            "Fungi Beast": {"Health":(24,28),"Intentions":[6,"Grow 5"],"Intentions_Logic": [["Fungi Beast"]],"On_hit_or_death":[["Vulnerable 3","Death"]]},
+            "Fungi Beast": {"Name": "Fungi Beast","Health":(24,28),"Intentions":[6,"Grow 5"],"Intentions_Logic": [["Fungi Beast"]],"On_hit_or_death":[["Vulnerable 3","Death"]]},
 
-            "Small Acid Slime": {"Health":(9,13),"Intentions":[4,"Weak 1"], "Intentions_Logic":[["Small Acid Slime"]]},
-            "Medium Acid Slime": {"Health":(29,34),"Intentions":[12,"CorrosiveSpit 8/1","Weak 1"],"Intentions_Logic":[["Medium Acid Slime"]]},
-            "Large Acid Slime": {"Health":(68,72),"Intentions":[18,"CorrosiveSpit 12/2","Weak 2"],"Intentions_Logic": [["Large Acid Slime"]],"On_hit_or_death":[["Split","Hit"]]},
+            "Small Acid Slime": {"Name": "Small Acid Slime","Health":(9,13),"Intentions":[4,"Weak 1"], "Intentions_Logic":[["Small Acid Slime"]]},
+            "Medium Acid Slime": {"Name": "Medium Acid Slime","Health":(29,34),"Intentions":[12,"CorrosiveSpit 8/1","Weak 1"],"Intentions_Logic":[["Medium Acid Slime"]]},
+            "Large Acid Slime": {"Name": "Large Acid Slime","Health":(68,72),"Intentions":[18,"CorrosiveSpit 12/2","Weak 2"],"Intentions_Logic": [["Large Acid Slime"]],"On_hit_or_death":[["Split","Hit"]]},
 
-            "Small Spike Slime": {"Health":(11,15),"Intentions":[6],"Intentions_Logic":[["Random"],[0]*100]},
-            "Medium Spike Slime": {"Health":(29,34),"Intentions": ["CorrosiveSpit 10/1","Frail 1"],"Intentions_Logic":[["Medium Spike Slime"]]},
-            "Large Spike Slime": {"Health":(67,73),"Intentions":["CorrosiveSpit 18/2","Frail 3"],"Intentions_Logic":[["Large Spike Slime"]],"On_hit_or_death":[["Split","Hit"]]},
+            "Small Spike Slime": {"Name": "Small Spike Slime","Health":(11,15),"Intentions":[6],"Intentions_Logic":[["Random"],[0]*100]},
+            "Medium Spike Slime": {"Name": "Medium Spike Slime","Health":(29,34),"Intentions": ["CorrosiveSpit 10/1","Frail 1"],"Intentions_Logic":[["Medium Spike Slime"]]},
+            "Large Spike Slime": {"Name": "Large Spike Slime", "Health":(67,73),"Intentions":["CorrosiveSpit 18/2","Frail 3"],"Intentions_Logic":[["Large Spike Slime"]],"On_hit_or_death":[["Split","Hit"]]},
             
-            "Fat Gremlin": {"Health":(14,18),"Intentions":["Smash 5/1"],"Intentions_Logic":[["Random"],[0]*100]},
-            "Mad Gremlin": {"Health":(21,25),"Intentions":[5],"Intentions_Logic":[["Random"],[0]*100],"On_hit_or_death": [["Anger 2","Hit"]]},
-            "Shield Gremlin": {"Health": (13,17),"Intentions":["Protect 11"],"Intentions_Logic":[["Random"],[0]*100]},
-            "Sneaky Gremlin": {"Health":(11,15),"Intentions":[10],"Intentions_Logic":[["Random"],[0]*100]},
-            "Gremlin Wizard": {"Health":(22,26),"Intentions":["Charging",30],"Intentions_Logic":[["Random"],[0,0]+[1]*98]},
+            "Fat Gremlin": {"Name": "Fat Gremlin","Health":(14,18),"Intentions":["Smash 5/1"],"Intentions_Logic":[["Random"],[0]*100]},
+            "Mad Gremlin": {"Name": "Mad Gremlin","Health":(21,25),"Intentions":[5],"Intentions_Logic":[["Random"],[0]*100],"On_hit_or_death": [["Anger 2","Hit"]]},
+            "Shield Gremlin":{"Name": "Shield Gremlin","Health": (13,17),"Intentions":["Protect 11"],"Intentions_Logic":[["Random"],[0]*100]},
+            "Sneaky Gremlin": {"Name": "Sneaky Gremlin","Health":(11,15),"Intentions":[10],"Intentions_Logic":[["Random"],[0]*100]},
+            "Gremlin Wizard": {"Name": "Gremlin Wizard","Health":(22,26),"Intentions":["Charging",30],"Intentions_Logic":[["Random"],[0,0]+[1]*98]},
             
             "Gremlin Nob": {"Name":"Gemlin Nob", "Health": (85,90),"Intentions":[16,"SkullBash 8/2","Enrage 3"],"Intentions_Logic":[["Random"],[2]+[1,0,0]*33]},
             
-            "Beam Sentry": {"Health": (39,45),"Intentions":[10,"Bolt 3"],"Intentions_Logic":[["Random"],[0,1]*50],"Artifact":1},
-            "Bolt Sentry": {"Health": (39,45),"Intentions":[10,"Bolt 3"],"Intentions_Logic":[["Random"],[1,0]*50],"Artifact":1},
+            "Beam Sentry": {"Name":"Beam Sentry", "Health": (39,45),"Intentions":[10,"Bolt 3"],"Intentions_Logic":[["Random"],[0,1]*50],"Artifact":1}, 
+            "Bolt Sentry": {"Name":"Bolt Sentry", "Health": (39,45),"Intentions":[10,"Bolt 3"],"Intentions_Logic":[["Random"],[1,0]*50],"Artifact":1},
 
-            "Lagavulin": {"Health": (112,115),"Intentions":["Asleep 3"],"Intentions_Logic":[["Random"],[0]*100],"On_hit_or_death": [["Asleep","Hit"]], "Metallicize": 8},
+            "Lagavulin": {"Name":"Lagavulin", "Health": (112,115),"Intentions":["Asleep 3"],"Intentions_Logic":[["Random"],[0]*100],"On_hit_or_death": [["Asleep","Hit"]], "Metallicize": 8},
 
-            "Slime Boss": {"Health":(150,150),"Intentions":["GoopSpray 5","Preparing",38],"Intentions_Logic":[["Random"],[0,1,2]*33],"On_hit_or_death":[["Split","Hit"]]},
-            "Guardian": {"Health":(250,250),"Intentions":["Block 9",36,"VentSteam 2","Multiattack 5*4"],"Intentions_Logic":[["Random"],[0,1,2,3]*25],"On_hit_or_death":[["Modeshift","Hit"]]},
-            "Hexaghost": {"Health":(264,264),"Intentions":["Activate","Divider","Sear 6/2","Multiattack 6*2", "Bellow 3|12","Inferno 3*6"],"Intentions_Logic":[["Random"],[0,1] + [2,3,2,4,3,2,5]*30]},
+            "Slime Boss": {"Name": "Slime Boss", "Health":(150,150),"Intentions":["GoopSpray 5","Preparing",38],"Intentions_Logic":[["Random"],[0,1,2]*33],"On_hit_or_death":[["Split","Hit"]]},
+            "Guardian": {"Name": "Guardian", "Health":(250,250),"Intentions":["Block 9",36,"VentSteam 2","Multiattack 5*4"],"Intentions_Logic":[["Random"],[0,1,2,3]*25],"On_hit_or_death":[["Modeshift","Hit"]]},
+            "Hexaghost":{"Name": "Hexaghost", "Health":(264,264),"Intentions":["Activate","Divider","Sear 6/2","Multiattack 6*2", "Bellow 3|12","Inferno 3*6"],"Intentions_Logic":[["Random"],[0,1] + [2,3,2,4,3,2,5]*30]},
             
-            "Byrd": {"Health":(26,33),"Intentions":["Multiattack 1*6","Grow 1",14],"Intentions_Logic":[["Byrd"]],"On_hit_or_death":[["Fly 4","Hit"]]},
+            "Byrd": {"Name":"Byrd","Health":(26,33),"Intentions":["Multiattack 1*6","Grow 1",14],"Intentions_Logic":[["Byrd"]],"On_hit_or_death":[["Fly 4","Hit"]]},
 
-            "Chosen": {"Health":(98,103),"Intentions":["Multiattack 6*2",21,"Scrape 12/2","Drain 3/3","Hex"],"Intentions_Logic":[["Chosen"]]},
-            "Mugger": {"Health":(50,54),"Intentions":["Steal 11/20", "Lunge 18/20", "SmokeBomb 17"],"Intentions_Logic":[["Mugger"]]},
+            "Chosen": {"Name":"Chosen","Health":(98,103),"Intentions":["Multiattack 6*2",21,"Scrape 12/2","Drain 3/3","Hex"],"Intentions_Logic":[["Chosen"]]},
+            "Mugger": {"Name": "Mugger","Health":(50,54),"Intentions":["Steal 11/20", "Lunge 18/20", "SmokeBomb 17"],"Intentions_Logic":[["Mugger"]]},
 
-            "Shelled Parasite": {"Health":(70,75),"Intentions":["Multiattack 7*2", "Suck 12", "Fell 21/2"],"Intentions_Logic":[["Shelled Parasite"]],"Plated Armor":14},
+            "Shelled Parasite": {"Name": "Shelled Parasite","Health":(70,75),"Intentions":["Multiattack 7*2", "Suck 12", "Fell 21/2"],"Intentions_Logic":[["Shelled Parasite"]],"Plated Armor":14},
             #continue here
-            "Spheric Guardian": {"Health":(20,20),"Block":40,"Intentions":["Harden 11/15","Multiattack 11*2", "Block 35", "Fell 11/5"],"Intentions_Logic":[["Spheric Guardian"]],"Artifact":3,"Barricade":True},
-            "Centurion": {"Health":(78,83),"Intentions":[14,"CenturionDefendAlly"],"Intentions_Logic":[["Centurion"]]},
-            "Mystic": {"Health":(78,83),"Intentions":["Fell 9/2","MysticBuff","MysticHeal 20"],"Intentions_Logic":[["Mystic"]]},
-            "Snecko": {"Health":(120,125),"Intentions":["Smash 10/2",18,"Perplexing Glare"],"Intentions_Logic":[["Snecko"]]},
+            "Spheric Guardian": {"Name": "Spheric Guardian","Health":(20,20),"Block":40,"Intentions":["Harden 11/15","Multiattack 11*2", "Block 35", "Fell 11/5"],"Intentions_Logic":[["Spheric Guardian"]],"Artifact":3,"Barricade":True},
+            "Centurion": {"Name": "Centurion","Health":(78,83),"Intentions":[14,"CenturionDefendAlly"],"Intentions_Logic":[["Centurion"]]},
+            "Mystic": {"Name": "Mystic","Health":(78,83),"Intentions":["Fell 9/2","MysticBuff","MysticHeal 20"],"Intentions_Logic":[["Mystic"]]},
+            "Snecko": {"Name": "Snecko","Health":(120,125),"Intentions":["Smash 10/2",18,"Perplexing Glare"],"Intentions_Logic":[["Snecko"]]},
 
-            "Snake Plant": {"Health":(78,82),"Intentions":["Multiattack 8*3","Roar 2"],"Intentions_Logic":[["Snake Plant"]],"On_hit_or_death":[["Malleable 3","Hit"]]},
+            "Snake Plant": {"Name": "Snake Plant","Health":(78,82),"Intentions":["Multiattack 8*3","Roar 2"],"Intentions_Logic":[["Snake Plant"]],"On_hit_or_death":[["Malleable 3","Hit"]]},
 
-            "Book of Stabbing": {"Health":(168,172),"Intentions":["Multiattack 7*3",24],"Intentions_Logic":[["Book of Stabbing"]],"Painfull Stabs":True},
-            "Gremlin Leader": {"Health":(145,155),"Intentions":["Encourage 3/6","Rally","Multiattack 6*3"],"Intentions_Logic":[["Gremlin Leader"]],"Leader":True},
-            "Taskmaster": {"Health":(57,64),"Intentions":["ScouringWhip 7/3"],"Intentions_Logic":[["Random"],[0]*100]},
+            "Book of Stabbing": {"Name": "Book of Stabbing","Health":(168,172),"Intentions":["Multiattack 7*3",24],"Intentions_Logic":[["Book of Stabbing"]],"Painfull Stabs":True},
+            "Gremlin Leader": {"Name": "Gremlin Leader","Health":(145,155),"Intentions":["Encourage 3/6","Rally","Multiattack 6*3"],"Intentions_Logic":[["Gremlin Leader"]],"Leader":True},
+            "Taskmaster": {"Name": "Taskmaster","Health":(57,64),"Intentions":["ScouringWhip 7/3"],"Intentions_Logic":[["Random"],[0]*100]},
         
-            "Pointy": {"Health":(34,34),"Intentions":["Multiattack 6*2"],"Intentions_Logic":[["Random"],[0]*100]},
-            "Romeo": {"Health":(37,41),"Intentions":["RomeoTaunt","Rake 12/3", 17],"Intentions_Logic":[["Random"],[0]+[1,2,2]*33]},
-            "Bear": {"Health":(40,44),"Intentions":["BearHug 4","Thrash 10/9", 20],"Intentions_Logic":[["Random"],[0]+[1,2]*50]},
+            "Pointy": {"Name": "Pointy","Health":(34,34),"Intentions":["Multiattack 6*2"],"Intentions_Logic":[["Random"],[0]*100]},
+            "Romeo": {"Name": "Romeo","Health":(37,41),"Intentions":["RomeoTaunt","Rake 12/3", 17],"Intentions_Logic":[["Random"],[0]+[1,2,2]*33]},
+            "Bear": {"Name": "Bear","Health":(40,44),"Intentions":["BearHug 4","Thrash 10/9", 20],"Intentions_Logic":[["Random"],[0]+[1,2]*50]},
 
 
-            "Bronze Automaton": {"Health":(320,320),"Intentions":["Multiattack 8*2","Bellow 4|12",50,"Spawn Orbs"],"Intentions_Logic":[["Random"],[3]+[0,1,0,1,2]*30],"Artifact":3},
-            "Bronze Orb": {"Health":(54,60),"Intentions":[8,"Support Automaton","Stasis"],"Intentions_Logic":[["Bronze Orb"]]},
+            "Bronze Automaton": {"Name": "Bronze Automaton","Health":(320,320),"Intentions":["Multiattack 8*2","Bellow 4|12",50,"Spawn Orbs"],"Intentions_Logic":[["Random"],[3]+[0,1,0,1,2]*30],"Artifact":3},
+            "Bronze Orb": {"Name": "Bronze Orb","Health":(54,60),"Intentions":[8,"Support Automaton","Stasis"],"Intentions_Logic":[["Bronze Orb"]]},
 
-            "The Champ": {"Health":(440,440),"Intentions_Logic":[["The Champ Phase 1"]]},
+            "The Champ" : {"Name":"The Champ","Health":(440,440),"Intentions_Logic":[["The Champ Phase 1"]]},
 
-            "The Collector": {"Health":(300,300),"Intentions_Logic":[["The Collector"]],"Leader": True},
+            "The Collector": {"Name":"The Collector","Health":(300,300),"Intentions_Logic":[["The Collector"]],"Leader": True},
 
-            "Darkling": {"Health":(50,59),"Intentions":[(9,13),"Bellow 2|12","Multiattack 9*2"],"Intentions_Logic":[["Darkling"]],"On_hit_or_death":[["Lifelink","Death"]]},
-            "Orb Walker": {"Health":(92,102),"Intentions":[16,"Laser 11/1"],"Intentions_Logic":[["Orb Walker"]],"Ritual":5},
-            "Spiker": {"Health":(44,60),"Intentions":[9,"SpikeUp 2"],"Intentions_Logic":[["Spiker"]],"On_hit_or_death":[[7,"Hit"]]},
-            "Exploder": {"Health":(30,35),"Intentions":[11,"Explode 30"],"Intentions_Logic":[["Random"],[0,0,1]]},
-            "Repulsor": {"Health":(31,38),"Intentions":[13,"Repulse 2"],"Intentions_Logic":[["Repulsor"]]},
+            "Darkling": {"Name": "Darkling","Health":(50,59),"Intentions":[(9,13),"Bellow 2|12","Multiattack 9*2"],"Intentions_Logic":[["Darkling"]],"On_hit_or_death":[["Lifelink","Death"]]},
+            "Orb Walker": {"Name": "Orb Walker", "Health":(92,102),"Intentions":[16,"Laser 11/1"],"Intentions_Logic":[["Orb Walker"]],"Ritual":5},
+            "Spiker": {"Name": "Spiker", "Health":(44,60),"Intentions":[9,"SpikeUp 2"],"Intentions_Logic":[["Spiker"]],"On_hit_or_death":[[7,"Hit"]]},
+            "Exploder": {"Name": "Exploder", "Health":(30,35),"Intentions":[11,"Explode 30"],"Intentions_Logic":[["Random"],[0,0,1]]},
+            "Repulsor": {"Name": "Repulsor", "Health":(31,38),"Intentions":[13,"Repulse 2"],"Intentions_Logic":[["Repulsor"]]},
         
-            "The Maw": {"Health":(300,300),"Intentions_Logic":[["The Maw"]]},
-            "Spire Growth": {"Health":(190,190),"Intentions":[18,25,"Constrict 12"],"Intentions_Logic":[["Spire Growth"]]},
-            "Transient": {"Health":(999,999),"Intentions":["Transientattack 40"],"Intentions_Logic":[["Random"],[0]*20],"On_hit_or_death": [["Shifting","Hit"]],"Fading":True},
-            "Writhing Mass": {"Health":(175,175),"Intentions":["Thrash 15/16","Wither 10/2","Multiattack 9*3",38,"Implant"],"Intentions_Logic":[["Writhing Mass"]],"On_hit_or_death": [["Malleable 3","Hit"],["Reactive","Hit"]]},
+            "The Maw": {"Name": "The Maw", "Health":(300,300),"Intentions_Logic":[["The Maw"]]},
+            "Spire Growth": {"Name": "Spire Growth", "Health":(190,190),"Intentions":[18,25,"Constrict 12"],"Intentions_Logic":[["Spire Growth"]]},
+            "Transient": {"Name": "Transient","Health":(999,999),"Intentions":["Transientattack 40"],"Intentions_Logic":[["Random"],[0]*20],"On_hit_or_death": [["Shifting","Hit"]],"Fading":True},
+            "Writhing Mass": {"Name": "Writhing Mass","Health":(175,175),"Intentions":["Thrash 15/16","Wither 10/2","Multiattack 9*3",38,"Implant"],"Intentions_Logic":[["Writhing Mass"]],"On_hit_or_death": [["Malleable 3","Hit"],["Reactive","Hit"]]},
                     
-            "Nemesis": {"Health":(200,200),"Intentions":[45,"Multiattack 7*3","BurningDebuff 5"],"Intentions_Logic":[["Nemesis"]],"Intangible Power":True},
-            "Giant Head": {"Health":(520,520),"Intentions":[13,"Weak 1","GiantHead 40"],"Intentions_Logic":[["Giant Head"]],"Slow":True},
+            "Nemesis": {"Name": "Nemesis","Health":(200,200),"Intentions":[45,"Multiattack 7*3","BurningDebuff 5"],"Intentions_Logic":[["Nemesis"]],"Intangible Power":True},
+            "Giant Head": {"Name":"Giant Head","Health":(520,520),"Intentions":[13,"Weak 1","GiantHead 40"],"Intentions_Logic":[["Giant Head"]],"Slow":True},
 
-            "Raptomancer": {"Health":(190,200),"Intentions_Logic":[["Raptomancer"]],"Leader":True},
-            "Dagger": {"Health":(20,25),"Intentions":["ScouringWhip 9/1","Explode 25"],"Intentions_Logic":[["Random"],[0,1,1,1]]},
+            "Raptomancer": {"Name": "Raptomancer","Health":(190,200),"Intentions_Logic":[["Raptomancer"]],"Leader":True},
+            "Dagger": {"Name": "Dagger","Health":(20,25),"Intentions":["ScouringWhip 9/1","Explode 25"],"Intentions_Logic":[["Random"],[0,1,1,1]]},
 
-            "Donu": {"Health":(265,265),"Intentions":["MysticBuff 3","Multiattack 12*2"],"Intentions_Logic":[["Random"],[0,1]*50],"Artifact":3},
-            "Deca": {"Health":(265,265),"Intentions":["SquareOfDeca 16|3","DazeBeam 12*2"],"Intentions_Logic":[["Random"],[1,0]*50],"Artifact":3},
+            "Donu":{"Name":"Donu","Health":(265,265),"Intentions":["MysticBuff 3","Multiattack 12*2"],"Intentions_Logic":[["Random"],[0,1]*50],"Artifact":3},
+            "Deca":{"Name":"Deca","Health":(265,265),"Intentions":["SquareOfDeca 16|3","DazeBeam 12*2"],"Intentions_Logic":[["Random"],[1,0]*50],"Artifact":3},
 
-            "Awakened One": {"Health":(320,320),"Intentions":[20,"Multiattack 6*4"],"Intentions_Logic":[["Awakened One"]], "CardTypeToLookOutFor":"Power Strength 2","Regen":15,"On_hit_or_death":[["Rebirth","Death"]]},
+            "Awakened One": {"Name":"Awakened One","Health":(320,320),"Intentions":[20,"Multiattack 6*4"],"Intentions_Logic":[["Awakened One"]], "CardTypeToLookOutFor":"Power Strength 2","Regen":15,"On_hit_or_death":[["Rebirth","Death"]]},
             
-            "Time Eater": {"Health":(480,480),"Intentions":["TimeSlam 32/2","Ripple 20|1","Multiattack 8*3"],"Intentions_Logic":[["Time Eater"]], "CardTypeToLookOutFor":"Everything Counter Opposites 1"},
+            "Time Eater": {"Name":"Time Eater","Health":(480,480),"Intentions":["TimeSlam 32/2","Ripple 20|1","Multiattack 8*3"],"Intentions_Logic":[["Time Eater"]], "CardTypeToLookOutFor":"Everything Counter Opposites 1"},
 
-            "Spire Shield": {"Health":(125,125),"Intentions":["Bash 12/1","Fortify 30","Thrash 38/99"],"Intentions_Logic":[["Spire Shield"]],"Artifact":2,"On_hit_or_death":[["SpireBros","Hit"]]},
-            "Spire Spear": {"Health":(180,180),"Intentions":["Multiattack 10*4","BurnStrike 6*2","CircleOfPower 2",],"Intentions_Logic":[["Spire Spear"]], "Artifact":2,"On_hit_or_death":[["SpireBros","Hit"]]},
+            "Spire Shield": {"Name":"Spire Shield","Health":(125,125),"Intentions":["Bash 12/1","Fortify 30","Thrash 38/99"],"Intentions_Logic":[["Spire Shield"]],"Artifact":2,"On_hit_or_death":[["SpireBros","Hit"]]},
+            "Spire Spear": {"Name":"Spire Spear","Health":(180,180),"Intentions":["Multiattack 10*4","BurnStrike 6*2","CircleOfPower 2",],"Intentions_Logic":[["Spire Spear"]], "Artifact":2,"On_hit_or_death":[["SpireBros","Hit"]]},
                                                                 
-            "Corrupt Heart": {"Health":(800,800),"Intentions":["Debilitate 2","Multiattack 2*15",45,"HeartBuff"],"Intentions_Logic":[["Corrupt Heart"]],"On_hit_or_death":[["Invincible 200","Hit"]],"CardTypeToLookOutFor":"Everything BeatOfDeath Opposites 2"}
+            "Corrupt Heart":{"Name":"Corrupt Heart","Health":(800,800),"Intentions":["Debilitate 2","Multiattack 2*15",45,"HeartBuff"],"Intentions_Logic":[["Corrupt Heart"]],"On_hit_or_death":[["Invincible 200","Hit"]],"CardTypeToLookOutFor":"Everything BeatOfDeath Opposites 2"}
             }    
-_setnames(enemies)
-
-def spawn(key, suffix=""):
-    e = enemies[key]
-    return Enemy(name=e.get("Name")+suffix, max_health=rd.randint(e.get("Health")[0], e.get("Health")[1]), intentions=e.get("Intentions"), intention_logic=e.get("Intentions_Logic"), on_hit_or_death=e.get("On_hit_or_death"))
-
 
 enemyEncounters = fill_enemy_list()
 eliteEncounters = fill_elite_list()
@@ -2006,7 +1973,7 @@ def visit_campfire():
                 i+=1
                 ansiprint(str(i)+".",sleepspot)
 
-            choice = input(_P1)
+            choice = input("What do you want to do?\n")
             choice = int(choice)-1
             if choice in range(len(sleepOrUpgrade)):
                 pass
@@ -2125,7 +2092,7 @@ def visit_treasureChest():
             ansiprint(str(i+1)+".",option)
             i+=1
         
-        choice = input(_P1)
+        choice = input("What do you want to do?\n")
         choice = int(choice)-1
         try:
             if choice in range(len(option)):
@@ -2474,10 +2441,10 @@ def event_theDivineFountain():
     for option in divineFountainOptions:
         ansiprint (option)
     
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
         
 
     if snap == "1":
@@ -2503,10 +2470,10 @@ def event_TheDuplicator():
     for option in duplicatorOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
 
     if snap == "1":
@@ -2525,10 +2492,10 @@ def event_ThePurifier():
     for option in purifierOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("As you kneel in reverence, you feel a weight lifted off your shoulders.")
@@ -2547,10 +2514,10 @@ def event_TheTransmogrifier():
     for option in transmorphOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("As the power of the shrine flows through you, your mind feels altered.")
@@ -2568,10 +2535,10 @@ def event_upgradeShrine():
     for option in upgradeOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("The shrine's energy flows into you, making you stronger.")
@@ -2590,10 +2557,10 @@ def event_GoldenShrine():
     for option in shrineOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("As your hand touches the shrine, <yellow>gold</yellow> rains from the ceiling showering you in riches.")
@@ -2757,11 +2724,11 @@ def event_OminousForge():
     for option in forgeOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("You decide to put the forge to use and...")
@@ -2817,7 +2784,7 @@ def event_weMeetAgain():
 
     while True:
         try:
-            snap = input(_P1)
+            snap = input("What do you want to do?\n")
             snap = int(snap)-1
             if snap not in range (len(donationOptions)):
                 
@@ -2902,10 +2869,10 @@ def event_theWomanInBlue():
     snap = None
     while True:
         
-        snap = input(_P1)
+        snap = input("What do you want to do?\n")
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input(_P2)
+            snap = input("What do you want to do? Pick the corresponding number.\n")
 
         if snap == "1":
             if active_character[0].gold >= 10:
@@ -2955,11 +2922,11 @@ def event_faceTrade():
     for option in maskOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("Eerie Man: \"Compensation. Compensation.\"\nMechanically, he cranes out a neat stack of gold and places it into your pouch.\nEerie Man: \"What a nice face. Nice face.\" While he touches your face, you begin to feel your life drain out of it!\nDuring this, his mask falls off and shatters. Screaming, he quickly covers his face with all six arms dropping even more masks! Amidst all the screaming and shattering, you escape.\nHis face was completely blank.)")
@@ -2999,11 +2966,11 @@ def event_bigFish():
     for option in fishOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("You eat the <yellow>banana</yellow>. It is <red>nutritious</red> and slightly <blue>magical</blue>, <red>healing</red> you.")
@@ -3045,7 +3012,7 @@ def event_DeadAdventurer():
     elif bossRandom == 3:
         ansiprint("...it looks as though he's been gouged and trampled by a horned beast.")
         enemy = "Gremlin Nob"
-        eliteAdversary.append(spawn(enemy))
+        eliteAdversary.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
 
     time.sleep(0.3)
@@ -3064,10 +3031,10 @@ def event_DeadAdventurer():
             ansiprint("Looks like you searched all his belongings without a hitch!")
             break
         else:
-            snap = input(_P1)
+            snap = input("What do you want to do?\n")
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input(_P2)
+            snap = input("What do you want to do? Pick the corresponding number.\n")
 
         if snap == "1":
             if rd.randint(1,100) > eliteChance:
@@ -3122,11 +3089,11 @@ def event_GoldenIdol():
     for option in idolOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("As you grab the Idol and stow it away, a giant boulder smashes through the ceiling into the ground next to you. You realize that the floor is slanted downwards as the boulder starts to roll towards you.")
@@ -3135,11 +3102,11 @@ def event_GoldenIdol():
         for option in boulderOptions:
             ansiprint (option)
 
-        snapTwo = input(_P1)
+        snapTwo = input("What do you want to do?\n")
 
         while snapTwo not in checkNumbers2:
             active_character[0].explainer_function(snapTwo,answer=False)
-            input(_P2)
+            input("What do you want to do? Pick the corresponding number.\n")
 
         if snapTwo == "1":
             ansiprint("RUUUUUUUUUUN! You barely leap into a side passageway as the boulder rushes by. Unfortunately it feels like you <m>sprained</m> something!")
@@ -3173,18 +3140,18 @@ def event_HypnotizingColoredMushrooms():
     for option in shroomOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("<red>Ambushed!! Rodents infested by the mushrooms appear out of nowhere!</red>")
         enemy = "Fungi Beast"
-        fungiList.append(spawn(enemy, " 1"))
-        fungiList.append(spawn(enemy, " 2"))
-        fungiList.append(spawn(enemy, " 3"))
+        fungiList.append(Enemy(name = enemies[enemy].get("Name")+" 1",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+        fungiList.append(Enemy(name = enemies[enemy].get("Name")+" 2",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
+        fungiList.append(Enemy(name = enemies[enemy].get("Name")+" 3",max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
         eventFight(fungiList)
         goldReward = helping_functions.generateGoldReward("Creep")
         cardReward = helping_functions.generateCardRewards()
@@ -3210,11 +3177,11 @@ def event_LivingWall():
     for option in wallOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         active_character[0].removeCardsFromDeck(1,removeType="Remove")
@@ -3243,11 +3210,11 @@ def event_ScrapOoze():
         for option in oozeOptions:
             ansiprint (option)
 
-        snap = input(_P1)
+        snap = input("What do you want to do?\n")
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input(_P2)
+            snap = input("What do you want to do? Pick the corresponding number.\n")
 
         if snap == "1":
             if rd.randint(1,100) > relicSuccessChance:
@@ -3283,11 +3250,11 @@ def event_shiningLight():
     for option in lightOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("<yellow>As you walk through the light, you notice that the light is absorbed into you</yellow>.\n<red>It's scorching hot!</red> However, the pain quickly recedes.\n<blue>You feel invigorated</blue>, as though you received a well deserved slap.\n")
@@ -3317,11 +3284,11 @@ def event_theSerpent():
     for option in serpentOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
 
@@ -3349,11 +3316,11 @@ def event_poolOfGoop():
     for option in poolOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         active_character[0].set_gold(75)
@@ -3383,11 +3350,11 @@ def event_wingStatue():
         for option in wingOptions:
             ansiprint (option)
 
-        snap = input(_P1)
+        snap = input("What do you want to do?\n")
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input(_P2)
+            snap = input("What do you want to do? Pick the corresponding number.\n")
 
         if snap == "1":
             ansiprint("Someone once told you of a cult that worshipped a giant bird. As you kneel in prayer, you begin to feel ... lightheaded.\nYou wake up some time later, feeling strangely <red>fleet of foot</red>.")
@@ -3412,11 +3379,11 @@ def event_wingStatue():
         for option in wingOptions:
             ansiprint (option)
 
-        snap = input(_P1)
+        snap = input("What do you want to do?\n")
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input(_P2)
+            snap = input("What do you want to do? Pick the corresponding number.\n")
 
         if snap == "1":
             ansiprint("Someone once told you of a cult that worshipped a giant bird. As you kneel in prayer, you begin to feel ... lightheaded.\nYou wake up some time later, feeling strangely <red>fleet of foot</red>.")
@@ -3445,11 +3412,11 @@ def event_ancientWriting():
     for option in ancientOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         active_character[0].removeCardsFromDeck(1,"Remove")
@@ -3477,11 +3444,11 @@ def event_Augmenter():
     for option in augmenterOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("Shady Man: \"Excellent.\"The man hands over a dangerous looking syringe filled with a <green>glowing liquid</green> before skulking off into a shadowy alleyway.")
@@ -3503,9 +3470,9 @@ def event_theColosseum():
 
     slavers = []
     enemy = "Red Slaver"
-    slavers.append(spawn(enemy))
+    slavers.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
     enemy = "Blue Slaver"
-    slavers.append(spawn(enemy))
+    slavers.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
     ansiprint("<red>[Fight]</red> Begins a battle with <red>Blue Slaver</red> and <red>Red Slaver</red>.")
     input("Type anything to start the fight.\n")
@@ -3524,7 +3491,7 @@ def event_theColosseum():
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("While the crowd is loosing itself in pandemoniums, you escape through the small opening in the wall. Probably smart.")
@@ -3534,9 +3501,9 @@ def event_theColosseum():
 
         slavers = []
         enemy = "Gremlin Nob"
-        slavers.append(spawn(enemy))
+        slavers.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
         enemy = "Taskmaster"
-        slavers.append(spawn(enemy))
+        slavers.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
         eventFight(slavers)
         
@@ -3556,11 +3523,11 @@ def event_CouncilOfGhosts():
     for option in ghostlyOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("Shape #3: \"Excellent!\"\nAs the ghostly shape speaks, you notice its large mouth opening wider and wider. Thick <black>black smoke</black> spews forth and envelops the room. You cannot see or breathe...\nJust before you lose consciousness, the sensation stops.\nWhatever those things were, they are gone now. You continue on, feeling rather hollow.\n")
@@ -3584,11 +3551,11 @@ def event_cursedBook():
     for option in bookOptions:
         ansiprint(option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("Odd. The book seems to be about an Ancient named <light-blue>Neow</light-blue>.\nThis piques your interest, but you have a general feeling of <m>malaise</m>.")
@@ -3607,11 +3574,11 @@ def event_cursedBook():
         for option in moreBookOptions:
             ansiprint(option)
 
-        snap = input(_P1)
+        snap = input("What do you want to do?\n")
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input(_P2)
+            snap = input("What do you want to do? Pick the corresponding number.\n")
 
         if snap == "1":
             ansiprint("Upon finishing the tome, you decide to take it with you. With proof in hand, will you retain your memories?")
@@ -3652,11 +3619,11 @@ def event_theForgottenAltar():
     for option in altarOptions:
         ansiprint(option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("You stand on the altar and <red>cut your wrists</red>.\nAs the <red>blood spills</red> out in sacrifice, the arms of the statue reach out and close around your eyes.\nEverything goes <black>dark</black>.\nYou wake up a short time later feeling a new potential surging through you.\n")
@@ -3684,11 +3651,11 @@ def event_theJoust():
     if rd.randint(1,10) <= 3:
         knight = True
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("Knight: \"I can't believe you're betting against Noodles!\"\nFurious, he clamps down his helmet and rushes towards his nemesis.")
@@ -3734,11 +3701,11 @@ def event_knowingSkull():
         for option in skullOptions:
             ansiprint(option)
 
-        snap = input(_P1)
+        snap = input("What do you want to do?\n")
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input(_P2)
+            snap = input("What do you want to do? Pick the corresponding number.\n")
 
         if snap == "1":
             ansiprint("\"YOU MORTALS NEVER CHANGE. IT IS DONE.\"\n<yellow>Gold</yellow> rains down on you.")
@@ -3777,11 +3744,11 @@ def event_theLibrary():
     for option in libraryOptions:
         ansiprint(option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         i = 0
@@ -3834,11 +3801,11 @@ def event_maskedBandits():
     for option in banditOptions:
         ansiprint(option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         active_character[0].set_gold(-active_character[0].gold)
@@ -3848,11 +3815,11 @@ def event_maskedBandits():
 
         bandits = []
         enemy = "Pointy"
-        bandits.append(spawn(enemy))
+        bandits.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
         enemy = "Romeo"
-        bandits.append(spawn(enemy))
+        bandits.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
         enemy = "Bear"
-        bandits.append(spawn(enemy))
+        bandits.append(Enemy(name = enemies[enemy].get("Name"),max_health = rd.randint(enemies[enemy].get("Health")[0],enemies[enemy].get("Health")[1]),intentions = enemies[enemy].get("Intentions"),intention_logic = enemies[enemy].get("Intentions_Logic"),on_hit_or_death = enemies[enemy].get("On_hit_or_death")))
 
         eventFight(bandits)
     
@@ -3872,11 +3839,11 @@ def event_theMausoleum():
     for option in mausoOptions:
         ansiprint(option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("You push open the coffin. As you do, <m>black fog</m> spews forth and covers the entire room! Inside, you find no body, only a <light-red>Relic</light-red>. You take it and move onwards, <m>coughing violently</m>.")
@@ -3897,11 +3864,11 @@ def event_theNest():
     for option in nestOptions:
         ansiprint(option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("You decide to stay in line <m>(out of fear)</m> to see what will happen.\nEventually, you are face-to-face with the leader.\nA well-dressed <red>Cultist</red> hands you an <yellow>Ornate Dagger</yellow>. Like the others before you, you slash your forearm and let the <red>blood drip into a misshapen bowl</red>.\nThe cultists chant and holler for you!\nCultists: \"<light-blue>CAAW CAW CAAAAAAWW</light-blue>!!\"You chant, too. Why not?")
@@ -3929,11 +3896,11 @@ def event_nLoth():
         for option in nlothOptions:
             ansiprint(option)
 
-        snap = input(_P1)
+        snap = input("What do you want to do?\n")
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input(_P2)
+            snap = input("What do you want to do? Pick the corresponding number.\n")
 
         if snap == "1":
             ansiprint("Holding the <light-red>"+ active_character[0].relics[firstRelic].get("Name")+"</light-red> out towards him, N’loth snatches it out of your hand with his tentacles, dislocates his jaw, and slurps down your offer in one quick gulp.\nHe gives you a large, toothy grin as more tentacles appear from behind his cloak, these ones brandishing an <light-red>impossibly neat looking box</light-red>. He pushes it towards you until you take it.")
@@ -3957,11 +3924,11 @@ def event_nLoth():
         for option in nlothOptions:
             ansiprint(option)
 
-        snap = input(_P1)
+        snap = input("What do you want to do?\n")
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input(_P2)
+            snap = input("What do you want to do? Pick the corresponding number.\n")
 
         if snap == "1":
             ansiprint("Holding the <light-red>"+ active_character[0].relics[0].get("Name")+"</light-red> out towards him, N’loth snatches it out of your hand with his tentacles, dislocates his jaw, and slurps down your offer in one quick gulp.\nHe gives you a large, toothy grin as more tentacles appear from behind his cloak, these ones brandishing an <light-red>impossibly neat looking box</light-red>. He pushes it towards you until you take it.")
@@ -3986,11 +3953,11 @@ def event_oldBeggar():
         for option in oldOptions:
             ansiprint(option)
 
-        snap = input(_P1)
+        snap = input("What do you want to do?\n")
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input(_P2)
+            snap = input("What do you want to do? Pick the corresponding number.\n")
 
         if snap == "1":
             if active_character[0].gold < 75:
@@ -4017,11 +3984,11 @@ def event_pleadingVagrant():
         for option in vagrantOptions:
             ansiprint(option)
 
-        snap = input(_P1)
+        snap = input("What do you want to do?\n")
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input(_P2)
+            snap = input("What do you want to do? Pick the corresponding number.\n")
 
         if snap == "1":
             if active_character[0].gold < 85:
@@ -4063,11 +4030,11 @@ def event_Vampires():
     for option in vampireOptions:
         ansiprint (option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("The tall figure grabs your arm, pulls you forward, and sinks his fangs into your neck.\nYou feel a <black>dark force</black> pour into your neck and course through your body.\n...\nYou wake up some time later, alone. An intense hunger passes through your belly. <red>You must feed</red>.\n")
@@ -4147,11 +4114,11 @@ def event_Falling():
         for option in fallingOptions:
             ansiprint(option)
 
-        snap = input(_P1)
+        snap = input("What do you want to do?\n")
 
         while snap not in checkNumbers:
             active_character[0].explainer_function(snap,answer=False)
-            snap = input(_P2)
+            snap = input("What do you want to do? Pick the corresponding number.\n")
 
         
         if "[Strike]" in fallingOptions[int(snap)-1]:
@@ -4186,11 +4153,11 @@ def event_MindBloom():
     for option in bloomOptions:
         ansiprint(option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         act1Boss = fill_boss_list(1)[0]
@@ -4231,11 +4198,11 @@ def event_secretPortal():
     for option in portalOptions:
         ansiprint(option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         helping_functions.game_map[13][0] = "Portal"
@@ -4256,11 +4223,11 @@ def event_sensoryStone():
     for option in sensoryOptions:
         ansiprint(option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         
@@ -4304,11 +4271,11 @@ def event_mysteriousSphere():
     for option in sphereOptions:
         ansiprint(option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("As soon as you strike the sphere, the sentries spring to life around you!")
@@ -4345,11 +4312,11 @@ def event_theMoaiHead():
     for option in moaiOptions:
         ansiprint(option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("At first when you step up into the mouth of the statue, nothing happens.\nAs you start to feel more than a little foolish, the huge molars slam down from above, crushing you whole.\n<black>Darkness</black>.\nSometime later from within the dark, you see a sliver of light, and hear what you now realize is the sound of stony teeth slowly rising upwards.\nYou leave confused.")
@@ -4383,11 +4350,11 @@ def event_tombOfLordRedMask():
     for option in lordOptions:
         ansiprint(option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1" and redMask == True:
         ansiprint("You don the <light-red>Red Mask</light-red> and the tomb starts to flake away... a secret passage!\nThe passage is lined with countless stolen goods and mounds of <yellow>Gold</yellow>!")
@@ -4413,11 +4380,11 @@ def event_windingHalls():
     for option in windingOptions:
         ansiprint(option)
 
-    snap = input(_P1)
+    snap = input("What do you want to do?\n")
 
     while snap not in checkNumbers:
         active_character[0].explainer_function(snap,answer=False)
-        snap = input(_P2)
+        snap = input("What do you want to do? Pick the corresponding number.\n")
 
     if snap == "1":
         ansiprint("Something in you cracks.\nOnly the truly mad can understand a place like this, so you give into the chattering voices and continue on with a <m>\"new\"</m> perspective.\nThings do seem to make so much more sense now.")
