@@ -7063,7 +7063,11 @@ class Char():
 
     def receive_recoil_damage(self,attack_damage,directDamage: bool = False):
         #there are some differences between recoil and normal damage. Therefore there are separate functions for that.
-        
+
+        # Ascension 15: HP lost to Events is increased.
+        if attack_damage > 0 and entities.inEvent and helping_functions.ascensionLevel >= 15:
+            attack_damage = math.ceil(attack_damage * 1.25)
+
         if attack_damage > 0:
             
             if directDamage:
@@ -8513,6 +8517,9 @@ class Char():
         return self.position
 
     def set_gold(self,value,thievery = False):
+        # Ascension 15: Gold gained from Events is reduced.
+        if value > 0 and not thievery and entities.inEvent and helping_functions.ascensionLevel >= 15:
+            value = math.floor(value * 0.75)
         ectoplasm = False
         ansiprint("")
         for relic in self.relics:

@@ -12,6 +12,9 @@ import copy
 list_of_enemies = []
 relics_seen_list = []
 
+# True only while resolving an Event's dialog (Ascension 15 makes events harsher).
+inEvent = False
+
 
 active_character = []
 
@@ -2134,7 +2137,10 @@ def update_encounter():
         visit_campfire()
 
     elif active_character[0].get_floor() == "Event":
+        global inEvent
+        inEvent = True
         visit_event()
+        inEvent = False
 
     elif active_character[0].get_floor() == "Shop$":
         shop = helping_functions.generateShop()

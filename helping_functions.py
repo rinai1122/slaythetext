@@ -182,7 +182,8 @@ def afterBattleScreen():
         gameAct += 1
 
         if gameAct <= 3:
-            entities.active_character[0].heal(math.floor(entities.active_character[0].max_health / 100 * 75))
+            missing = entities.active_character[0].max_health - entities.active_character[0].health
+            entities.active_character[0].heal(math.floor(missing * 0.75) if ascensionLevel >= 5 else missing)
             potentialCardWinnings = generateCardRewards(bossReward=True)
             afterBattleOptions.append("<blue>Card Reward</blue>")
 
@@ -214,7 +215,8 @@ def afterBattleScreen():
         elif gameAct == 4:
             
             if entities.active_character[0].allKeys == True:
-                entities.active_character[0].heal(math.floor(entities.active_character[0].max_health / 100 * 75))
+                missing = entities.active_character[0].max_health - entities.active_character[0].health
+                entities.active_character[0].heal(math.floor(missing * 0.75) if ascensionLevel >= 5 else missing)
                 gameAct += 1
                 game_map = acts.generate_act4Map()
                 game_map_dict = acts.generate_act4ConnectionDict(game_map)
@@ -721,6 +723,10 @@ def generateCardRewards(colorless=False,bossReward=False):
 
     else:
         upgradeChance = 250
+
+    # Ascension 12: upgraded cards appear half as often (Acts 2 and 3).
+    if ascensionLevel >= 12:
+        upgradeChance = upgradeChance // 2
 
     cardList = []
     if bossReward == True:
@@ -1395,6 +1401,11 @@ def generateShop(singleItem: str = None):
                 miniList.append(rd.randint(157,172))
                 shoplist.append(miniList)
                 miniList = []            
+
+        # Ascension 16: everything in the shop costs 10% more.
+        if ascensionLevel >= 16:
+            for item in shoplist:
+                item[1] = math.ceil(item[1] * 1.10)
 
         if theCourier == True and membershipCard == True:
             for item in shoplist:
