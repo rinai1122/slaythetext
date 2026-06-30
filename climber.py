@@ -33,7 +33,14 @@ class Char():
             self.displayName = "<blue>" + self.name + "</blue>"
         
         self.max_health = max_health
-        self.health = self.max_health - math.ceil(self.max_health / 10)
+        # Ascension 14: lower starting Max HP (-5 Ironclad, -4 others).
+        if helping_functions.ascensionLevel >= 14:
+            self.max_health -= 5 if self.name == "Ironclad" else 4
+        # Ascension 6: start the run having lost 10% of Max HP.
+        if helping_functions.ascensionLevel >= 6:
+            self.health = self.max_health - math.ceil(self.max_health / 10)
+        else:
+            self.health = self.max_health
         self.energy = energy
         self.energy_gain = energy_gain
         if deck == None:
@@ -53,7 +60,8 @@ class Char():
         self.gold = gold
         
         self.potionBag = []
-        self.potionBagSize = 2
+        # Ascension 11: one less potion slot.
+        self.potionBagSize = 1 if helping_functions.ascensionLevel >= 11 else 2
         #negative statuses
         self.weak = 0
         self.frail = 0
@@ -6693,17 +6701,12 @@ class Char():
                 {"Name": "Ascender's Bane","Ethereal":True,"Type": "Curse","Irremovable":True,"Rarity": "Special","Owner":"The Spire","Info":"Ethereal. Unplayable."}
                 ]
 
-        if self.name == "Silent":
-            for card in silent_deck:
-                self.add_CardToDeck(card,silence=True)
-        
-        elif self.name == "Ironclad":
-            for card in ironclad_deck:
-                self.add_CardToDeck(card,silence=True)
-
-        elif self.name == "Defect":
-            for card in defect_deck:
-                self.add_CardToDeck(card,silence=True)
+        starting_deck = {"Silent": silent_deck, "Ironclad": ironclad_deck, "Defect": defect_deck}.get(self.name, [])
+        for card in starting_deck:
+            # Ascension 10: start each run with an Ascender's Bane curse.
+            if card.get("Name") == "Ascender's Bane" and helping_functions.ascensionLevel < 10:
+                continue
+            self.add_CardToDeck(card,silence=True)
         
     def heal(self,value):
 

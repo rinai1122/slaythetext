@@ -16,6 +16,12 @@ floor_counter = 0
 gameAct = 1
 actThreeFirstBossBeaten = False
 
+# Ascension difficulty (0-20). Chosen at the start of a new run. Cumulative
+# modifiers are applied in: Char.__init__ (A6/A11/A14), Char.set_deck (A10),
+# entities.applyAscension (A2-4,7-9,17-19), generateGoldReward (A13) and
+# afterBattleScreen (A20). A1/A5/A12/A15/A16 are not modelled yet.
+ascensionLevel = 0
+
 game_map = acts.generate_map()
 game_map_dict = acts.generate_connections(game_map)
 
@@ -52,7 +58,25 @@ def set_seed():
             seed = ''.join(rd.choices(string.ascii_uppercase + string.digits, k=20))
             ansiprint(f"The seed is:\n{seed}\n")
             break
-        
+
+def set_ascension():
+    global ascensionLevel
+    while True:
+        snap = input("Choose your <red>Ascension</red> level (0-20). Higher is harder.\n0 = standard run.\n")
+        try:
+            lvl = int(snap)
+        except ValueError:
+            ansiprint("Type a whole number between 0 and 20.")
+            continue
+        if 0 <= lvl <= 20:
+            ascensionLevel = lvl
+            if lvl == 0:
+                ansiprint("Playing on <green>Ascension 0</green> (standard).\n")
+            else:
+                ansiprint(f"Playing on <red>Ascension {lvl}</red>.\n")
+            break
+        ansiprint("Type a whole number between 0 and 20.")
+
 def typeWriter(words):
     print(words)
     # for char in words:
@@ -120,11 +144,12 @@ def afterBattleScreen():
                 game_map = acts.generate_map(superElite=False)
                 game_map_dict = acts.generate_connections(game_map)
 
-        elif gameAct == 4 and actThreeFirstBossBeaten == False:
-            gameAct = 3            
+        elif gameAct == 4 and actThreeFirstBossBeaten == False and ascensionLevel >= 20:
+            # Ascension 20: a second Act-3 boss must be fought before Act 4.
+            gameAct = 3
             actThreeFirstBossBeaten = True
-            
-        elif gameAct == 4 and actThreeFirstBossBeaten == True:
+
+        elif gameAct == 4:
             
             if entities.active_character[0].allKeys == True:
                 entities.active_character[0].heal(math.floor(entities.active_character[0].max_health / 100 * 75))
@@ -285,6 +310,10 @@ def generateGoldReward(monster: str = None):
 
     if goldenIdol:
         goldGain += math.floor(goldGain/4)
+
+    isBoss = monster == "Boss" or (not monster and entities.active_character[0].get_floor() == "Boss")
+    if isBoss and ascensionLevel >= 13:
+        goldGain = math.ceil(goldGain * 0.75)
 
     return goldGain
 

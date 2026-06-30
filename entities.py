@@ -124,6 +124,25 @@ def spawn_enemies(theEnemies:list):
         list_of_enemies.append(enemy)
 
 
+def applyAscension(enemies, category):
+    # category: "normal" | "elite" | "boss". Applies the cumulative Ascension
+    # enemy modifiers: extra Strength (A2/3/4 + harder movesets A17/18/19) and
+    # extra max HP (A7/8/9). Called as each encounter enters combat.
+    a = helping_functions.ascensionLevel
+    if a <= 0:
+        return
+    dmgLevel, dmgLevel2, hpLevel = {"normal": (2, 17, 7),
+                                    "elite": (3, 18, 8),
+                                    "boss": (4, 19, 9)}[category]
+    for enemy in enemies:
+        strBuff = (1 if a >= dmgLevel else 0) + (1 if a >= dmgLevel2 else 0)
+        if strBuff:
+            enemy.strength += strBuff
+        if a >= hpLevel:
+            enemy.max_health += math.ceil(enemy.max_health / 10)
+            enemy.health = enemy.max_health
+
+
 def fill_enemy_list():
     if helping_functions.gameAct == 1:
         encounterList = []
@@ -1871,26 +1890,32 @@ def update_encounter():
     helping_functions.turn_counter = 0
 
     if active_character[0].get_floor() == "Enemy":
-        list_of_enemies.extend(enemyEncounters.pop(0))
+        encounter = enemyEncounters.pop(0)
+        applyAscension(encounter, "normal")
+        list_of_enemies.extend(encounter)
         helping_functions.encounter_counter += 1
         if active_character[0].faceOfCleric > 0:
             active_character[0].set_maxHealth(1)
 
     elif active_character[0].get_floor() == "Elite":
-        list_of_enemies.extend(eliteEncounters.pop(0))
+        encounter = eliteEncounters.pop(0)
+        applyAscension(encounter, "elite")
+        list_of_enemies.extend(encounter)
         if active_character[0].faceOfCleric > 0:
             active_character[0].set_maxHealth(1)
 
     elif active_character[0].get_floor() == "Super":
-        
+
         superElite = create_superElite(eliteEncounters.pop(0))
-                
+        applyAscension(superElite, "elite")
         list_of_enemies.extend(superElite)
         if active_character[0].faceOfCleric > 0:
             active_character[0].set_maxHealth(1)
 
     elif active_character[0].get_floor() == "Boss":
-        list_of_enemies.extend(bossEncounters.pop(0))
+        encounter = bossEncounters.pop(0)
+        applyAscension(encounter, "boss")
+        list_of_enemies.extend(encounter)
         if active_character[0].faceOfCleric > 0:
             active_character[0].set_maxHealth(1)
 

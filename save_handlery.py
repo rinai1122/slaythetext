@@ -18,6 +18,7 @@ def the_question_of_safety():
 		except FileNotFoundError:
 			print("No savefile detected in "+prodPath+".\n\n")
 			helping_functions.set_seed()
+			helping_functions.set_ascension()
 			entities.choose_character()
 			entities.active_character[0].set_deck()
 			#entities.active_character[0].add_relic({"Name":"Oddly Smooth Stone","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, gain <green>1 Dexterity</green>."})
@@ -40,6 +41,7 @@ def the_question_of_safety():
 			elif loader[saveDecision] == "No":
 				saveDecision = "No"
 				helping_functions.set_seed()
+				helping_functions.set_ascension()
 				entities.choose_character()
 				entities.active_character[0].set_deck()
 				#entities.active_character[0].add_relic({"Name":"Oddly Smooth Stone","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, gain <green>1 Dexterity</green>."})
@@ -81,7 +83,8 @@ def save_and_rave():
 				"Event Treasure Chance":entities.eventTreasureChance,
 				"Event Shop Chance":entities.eventShopChance,
 				"Beat First Act 3 Boss": helping_functions.actThreeFirstBossBeaten,
-				"Seed": helping_functions.seed
+				"Seed": helping_functions.seed,
+				"Ascension Level": helping_functions.ascensionLevel
 				}
 
 	devPath = str(Path.cwd())+"/documents/slaythetext/slaythetextSave.dat"
@@ -110,7 +113,8 @@ def load_and_bloat():
 	helping_functions.removeCardCost = pickle.load(open(path,"rb")).get("Remove Card Cost")
 	helping_functions.actThreeFirstBossBeaten= pickle.load(open(path,"rb")).get("Beat First Act 3 Boss")
 	helping_functions.seed = pickle.load(open(path,"rb")).get("Seed")
-	
+	helping_functions.ascensionLevel = pickle.load(open(path,"rb")).get("Ascension Level", 0)
+
 	entities.list_of_enemies = pickle.load(open(path,"rb")).get("List Of Enemies")
 	entities.relics_seen_list = pickle.load(open(path,"rb")).get("Relics Seen")
 	entities.active_character = pickle.load(open(path,"rb")).get("Active Character")
