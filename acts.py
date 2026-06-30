@@ -501,5 +501,176 @@ def takeThird(elem):
 	return elem[2]
 
 
+# =====================================================================
+# Slay-the-Spire faithful map generation.
+# A 15-floor x 7-column grid traversed by 6 climbing paths, with StS's room
+# rules: floor 1 = Monster, floor 9 = Treasure, floor 14 = Rest, floor 15 =
+# Boss (all paths converge); no Elite/Rest/Shop in the first 5 floors; the same
+# special room type (Elite/Rest/Shop) never connects directly to itself; room
+# weights Monster .455 / Event .22 / Elite .16 / Rest .12 / Shop .05, with Elite
+# weight x1.6 at Ascension 1+. Output matches the existing game_map (list of
+# rows of room-type strings, row 0 = Start, last row = Boss) and the
+# connection_dict format consumed by show_map / move_after_combat.
+# =====================================================================
+
+MAP_HEIGHT = 15
+MAP_WIDTH = 7
+MAP_PATHS = 6
+
+# (game_row, x) -> list of (childGameRow, childX); filled by sts_generate_map and
+# read by sts_generate_connections.
+map_children = {}
+
+
+def _chooseNext(r, c, edges):
+    cands = [c + d for d in (-1, 0, 1) if 0 <= c + d < MAP_WIDTH]
+
+    def crosses(nc):
+        # Prevent two path edges from crossing each other (an X between siblings).
+        if nc > c:
+            for ec in edges.get((r, c + 1), set()):
+                if ec <= c:
+                    return True
+        elif nc < c:
+            for ec in edges.get((r, c - 1), set()):
+                if ec >= c:
+                    return True
+        return False
+
+    nc = rd.choice(cands)
+    if crosses(nc):
+        alts = [x for x in cands if not crosses(x)]
+        if alts:
+            nc = rd.choice(alts)
+    return nc
+
+
+def _generatePaths():
+    nodes = [set() for _ in range(MAP_HEIGHT)]
+    edges = {}
+    firstStart = None
+    for p in range(MAP_PATHS):
+        c = rd.randint(0, MAP_WIDTH - 1)
+        if p == 0:
+            firstStart = c
+        elif p == 1:
+            while c == firstStart:
+                c = rd.randint(0, MAP_WIDTH - 1)
+        nodes[0].add(c)
+        for r in range(MAP_HEIGHT - 1):
+            nc = _chooseNext(r, c, edges)
+            edges.setdefault((r, c), set()).add(nc)
+            nodes[r + 1].add(nc)
+            c = nc
+    return nodes, edges
+
+
+def _pickRoom(r, c, rooms, parents, children, types, weights):
+    for _ in range(50):
+        t = rd.choices(types, weights)[0]
+        if t in ("Elite", "Fires", "Shop$") and r <= 4:
+            continue
+        if t in ("Elite", "Fires", "Shop$"):
+            # The same special type may not connect directly to itself (either way).
+            if any(rooms.get((r - 1, pc)) == t for pc in parents.get((r, c), [])):
+                continue
+            if any(rooms.get((r + 1, cc)) == t for cc in children.get((r, c), [])):
+                continue
+        return t
+    return "Creep"
+
+
+def _assignRooms(nodes, edges, ascension):
+    rooms = {(r, c): None for r in range(MAP_HEIGHT) for c in nodes[r]}
+    for c in nodes[0]:
+        rooms[(0, c)] = "Creep"          # floor 1: Monster
+    for c in nodes[8]:
+        rooms[(8, c)] = "Chest"          # floor 9: Treasure
+    for c in nodes[13]:
+        rooms[(13, c)] = "Fires"         # floor 14: Rest
+    for c in nodes[MAP_HEIGHT - 1]:
+        rooms[(MAP_HEIGHT - 1, c)] = "Boss"
+
+    eliteW = 0.16 * (1.6 if ascension >= 1 else 1.0)   # Ascension 1: more Elites
+    types = ["Creep", "Event", "Elite", "Fires", "Shop$"]
+    weights = [0.455, 0.22, eliteW, 0.12, 0.05]
+
+    parents = {}
+    children = {}
+    for (r, c), ncs in edges.items():
+        children[(r, c)] = list(ncs)
+        for nc in ncs:
+            parents.setdefault((r + 1, nc), []).append(c)
+
+    for r in range(1, MAP_HEIGHT - 1):
+        if r in (8, 13):
+            continue
+        for c in sorted(nodes[r]):
+            if rooms[(r, c)] is None:
+                rooms[(r, c)] = _pickRoom(r, c, rooms, parents, children, types, weights)
+    return rooms
+
+
+def sts_generate_map(superElite=True):
+    global map_children
+    try:
+        import helping_functions
+        ascension = getattr(helping_functions, "ascensionLevel", 0)
+    except Exception:
+        ascension = 0
+
+    nodes, edges = _generatePaths()
+    rooms = _assignRooms(nodes, edges, ascension)
+
+    colIndex = {}
+    rows = [["Start"]]
+    for r in range(MAP_HEIGHT):
+        cols = sorted(nodes[r])
+        for i, c in enumerate(cols):
+            colIndex[(r, c)] = i
+        if r == MAP_HEIGHT - 1:
+            rows.append(["Boss"])
+        else:
+            rows.append([rooms[(r, c)] for c in cols])
+
+    if superElite:
+        elites = [(gy, x) for gy, row in enumerate(rows)
+                  for x, t in enumerate(row) if t == "Elite"]
+        if elites:
+            gy, x = rd.choice(elites)
+            rows[gy][x] = "Super"
+
+    map_children = {}
+    floor0 = sorted(nodes[0])
+    map_children[(0, 0)] = [(1, i) for i in range(len(floor0))]   # Start -> floor 1
+    bossRow = MAP_HEIGHT          # game row of the Boss (Start + 15 floors)
+    for r in range(MAP_HEIGHT - 1):
+        for c in sorted(nodes[r]):
+            gy = r + 1
+            x = colIndex[(r, c)]
+            if r == MAP_HEIGHT - 2:
+                map_children[(gy, x)] = [(bossRow, 0)]   # floor 14 (Rest) -> Boss
+            else:
+                map_children[(gy, x)] = sorted(
+                    {(r + 2, colIndex[(r + 1, nc)]) for nc in edges.get((r, c), set())})
+    map_children[(bossRow, 0)] = []
+    return rows
+
+
+def sts_generate_connections(map_of_the_game):
+    connection_dict = {}
+    for gy, row in enumerate(map_of_the_game):
+        for x, tile in enumerate(row):
+            conns = [(map_of_the_game[cy][cx], cy, cx)
+                     for (cy, cx) in map_children.get((gy, x), [])]
+            connection_dict[(tile, gy, x)] = {"Type": tile, "y": gy, "x": x, "Connections": conns}
+    return connection_dict
+
+
+# Use the faithful StS generators everywhere the old names are referenced.
+generate_map = sts_generate_map
+generate_connections = sts_generate_connections
+
+
 
 

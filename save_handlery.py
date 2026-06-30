@@ -19,6 +19,8 @@ def the_question_of_safety():
 			print("No savefile detected in "+prodPath+".\n\n")
 			helping_functions.set_seed()
 			helping_functions.set_ascension()
+			helping_functions.game_map = acts.generate_map()
+			helping_functions.game_map_dict = acts.generate_connections(helping_functions.game_map)
 			entities.choose_character()
 			entities.active_character[0].set_deck()
 			#entities.active_character[0].add_relic({"Name":"Oddly Smooth Stone","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, gain <green>1 Dexterity</green>."})
@@ -42,6 +44,8 @@ def the_question_of_safety():
 				saveDecision = "No"
 				helping_functions.set_seed()
 				helping_functions.set_ascension()
+				helping_functions.game_map = acts.generate_map()
+				helping_functions.game_map_dict = acts.generate_connections(helping_functions.game_map)
 				entities.choose_character()
 				entities.active_character[0].set_deck()
 				#entities.active_character[0].add_relic({"Name":"Oddly Smooth Stone","Rarity":"Common","Owner":"The Spire","Type":"Relic","Info":"At the start of each combat, gain <green>1 Dexterity</green>."})
