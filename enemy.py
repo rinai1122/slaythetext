@@ -70,6 +70,8 @@ class Enemy():
         self.barricade = barricade
 
         self.intangible = 0
+        self.mark = 0               # Watcher: Pressure Points
+        self.talkToTheHand = 0      # Watcher: gain Block when you attack this enemy
         self.cardTypeToLookOutFor = cardTypeToLookOutFor
         self.regen = regen
 
@@ -1176,6 +1178,10 @@ class Enemy():
         try:
             if self.heartVincibility >= 200:
                 attack_damage = 0
+
+            if not preview and self.talkToTheHand > 0:
+                entities.active_character[0].blocking(self.talkToTheHand, unaffectedBlock=True)
+                ansiprint(f"<magenta>Talk to the Hand</magenta> grants <green>{self.talkToTheHand} Block</green>.")
 
             damageToHp = False
             

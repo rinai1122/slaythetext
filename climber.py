@@ -107,10 +107,26 @@ class Char():
         # Watcher: Stances, Mantra and stance-powers
         self.stance = "Neutral"   # Neutral | Calm | Wrath | Divinity
         self.mantra = 0
+        self.mantraThisCombat = 0 # for Brilliance
+        self.lastCardType = None  # previous card played this turn (Follow-Up etc.)
         self.mentalFortress = 0   # Block whenever you change stance
         self.rushdown = 0         # Draw when you enter Wrath
         self.likeWater = 0        # Block at end of turn while in Calm
         self.devotion = 0         # Mantra at the start of each turn
+        self.foresight = 0        # Scry at the start of each turn
+        self.battleHymn = 0       # add Smite(s) to hand each turn
+        self.study = 0            # add Insight(s) to draw pile each turn end
+        self.nirvana = 0          # Block whenever you Scry
+        self.establishment = 0    # retained cards cost 1 less
+        self.masterReality = 0    # auto-upgrade created cards
+        self.fasting = 0          # +Str/+Dex now, -1 Energy each turn
+        self.simmeringFury = 0    # next turn: enter Wrath and draw
+        self.omega = 0            # end of turn: deal 50 to ALL
+        self.wreathOfFlame = 0    # next Attack deals extra damage
+        self.freeAttack = 0       # next Attack costs 0
+        self.extraTurn = 0        # Vault: take an extra turn
+        self.waveOfTheHand = 0    # this turn: gaining Block applies Weak to all
+        self.forceEndTurn = False # a card (Conclude/Vault/Meditate) ended the turn
         #powers
         self.accuracy = 0
         self.spikes = 0
@@ -383,24 +399,19 @@ class Char():
                         ansiprint("You can't play anmore cards this turn because of <red>Time Eater</red>.")
                     else:
                         self.play_card(plan,turn_counter)
+                        if self.forceEndTurn and len(entities.list_of_enemies) > 0:
+                            self.forceEndTurn = False
+                            print("\n\n")
+                            self.endPlayerTurnEffects()
+                            break
 
                 elif plan == len(self.hand) + len(self.potionBag):
-                
+
                     print("\n\n")
                     if len(entities.list_of_enemies) > 0:
-                        self.powersAtTheEndOfTheTurn()
-                        self.cursesEndOfTurn()
-                        self.exhaust_ethereals()
-                        self.relicsAtTheEndOfTurn()
-                        self.passiveOrbsTurnEnd()
-                        if self.goldPlatedCables == True:
-                            self.passiveOrbsTurnEnd(loopTrigger=True)
-                        self.discard_hand()
-                        self.changeEnergyCostAfterTurn()
-                        self.effect_counter_down()
-                        self.turnMoment = 0
+                        self.endPlayerTurnEffects()
                         break
-                    
+
                     else:
                         self.end_of_battle_effects()
 
@@ -466,6 +477,21 @@ class Char():
         for enemy in entities.list_of_enemies:
             enemy.chooseMove()
 
+    def endPlayerTurnEffects(self):
+        # The end-of-turn sequence, shared by the "End Turn" option and by cards
+        # that end the turn (Conclude, Vault, Meditate).
+        self.powersAtTheEndOfTheTurn()
+        self.cursesEndOfTurn()
+        self.exhaust_ethereals()
+        self.relicsAtTheEndOfTurn()
+        self.passiveOrbsTurnEnd()
+        if self.goldPlatedCables == True:
+            self.passiveOrbsTurnEnd(loopTrigger=True)
+        self.discard_hand()
+        self.changeEnergyCostAfterTurn()
+        self.effect_counter_down()
+        self.turnMoment = 0
+
     def gainEnergy(self,value):
         self.energy += value
         #ansiprint(self.displayName, "has now <yellow>"+str(self.energy)+" Energy</yellow>.\n")
@@ -498,9 +524,22 @@ class Char():
         if self.rushdown > 0 and newStance == "Wrath":
             self.draw(self.rushdown)
             ansiprint(f"<magenta>Rushdown</magenta>: draw {self.rushdown}.")
+        self._returnOnEvent("Flurry of Blows")
+
+    def _returnOnEvent(self, cardName):
+        # Move every copy of cardName from the discard pile back to hand.
+        i = 0
+        while i < len(self.discard_pile):
+            if self.discard_pile[i].get("Name", "").startswith(cardName):
+                card = self.discard_pile.pop(i)
+                self.add_CardToHand(card, silent=True)
+                ansiprint(f"<blue>{card.get('Name')}</blue> returns to your hand.")
+            else:
+                i += 1
 
     def gainMantra(self, value):
         self.mantra += value
+        self.mantraThisCombat += value
         ansiprint(f"You gain <yellow>{value} Mantra</yellow> ({self.mantra}/10).")
         while self.mantra >= 10:
             self.mantra -= 10
@@ -509,6 +548,11 @@ class Char():
 
     def scry(self, amount):
         # Look at the top cards of the draw pile and discard any you choose.
+        if self.nirvana > 0:
+            self.blocking(self.nirvana, unaffectedBlock=True)
+            ansiprint(f"<magenta>Nirvana</magenta> grants <green>{self.nirvana} Block</green>.")
+        # cards that return from discard when you Scry (Weave)
+        self._returnOnEvent("Weave")
         if amount <= 0 or len(self.draw_pile) == 0:
             return
         top = self.draw_pile[:amount]
@@ -525,56 +569,165 @@ class Char():
             self.add_CardToDiscardpile(card, noMessage=True)
             ansiprint(f"Scried away <blue>{card.get('Name')}</blue>.")
 
+    def _watcherAddCard(self, cardName, place, count=1):
+        # Add a created card (Smite/Insight/Safety/Through Violence/Beta/Omega...)
+        # to hand/draw/discard, upgraded if Master Reality is active.
+        for _ in range(count):
+            base = entities.cards.get(cardName)
+            if base is None:
+                continue
+            card = copy.deepcopy(base)
+            if self.masterReality > 0 and entities.cards.get(cardName + " +"):
+                card = copy.deepcopy(entities.cards[cardName + " +"])
+            if place == "Hand":
+                self.add_CardToHand(card, silent=True)
+            elif place == "Drawpile":
+                self.add_CardToDrawpile(card)
+            elif place == "Discardpile":
+                self.add_CardToDiscardpile(card)
+
     def playWatcherCard(self, turn_counter):
-        # Data-driven handler for all Watcher cards. Reads the fields documented
-        # in the Watcher card section of entities.py.
+        # Data-driven handler for all Watcher cards. See the Watcher card section
+        # in entities.py for the fields each card uses.
         card = self.card_in_play
+        name = card.get("Name", "")
+        prevType = self.lastCardType   # type of the card played before this one
+        up = card.get("Upgraded") == True
 
-        # Powers (placed in the power pile by resolveCardPlay afterwards)
-        if "MentalFortress" in card:
-            self.mentalFortress += card["MentalFortress"]; ansiprint("You gain <magenta>Mental Fortress</magenta>."); return
-        if "Rushdown" in card:
-            self.rushdown += card["Rushdown"]; ansiprint("You gain <magenta>Rushdown</magenta>."); return
-        if "LikeWater" in card:
-            self.likeWater += card["LikeWater"]; ansiprint("You gain <magenta>Like Water</magenta>."); return
-        if "Devotion" in card:
-            self.devotion += card["Devotion"]; ansiprint("You gain <magenta>Devotion</magenta>."); return
-        if "EnergyGainMiracle" in card:
-            self.gainEnergy(card["EnergyGainMiracle"]); ansiprint(f"<blue>Miracle</blue> grants <yellow>{card['EnergyGainMiracle']} Energy</yellow>."); return
+        # ---- Powers (resolveCardPlay files them in the power pile) ----
+        for field, attr in (("MentalFortress","mentalFortress"),("Rushdown","rushdown"),
+                            ("LikeWater","likeWater"),("Devotion","devotion"),("Nirvana","nirvana"),
+                            ("Foresight","foresight"),("BattleHymn","battleHymn"),("Study","study"),
+                            ("Establishment","establishment")):
+            if field in card:
+                setattr(self, attr, getattr(self, attr) + card[field])
+                ansiprint(f"You gain <magenta>{name}</magenta>.")
+                return
+        if name.startswith("Master Reality"):
+            self.masterReality += 1; ansiprint("You gain <magenta>Master Reality</magenta>."); return
+        if name.startswith("Fasting"):
+            self.fasting += 1
+            self.set_strength(card["Strength"]); self.set_dexterity(card["Dexterity"])
+            ansiprint("You gain <magenta>Fasting</magenta>."); return
+        if name.startswith("Omega"):
+            self.omega += card["OmegaDamage"]; ansiprint("You gain <magenta>Omega</magenta>."); return
 
+        # ---- Cards fully described by a special ----
+        if name.startswith("Miracle"):
+            self.gainEnergy(card.get("EnergyGainMiracle",1)); return
+        if name.startswith("Insight"):
+            self.draw(card.get("Draw",2)); return
+        if name.startswith("Wreath of Flame"):
+            self.wreathOfFlame += card["WreathOfFlame"]
+            ansiprint(f"Your next Attack deals <red>{self.wreathOfFlame}</red> more damage."); return
+        if name.startswith("Simmering Fury"):
+            self.simmeringFury += card["SimmeringFury"]
+            ansiprint("Next turn you enter <red>Wrath</red> and draw cards."); return
+        if name.startswith("Vault"):
+            self.extraTurn += 1; self.forceEndTurn = True
+            ansiprint("<magenta>Vault</magenta>: you will take an extra turn."); return
+        if name.startswith("Alpha"):
+            self._watcherAddCard("Beta", "Drawpile"); return
+        if name.startswith("Beta"):
+            self._watcherAddCard("Omega", "Drawpile"); return
+        if name.startswith("Pressure Points"):
+            self.choose_enemy()
+            entities.list_of_enemies[self.target].mark += card["Mark"]
+            ansiprint(f"Applied <light-cyan>{card['Mark']} Mark</light-cyan>.")
+            for e in list(entities.list_of_enemies):
+                if e.mark > 0:
+                    e.receive_recoil_damage(e.mark)
+            return
+        if name.startswith("Judgment"):
+            self.choose_enemy()
+            e = entities.list_of_enemies[self.target]
+            if e.health <= card["Judgment"]:
+                e.health = 0; e.alive = False
+                ansiprint("<magenta>Judgment</magenta> sets the enemy's HP to 0!")
+            else:
+                ansiprint("The enemy had too much HP for <magenta>Judgment</magenta>.")
+            return
+        if name.startswith("Wish"):
+            self._watcherWish(card); return
+        if name.startswith("Scrawl"):
+            self.draw(max(0, 10 - len(self.hand))); return
+        if name.startswith("Omniscience"):
+            self._watcherOmniscience(turn_counter); return
+        if name.startswith("Meditate"):
+            self._watcherMeditate(card); return
+        if name.startswith("Collect"):
+            x = self.energy + (1 if up else 0)
+            self.energy = 0
+            self._watcherAddCard("Miracle", "Hand", max(0, x)); return
+        if name.startswith("Conjure Blade"):
+            x = self.energy
+            self.energy = 0
+            blade = copy.deepcopy(entities.cards["Expunger"])
+            blade["Hits"] = x + (1 if up else 0)
+            blade["Info"] = f"Deal <red>9 damage</red> {blade['Hits']} times."
+            self.add_CardToHand(blade, silent=True)
+            ansiprint(f"You forge an <blue>Expunger</blue> that strikes {blade['Hits']} times."); return
+        if name.startswith("Foreign Influence"):
+            self._watcherForeignInfluence(up); return
+
+        # ---- Generic effects (combinable) ----
         # Damage
         if "Damage" in card:
+            dmg = card["Damage"]
+            if card.get("BrillianceBonus"):
+                dmg += self.mantraThisCombat
+            if card.get("Type") == "Attack" and self.wreathOfFlame > 0:
+                dmg += self.wreathOfFlame
+                self.wreathOfFlame = 0
             hits = card.get("Hits", 1)
+            if card.get("EnemyCountHits"):
+                hits = max(1, len(entities.list_of_enemies))
+            fatalKill = False
             if card.get("AoE"):
                 for _ in range(hits):
                     for idx in range(len(entities.list_of_enemies)):
                         self.target = idx
-                        self.attack(card["Damage"])
+                        self.attack(dmg)
             elif card.get("RandomTarget"):
                 for _ in range(hits):
                     if len(entities.list_of_enemies) == 0:
                         break
                     self.target = rd.randint(0, len(entities.list_of_enemies)-1)
-                    self.attack(card["Damage"])
+                    self.attack(dmg)
             else:
                 self.choose_enemy()
                 if card.get("Wallop"):
-                    preview = self.attack(card["Damage"], preview=True)
+                    preview = self.attack(dmg, preview=True)
                     unblocked = max(0, preview - entities.list_of_enemies[self.target].block)
-                    self.attack(card["Damage"])
+                    self.attack(dmg)
                     self.blocking(unblocked)
                 else:
                     enemyCheck = len(entities.list_of_enemies)
                     for _ in range(hits):
-                        self.attack(card["Damage"])
+                        self.attack(dmg)
                         if len(entities.list_of_enemies) != enemyCheck:
+                            fatalKill = True
                             break
+            if card.get("FatalUpgrade") and fatalKill:
+                self.upgradeRandomCardInDeck()
 
-        # Block (with optional Wrath bonus, e.g. Halt)
-        if "Block" in card:
-            block = card["Block"]
+        # Conditionals based on the previous card played this turn
+        if card.get("IfPrevSkillDraw") and prevType == "Skill":
+            self.draw(card["IfPrevSkillDraw"])
+        if card.get("IfPrevAttackEnergy") and prevType == "Attack":
+            self.gainEnergy(card["IfPrevAttackEnergy"])
+        if card.get("IfPrevSkillVulnerable") and prevType == "Skill":
+            self.choose_enemy(); entities.list_of_enemies[self.target].set_vulnerable(card["IfPrevSkillVulnerable"])
+        if card.get("IfPrevAttackWeak") and prevType == "Attack":
+            self.choose_enemy(); entities.list_of_enemies[self.target].set_weakness(card["IfPrevAttackWeak"])
+
+        # Block (Wrath bonus for Halt; per-hand-card for Spirit Shield)
+        if "Block" in card or card.get("BlockPerHandCard"):
+            block = card.get("Block", 0)
             if card.get("WrathBonus") and self.stance == "Wrath":
                 block += card["WrathBonus"]
+            if card.get("BlockPerHandCard"):
+                block += card["BlockPerHandCard"] * len(self.hand)
             self.blocking(block)
 
         if card.get("Scry"):
@@ -583,15 +736,150 @@ class Char():
             self.draw(card["Draw"])
         if card.get("Mantra"):
             self.gainMantra(card["Mantra"])
+        if card.get("EnergyGain"):
+            self.gainEnergy(card["EnergyGain"])
+        if card.get("Strength"):
+            self.set_strength(card["Strength"])
+        if card.get("Dexterity"):
+            self.set_dexterity(card["Dexterity"])
+        if card.get("PlatedArmor"):
+            self.set_platedArmor(card["PlatedArmor"])
+        if card.get("Gold"):
+            self.set_gold(card["Gold"])
+        if card.get("FreeAttack"):
+            self.freeAttack += card["FreeAttack"]
+            ansiprint("Your next Attack costs <yellow>0</yellow>.")
+        if card.get("WaveOfTheHand"):
+            self.waveOfTheHand += card["WaveOfTheHand"]
 
-        # Stance changes happen after damage/block so Wrath bonuses use the
-        # stance you were in when you played the card.
+        # Apply Weak/Vulnerable (to one or all)
+        if card.get("Weakness"):
+            if card.get("ApplyAll"):
+                for e in entities.list_of_enemies: e.set_weakness(card["Weakness"])
+            else:
+                self.choose_enemy(); entities.list_of_enemies[self.target].set_weakness(card["Weakness"])
+        if card.get("Vulnerable"):
+            if card.get("ApplyAll"):
+                for e in entities.list_of_enemies: e.set_vulnerable(card["Vulnerable"])
+            else:
+                self.choose_enemy(); entities.list_of_enemies[self.target].set_vulnerable(card["Vulnerable"])
+
+        # Talk to the Hand: mark an enemy so attacking it grants Block
+        if card.get("TalkToTheHand"):
+            self.choose_enemy()
+            entities.list_of_enemies[self.target].talkToTheHand += card["TalkToTheHand"]
+            ansiprint(f"Attacks against this enemy now grant <green>{card['TalkToTheHand']} Block</green>.")
+
+        # Stance-conditional cards (Indignation / Inner Peace / Fear No Evil)
+        if card.get("WrathElseEnter"):
+            if self.stance == "Wrath":
+                for e in entities.list_of_enemies: e.set_vulnerable(card["WrathElseEnter"])
+            else:
+                self.enterStance("Wrath")
+        if card.get("CalmElseEnter"):
+            if self.stance == "Calm":
+                self.draw(card["CalmElseEnter"])
+            else:
+                self.enterStance("Calm")
+        if card.get("CalmIfAttacking"):
+            self.choose_enemy()
+            if self.enemy_preview(self.target, spotWeaknessCheck=True):
+                self.enterStance("Calm")
+
+        # Create cards (Carve Reality -> Smite, Evaluate/Pray -> Insight, etc.)
+        for spec, place in (("AddToHand","Hand"),("AddToDraw","Drawpile"),("AddToDiscard","Discardpile")):
+            if card.get(spec):
+                self._watcherAddCard(card[spec], place, card.get(spec + "Count", 1))
+
+        # Stance changes last so Wrath bonuses use the stance you played from.
         if card.get("Stance"):
             self.enterStance(card["Stance"])
         if card.get("ExitStance"):
             self.enterStance("Neutral")
 
+        if card.get("EndTurn"):
+            self.forceEndTurn = True
+
+    def upgradeRandomCardInDeck(self):
+        upgradable = [i for i, c in enumerate(self.deck)
+                      if c.get("Upgraded") != True and c.get("Type") not in ("Curse", "Status")]
+        if upgradable:
+            idx = rd.choice(upgradable)
+            ansiprint(f"<magenta>Lesson Learned</magenta>: upgrading <blue>{self.deck[idx].get('Name')}</blue>.")
+            helping_functions.upgradeCard(self.deck.pop(idx), "Deck", index=idx)
+
+    def _watcherWish(self, card):
+        opts = [f"Gain <green>{card['WishArmor']} Plated Armor</green>",
+                f"Gain <red>{card['WishStrength']} Strength</red>",
+                f"Gain <yellow>{card['WishGold']} Gold</yellow>"]
+        for i, o in enumerate(opts):
+            ansiprint(f"{i+1}. {o}")
+        while True:
+            choice = input("Make your <magenta>Wish</magenta>.\n")
+            if choice == "1": self.set_platedArmor(card["WishArmor"]); break
+            if choice == "2": self.set_strength(card["WishStrength"]); break
+            if choice == "3": self.set_gold(card["WishGold"]); break
+            ansiprint("Type 1, 2 or 3.")
+
+    def _watcherOmniscience(self, turn_counter):
+        if len(self.draw_pile) == 0:
+            ansiprint("Your Drawpile is empty."); return
+        self.show_drawpile()
+        while True:
+            try:
+                idx = int(input("Pick a card from your Drawpile to play twice.\n")) - 1
+                if 0 <= idx < len(self.draw_pile):
+                    chosen = self.draw_pile.pop(idx)
+                    for _ in range(2):
+                        self.card_is_played(copy.deepcopy(chosen), turn_counter, repeat=True)
+                    self.add_CardToExhaustpile(chosen)
+                    break
+            except Exception:
+                pass
+            ansiprint("Pick a valid number.")
+
+    def _watcherMeditate(self, card):
+        amount = card.get("MeditateAmount", 1)
+        for _ in range(amount):
+            if len(self.discard_pile) == 0:
+                break
+            self.show_discardpile()
+            try:
+                idx = int(input("Pick a card from your Discardpile to retain in hand.\n")) - 1
+                if 0 <= idx < len(self.discard_pile):
+                    c = self.discard_pile.pop(idx)
+                    c["Retain"] = True
+                    self.add_CardToHand(c, silent=True)
+            except Exception:
+                pass
+        self.enterStance("Calm")
+        self.forceEndTurn = True
+
+    def _watcherForeignInfluence(self, upgraded):
+        pool = {k: v for k, v in entities.cards.items()
+                if v.get("Type") == "Attack" and v.get("Rarity") not in ("Basic", "Special", "Enemy")
+                and v.get("Upgraded") != True and v.get("Owner") in ("Silent", "Ironclad", "Defect")}
+        picks = rd.sample(list(pool.values()), min(3, len(pool)))
+        for i, c in enumerate(picks):
+            ansiprint(f"{i+1}. {c.get('Name')}")
+        while True:
+            try:
+                idx = int(input("Choose an Attack to add to your hand (costs 0 this turn).\n")) - 1
+                if 0 <= idx < len(picks):
+                    chosen = copy.deepcopy(picks[idx])
+                    if upgraded:
+                        upg = entities.cards.get(chosen["Name"] + " +")
+                        if upg: chosen = copy.deepcopy(upg)
+                    chosen["Energy"] = 0
+                    self.add_CardToHand(chosen, silent=True)
+                    break
+            except Exception:
+                pass
+            ansiprint("Pick a valid number.")
+
     def powersAtTheStartOfTheTurn(self):
+
+        self.lastCardType = None
 
         # Divinity only lasts until the start of your next turn.
         if self.stance == "Divinity":
@@ -599,6 +887,23 @@ class Char():
 
         if self.devotion > 0:
             self.gainMantra(self.devotion)
+
+        if self.foresight > 0:
+            self.scry(self.foresight)
+
+        if self.battleHymn > 0:
+            for _ in range(self.battleHymn):
+                self.add_CardToHand(entities.cards["Smite"], silent=True)
+            ansiprint(f"<magenta>Battle Hymn</magenta> adds {self.battleHymn} <blue>Smite</blue>.")
+
+        if self.fasting > 0:
+            self.gainEnergy(-1)
+            ansiprint("<magenta>Fasting</magenta> costs you <yellow>1 Energy</yellow>.")
+
+        if self.simmeringFury > 0:
+            self.draw(self.simmeringFury)
+            self.enterStance("Wrath")
+            self.simmeringFury = 0
 
         if self.infiniteBlades > 0:
             iShiv = 0
@@ -1139,6 +1444,18 @@ class Char():
             self.blocking(self.likeWater, unaffectedBlock=True)
             ansiprint(f"<magenta>Like Water</magenta> grants <green>{self.likeWater} Block</green>.")
 
+        if self.study > 0:
+            for _ in range(self.study):
+                self.add_CardToDrawpile(entities.cards["Insight"])
+            ansiprint(f"<magenta>Study</magenta> shuffles {self.study} <blue>Insight</blue> into your Drawpile.")
+
+        if self.omega > 0:
+            for enemy in list(entities.list_of_enemies):
+                enemy.receive_recoil_damage(self.omega)
+            ansiprint(f"<magenta>Omega</magenta> deals <red>{self.omega} damage</red> to ALL enemies.")
+
+        self.waveOfTheHand = 0
+
         if self.wellLaidPlans > 0:
             i = 0
             while i < self.wellLaidPlans and len(self.hand) > 0:
@@ -1259,7 +1576,10 @@ class Char():
 
                         elif self.cardsCostNothing > 0:
                             break
-                        
+
+                        elif self.freeAttack > 0 and self.hand[card_index].get("Type") == "Attack":
+                            break
+
                         elif self.hand[card_index].get("Type") == "Status" and self.medicalKit > 0:
                             break
                         
@@ -4425,6 +4745,9 @@ class Char():
     def resolveCardPlay(self,turn_counter,repeat,exhaust):
         #if self.card_in_play != None:
 
+        # Track the type of the most recently played card (Watcher: Follow-Up etc.)
+        self.lastCardType = self.card_in_play.get("Type")
+
         self.check_CardPlayPenalties()
 
         if self.card_in_play.get("Type") == "Attack":
@@ -5176,9 +5499,12 @@ class Char():
         agonyCount = 0
         agonyPlusCount = 0
         evolveCount = 0
+        deusList = []
         try:
             while i < cardsDrawn:
-                if self.hand[-(i+1)].get("Name") == "Void":
+                if self.hand[-(i+1)].get("Name", "").startswith("Deus Ex Machina"):
+                    deusList.append(self.hand[-(i+1)])
+                elif self.hand[-(i+1)].get("Name") == "Void":
                     self.gainEnergy(-1)
                     if self.evolve > 0:
                         evolveCount += self.evolve
@@ -5202,7 +5528,16 @@ class Char():
 
         if evolveCount > 0:
             self.draw(evolveCount)
-    
+
+        for deus in deusList:
+            miracles = 3 if deus.get("Upgraded") else 2
+            for _ in range(miracles):
+                self.add_CardToHand(entities.cards["Miracle"], silent=True)
+            ansiprint(f"<blue>Deus Ex Machina</blue> adds {miracles} <blue>Miracle</blue> and Exhausts.")
+            if deus in self.hand:
+                self.hand.remove(deus)
+                self.add_CardToExhaustpile(deus)
+
     def discardBackInDrawpile(self):
         
         self.draw_pile.extend(self.discard_pile)
@@ -5226,9 +5561,12 @@ class Char():
                                         
                     if self.cardsCostNothing > 0:
                         pass
+                    elif self.freeAttack > 0 and self.card_in_play.get("Type") == "Attack":
+                        self.freeAttack -= 1
+                        ansiprint("Your next Attack was <yellow>free</yellow> (Swivel).")
                     else:
                         self.energy -= self.card_in_play.get("Energy")
-                    
+
                     ansiprint(self.displayName, "has <yellow>"+str(self.energy)+ " Energy</yellow>.")
         
         except Exception as e:
@@ -5752,6 +6090,11 @@ class Char():
                 
             ansiprint(f"{self.displayName} blocked for <green>{block_value}</green> and now has <green>{self.block} Block</green>!")
 
+            if self.waveOfTheHand > 0 and block_value > 0:
+                for enemy in entities.list_of_enemies:
+                    enemy.set_weakness(self.waveOfTheHand)
+                ansiprint(f"<magenta>Wave of the Hand</magenta> applies <light-cyan>{self.waveOfTheHand} Weak</light-cyan> to ALL enemies.")
+
     def energyBoost(self,value):
         self.temp_energy += value
         ansiprint(self.displayName,"will receive",self.temp_energy,"extra Energy next turn.")
@@ -5867,6 +6210,17 @@ class Char():
             i = 0
             while i < len(self.hand):
                 if self.hand[i].get("Retain") == True:
+                    card = self.hand[i]
+                    # Retain-triggered scaling (Watcher) and Establishment.
+                    if isinstance(card.get("Energy"), int):
+                        if card.get("RetainCostDown"):
+                            card["Energy"] = max(0, card["Energy"] - card["RetainCostDown"])
+                        if self.establishment > 0:
+                            card["Energy"] = max(0, card["Energy"] - self.establishment)
+                    if card.get("RetainDamageUp"):
+                        card["Damage"] += card["RetainDamageUp"]
+                    if card.get("RetainBlockUp"):
+                        card["Block"] += card["RetainBlockUp"]
                     i += 1
                 else:
                     self.discard_pile.append(self.hand.pop(i))
@@ -8738,10 +9092,26 @@ class Char():
         # Watcher: start every combat in Neutral with no Mantra or stance-powers.
         self.stance = "Neutral"
         self.mantra = 0
+        self.mantraThisCombat = 0
+        self.lastCardType = None
         self.mentalFortress = 0
         self.rushdown = 0
         self.likeWater = 0
         self.devotion = 0
+        self.foresight = 0
+        self.battleHymn = 0
+        self.study = 0
+        self.nirvana = 0
+        self.establishment = 0
+        self.masterReality = 0
+        self.fasting = 0
+        self.simmeringFury = 0
+        self.omega = 0
+        self.wreathOfFlame = 0
+        self.freeAttack = 0
+        self.extraTurn = 0
+        self.waveOfTheHand = 0
+        self.forceEndTurn = False
         self.theBoot = False
         self.buffer = 0
         self.wraithForm = 0

@@ -54,7 +54,12 @@ def main():
 
                 helping_functions.turn_counter = helping_functions.count_up(helping_functions.turn_counter)
                 entities.active_character[0].turn(helping_functions.turn_counter)
-                
+
+                if entities.active_character[0].extraTurn > 0:
+                    entities.active_character[0].extraTurn -= 1
+                    entities.check_if_enemy_dead()
+                    continue
+
                 i = 0
                 while i < len(entities.list_of_enemies):
                     enemyDeadCheck = len(entities.list_of_enemies)
