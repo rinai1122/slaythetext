@@ -30,9 +30,9 @@ def choose_character():
     
     while True:
         try:
-            ansiprint("1. <green>Silent</green>\n2. <red>Ironclad</red>\n3. <blue>Defect</blue>")
+            ansiprint("1. <green>Silent</green>\n2. <red>Ironclad</red>\n3. <blue>Defect</blue>\n4. <magenta>Watcher</magenta>")
             charchoice = input("Pick the Character you want to play.\n")
-            
+
             if charchoice == "1":
                 active_character.append(Char("Silent",66,deck = [],gold = 99,relics=[{"Name":"Ring of the Snake","Rarity":"Starter","Owner":"Silent","Type":"Relic","Info":"At the start of each combat, draw 2 additional cards."}]))
                 ansiprint("You chose the <green>Silent</green>.")
@@ -45,8 +45,12 @@ def choose_character():
                 active_character.append(Char("Defect",75,deck = [],gold = 99,relics=[{"Name":"Cracked Core","Rarity":"Starter","Owner":"Defect","Type":"Relic","Info":"At the start of each combat, Channel 1 Lightning."}]))
                 ansiprint("You chose the <blue>Defect</blue>.")
                 break
+            elif charchoice == "4":
+                active_character.append(Char("Watcher",72,deck = [],gold = 99,relics=[{"Name":"Pure Water","Rarity":"Starter","Owner":"Watcher","Type":"Relic","Info":"At the start of each combat, add a <blue>Miracle</blue> to your hand."}]))
+                ansiprint("You chose the <magenta>Watcher</magenta>.")
+                break
             else:
-                ansiprint("You have to type either 1, 2 or 3.")
+                ansiprint("You have to type either 1, 2, 3 or 4.")
         except ValueError:
             ansiprint("You have to type a number.")
         except Exception as e:
@@ -1368,6 +1372,68 @@ cards = {
     "Machine Learning +": {"Name": "Machine Learning +","Upgraded":True,"Draw":1,"Energy":1,"Type":"Power","Rarity":"Rare","Innate":True,"Owner":"Defect","Info":"Innate. At the start of your turn, draw 1 additional card."},
 
 
+    #Watcher Cards
+    # Handled by the data-driven Char.playWatcherCard. Fields it reads:
+    #   Damage, Hits, AoE, Block, WrathBonus, Scry, Draw, Mantra, Stance,
+    #   ExitStance, ShuffleBack, Wallop, and the power fields below.
+
+    "Eruption": {"Name":"Eruption","Damage":9,"Stance":"Wrath","Energy":2,"Type":"Attack","Rarity":"Basic","Owner":"Watcher","Info":"Deal <red>9 damage</red>. Enter <red>Wrath</red>."},
+    "Eruption +": {"Name":"Eruption +","Damage":9,"Stance":"Wrath","Energy":1,"Upgraded":True,"Type":"Attack","Rarity":"Basic","Owner":"Watcher","Info":"Deal <red>9 damage</red>. Enter <red>Wrath</red>."},
+
+    "Vigilance": {"Name":"Vigilance","Block":8,"Stance":"Calm","Energy":2,"Type":"Skill","Rarity":"Basic","Owner":"Watcher","Info":"Gain <green>8 Block</green>. Enter <blue>Calm</blue>."},
+    "Vigilance +": {"Name":"Vigilance +","Block":12,"Stance":"Calm","Energy":2,"Upgraded":True,"Type":"Skill","Rarity":"Basic","Owner":"Watcher","Info":"Gain <green>12 Block</green>. Enter <blue>Calm</blue>."},
+
+    "Crescendo": {"Name":"Crescendo","Stance":"Wrath","Retain":True,"Exhaust":True,"Energy":1,"Type":"Skill","Rarity":"Common","Owner":"Watcher","Info":"<c>Retain</c>. Enter <red>Wrath</red>. <BLUE>Exhaust</BLUE>."},
+    "Crescendo +": {"Name":"Crescendo +","Stance":"Wrath","Retain":True,"Exhaust":True,"Energy":0,"Upgraded":True,"Type":"Skill","Rarity":"Common","Owner":"Watcher","Info":"<c>Retain</c>. Enter <red>Wrath</red>. <BLUE>Exhaust</BLUE>."},
+
+    "Tranquility": {"Name":"Tranquility","Stance":"Calm","Retain":True,"Exhaust":True,"Energy":1,"Type":"Skill","Rarity":"Common","Owner":"Watcher","Info":"<c>Retain</c>. Enter <blue>Calm</blue>. <BLUE>Exhaust</BLUE>."},
+    "Tranquility +": {"Name":"Tranquility +","Stance":"Calm","Retain":True,"Exhaust":True,"Energy":0,"Upgraded":True,"Type":"Skill","Rarity":"Common","Owner":"Watcher","Info":"<c>Retain</c>. Enter <blue>Calm</blue>. <BLUE>Exhaust</BLUE>."},
+
+    "Empty Fist": {"Name":"Empty Fist","Damage":9,"ExitStance":True,"Energy":1,"Type":"Attack","Rarity":"Common","Owner":"Watcher","Info":"Deal <red>9 damage</red>. Exit your Stance."},
+    "Empty Fist +": {"Name":"Empty Fist +","Damage":14,"ExitStance":True,"Energy":1,"Upgraded":True,"Type":"Attack","Rarity":"Common","Owner":"Watcher","Info":"Deal <red>14 damage</red>. Exit your Stance."},
+
+    "Empty Body": {"Name":"Empty Body","Block":7,"ExitStance":True,"Energy":1,"Type":"Skill","Rarity":"Common","Owner":"Watcher","Info":"Gain <green>7 Block</green>. Exit your Stance."},
+    "Empty Body +": {"Name":"Empty Body +","Block":10,"ExitStance":True,"Energy":1,"Upgraded":True,"Type":"Skill","Rarity":"Common","Owner":"Watcher","Info":"Gain <green>10 Block</green>. Exit your Stance."},
+
+    "Halt": {"Name":"Halt","Block":3,"WrathBonus":9,"Energy":0,"Type":"Skill","Rarity":"Common","Owner":"Watcher","Info":"Gain <green>3 Block</green>. If in <red>Wrath</red>, gain <green>9</green> more <green>Block</green>."},
+    "Halt +": {"Name":"Halt +","Block":4,"WrathBonus":14,"Energy":0,"Upgraded":True,"Type":"Skill","Rarity":"Common","Owner":"Watcher","Info":"Gain <green>4 Block</green>. If in <red>Wrath</red>, gain <green>14</green> more <green>Block</green>."},
+
+    "Prostrate": {"Name":"Prostrate","Mantra":2,"Block":4,"Energy":0,"Type":"Skill","Rarity":"Common","Owner":"Watcher","Info":"Gain <yellow>2 Mantra</yellow>. Gain <green>4 Block</green>."},
+    "Prostrate +": {"Name":"Prostrate +","Mantra":3,"Block":4,"Energy":0,"Upgraded":True,"Type":"Skill","Rarity":"Common","Owner":"Watcher","Info":"Gain <yellow>3 Mantra</yellow>. Gain <green>4 Block</green>."},
+
+    "Consecrate": {"Name":"Consecrate","Damage":5,"AoE":True,"Energy":0,"Type":"Attack","Rarity":"Common","Owner":"Watcher","Info":"Deal <red>5 damage</red> to ALL enemies."},
+    "Consecrate +": {"Name":"Consecrate +","Damage":8,"AoE":True,"Energy":0,"Upgraded":True,"Type":"Attack","Rarity":"Common","Owner":"Watcher","Info":"Deal <red>8 damage</red> to ALL enemies."},
+
+    "Cut Through Fate": {"Name":"Cut Through Fate","Damage":7,"Scry":2,"Draw":1,"Energy":1,"Type":"Attack","Rarity":"Uncommon","Owner":"Watcher","Info":"Deal <red>7 damage</red>. <magenta>Scry 2</magenta>. Draw 1 card."},
+    "Cut Through Fate +": {"Name":"Cut Through Fate +","Damage":9,"Scry":3,"Draw":1,"Energy":1,"Upgraded":True,"Type":"Attack","Rarity":"Uncommon","Owner":"Watcher","Info":"Deal <red>9 damage</red>. <magenta>Scry 3</magenta>. Draw 1 card."},
+
+    "Third Eye": {"Name":"Third Eye","Block":7,"Scry":3,"Energy":1,"Type":"Skill","Rarity":"Uncommon","Owner":"Watcher","Info":"Gain <green>7 Block</green>. <magenta>Scry 3</magenta>."},
+    "Third Eye +": {"Name":"Third Eye +","Block":9,"Scry":5,"Energy":1,"Upgraded":True,"Type":"Skill","Rarity":"Uncommon","Owner":"Watcher","Info":"Gain <green>9 Block</green>. <magenta>Scry 5</magenta>."},
+
+    "Wallop": {"Name":"Wallop","Damage":9,"Wallop":True,"Energy":2,"Type":"Attack","Rarity":"Uncommon","Owner":"Watcher","Info":"Deal <red>9 damage</red>. Gain <green>Block</green> equal to unblocked damage dealt."},
+    "Wallop +": {"Name":"Wallop +","Damage":12,"Wallop":True,"Energy":2,"Upgraded":True,"Type":"Attack","Rarity":"Uncommon","Owner":"Watcher","Info":"Deal <red>12 damage</red>. Gain <green>Block</green> equal to unblocked damage dealt."},
+
+    "Tantrum": {"Name":"Tantrum","Damage":3,"Hits":3,"Stance":"Wrath","Energy":1,"Type":"Attack","Rarity":"Uncommon","Owner":"Watcher","Info":"Deal <red>3 damage</red> 3 times. Enter <red>Wrath</red>."},
+    "Tantrum +": {"Name":"Tantrum +","Damage":3,"Hits":4,"Stance":"Wrath","Energy":1,"Upgraded":True,"Type":"Attack","Rarity":"Uncommon","Owner":"Watcher","Info":"Deal <red>3 damage</red> 4 times. Enter <red>Wrath</red>."},
+
+    "Mental Fortress": {"Name":"Mental Fortress","MentalFortress":4,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Watcher","Info":"Whenever you change Stance, gain <green>4 Block</green>."},
+    "Mental Fortress +": {"Name":"Mental Fortress +","MentalFortress":6,"Energy":1,"Upgraded":True,"Type":"Power","Rarity":"Uncommon","Owner":"Watcher","Info":"Whenever you change Stance, gain <green>6 Block</green>."},
+
+    "Rushdown": {"Name":"Rushdown","Rushdown":2,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Watcher","Info":"Whenever you enter <red>Wrath</red>, draw 2 cards."},
+    "Rushdown +": {"Name":"Rushdown +","Rushdown":2,"Energy":0,"Upgraded":True,"Type":"Power","Rarity":"Uncommon","Owner":"Watcher","Info":"Whenever you enter <red>Wrath</red>, draw 2 cards."},
+
+    "Like Water": {"Name":"Like Water","LikeWater":5,"Energy":1,"Type":"Power","Rarity":"Uncommon","Owner":"Watcher","Info":"At the end of your turn, if in <blue>Calm</blue>, gain <green>5 Block</green>."},
+    "Like Water +": {"Name":"Like Water +","LikeWater":7,"Energy":1,"Upgraded":True,"Type":"Power","Rarity":"Uncommon","Owner":"Watcher","Info":"At the end of your turn, if in <blue>Calm</blue>, gain <green>7 Block</green>."},
+
+    "Devotion": {"Name":"Devotion","Devotion":2,"Energy":1,"Type":"Power","Rarity":"Rare","Owner":"Watcher","Info":"At the start of each turn, gain <yellow>2 Mantra</yellow>."},
+    "Devotion +": {"Name":"Devotion +","Devotion":3,"Energy":1,"Upgraded":True,"Type":"Power","Rarity":"Rare","Owner":"Watcher","Info":"At the start of each turn, gain <yellow>3 Mantra</yellow>."},
+
+    "Ragnarok": {"Name":"Ragnarok","Damage":5,"Hits":5,"RandomTarget":True,"Energy":3,"Type":"Attack","Rarity":"Rare","Owner":"Watcher","Info":"Deal <red>5 damage</red> to a random enemy 5 times."},
+    "Ragnarok +": {"Name":"Ragnarok +","Damage":6,"Hits":6,"RandomTarget":True,"Energy":3,"Upgraded":True,"Type":"Attack","Rarity":"Rare","Owner":"Watcher","Info":"Deal <red>6 damage</red> to a random enemy 6 times."},
+
+    "Miracle": {"Name":"Miracle","EnergyGainMiracle":1,"Retain":True,"Exhaust":True,"Energy":0,"Type":"Skill","Rarity":"Special","Owner":"Watcher","Info":"<c>Retain</c>. Gain <yellow>1 Energy</yellow>. <BLUE>Exhaust</BLUE>."},
+
+
     #Neutral Cards
 
     "Bandage Up": {"Name": "Bandage Up","Heal": 4, "Energy": 0, "Exhaust": True, "Type": "Skill", "Rarity": "Uncommon", "Owner":"Colorless","Info":"<red>Heal 4 HP</red>.<BLUE>Exhaust</BLUE>."},
@@ -1575,6 +1641,7 @@ relics = {
     "Burning Blood":{"Name":"Burning Blood","Rarity":"Starter","Owner":"Ironclad","Type":"Relic","Info":"At the end of combat, <red>heal 6 HP</red>."},
     "Ring of the Snake": {"Name":"Ring of the Snake","Rarity":"Starter","Owner":"Silent","Type":"Relic","Info":"At the start of each combat, draw 2 additional cards."},
     "Cracked Core": {"Name":"Cracked Core","Rarity":"Starter","Owner":"Defect","Type":"Relic","Info":"At the start of each combat, Channel 1 Lightning."},
+    "Pure Water": {"Name":"Pure Water","Rarity":"Starter","Owner":"Watcher","Type":"Relic","Info":"At the start of each combat, add a <blue>Miracle</blue> to your hand."},
 
     "Data Disk": {"Name":"Data Disk","Rarity":"Common","Owner":"Defect","Type":"Relic","Info":"Start each combat with 1 Focus."},
     "Gold-Plated Cables": {"Name":"Gold-Plated Cables","Rarity":"Uncommon","Owner":"Defect","Type":"Relic","Info":"Your rightmost Orb triggers its passive an additional time."},

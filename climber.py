@@ -31,7 +31,9 @@ class Char():
             self.displayName = "<red>" + self.name + "</red>"
         elif self.name == "Defect":
             self.displayName = "<blue>" + self.name + "</blue>"
-        
+        elif self.name == "Watcher":
+            self.displayName = "<magenta>" + self.name + "</magenta>"
+
         self.max_health = max_health
         # Ascension 14: lower starting Max HP (-5 Ironclad, -4 others).
         if helping_functions.ascensionLevel >= 14:
@@ -101,6 +103,14 @@ class Char():
 
         self.intangible = 0
         self.constriction = 0
+
+        # Watcher: Stances, Mantra and stance-powers
+        self.stance = "Neutral"   # Neutral | Calm | Wrath | Divinity
+        self.mantra = 0
+        self.mentalFortress = 0   # Block whenever you change stance
+        self.rushdown = 0         # Draw when you enter Wrath
+        self.likeWater = 0        # Block at end of turn while in Calm
+        self.devotion = 0         # Mantra at the start of each turn
         #powers
         self.accuracy = 0
         self.spikes = 0
@@ -458,10 +468,138 @@ class Char():
 
     def gainEnergy(self,value):
         self.energy += value
-        #ansiprint(self.displayName, "has now <yellow>"+str(self.energy)+" Energy</yellow>.\n") 
-    
+        #ansiprint(self.displayName, "has now <yellow>"+str(self.energy)+" Energy</yellow>.\n")
+
+    def enterStance(self, newStance):
+        # Watcher stance change with on-exit / on-enter effects.
+        old = self.stance
+        if old == newStance:
+            ansiprint(f"You are already in <magenta>{newStance}</magenta>.")
+            return
+        # On-exit effects
+        if old == "Calm":
+            self.gainEnergy(2)
+            ansiprint("Exiting <blue>Calm</blue> grants <yellow>2 Energy</yellow>.")
+        self.stance = newStance
+        # On-enter effects
+        if newStance == "Divinity":
+            self.gainEnergy(3)
+            ansiprint("Entering <yellow>Divinity</yellow> grants <yellow>3 Energy</yellow>! Damage is tripled this turn.")
+        elif newStance == "Wrath":
+            ansiprint("You enter <red>Wrath</red>: you deal and take double damage.")
+        elif newStance == "Calm":
+            ansiprint("You enter <blue>Calm</blue>.")
+        elif newStance == "Neutral":
+            ansiprint("You return to <magenta>Neutral</magenta> stance.")
+        # On-stance-change powers
+        if self.mentalFortress > 0:
+            self.blocking(self.mentalFortress, unaffectedBlock=True)
+            ansiprint(f"<magenta>Mental Fortress</magenta> grants <green>{self.mentalFortress} Block</green>.")
+        if self.rushdown > 0 and newStance == "Wrath":
+            self.draw(self.rushdown)
+            ansiprint(f"<magenta>Rushdown</magenta>: draw {self.rushdown}.")
+
+    def gainMantra(self, value):
+        self.mantra += value
+        ansiprint(f"You gain <yellow>{value} Mantra</yellow> ({self.mantra}/10).")
+        while self.mantra >= 10:
+            self.mantra -= 10
+            ansiprint("<yellow>Mantra</yellow> reached 10 -- you enter Divinity!")
+            self.enterStance("Divinity")
+
+    def scry(self, amount):
+        # Look at the top cards of the draw pile and discard any you choose.
+        if amount <= 0 or len(self.draw_pile) == 0:
+            return
+        top = self.draw_pile[:amount]
+        ansiprint("<magenta>Scry</magenta> -- top of your Drawpile:")
+        for i, card in enumerate(top):
+            ansiprint(f"{i+1}. {card.get('Name')}")
+        choice = input("Type the numbers of cards to DISCARD separated by spaces (or just Enter to keep all).\n")
+        toDiscard = set()
+        for part in choice.split():
+            if part.isdigit() and 1 <= int(part) <= len(top):
+                toDiscard.add(int(part)-1)
+        for i in sorted(toDiscard, reverse=True):
+            card = self.draw_pile.pop(i)
+            self.add_CardToDiscardpile(card, noMessage=True)
+            ansiprint(f"Scried away <blue>{card.get('Name')}</blue>.")
+
+    def playWatcherCard(self, turn_counter):
+        # Data-driven handler for all Watcher cards. Reads the fields documented
+        # in the Watcher card section of entities.py.
+        card = self.card_in_play
+
+        # Powers (placed in the power pile by resolveCardPlay afterwards)
+        if "MentalFortress" in card:
+            self.mentalFortress += card["MentalFortress"]; ansiprint("You gain <magenta>Mental Fortress</magenta>."); return
+        if "Rushdown" in card:
+            self.rushdown += card["Rushdown"]; ansiprint("You gain <magenta>Rushdown</magenta>."); return
+        if "LikeWater" in card:
+            self.likeWater += card["LikeWater"]; ansiprint("You gain <magenta>Like Water</magenta>."); return
+        if "Devotion" in card:
+            self.devotion += card["Devotion"]; ansiprint("You gain <magenta>Devotion</magenta>."); return
+        if "EnergyGainMiracle" in card:
+            self.gainEnergy(card["EnergyGainMiracle"]); ansiprint(f"<blue>Miracle</blue> grants <yellow>{card['EnergyGainMiracle']} Energy</yellow>."); return
+
+        # Damage
+        if "Damage" in card:
+            hits = card.get("Hits", 1)
+            if card.get("AoE"):
+                for _ in range(hits):
+                    for idx in range(len(entities.list_of_enemies)):
+                        self.target = idx
+                        self.attack(card["Damage"])
+            elif card.get("RandomTarget"):
+                for _ in range(hits):
+                    if len(entities.list_of_enemies) == 0:
+                        break
+                    self.target = rd.randint(0, len(entities.list_of_enemies)-1)
+                    self.attack(card["Damage"])
+            else:
+                self.choose_enemy()
+                if card.get("Wallop"):
+                    preview = self.attack(card["Damage"], preview=True)
+                    unblocked = max(0, preview - entities.list_of_enemies[self.target].block)
+                    self.attack(card["Damage"])
+                    self.blocking(unblocked)
+                else:
+                    enemyCheck = len(entities.list_of_enemies)
+                    for _ in range(hits):
+                        self.attack(card["Damage"])
+                        if len(entities.list_of_enemies) != enemyCheck:
+                            break
+
+        # Block (with optional Wrath bonus, e.g. Halt)
+        if "Block" in card:
+            block = card["Block"]
+            if card.get("WrathBonus") and self.stance == "Wrath":
+                block += card["WrathBonus"]
+            self.blocking(block)
+
+        if card.get("Scry"):
+            self.scry(card["Scry"])
+        if card.get("Draw"):
+            self.draw(card["Draw"])
+        if card.get("Mantra"):
+            self.gainMantra(card["Mantra"])
+
+        # Stance changes happen after damage/block so Wrath bonuses use the
+        # stance you were in when you played the card.
+        if card.get("Stance"):
+            self.enterStance(card["Stance"])
+        if card.get("ExitStance"):
+            self.enterStance("Neutral")
+
     def powersAtTheStartOfTheTurn(self):
-        
+
+        # Divinity only lasts until the start of your next turn.
+        if self.stance == "Divinity":
+            self.enterStance("Neutral")
+
+        if self.devotion > 0:
+            self.gainMantra(self.devotion)
+
         if self.infiniteBlades > 0:
             iShiv = 0
             while iShiv < self.infiniteBlades:
@@ -552,6 +690,9 @@ class Char():
 
             elif relic.get("Name") == "Cracked Core":
                 self.channelOrb("Lightning")
+
+            elif relic.get("Name") == "Pure Water":
+                self.add_CardToHand(entities.cards["Miracle"])
 
             elif relic.get("Name") == "Nuclear Battery":
                 self.channelOrb("Plasma")
@@ -993,7 +1134,11 @@ class Char():
                     self.channelOrb("Frost")
 
     def powersAtTheEndOfTheTurn(self):
-        
+
+        if self.likeWater > 0 and self.stance == "Calm":
+            self.blocking(self.likeWater, unaffectedBlock=True)
+            ansiprint(f"<magenta>Like Water</magenta> grants <green>{self.likeWater} Block</green>.")
+
         if self.wellLaidPlans > 0:
             i = 0
             while i < self.wellLaidPlans and len(self.hand) > 0:
@@ -3742,6 +3887,9 @@ class Char():
 
 
 
+        elif self.card_in_play["Owner"] == "Watcher":
+            self.playWatcherCard(turn_counter)
+
         elif self.card_in_play["Owner"] == "Colorless":
 
             if self.card_in_play.get("Name") == "Bandage Up":
@@ -5555,9 +5703,14 @@ class Char():
             if self.weak > 0:
                 attack = attack - math.floor(attack * 0.25)
 
+            if self.stance == "Wrath":
+                attack *= 2
+            elif self.stance == "Divinity":
+                attack *= 3
+
             if attack < 0:
                 attack = 0
-            
+
             if preview:
                 return attack
             else:
@@ -5712,10 +5865,11 @@ class Char():
 
         else:
             i = 0
-            snap = len(self.hand)
-            while i < snap:
-                self.discard_pile.append(self.hand.pop(0))
-                i += 1
+            while i < len(self.hand):
+                if self.hand[i].get("Retain") == True:
+                    i += 1
+                else:
+                    self.discard_pile.append(self.hand.pop(i))
 
     def exhaust(self, amount, random: bool = False):
 
@@ -6492,6 +6646,9 @@ class Char():
     def receive_damage(self,attack_damage):
         if attack_damage > 0:
 
+            if self.stance == "Wrath":
+                attack_damage *= 2
+
             if self.vulnerable > 0:
                 
                 if self.oddMushroom > 0:
@@ -6701,7 +6858,21 @@ class Char():
                 {"Name": "Ascender's Bane","Ethereal":True,"Type": "Curse","Irremovable":True,"Rarity": "Special","Owner":"The Spire","Info":"Ethereal. Unplayable."}
                 ]
 
-        starting_deck = {"Silent": silent_deck, "Ironclad": ironclad_deck, "Defect": defect_deck}.get(self.name, [])
+        watcher_deck = [
+                {"Name": "Strike", "Damage":6, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Watcher","Info":"Deal <red>6 damage</red>."},
+                {"Name": "Strike", "Damage":6, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Watcher","Info":"Deal <red>6 damage</red>."},
+                {"Name": "Strike", "Damage":6, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Watcher","Info":"Deal <red>6 damage</red>."},
+                {"Name": "Strike", "Damage":6, "Energy": 1,"Type": "Attack" ,"Rarity": "Basic","Owner":"Watcher","Info":"Deal <red>6 damage</red>."},
+                {"Name": "Defend", "Block":5, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Watcher","Info":"Gain <green>5 Block</green>."},
+                {"Name": "Defend", "Block":5, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Watcher","Info":"Gain <green>5 Block</green>."},
+                {"Name": "Defend", "Block":5, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Watcher","Info":"Gain <green>5 Block</green>."},
+                {"Name": "Defend", "Block":5, "Energy": 1,"Type": "Skill" ,"Rarity": "Basic","Owner":"Watcher","Info":"Gain <green>5 Block</green>."},
+                {"Name": "Eruption", "Damage":9, "Energy": 2,"Stance":"Wrath","Type": "Attack" ,"Rarity": "Basic","Owner":"Watcher","Info":"Deal <red>9 damage</red>. Enter <red>Wrath</red>."},
+                {"Name": "Vigilance", "Block":8, "Energy": 2,"Stance":"Calm","Type": "Skill" ,"Rarity": "Basic","Owner":"Watcher","Info":"Gain <green>8 Block</green>. Enter <blue>Calm</blue>."},
+                {"Name": "Ascender's Bane","Ethereal":True,"Type": "Curse","Irremovable":True,"Rarity": "Special","Owner":"The Spire","Info":"<BLUE>Ethereal</BLUE>. <RED>Unplayable</RED>."}
+                ]
+
+        starting_deck = {"Silent": silent_deck, "Ironclad": ironclad_deck, "Defect": defect_deck, "Watcher": watcher_deck}.get(self.name, [])
         for card in starting_deck:
             # Ascension 10: start each run with an Ascender's Bane curse.
             if card.get("Name") == "Ascender's Bane" and helping_functions.ascensionLevel < 10:
@@ -8400,7 +8571,12 @@ class Char():
                 status += f" |<green> Block: {self.block}</green>"
 
             status += f" |<yellow> Energy: {self.energy}</yellow>"
-            
+
+            if self.stance != "Neutral":
+                status += f" |<magenta> Stance: {self.stance}</magenta>"
+            if self.mantra > 0:
+                status += f" |<yellow> Mantra: {self.mantra}/10</yellow>"
+
             if self.maxOrbs > 0:
                 status += f" | {self.getOrbSituation()}"
             if self.weak > 0:
@@ -8559,6 +8735,13 @@ class Char():
         self.afterImage = 0
         self.envenom = 0
         self.toolsOfTheTrade = 0
+        # Watcher: start every combat in Neutral with no Mantra or stance-powers.
+        self.stance = "Neutral"
+        self.mantra = 0
+        self.mentalFortress = 0
+        self.rushdown = 0
+        self.likeWater = 0
+        self.devotion = 0
         self.theBoot = False
         self.buffer = 0
         self.wraithForm = 0
