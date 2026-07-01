@@ -3062,11 +3062,11 @@ class Char():
                 self.draw(self.card_in_play.get("Draw"))
                 self.set_cantDraw()
 
-            elif self.card_in_play.get("Name") == "Blood Letting":
+            elif self.card_in_play.get("Name") == "Bloodletting":
                 self.receive_recoil_damage(self.card_in_play.get("Selfhurt"),directDamage=True)
                 self.gainEnergy(self.card_in_play["Energy Gain"])
-            
-            elif self.card_in_play.get("Name") == "Blood Letting +":
+
+            elif self.card_in_play.get("Name") == "Bloodletting +":
                 self.receive_recoil_damage(self.card_in_play.get("Selfhurt"),directDamage=True)
                 self.gainEnergy(self.card_in_play["Energy Gain"])
             
@@ -5995,7 +5995,7 @@ class Char():
             
             attack += strength
 
-            if self.card_in_play.get("Name") == "Shiv" or self.card_in_play.get("Name") == "Shiv+":
+            if self.card_in_play.get("Name") == "Shiv" or self.card_in_play.get("Name") == "Shiv +":
                 attack += self.accuracy
 
             if self.strikeDummy > 0 and "Strike" in self.card_in_play.get("Name"):
