@@ -1598,7 +1598,7 @@ def displayShop(shoplist):
     theCourier = False
     mawBank = False
     for relic in entities.active_character[0].relics:
-        if relic.get("Name") == "Smilling Mask":
+        if relic.get("Name") == "Smiling Mask":
             removeCardCost = 50
         elif relic.get("Name") == "Maw Bank":
             mawBank = True
@@ -1691,7 +1691,7 @@ def displayShop(shoplist):
                             if len(item) > 1:
                                item[1] = math.floor(item[1]/2)
 
-                    elif shoplist[snap][0].get("Name") == "Smilling Mask":
+                    elif shoplist[snap][0].get("Name") == "Smiling Mask":
                         for item in shoplist:
                             if item[0] == "Remove Card":
                                 item[1] = 50
