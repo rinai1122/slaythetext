@@ -662,6 +662,11 @@ class Enemy():
                 entities.active_character[0].receive_damage(self.attack(int(action.split(" ")[1].split("/")[0])))
                 entities.active_character[0].set_frail(int(action.split(" ")[1].split("/")[1]))
 
+            elif "Harden" in action:
+                # Spheric Guardian: deal damage and gain Block.
+                entities.active_character[0].receive_damage(self.attack(int(action.split(" ")[1].split("/")[0])))
+                self.blocking(int(action.split(" ")[1].split("/")[1]))
+
             elif "Suck" in action:
                 drainCheck = entities.active_character[0].health
                 entities.active_character[0].receive_damage(self.attack(int(action.split(" ")[1])))
@@ -1110,10 +1115,10 @@ class Enemy():
 
                         if cardType != self.cardTypeToLookOutFor.split(" ")[0]:
                             if self.cardTypeToLookOutFor.split(" ")[1] == "Strength":
-                                self.set_strength (int(self.cardTypeToLookOutFor.split(" ")[2]))
+                                self.set_strength (int(self.cardTypeToLookOutFor.split(" ")[3]))
                             elif self.cardTypeToLookOutFor.split(" ")[1] == "Daze":
                                 i = 0
-                                while i < int(self.cardTypeToLookOutFor.split(" ")[2]):
+                                while i < int(self.cardTypeToLookOutFor.split(" ")[3]):
                                     entities.active_character[0].add_CardToDrawpile({"Name": "Dazed","Ethereal": True, "Type": "Status", "Rarity": "Enemy", "Owner":"The Spire"},index=rd.randint(0,len(entities.active_character[0].draw_pile)-1))
                                     i+=1
                             elif self.cardTypeToLookOutFor.split(" ")[1] == "Counter":
